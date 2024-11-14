@@ -1,0 +1,18 @@
+{
+  "name": "qti-iol-player",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "@citolab/qti-components": "^6.9.1-beta.59",
+    "@citolab/qti-extended": "^6.7.1-beta.42"
+  }
+}
