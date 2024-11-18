@@ -46,25 +46,13 @@
             testURL="/kennisnet-1/AssessmentTest.xml"
             class="d-flex h-100 flex-column"
           >
-            <style>
-              @import url("https://unpkg.com/@citolab/qti-components@6.9.1-beta.55/dist/item.css");
-            </style>
-
-            <div class="flex-grow-1 overflow-auto">
-              <qti-assessment-test-container
-                class="d-block"
-              ></qti-assessment-test-container>
-            </div>
+            <test-container
+              class="d-block flex-grow-1 overflow-auto"
+            ></test-container>
 
             <div class="d-flex align-items-center justify-content-between">
-              <test-prev class="d-flex btn btn-primary">
-                <hi-24-outline-chevron-left bla="koe"></hi-24-outline-chevron-left>
-                <div>Vorige</div>
-              </test-prev>
-              <test-next class="d-flex btn btn-primary">
-                <div>Volgende</div>
-                <hi-24-outline-chevron-right></hi-24-outline-chevron-right>
-              </test-next>
+              <test-prev class="btn btn-primary"> Vorige </test-prev>
+              <test-next class="btn btn-primary"> Volgende </test-next>
             </div>
           </qti-player>
         </div>
@@ -72,7 +60,6 @@
     </div>
   </body>
 </html>
-
 
 <test-script>
   <!--
