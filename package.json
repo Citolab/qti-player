@@ -6,10 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "npm install": "npm install @citolab/qti-components@next @citolab/qti-extended@next",
-    "npm link": "npm link @citolab/qti-components @citolab/qti-extended",
-    "npm unlink": "npm unlink @citolab/qti-components @citolab/qti-extended"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@html-eslint/eslint-plugin": "^0.27.0",
@@ -19,7 +16,6 @@
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "@citolab/qti-components": "^6.9.1-beta.75",
-    "@citolab/qti-extended": "^6.7.1-beta.72"
+    "@citolab/qti-components": "https://pkg.pr.new/Citolab/qti-components/@citolab/qti-components@e9e1b80"
   }
 }

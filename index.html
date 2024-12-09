@@ -6,7 +6,7 @@
     <title>QTI IOL Player LIT</title>
 
     <script type="module">
-      import "@citolab/qti-extended/qti-player";
+      import "@citolab/qti-components/cdn/index.js";
     </script>
 
     <style>
@@ -41,7 +41,7 @@
 
   <body class="bg-light">
     <div class="container mx-auto">
-      <qti-player
+      <qti-test
         testURL="/kennisnet-1/AssessmentTest.xml"
         class="d-flex flex-column m-4 gap-4"
       >
@@ -52,7 +52,7 @@
           <test-prev class="btn btn-primary"> Vorige </test-prev>
           <test-next class="btn btn-primary"> Volgende </test-next>
         </div>
-      </qti-player>
+      </qti-test>
     </div>
   </body>
 </html>
