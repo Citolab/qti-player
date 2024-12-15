@@ -6,7 +6,7 @@
     <title>QTI IOL Player LIT</title>
 
     <script type="module">
-      import "@citolab/qti-components/cdn/index.js";
+      import "@citolab/qti-components";
     </script>
 
     <style>
@@ -41,11 +41,8 @@
 
   <body class="bg-light">
     <div class="w-full mx-auto">
-      <qti-test
-        testURL="/kennisnet-1/AssessmentTest.xml"
-        class="d-flex flex-column m-4 gap-4"
-      >
-        <test-container
+      <qti-test class="d-flex flex-column m-4 gap-4">
+        <test-container test-url="/kennisnet-1/AssessmentTest.xml"
           class="rounded bg-white border p-4 d-block flex-grow-1 overflow-auto"
         ></test-container>
         <div class="d-flex align-items-center justify-content-between">
