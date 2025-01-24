@@ -12,6 +12,6 @@
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "@citolab/qti-components": "^7.0.6-beta.4"
+    "@citolab/qti-components": "https://pkg.pr.new/Citolab/qti-components/@citolab/qti-components@31f6e9a"
   }
 }
