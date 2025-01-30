@@ -17,6 +17,7 @@
       import "@citolab/qti-components/qti-test/components/test-paging-buttons-stamp";
       import "@citolab/qti-components/qti-test/components/test-item-link";
       import "@citolab/qti-components/qti-test/components/test-view";
+      import "@citolab/qti-components/qti-test/components/test-print-item-variables";
     </script>
 
     <style>
@@ -58,9 +59,10 @@
     <!-- auto-store-restore="my session storage" -->
     <qti-test class="h-100 overflow-hidden gap-4">
       <test-navigation class="d-flex w-100 h-100">
+
         <test-paging-buttons-stamp
           class="d-flex flex-column gap-2 p-2 overflow-auto"
-          style="min-width: 160px"
+          style="min-width: 160px; max-width: 160px;"
         >
           <template>
             <test-item-link class="btn btn-primary {{item.active ? 'active' : ''}}" item-id="{{ item.identifier }}">
@@ -90,7 +92,11 @@
             <test-next class="btn btn-primary"> Volgende </test-next>
           </nav>
         </div>
+
+        <test-print-item-variables class="small"></test-print-item-variables>
+        
       </test-navigation>
+
     </qti-test>
 
     <script>
