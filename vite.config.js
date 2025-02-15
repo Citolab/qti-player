@@ -11,7 +11,7 @@ const fullReloadAlways = {
 
 export default defineConfig({
   plugins: [fullReloadAlways],
-  base: '',
+  base: process.env.NODE_ENV === 'production' ? 'https://citolab.github.io/qti-iol-player/' : './',
   server: {
     watch: {
       // Allow watching files in `node_modules`
