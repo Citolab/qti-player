@@ -14,10 +14,7 @@ export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? 'https://citolab.github.io/qti-iol-player/' : './',
   server: {
     watch: {
-      // Allow watching files in `node_modules`
-      ignored: [
-        '!**/node_modules/@citolab/qti-components/**',
-        '!**/node_modules/@citolab/qti-extended/**']
+      ignored: ['!**/node_modules/@citolab/qti-components/**']
     },
   },
   optimizeDeps: {
