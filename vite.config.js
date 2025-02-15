@@ -11,6 +11,7 @@ const fullReloadAlways = {
 
 export default defineConfig({
   plugins: [fullReloadAlways],
+  base: '',
   server: {
     watch: {
       // Allow watching files in `node_modules`
