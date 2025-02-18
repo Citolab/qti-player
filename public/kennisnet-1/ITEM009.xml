@@ -3,19 +3,19 @@
 	<qti-response-declaration identifier="RESPONSE" cardinality="ordered" base-type="identifier">
 		<qti-correct-response>
 			<qti-value>
-				7277e44510f33087d07f4066d0ce308b
+				_7277e44510f33087d07f4066d0ce308b
 			</qti-value>
 			<qti-value>
-				1295359046aa972a407e41a1350316e7
+				_1295359046aa972a407e41a1350316e7
 			</qti-value>
 			<qti-value>
-				97094d4eb5162950ed0f771abed47e4d
+				_97094d4eb5162950ed0f771abed47e4d
 			</qti-value>
 			<qti-value>
-				1815d0886d3fddd35b602bc0054b868d
+				_1815d0886d3fddd35b602bc0054b868d
 			</qti-value>
 			<qti-value>
-				ec46da4638d1a6bc9c7d601efcb88bd2
+				_ec46da4638d1a6bc9c7d601efcb88bd2
 			</qti-value>
 		</qti-correct-response>
 	</qti-response-declaration>
