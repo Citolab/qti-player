@@ -5,13 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build --mode production",
+    "preview": "vite build --mode development && vite preview",
+    "test:browser": "vite build --mode testing && vitest --workspace=vitest.workspace.js"
   },
   "dependencies": {
-    "@citolab/qti-components": "^7.0.10"
+    "@citolab/qti-components": "^7.1.0"
   },
   "devDependencies": {
-    "vite": "^5.4.10"
+    "@vitest/browser": "^3.0.6",
+    "playwright": "^1.50.1",
+    "vite": "^5.4.10",
+    "vitest": "^3.0.6"
   }
 }

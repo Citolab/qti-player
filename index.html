@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QTI IOL Player LIT</title>
 
-    <base href="%BASE_URL%" />
+    <base href="%VITE_BASE_HREF%" />
 
     <script type="module">
       import "@citolab/qti-components/qti-components";
@@ -102,38 +102,38 @@
     </qti-test>
 
     <script>
-      customElements.whenDefined("test-navigation").then(() => {
-        const testNavigation = document.querySelector("test-navigation");
-        testNavigation.configContext = {
-          infoItemCategory: 'info'
-        }
-        testNavigation.initContext = [
-        {
-            identifier: "INTRODUCTION",
-            title: "Intro",
-          },
-          {
-            identifier: "ITEM001",
-            title: "Mooie titel",
-            difficulty: "2"
-          },
-          {
-            identifier: "ITEM002",
-            title: "Nice title",
-            difficulty: "3"
-          },
-          {
-            identifier: "ITEM003",
-            title: "Leuke titel",
-            difficulty: "1"
-          },
-          {
-            identifier: "ITEM005",
-            title: "De kat",
-            difficulty: "1"
-          },
-        ];
-      });
+      // customElements.whenDefined("test-navigation").then(() => {
+      //   const testNavigation = document.querySelector("test-navigation");
+      //   testNavigation.configContext = {
+      //     infoItemCategory: 'info'
+      //   }
+      //   testNavigation.initContext = [
+      //   {
+      //       identifier: "INTRODUCTION",
+      //       title: "Intro",
+      //     },
+      //     {
+      //       identifier: "ITEM001",
+      //       title: "Mooie titel",
+      //       difficulty: "2"
+      //     },
+      //     {
+      //       identifier: "ITEM002",
+      //       title: "Nice title",
+      //       difficulty: "3"
+      //     },
+      //     {
+      //       identifier: "ITEM003",
+      //       title: "Leuke titel",
+      //       difficulty: "1"
+      //     },
+      //     {
+      //       identifier: "ITEM005",
+      //       title: "De kat",
+      //       difficulty: "1"
+      //     },
+      //   ];
+      // });
 
     </script>
   </body>
