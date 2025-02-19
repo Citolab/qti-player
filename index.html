@@ -20,6 +20,8 @@
       import "@citolab/qti-components/qti-test/components/test-item-link";
       import "@citolab/qti-components/qti-test/components/test-view";
       import "@citolab/qti-components/qti-test/components/test-print-item-variables";
+      import "@citolab/qti-components/qti-test/components/test-print-context";
+
     </script>
 
     <style>
@@ -95,8 +97,11 @@
           </nav>
         </div>
 
-        <test-print-item-variables class="small"></test-print-item-variables>
-        
+
+        <div class="overflow-auto" style="min-width:400px;max-width:400px;">
+          <test-print-item-variables class="small"></test-print-item-variables>
+          <test-print-context></test-print-context>
+        </div>
       </test-navigation>
 
     </qti-test>
