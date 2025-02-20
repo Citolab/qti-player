@@ -36,7 +36,7 @@
 	<qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
 	<qti-stylesheet href="resources/stylesheet.css" type="text/css" />
 	<qti-item-body>
-		<qti-order-interaction response-identifier="RESPONSE" orientation="vertical" shuffle="true">
+		<qti-order-interaction response-identifier="RESPONSE" shuffle="true">
 			<qti-prompt>
 				Zet de volgende dagelijkse activiteiten in de juiste volgorde:
 			</qti-prompt>
