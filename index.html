@@ -23,11 +23,23 @@
       import "@citolab/qti-components/qti-test/components/test-print-context";
     </script>
 
-    <script>
-      function changeTest(e) {
-        const value = document.querySelector('#test-url-select').value;
-        const testContainer = document.querySelector('test-container');
-        testContainer.setAttribute("test-url", value);
+    <script defer>
+      async function changeTest(e) {
+        const value = document.querySelector("#test-url-select").value;
+        const testContainer = document.querySelector("test-container");
+        const testNavigation = document.querySelector("test-navigation");
+        testNavigation.configContext = {
+          infoItemCategory: "info",
+        };
+        // Fetch items.json with error handling
+        try {
+          const response = await fetch(value + "items.json");
+          testNavigation.initContext = response.ok ? await response.json() : null;
+        } catch {
+          testNavigation.initContext = null;
+        }
+
+        testContainer.setAttribute("test-url", value + "/AssessmentTest.xml");
       }
     </script>
 
@@ -48,7 +60,7 @@
           qtiTest.autoScoreItems = true; // is now on : testNavigation.autoScoreItems
           qtiTest.reportValidityAfterScoring = true;
 
-          qtiTest.autoLoad = 'item' | 'section'; // should be implemented
+          qtiTest.autoLoad = "item" | "section"; // should be implemented
           // qtiTest.navigate = 'section' || 'item' // default is 'item' <-- zit nog n de peiling, automatisch eerste section laden
 
           // qtiTest.configContext = {
@@ -183,14 +195,14 @@
 
         <div class="d-flex flex-column flex-grow-1 m-4">
           <test-view>View</test-view>
-          <select id="test-url-select" class="form-select mb-3" oninput="changeTest()">
+          <select
+            id="test-url-select"
+            class="form-select mb-3"
+            oninput="changeTest()"
+          >
             <option>Select</option>
-            <option value="./kennisnet-1/AssessmentTest.xml">
-              Kennisnet 1
-            </option>
-            <option value="./kennisnet-2/AssessmentTest.xml">
-              Kennisnet 2
-            </option>
+            <option value="./kennisnet-1/">Kennisnet 1</option>
+            <option value="./kennisnet-2/">Kennisnet 2</option>
           </select>
           <test-container
             id="test-container"
