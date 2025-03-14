@@ -23,8 +23,18 @@
       import "@citolab/qti-components/qti-test/components/test-print-context";
     </script>
 
+    <script>
+      function changeTest(e) {
+        const value = document.querySelector('#test-url-select').value;
+        const testContainer = document.querySelector('test-container');
+        testContainer.setAttribute("test-url", value);
+      }
+    </script>
+
     <script type="module" defer>
-      const stimulusRefContainer = document.getElementById("stimulusRefContainer");
+      const stimulusRefContainer = document.getElementById(
+        "stimulusRefContainer"
+      );
 
       customElements.whenDefined("qti-test").then(() => {
         const qtiTest = document.querySelector("qti-test");
@@ -37,11 +47,9 @@
           qtiTest.cacheItems = false; // should be implemented
           qtiTest.autoScoreItems = true; // is now on : testNavigation.autoScoreItems
           qtiTest.reportValidityAfterScoring = true;
-          
-          qtiTest.autoLoadFirstItem = false; // should be implemented
-          qtiTest.autoLoadFirstSection = false; // should be implemented
-          // qtiTest.navigate = 'section' || 'item' // default is 'item' <-- zit nog n de peiling, automatisch eerste section laden
 
+          qtiTest.autoLoad = 'item' | 'section'; // should be implemented
+          // qtiTest.navigate = 'section' || 'item' // default is 'item' <-- zit nog n de peiling, automatisch eerste section laden
 
           // qtiTest.configContext = {
           // reportValidityAfterScoring: true,
@@ -105,12 +113,12 @@
                 { itemRefId: "ITM003", pValue: 0.672, domain: "Biologie" },
               ]);
           });
-        }
 
-        qtiTest.load("./kennisnet-1/AssessmentTest.xml").then(() => {
-          qtiTest.navigateTo("ITEM", ITM002);
-          // qtiTest.navigateTo('SECTION', SECTION002) // can also navigate to a section
-        });
+          qtiTest.load("./kennisnet-1/AssessmentTest.xml").then(() => {
+            qtiTest.navigateTo("ITEM", ITM002);
+            // qtiTest.navigateTo('SECTION', SECTION002) // can also navigate to a section
+          });
+        }
       });
     </script>
 
@@ -175,7 +183,7 @@
 
         <div class="d-flex flex-column flex-grow-1 m-4">
           <test-view>View</test-view>
-          <select id="test-url-select" class="form-select mb-3">
+          <select id="test-url-select" class="form-select mb-3" oninput="changeTest()">
             <option>Select</option>
             <option value="./kennisnet-1/AssessmentTest.xml">
               Kennisnet 1
