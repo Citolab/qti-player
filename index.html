@@ -41,6 +41,16 @@
 
         testContainer.setAttribute("test-url", value + "/AssessmentTest.xml");
       }
+
+      customElements.whenDefined("qti-test").then(() => {
+        const qtiTest = document.querySelector("qti-test");
+        qtiTest.addEventListener("qti-request-navigation", (e) => {
+          console.log("qti-request-navigation", e.detail);
+        });
+        qtiTest.addEventListener("qti-test-connected", (e) => {
+          console.log("qti-test-connected", e.detail);
+        });
+      });
     </script>
 
     <style>
