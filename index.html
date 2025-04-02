@@ -90,8 +90,8 @@
 
     <script defer>
       const map = new Map();
-      map.set("kennisnet1", "%VITE_BASE_HREF%/kennisnet-1");
-      map.set("kennisnet2", "%VITE_BASE_HREF%/kennisnet-2");
+      map.set("kennisnet1", "/kennisnet-1");
+      map.set("kennisnet2", "/kennisnet-2");
     </script>
 
     <script type="module" defer>
@@ -100,8 +100,7 @@
       const testNavigation = document.querySelector("test-navigation");
       let pkg = "null";
 
-      const router = new Navigo(null, true, "#");
-
+      const router = new Navigo(`%VITE_BASE_HREF%`, true, "#");
       router.on("/", () => {
         router.navigate("/kennisnet1");
       });
