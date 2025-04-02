@@ -100,16 +100,17 @@
       const testNavigation = document.querySelector("test-navigation");
       let pkg = "null";
 
-      const router = new Navigo(`%VITE_BASE_HREF%`, true, "#");
-      router.on("%VITE_BASE_HREF%", () => {
+      const router = new Navigo(`%VITE_BASE_ROUTE%`, true, "#");
+
+      router.on("%VITE_BASE_ROUTE%/", () => {
         router.navigate("/kennisnet1");
       });
-      router.on("%VITE_BASE_HREF%:package", ({ data }) => {
+      router.on("%VITE_BASE_ROUTE%/:package", ({ data }) => {
         qtiTest.navigate = "item";
         pkg = data.package;
         changeTest(map.get(data.package));
       });
-      router.on("%VITE_BASE_HREF%:package/:item", ({ data }) => {
+      router.on("%VITE_BASE_ROUTE%/:package/:item", ({ data }) => {
         pkg = data.package;
         changeTest(map.get(data.package));
         qtiTest.addEventListener("qti-assessment-test-connected", () => {
