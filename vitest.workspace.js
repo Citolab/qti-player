@@ -6,7 +6,7 @@ export default defineWorkspace([
   {
     extends: 'vite.config.js',
     test: {
-      include: ['tests/**/*.test.js'],
+      include: ['tests/**/*.test.ts'],
 
       browser: {
         testerHtmlPath: './dist/index.html',
