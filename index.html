@@ -100,7 +100,7 @@
       const testNavigation = document.querySelector("test-navigation");
       let pkg = "null";
 
-      const router = new Navigo(`%VITE_BASE_ROUTE%`, true, "#");
+      const router = new Navigo(`%VITE_BASE_ROUTE%`, { hash: true });
 
       router.on("/", () => {
         router.navigate("/kennisnet1");
