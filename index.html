@@ -90,8 +90,8 @@
 
     <script defer>
       const map = new Map();
-      map.set("kennisnet1", "%VITE_BASE_ROUTE%/kennisnet-1/");
-      map.set("kennisnet2", "%VITE_BASE_ROUTE%/kennisnet-2/");
+      map.set("kennisnet1", "/kennisnet-1");
+      map.set("kennisnet2", "/kennisnet-2");
     </script>
 
     <script type="module" defer>
@@ -135,7 +135,7 @@
         testNavigation.configContext = {
           infoItemCategory: "info",
         };
-        testContainer.setAttribute("test-url", test + "AssessmentTest.xml");
+        testContainer.setAttribute("test-url", test + "/AssessmentTest.xml");
         // Fetch items.json with error handling
         try {
           const response = await fetch(test + "items.json");
