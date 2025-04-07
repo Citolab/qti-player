@@ -24,8 +24,8 @@
     <style>
       [data-theme="wikiwijs"] {
         /* name: 'cito';
-        default: false;
-        prefersdark: false; */
+          default: false;
+          prefersdark: false; */
         color-scheme: "wikiwijs";
         --color-base-100: #ffffff;
         --color-base-200: #f5f7fb;
@@ -56,13 +56,12 @@
         --depth: 0;
         --noise: 0;
       }
-      
+
       test-container {
         --qti-bg: var(--color-base-100);
         --qti-bg-active: var(--color-base-200);
         --qti-border-active: var(--color-primary);
       }
-
     </style>
 
     <link
@@ -110,23 +109,35 @@
       router.on("/:package", ({ data }) => {
         qtiTest.navigate = "item";
         pkg = data.package;
+        // console.log("1 ASDASDASDAS")
         changeTest(map.get(data.package));
       });
       router.on("/:package/:item", ({ data }) => {
         pkg = data.package;
+        // console.log("2 ASDASDASDAS")
         changeTest(map.get(data.package));
+        if (testContainer.testUrl !== "") {
+          qtiTest.navigateTo("item", data.item);
+        }
         qtiTest.addEventListener("qti-assessment-test-connected", () => {
           if (sessionStorage.getItem(pkg) !== null)
             qtiTest.testContext = JSON.parse(sessionStorage.getItem(pkg));
           qtiTest.navigateTo("item", data.item);
         });
       });
+      router.resolve();
 
-      qtiTest.addEventListener("qti-request-navigation", (e) => {
-        router.navigate(`/${pkg}/${e.detail.id}`);
+      window.addEventListener("popstate", () => {
+        router.resolve();
       });
 
-      router.resolve();
+      qtiTest.addEventListener("qti-request-navigation", (e) => {
+        router.navigate(`/${pkg}/${e.detail.id}`, {
+          title: e.detail.id,
+          callHandler: false, // Don't trigger routing
+          updateBrowserURL: true, // Update the address bar
+        });
+      });
 
       qtiTest.addEventListener("qti-test-context-updated", (e) => {
         sessionStorage.setItem(pkg, JSON.stringify(e.detail));
@@ -233,7 +244,8 @@
                       class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}"
                     ></div>
                     <div class="flex flex-grow gap-1 py-0.5">
-                      {{ item.category === 'dep-informational' ? 'info' : item.title }}
+                      {{ item.category === 'dep-informational' ? 'info' :
+                      item.title }}
                     </div>
                     <div class="w-4 text-right mr-2 text-xs text-slate-300">
                       {{ item.index }}
@@ -274,7 +286,8 @@
                       class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}"
                     ></div>
                     <div class="flex flex-grow gap-1 py-0.5">
-                      {{ item.category === 'dep-informational' ? 'info' : item.title }}
+                      {{ item.category === 'dep-informational' ? 'info' :
+                      item.title }}
                     </div>
                     <div class="w-4 text-right mr-2 text-xs text-slate-300">
                       {{ item.index }}
@@ -312,59 +325,73 @@
                 <i class="bi bi-grid"></i>
               </button>
 
-              <nav
-                class="card card-border border-base-300 bg-base-100 shadow-xl"
+              <template
+                type="if"
+                if="{{ testpart.navigationMode == 'nonlinear' }}"
               >
-                <div
-                  class="card-body gap-4 flex-row items-center justify-between"
+                <nav
+                  class="card card-border border-base-300 bg-base-100 shadow-xl"
                 >
-                  <div class="flex items-center flex-grow">
-                    <div class="hidden flex-1 gap-1 overflow-auto md:flex">
-                      <test-paging-buttons-stamp
-                        class="flex gap-2 p-2 overflow-auto"
-                      >
-                        <template>
-                          <test-item-link
-                            class="flex relative items-center justify-center btn btn-soft btn-square border-2  {{ item.active ? 'border-primary' : ''}} {{ item.category === 'info' ? 'rounded' : 'rounded-full' }}"
-                            item-id="{{ item.identifier }}"
-                          >
-                            {{ item.index}}
-                            <template
-                              type="if"
-                              if="{{ item.category === 'info' }}"
+                  <div
+                    class="card-body gap-4 flex-row items-center justify-between"
+                  >
+                    <div class="flex items-center flex-grow">
+                      <div class="hidden flex-1 gap-1 overflow-auto md:flex">
+                        <test-paging-buttons-stamp
+                          class="flex gap-2 p-2 overflow-auto"
+                        >
+                          <template>
+                            <test-item-link
+                              class="flex relative items-center justify-center btn btn-soft btn-square border-2  {{ item.active ? 'border-primary' : ''}} {{ item.category === 'info' ? 'rounded' : 'rounded-full' }}"
+                              item-id="{{ item.identifier }}"
                             >
-                              <i class="bi bi-info text-xl"></i>
-                            </template>
-                            <template
-                              type="if"
-                              if="{{ item.view === 'scorer' }}"
-                            >
-                              <div
-                                aria-label="status"
-                                class="status status-md absolute top-0 right-0  {{ item.correct ? 'status-success' : item.incorrect && item.completed ? 'status-error' : item.completed ? 'status-neutral' : 'bg-transparent' }}"
-                              ></div>
-                            </template>
-                          </test-item-link>
-                        </template>
-                      </test-paging-buttons-stamp>
-                    </div>
+                              {{ item.index}}
+                              <template
+                                type="if"
+                                if="{{ item.category === 'info' }}"
+                              >
+                                <i class="bi bi-info text-xl"></i>
+                              </template>
+                              <template
+                                type="if"
+                                if="{{ item.view === 'scorer' }}"
+                              >
+                                <div
+                                  aria-label="status"
+                                  class="status status-md absolute top-0 right-0  {{ item.correct ? 'status-success' : item.incorrect && item.completed ? 'status-error' : item.completed ? 'status-neutral' : 'bg-transparent' }}"
+                                ></div>
+                              </template>
+                            </test-item-link>
+                          </template>
+                        </test-paging-buttons-stamp>
+                      </div>
 
-                    <div class="flex gap-2">
-                      <button
-                        popovertarget="popover-list"
-                        class="btn btn-outline"
-                      >
-                        <i class="bi bi-list"></i>
-                      </button>
+                      <div class="flex gap-2">
+                        <button
+                          popovertarget="popover-list"
+                          class="btn btn-outline"
+                        >
+                          <i class="bi bi-list"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </nav>
+                </nav>
+              </template>
 
               <div class="flex items-center gap-2">
-                <test-prev class="btn btn-outline" role="button">
-                  <i class="bi bi-arrow-left-short"></i>
-                </test-prev>
+                <test-stamp>
+                  <template>
+                    <template
+                      type="if"
+                      if="{{ testpart.navigationMode == 'nonlinear' }}"
+                    >
+                      <test-prev class="btn btn-outline" role="button">
+                        <i class="bi bi-arrow-left-short"></i>
+                      </test-prev>
+                    </template>
+                  </template>
+                </test-stamp>
                 <test-next class="btn btn-primary" role="button">
                   <div class="hidden md:flex">Volgende</div>
                   <i class="bi bi-arrow-right-short"></i>
@@ -377,66 +404,73 @@
         <div
           id="sidePane"
           popover
-          class="relative! left-0 top-0 h-full w-1/2 base-100 shadow-lg p-4 shadow-lg z-50"
+          class="relative! left-0 top-0 h-full w-1/2 base-100 shadow-lg p-4 shadow-lg z-50 h-full"
         >
-          <button
-            popovertarget="sidePane"
-            popovertargetaction="hide"
-            class="mt-4 px-3 py-1 bg-red-600 text-white rounded"
-          >
-            Close
-          </button>
+          <div class="flex flex-col h-full">
+            <div>
+              <a href="/kennisnet1" class="btn" data-navigo> Kennisnet 1 </a>
+              <a href="/kennisnet2" class="btn" data-navigo> Kennisnet 2 </a>
 
-          <a href="/kennisnet1" class="btn" data-navigo> Kennisnet 1 </a>
-          <a href="/kennisnet2" class="btn" data-navigo> Kennisnet 2 </a>
+              <button
+                popovertarget="sidePane"
+                popovertargetaction="hide"
+                class="px-3 py-1 bg-red-600 text-white rounded float-end"
+              >
+                Close
+              </button>
+            </div>
 
-          <select class="select" data-choose-theme>
-            <optgroup label="Light Themes">
-              <option value="wikiwijs">wikiwijs</option>
-              <option value="light">Light</option>
-              <option value="cupcake">Cupcake</option>
-              <option value="bumblebee">Bumblebee</option>
-              <option value="emerald">Emerald</option>
-              <option value="corporate">Corporate</option>
-              <option value="garden">Garden</option>
-              <option value="forest">Forest</option>
-              <option value="aqua">Aqua</option>
-              <option value="lofi">Lofi</option>
-              <option value="pastel">Pastel</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="wireframe">Wireframe</option>
-              <option value="autumn">Autumn</option>
-              <option value="business">Business</option>
-              <option value="lemonade">Lemonade</option>
-              <option value="winter">Winter</option>
-              <option value="sunset">Sunset</option>
-              <option value="caramellatte">Caramellatte</option>
-              <option value="silk">Silk</option>
-            </optgroup>
-            <optgroup label="Dark Themes">
-              <option value="dark">Dark</option>
-              <option value="synthwave">Synthwave</option>
-              <option value="retro">Retro</option>
-              <option value="cyberpunk">Cyberpunk</option>
-              <option value="valentine">Valentine</option>
-              <option value="halloween">Halloween</option>
-              <option value="black">Black</option>
-              <option value="luxury">Luxury</option>
-              <option value="dracula">Dracula</option>
-              <option value="cmyk">Cmyk</option>
-              <option value="acid">Acid</option>
-              <option value="night">Night</option>
-              <option value="coffee">Coffee</option>
-              <option value="dim">Dim</option>
-              <option value="nord">Nord</option>
-              <option value="abyss">Abyss</option>
-            </optgroup>
-          </select>
+            <select class="select" data-choose-theme>
+              <optgroup label="Light Themes">
+                <option value="wikiwijs">wikiwijs</option>
+                <option value="light">Light</option>
+                <option value="cupcake">Cupcake</option>
+                <option value="bumblebee">Bumblebee</option>
+                <option value="emerald">Emerald</option>
+                <option value="corporate">Corporate</option>
+                <option value="garden">Garden</option>
+                <option value="forest">Forest</option>
+                <option value="aqua">Aqua</option>
+                <option value="lofi">Lofi</option>
+                <option value="pastel">Pastel</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="wireframe">Wireframe</option>
+                <option value="autumn">Autumn</option>
+                <option value="business">Business</option>
+                <option value="lemonade">Lemonade</option>
+                <option value="winter">Winter</option>
+                <option value="sunset">Sunset</option>
+                <option value="caramellatte">Caramellatte</option>
+                <option value="silk">Silk</option>
+              </optgroup>
+              <optgroup label="Dark Themes">
+                <option value="dark">Dark</option>
+                <option value="synthwave">Synthwave</option>
+                <option value="retro">Retro</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="valentine">Valentine</option>
+                <option value="halloween">Halloween</option>
+                <option value="black">Black</option>
+                <option value="luxury">Luxury</option>
+                <option value="dracula">Dracula</option>
+                <option value="cmyk">Cmyk</option>
+                <option value="acid">Acid</option>
+                <option value="night">Night</option>
+                <option value="coffee">Coffee</option>
+                <option value="dim">Dim</option>
+                <option value="nord">Nord</option>
+                <option value="abyss">Abyss</option>
+              </optgroup>
+            </select>
 
-          <test-print-item-variables
-            class="text-sm"
-          ></test-print-item-variables>
-          <test-print-context></test-print-context>
+            <test-print-item-variables
+              class="text-sm"
+            ></test-print-item-variables>
+            <h1>Usable context</h1>
+            <div class="flex-1 overflow-auto">
+              <test-stamp debug></test-stamp>
+            </div>
+          </div>
         </div>
       </test-navigation>
     </qti-test>
