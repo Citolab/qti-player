@@ -63,12 +63,10 @@
     router.on("/:package", ({ data }) => {
       qtiTest.navigate = "item";
       pkg = data.package;
-      // console.log("1 ASDASDASDAS")
       changeTest(map.get(data.package));
     });
     router.on("/:package/:item", ({ data }) => {
       pkg = data.package;
-      // console.log("2 ASDASDASDAS")
       changeTest(map.get(data.package));
       if (testContainer.testUrl !== "") {
         qtiTest.navigateTo("item", data.item);
@@ -146,10 +144,10 @@
   <!-- cache-transform -->
   <qti-test class="h-full">
     <test-navigation class="h-full flex gap-2">
-      <div class="flex flex-col flex-grow pt-8 px-8">
-        <div class="flex items-center gap-2 justify-between">
-          <test-stamp class="flex gap-2 items-center">
-            <template>
+      <test-stamp class="flex flex-col flex-grow pt-8 px-8 w-full">
+        <template>
+          <div class="flex items-center gap-2 justify-between">
+            <div class="flex gap-2 items-center">
               <button popovertarget="sidePane" popovertargetaction="toggle" class="btn">
                 <i class="bi bi-gear"></i>
               </button>
@@ -165,97 +163,93 @@
                 </template>
               </test-view-toggle>
 
-              <test-stamp class="flex gap-2 items-center">
-                <template>
-                  <template type="if" if="{{ view == 'scorer' }}">
-                    <div class="flex gap-2">
-                      <test-scoring-buttons class="flex gap-2">
-                        <template>
-                          <template type="repeat" repeat="{{ scores }}">
-                            <label
-                              class="btn btn-circle {{ item == score ? '' : 'btn-soft'}}  {{ item > 0 ? 'btn-success border-success' : 'btn-error border-error'}} ">
-                              <input type="radio" ?checked="{{item == score}}" name="scoring-buttons" class="sr-only"
-                                value="{{item}}" />
-                              <span>{{item}}</span>
-                            </label>
-                          </template>
+              <div class="flex gap-2 items-center">
+                <template type="if" if="{{ view == 'scorer' }}">
+                  <div class="flex gap-2">
+                    <test-scoring-buttons class="flex gap-2">
+                      <template>
+                        <template type="repeat" repeat="{{ scores }}">
+                          <label
+                            class="btn btn-circle {{ item == score ? '' : 'btn-soft'}}  {{ item > 0 ? 'btn-success border-success' : 'btn-error border-error'}} ">
+                            <input type="radio" ?checked="{{item == score}}" name="scoring-buttons" class="sr-only"
+                              value="{{item}}" />
+                            <span>{{item}}</span>
+                          </label>
                         </template>
-                      </test-scoring-buttons>
-                    </div>
-                    <test-end-attempt class="btn">
-                      Feedback
-                    </test-end-attempt>
-                  </template>
+                      </template>
+                    </test-scoring-buttons>
+                  </div>
+                  <test-end-attempt class="btn">
+                    Feedback
+                  </test-end-attempt>
                 </template>
-              </test-stamp>
-            </template>
-          </test-stamp>
-        </div>
-
-        <dialog id="popover-thumbs" class="bg-base-200 p-8 shadow-lg rounded-lg mt-12">
-          <test-stamp class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-            <template>
-              <template type="repeat" repeat="{{ activeTestpart.items }}">
-                <test-item-link
-                  class="flex flex-col bg-base-100 aspect-4/3 rounded overflow-hidden gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer"
-                  item-id="{{ item.identifier }}">
-                  <div
-                    class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}">
-                  </div>
-                  <div class="flex flex-grow gap-1 py-0.5">
-                    {{ item.category === 'dep-informational' ? 'info' : item.title }}
-                  </div>
-                  <div class="w-4 text-right mr-2 text-xs text-slate-300">
-                    {{ item.index }}
-                  </div>
-                </test-item-link>
-              </template>
-            </template>
-          </test-stamp>
-          <div class="flex items-center justify-end gap-4">
-            <button class="btn" onclick="document.getElementById('popover-thumbs').close()">
-              Sluiten
-            </button>
-            <button class="btn btn-primary" onclick="document.getElementById('popover-thumbs').close()">
-              Stoppen en inleveren
-            </button>
+              </div>
+            </div>
           </div>
-        </dialog>
 
-        <div popover id="popover-list"
-          class="opacity-0 inset-auto hidden absolute m-0 transition-opacity duration-1000 transform -translate-y-2 p-8 shadow-lg rounded-lg">
-          <test-stamp class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-            <template>
-              <template type="repeat" repeat="{{ activeTestpart.items }}">
-                <test-item-link
-                  class="gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer {{ item.active ? 'bg-primary text-white' : 'bg-transparent text-slate-600 ' }}"
-                  item-id="{{ item.identifier }}">
-                  <div
-                    class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}">
-                  </div>
-                  <div class="flex flex-grow gap-1 py-0.5">
-                    {{ item.category === 'dep-informational' ? 'info' : item.title }}
-                  </div>
-                  <div class="w-4 text-right mr-2 text-xs text-slate-300">
-                    {{ item.index }}
-                  </div>
-                </test-item-link>
+          <dialog id="popover-thumbs" class="bg-base-200 p-8 shadow-lg rounded-lg mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                
+                <template type="repeat" repeat="{{ activeTestpart.items }}">
+                  <test-item-link
+                    class="flex flex-col bg-base-100 aspect-4/3 rounded overflow-hidden gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer"
+                    item-id="{{ item.identifier }}">
+                    <div
+                      class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}">
+                    </div>
+                    <div class="flex flex-grow gap-1 py-0.5">
+                      {{ item.category === 'dep-informational' ? 'info' : item.title }}
+                    </div>
+                    <div class="w-4 text-right mr-2 text-xs text-slate-300">
+                      {{ item.index }}
+                    </div>
+                  </test-item-link>
+                </template>
+                
+            </div>
+            <div class="flex items-center justify-end gap-4">
+              <button class="btn" onclick="document.getElementById('popover-thumbs').close()">
+                Sluiten
+              </button>
+              <button class="btn btn-primary" onclick="document.getElementById('popover-thumbs').close()">
+                Stoppen en inleveren
+              </button>
+            </div>
+          </dialog>
+
+          <div popover id="popover-list"
+            class="opacity-0 inset-auto hidden absolute m-0 transition-opacity duration-1000 transform -translate-y-2 p-8 shadow-lg rounded-lg">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+              <template>
+                <template type="repeat" repeat="{{ activeTestpart.items }}">
+                  <test-item-link
+                    class="gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer {{ item.active ? 'bg-primary text-white' : 'bg-transparent text-slate-600 ' }}"
+                    item-id="{{ item.identifier }}">
+                    <div
+                      class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}">
+                    </div>
+                    <div class="flex flex-grow gap-1 py-0.5">
+                      {{ item.category === 'dep-informational' ? 'info' : item.title }}
+                    </div>
+                    <div class="w-4 text-right mr-2 text-xs text-slate-300">
+                      {{ item.index }}
+                    </div>
+                  </test-item-link>
+                </template>
               </template>
-            </template>
-          </test-stamp>
-        </div>
+            </div>
+          </div>
 
-        <div class="flex flex-1 overflow-auto container mx-auto">
-          <div id="stimulusRefContainer"></div>
-          <test-container class="flex-1 p-16">
-            <template>
-              <link rel="stylesheet" href="./src/test-container.css" />
-            </template>
-          </test-container>
-        </div>
+          <div class="flex flex-1 overflow-auto container mx-auto">
+            <div id="stimulusRefContainer"></div>
+            <test-container class="flex-1 p-16">
+              <template>
+                <link rel="stylesheet" href="./src/test-container.css" />
+              </template>
+            </test-container>
+          </div>
 
-        <test-stamp class="flex justify-between items-center fixed bottom-8 left-8 right-8">
-          <template>
+          <div class="flex justify-between items-center fixed bottom-8 left-8 right-8">
             <button popovertarget="popover-thumbs" class="btn"
               onclick="document.getElementById('popover-thumbs').showModal()">
               Inleveren
@@ -302,93 +296,91 @@
             </template>
 
             <div class="flex items-center gap-2">
-              <test-stamp>
-                <template>
-                  <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
-                    <test-prev class="btn btn-outline" role="button">
-                      <i class="bi bi-arrow-left-short"></i>
-                    </test-prev>
-                  </template>
-                  <test-next class="btn btn-primary" role="button"
-                    ?disabled="{{ activeItem.category != 'info' && activeTestpart.submissionMode == 'individual' && ( activeItem.numAttempts == 0 || activeItem.score != activeItem.maxScore ) }}">
-                    <div class="hidden md:flex">Volgende</div>
-                    <i class="bi bi-arrow-right-short"></i>
-                  </test-next>
+              <div>
+                <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
+                  <test-prev class="btn btn-outline" role="button">
+                    <i class="bi bi-arrow-left-short"></i>
+                  </test-prev>
                 </template>
-              </test-stamp>
+                <test-next class="btn btn-primary" role="button"
+                  ?disabled="{{ activeItem.category != 'info' && activeTestpart.submissionMode == 'individual' && ( activeItem.numAttempts == 0 || activeItem.score != activeItem.maxScore ) }}">
+                  <div class="hidden md:flex">Volgende</div>
+                  <i class="bi bi-arrow-right-short"></i>
+                </test-next>
+              </div>
             </div>
-          </template>
-        </test-stamp>
-      </div>
-
-      <div id="sidePane" popover
-        class="relative! left-0 top-0 h-full w-1/2 base-100 shadow-lg p-4 shadow-lg z-50 h-full">
-        <div class="flex flex-col h-full">
-          <div>
-            <a href="/kennisnet1" class="btn" data-navigo> Kennisnet 1 </a>
-            <a href="/kennisnet2" class="btn" data-navigo> Kennisnet 2 </a>
-
-            <button popovertarget="sidePane" popovertargetaction="hide"
-              class="px-3 py-1 bg-red-600 text-white rounded float-end">
-              Close
-            </button>
-
-            <button onClick="sessionStorage.clear(); window.location.reload()" class="btn btn-error">
-              Clear session storage
-            </button>
           </div>
 
-          <select class="select" data-choose-theme>
-            <optgroup label="Light Themes">
-              <option value="cito">Cito</option>
-              <option value="wikiwijs">Wikiwijs</option>
-              <option value="light">Light</option>
-              <option value="cupcake">Cupcake</option>
-              <option value="bumblebee">Bumblebee</option>
-              <option value="emerald">Emerald</option>
-              <option value="corporate">Corporate</option>
-              <option value="garden">Garden</option>
-              <option value="forest">Forest</option>
-              <option value="aqua">Aqua</option>
-              <option value="lofi">Lofi</option>
-              <option value="pastel">Pastel</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="wireframe">Wireframe</option>
-              <option value="autumn">Autumn</option>
-              <option value="business">Business</option>
-              <option value="lemonade">Lemonade</option>
-              <option value="winter">Winter</option>
-              <option value="sunset">Sunset</option>
-              <option value="caramellatte">Caramellatte</option>
-              <option value="silk">Silk</option>
-            </optgroup>
-            <optgroup label="Dark Themes">
-              <option value="dark">Dark</option>
-              <option value="synthwave">Synthwave</option>
-              <option value="retro">Retro</option>
-              <option value="cyberpunk">Cyberpunk</option>
-              <option value="valentine">Valentine</option>
-              <option value="halloween">Halloween</option>
-              <option value="black">Black</option>
-              <option value="luxury">Luxury</option>
-              <option value="dracula">Dracula</option>
-              <option value="cmyk">Cmyk</option>
-              <option value="acid">Acid</option>
-              <option value="night">Night</option>
-              <option value="coffee">Coffee</option>
-              <option value="dim">Dim</option>
-              <option value="nord">Nord</option>
-              <option value="abyss">Abyss</option>
-            </optgroup>
-          </select>
+          <div id="sidePane" popover
+            class="relative! left-0 top-0 h-full w-1/2 base-100 shadow-lg p-4 shadow-lg z-50 h-full">
+            <div class="flex flex-col h-full">
+              <div>
+                <a href="/kennisnet1" class="btn" data-navigo> Kennisnet 1 </a>
+                <a href="/kennisnet2" class="btn" data-navigo> Kennisnet 2 </a>
 
-          <test-print-item-variables class="text-sm"></test-print-item-variables>
-          <h1>Usable context</h1>
-          <div class="flex-1 overflow-auto">
-            <test-stamp debug></test-stamp>
+                <button popovertarget="sidePane" popovertargetaction="hide"
+                  class="px-3 py-1 bg-red-600 text-white rounded float-end">
+                  Close
+                </button>
+
+                <button onClick="sessionStorage.clear(); window.location.reload()" class="btn btn-error">
+                  Clear session storage
+                </button>
+              </div>
+
+              <select class="select" data-choose-theme>
+                <optgroup label="Light Themes">
+                  <option value="cito">Cito</option>
+                  <option value="wikiwijs">Wikiwijs</option>
+                  <option value="light">Light</option>
+                  <option value="cupcake">Cupcake</option>
+                  <option value="bumblebee">Bumblebee</option>
+                  <option value="emerald">Emerald</option>
+                  <option value="corporate">Corporate</option>
+                  <option value="garden">Garden</option>
+                  <option value="forest">Forest</option>
+                  <option value="aqua">Aqua</option>
+                  <option value="lofi">Lofi</option>
+                  <option value="pastel">Pastel</option>
+                  <option value="fantasy">Fantasy</option>
+                  <option value="wireframe">Wireframe</option>
+                  <option value="autumn">Autumn</option>
+                  <option value="business">Business</option>
+                  <option value="lemonade">Lemonade</option>
+                  <option value="winter">Winter</option>
+                  <option value="sunset">Sunset</option>
+                  <option value="caramellatte">Caramellatte</option>
+                  <option value="silk">Silk</option>
+                </optgroup>
+                <optgroup label="Dark Themes">
+                  <option value="dark">Dark</option>
+                  <option value="synthwave">Synthwave</option>
+                  <option value="retro">Retro</option>
+                  <option value="cyberpunk">Cyberpunk</option>
+                  <option value="valentine">Valentine</option>
+                  <option value="halloween">Halloween</option>
+                  <option value="black">Black</option>
+                  <option value="luxury">Luxury</option>
+                  <option value="dracula">Dracula</option>
+                  <option value="cmyk">Cmyk</option>
+                  <option value="acid">Acid</option>
+                  <option value="night">Night</option>
+                  <option value="coffee">Coffee</option>
+                  <option value="dim">Dim</option>
+                  <option value="nord">Nord</option>
+                  <option value="abyss">Abyss</option>
+                </optgroup>
+              </select>
+
+              <test-print-item-variables class="text-sm"></test-print-item-variables>
+              <h1>Usable context</h1>
+              <div class="flex-1 overflow-auto">
+                <!-- <test-stamp debug></test-stamp> -->
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </template>
+      </test-stamp>
     </test-navigation>
   </qti-test>
 </body>
