@@ -38,6 +38,7 @@
     import "@citolab/qti-components/qti-test/components/test-stamp";
     import "@citolab/qti-components/qti-test/components/test-view-toggle";
     import "@citolab/qti-components/qti-test/components/test-scoring-buttons";
+    import "@citolab/qti-components/qti-test/components/test-check-item";
   </script>
 
   <script defer>
@@ -144,7 +145,7 @@
 <body class="bg-base-200 text-base-content h-screen w-screen">
   <!-- cache-transform -->
   <qti-test class="h-full">
-    <test-navigation class="h-full flex gap-2" auto-score-items>
+    <test-navigation class="h-full flex gap-2">
       <div class="flex flex-col flex-grow pt-8 px-8">
         <div class="flex items-center gap-2 justify-between">
           <test-stamp class="flex gap-2 items-center">
@@ -171,10 +172,11 @@
                       <test-scoring-buttons class="flex gap-2">
                         <template>
                           <template type="repeat" repeat="{{ scores }}">
-                            <label class="btn btn-circle {{ item == score ? '' : 'btn-soft'}}  {{ item > 0 ? 'btn-success border-success' : 'btn-error border-error'}} ">
+                            <label
+                              class="btn btn-circle {{ item == score ? '' : 'btn-soft'}}  {{ item > 0 ? 'btn-success border-success' : 'btn-error border-error'}} ">
                               <input type="radio" ?checked="{{item == score}}" name="scoring-buttons" class="sr-only"
                                 value="{{item}}" />
-                                <span>{{item}}</span>
+                              <span>{{item}}</span>
                             </label>
                           </template>
                         </template>
@@ -193,7 +195,7 @@
         <dialog id="popover-thumbs" class="bg-base-200 p-8 shadow-lg rounded-lg mt-12">
           <test-stamp class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             <template>
-              <template type="repeat" repeat="{{ testpart.items }}">
+              <template type="repeat" repeat="{{ activeTestpart.items }}">
                 <test-item-link
                   class="flex flex-col bg-base-100 aspect-4/3 rounded overflow-hidden gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer"
                   item-id="{{ item.identifier }}">
@@ -224,7 +226,7 @@
           class="opacity-0 inset-auto hidden absolute m-0 transition-opacity duration-1000 transform -translate-y-2 p-8 shadow-lg rounded-lg">
           <test-stamp class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             <template>
-              <template type="repeat" repeat="{{ testpart.items }}">
+              <template type="repeat" repeat="{{ activeTestpart.items }}">
                 <test-item-link
                   class="gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer {{ item.active ? 'bg-primary text-white' : 'bg-transparent text-slate-600 ' }}"
                   item-id="{{ item.identifier }}">
@@ -260,12 +262,19 @@
               <i class="bi bi-grid"></i>
             </button>
 
-            <template type="if" if="{{ testpart.navigationMode == 'nonlinear' }}">
+            <template type="if" if="{{ activeTestpart.submissionMode == 'individual' }}">
+              <test-check-item class="btn btn-outline" role="button"
+                ?disabled="{{ !(activeItem.category != 'info' && activeTestpart.submissionMode == 'individual' && ( activeItem.numAttempts == 0 || activeItem.score != activeItem.maxScore )) }}">
+                <i class="bi bi-check"></i>Controleer
+              </test-check-item>
+            </template>
+
+            <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
               <nav class="card card-border border-base-300 bg-base-100 shadow-xl">
                 <div class="card-body gap-4 flex-row items-center justify-between">
                   <div class="flex items-center flex-grow gap-1">
                     <div class="hidden flex-1 gap-1 overflow-auto md:flex">
-                      <template type="repeat" repeat="{{ testpart.items }}">
+                      <template type="repeat" repeat="{{ activeTestpart.items }}">
                         <test-item-link
                           class="flex relative items-center justify-center btn btn-soft btn-square border-2  {{ item.active ? 'border-primary' : ''}} {{ item.category === 'info' ? 'rounded' : 'rounded-full' }}"
                           item-id="{{ item.identifier }}">
@@ -295,17 +304,18 @@
             <div class="flex items-center gap-2">
               <test-stamp>
                 <template>
-                  <template type="if" if="{{ testpart.navigationMode == 'nonlinear' }}">
+                  <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
                     <test-prev class="btn btn-outline" role="button">
                       <i class="bi bi-arrow-left-short"></i>
                     </test-prev>
                   </template>
+                  <test-next class="btn btn-primary" role="button"
+                    ?disabled="{{ activeItem.category != 'info' && activeTestpart.submissionMode == 'individual' && ( activeItem.numAttempts == 0 || activeItem.score != activeItem.maxScore ) }}">
+                    <div class="hidden md:flex">Volgende</div>
+                    <i class="bi bi-arrow-right-short"></i>
+                  </test-next>
                 </template>
               </test-stamp>
-              <test-next class="btn btn-primary" role="button">
-                <div class="hidden md:flex">Volgende</div>
-                <i class="bi bi-arrow-right-short"></i>
-              </test-next>
             </div>
           </template>
         </test-stamp>
@@ -321,6 +331,10 @@
             <button popovertarget="sidePane" popovertargetaction="hide"
               class="px-3 py-1 bg-red-600 text-white rounded float-end">
               Close
+            </button>
+
+            <button onClick="sessionStorage.clear(); window.location.reload()" class="btn btn-error">
+              Clear session storage
             </button>
           </div>
 
