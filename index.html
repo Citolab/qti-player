@@ -17,6 +17,10 @@
 
   <link rel="stylesheet" href="./src/themes.css" />
 
+  <!-- only for item previews, maybe we should do something about this -->
+   <!-- dit moet eigenlijk in een shadowroot <qti-item-preview href={{ item.href }} .variables={{ item.variables }}> of zo-->
+  <link rel="stylesheet" href="./node_modules/@citolab//qti-components/dist/item.css" />
+
   <style>
     test-container {
       --qti-bg: var(--color-base-100);
@@ -187,25 +191,29 @@
             </div>
           </div>
 
-          <dialog id="popover-thumbs" class="bg-base-200 p-8 shadow-lg rounded-lg mt-12">
+          <dialog id="popover-thumbs" class="bg-base-200 p-8 shadow-lg rounded-lg w-[880px]"
+            style="top:50%; left:50%; transform:translate(-50%, -50%);">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                
-                <template type="repeat" repeat="{{ activeTestpart.items }}">
-                  <test-item-link
-                    class="flex flex-col bg-base-100 aspect-4/3 rounded overflow-hidden gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer"
-                    item-id="{{ item.identifier }}">
-                    <div
-                      class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}">
-                    </div>
-                    <div class="flex flex-grow gap-1 py-0.5">
-                      {{ item.category === 'dep-informational' ? 'info' : item.title }}
-                    </div>
-                    <div class="w-4 text-right mr-2 text-xs text-slate-300">
-                      {{ item.index }}
-                    </div>
-                  </test-item-link>
-                </template>
-                
+
+              <template type="repeat" repeat="{{ activeTestpart.items }}">
+                <test-item-link
+                  class="flex flex-col bg-base-100 w-[200px] aspect-4/3 rounded overflow-hidden gap-2 px-2 text-sm py-1  cursor-pointer relative"
+                  item-id="{{ item.identifier }}">
+                  <style>
+                    @scope {
+                      qti-assessment-item {
+                        min-width: 800px;
+                        transform: scale(0.25);
+                        transform-origin: top; 
+                        user-select: none;
+                        pointer-events: none;
+                      }
+                    }
+                  </style>
+                  {{ item.itemDoc }}
+                </test-item-link>
+              </template>
+
             </div>
             <div class="flex items-center justify-end gap-4">
               <button class="btn" onclick="document.getElementById('popover-thumbs').close()">
@@ -220,23 +228,23 @@
           <div popover id="popover-list"
             class="opacity-0 inset-auto hidden absolute m-0 transition-opacity duration-1000 transform -translate-y-2 p-8 shadow-lg rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-              <template>
-                <template type="repeat" repeat="{{ activeTestpart.items }}">
-                  <test-item-link
-                    class="gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer {{ item.active ? 'bg-primary text-white' : 'bg-transparent text-slate-600 ' }}"
-                    item-id="{{ item.identifier }}">
-                    <div
-                      class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}">
-                    </div>
-                    <div class="flex flex-grow gap-1 py-0.5">
-                      {{ item.category === 'dep-informational' ? 'info' : item.title }}
-                    </div>
-                    <div class="w-4 text-right mr-2 text-xs text-slate-300">
-                      {{ item.index }}
-                    </div>
-                  </test-item-link>
-                </template>
+
+              <template type="repeat" repeat="{{ activeTestpart.items }}">
+                <test-item-link
+                  class="gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer {{ item.active ? 'bg-primary text-white' : 'bg-transparent text-slate-600 ' }}"
+                  item-id="{{ item.identifier }}">
+                  <div
+                    class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}">
+                  </div>
+                  <div class="flex flex-grow gap-1 py-0.5">
+                    {{ item.category === 'dep-informational' ? 'info' : item.title }}
+                  </div>
+                  <div class="w-4 text-right mr-2 text-xs text-slate-300">
+                    {{ item.index }}
+                  </div>
+                </test-item-link>
               </template>
+
             </div>
           </div>
 
