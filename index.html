@@ -18,8 +18,8 @@
   <link rel="stylesheet" href="./src/themes.css" />
 
   <!-- only for item previews, maybe we should do something about this -->
-   <!-- dit moet eigenlijk in een shadowroot <qti-item-preview href={{ item.href }} .variables={{ item.variables }}> of zo-->
-  <link rel="stylesheet" href="./node_modules/@citolab//qti-components/dist/item.css" />
+  <!-- dit moet eigenlijk in een shadowroot <qti-item-preview href={{ item.href }} .variables={{ item.variables }}> of zo-->
+  <!-- <link rel="stylesheet" href="./node_modules/@citolab//qti-components/dist/item.css" /> -->
 
   <style>
     test-container {
@@ -72,9 +72,6 @@
     router.on("/:package/:item", ({ data }) => {
       pkg = data.package;
       changeTest(map.get(data.package));
-      if (testContainer.testUrl !== "") {
-        qtiTest.navigateTo("item", data.item);
-      }
       qtiTest.addEventListener("qti-assessment-test-connected", () => {
         if (sessionStorage.getItem(pkg) !== null)
           qtiTest.testContext = JSON.parse(sessionStorage.getItem(pkg));
@@ -115,7 +112,7 @@
           ? await response.json()
           : null;
       } catch {
-        console.error("Failed to fetch items.json");
+        console.info("No accompanying items.json found");
       }
     }
   </script>
@@ -176,7 +173,8 @@
                           <label
                             class="btn btn-circle {{ item == score ? '' : 'btn-soft'}}  {{ item > 0 ? 'btn-success border-success' : 'btn-error border-error'}} ">
                             <input type="radio" ?checked="{{item == score}}" name="scoring-buttons" class="sr-only"
-                              value="{{item}}" />
+                              ?disabled="{{ activeItem.hasCorrectResponse }}" value="{{item}}" />
+
                             <span>{{item}}</span>
                           </label>
                         </template>
@@ -204,7 +202,7 @@
                       qti-assessment-item {
                         min-width: 800px;
                         transform: scale(0.25);
-                        transform-origin: top; 
+                        transform-origin: top;
                         user-select: none;
                         pointer-events: none;
                       }
@@ -278,7 +276,7 @@
                     <div class="hidden flex-1 gap-1 overflow-auto md:flex">
                       <template type="repeat" repeat="{{ activeTestpart.items }}">
                         <test-item-link
-                          class="flex relative items-center justify-center btn btn-soft btn-square border-2  {{ item.active ? 'border-primary' : ''}} {{ item.category === 'info' ? 'rounded' : 'rounded-full' }}"
+                          class="flex relative items-center justify-center btn btn-soft btn-square border-2  {{ item.active ? 'border-primary' : ''}} {{ item.category.includes === 'info' ? 'rounded' : 'rounded-full' }}"
                           item-id="{{ item.identifier }}">
                           {{ item.index}}
                           <template type="if" if="{{ item.category == 'info' }}">
@@ -286,7 +284,7 @@
                           </template>
                           <template type="if" if="{{ view == 'scorer' }}">
                             <div aria-label="status"
-                              class="status status-md absolute top-0 right-0  {{ item.correct ? 'status-success' : item.incorrect && item.completed ? 'status-error' : item.completed ? 'status-neutral' : 'bg-transparent' }}">
+                              class="status status-md absolute top-0 right-0  {{ item.score > 0 ? 'status-success' : item.score == 0 && item.completionStatus == 'completed' ? 'status-error' : item.completionStatus == 'completed' ? 'status-neutral' : 'bg-transparent' }}">
                             </div>
                           </template>
                         </test-item-link>
@@ -310,8 +308,9 @@
                     <i class="bi bi-arrow-left-short"></i>
                   </test-prev>
                 </template>
+                
                 <test-next class="btn btn-primary" role="button"
-                  ?disabled="{{ activeItem.category != 'info' && activeTestpart.submissionMode == 'individual' && ( activeItem.numAttempts == 0 || activeItem.score != activeItem.maxScore ) }}">
+                  enabled="{{ activeItem.category == 'info' && (activeTestpart.submissionMode == 'individual' && activeItem.numAttempts > 0) }}">
                   <div class="hidden md:flex">Volgende</div>
                   <i class="bi bi-arrow-right-short"></i>
                 </test-next>
@@ -383,7 +382,7 @@
               <test-print-item-variables class="text-sm"></test-print-item-variables>
               <h1>Usable context</h1>
               <div class="flex-1 overflow-auto">
-                <!-- <test-stamp debug></test-stamp> -->
+                <test-stamp debug></test-stamp>
               </div>
             </div>
           </div>
