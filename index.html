@@ -55,7 +55,7 @@
     import { getManifestInfo } from '@citolab/qti-components/qti-loader';
 
     const qtiTest = document.querySelector("qti-test");
-    const testContainer = document.querySelector("test-container");
+    let testContainer = document.querySelector("test-container");
     const testNavigation = document.querySelector("test-navigation");
     let pkg = "null";
 
@@ -104,6 +104,12 @@
 
       const { testURL } = await getManifestInfo(`${test}/imsmanifest.xml`);
 
+      // Fix for Safari and Firefox
+      if (!testContainer) {
+        testContainer = document.querySelector("test-container")
+      }
+
+      console.log(testContainer)
       testContainer.setAttribute("test-url", testURL);
 
       try {
