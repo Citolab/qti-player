@@ -75,13 +75,20 @@
       qtiTest.addEventListener("qti-assessment-test-connected", () => {
         if (sessionStorage.getItem(pkg) !== null)
           qtiTest.testContext = JSON.parse(sessionStorage.getItem(pkg));
-        qtiTest.navigateTo("item", data.item);
+          qtiTest.navigateTo("item", data.item);
       });
     });
     router.resolve();
 
     window.addEventListener("popstate", () => {
       router.resolve();
+    });
+
+    qtiTest.addEventListener("qti-rubric:discretionary-placement", (e) => {
+      const popover = document.querySelector("#rubrikBlockContainer");
+      popover.prepend(e.detail.element);
+      popover.showPopover();
+      const button = document.querySelector(`[popovertarget="rubrikBlockContainer"]`)
     });
 
     qtiTest.addEventListener("qti-request-navigation", (e) => {
@@ -109,7 +116,6 @@
         testContainer = document.querySelector("test-container")
       }
 
-      console.log(testContainer)
       testContainer.setAttribute("test-url", testURL);
 
       try {
@@ -125,25 +131,29 @@
 
   <style type="text/tailwindcss">
     nav {
-        anchor-name: --profile-button;
-      }
+      anchor-name: --profile-button;
+    }
 
-      #popover-thumbs,
-      #popover-list {
-        position-anchor: --profile-button;
-        bottom: anchor(top);
-        left: anchor(left);
+    #popover-thumbs,
+    #popover-list {
+      position-anchor: --profile-button;
+      bottom: anchor(top);
+      left: anchor(left);
 
-        &:popover-open {
+      &:popover-open {
+        display: grid;
+        opacity: 1;
+
+        @starting-style {
           display: grid;
-          opacity: 1;
-
-          @starting-style {
-            display: grid;
-            opacity: 0;
-          }
+          opacity: 0;
         }
       }
+    }
+
+    #rubrikBlockContainer::backdrop {
+      @apply bg-white/50 backdrop-blur-sm select-none;
+    }
     </style>
 </head>
 
@@ -252,6 +262,18 @@
             </div>
           </div>
 
+          <!-- <template type="if" if="{{ activeItem === null }}"></template> -->
+
+
+
+          <!-- Collapsible Content -->
+          <div popover open class="bg-white p-8 shadow-2xl rounded-lg w-[880px] h-[400px]"
+            style="top:50%; left:50%; transform:translate(-50%, -50%);" id="rubrikBlockContainer">
+            <button onclick="this.parentElement.hidePopover()" class="btn btn-primary">sluiten</button>
+          </div>
+
+
+
           <div class="flex flex-1 overflow-auto container mx-auto">
             <div id="stimulusRefContainer"></div>
             <test-container class="flex-1 p-16">
@@ -280,6 +302,10 @@
                 <div class="card-body gap-4 flex-row items-center justify-between">
                   <div class="flex items-center flex-grow gap-1">
                     <div class="hidden flex-1 gap-1 overflow-auto md:flex">
+
+                      <button popovertarget="rubrikBlockContainer" class="btn btn-outline"><i
+                          class="bi bi-info text-xl"></i></button>
+
                       <template type="repeat" repeat="{{ activeTestpart.items }}">
                         <test-item-link
                           class="flex relative items-center justify-center btn btn-soft btn-square border-2  {{ item.active ? 'border-primary' : ''}} {{ item.category.includes === 'info' ? 'rounded' : 'rounded-full' }}"
@@ -314,7 +340,7 @@
                     <i class="bi bi-arrow-left-short"></i>
                   </test-prev>
                 </template>
-                
+
                 <test-next class="btn btn-primary" role="button"
                   enabled="{{ activeItem.category == 'info' && (activeTestpart.submissionMode == 'individual' && activeItem.numAttempts > 0) }}">
                   <div class="hidden md:flex">Volgende</div>

@@ -10,7 +10,7 @@
     "test:browser": "vite build --mode testing && vitest --workspace=vitest.workspace.js"
   },
   "dependencies": {
-    "@citolab/qti-components": "^7.3.6"
+    "@citolab/qti-components": "https://pkg.pr.new/Citolab/qti-components/@citolab/qti-components@72629d0"
   },
   "devDependencies": {
     "@vitest/browser": "^3.0.9",

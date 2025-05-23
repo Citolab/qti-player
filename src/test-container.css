@@ -9,6 +9,6 @@ img {
     border:2px solid red;
   }
 
-  qti-rubric-block[view="scorer"] {
+  qti-rubric-block {
     border:2px solid var(--color-success);
   }

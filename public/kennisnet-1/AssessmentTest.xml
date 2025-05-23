@@ -13,6 +13,14 @@
       <qti-value>0</qti-value>
     </qti-default-value>
   </qti-outcome-declaration>
+
+  <qti-rubric-block use="instructions" view="candidate" class="qti-rubric-discretionary-placement">
+    <qti-content-body>
+      <p>Instructions for this section in here. These instructions would NOT be displayed in
+      different sections if this test had multiple sections.</p>
+    </qti-content-body>
+  </qti-rubric-block>
+
   <qti-test-part identifier="TEST-PART" navigation-mode="nonlinear" submission-mode="simultaneous">
     <qti-assessment-section identifier="SECTION" title="Section" visible="true">
       <qti-assessment-item-ref identifier="INTRODUCTION" href="INTRODUCTION.xml"
