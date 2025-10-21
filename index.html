@@ -30,19 +30,7 @@
   </style>
 
   <script type="module" defer>
-    import "@citolab/qti-components/qti-components";
-    import "@citolab/qti-components/qti-test/core";
-    import "@citolab/qti-components/qti-test/components/test-navigation";
-    import "@citolab/qti-components/qti-test/components/test-container";
-    import "@citolab/qti-components/qti-test/components/test-next";
-    import "@citolab/qti-components/qti-test/components/test-prev";
-    import "@citolab/qti-components/qti-test/components/test-end-attempt";
-    import "@citolab/qti-components/qti-test/components/test-item-link";
-    import "@citolab/qti-components/qti-test/components/test-print-item-variables";
-    import "@citolab/qti-components/qti-test/components/test-stamp";
-    import "@citolab/qti-components/qti-test/components/test-view-toggle";
-    import "@citolab/qti-components/qti-test/components/test-scoring-buttons";
-    import "@citolab/qti-components/qti-test/components/test-check-item";
+    import "@citolab/qti-components";
   </script>
 
   <script defer>
@@ -157,8 +145,8 @@
 
 <body class="bg-base-200 text-base-content h-screen w-screen">
   <!-- cache-transform -->
-  <qti-test class="h-full">
-    <test-navigation class="h-full flex gap-2">
+  <qti-test class="h-full" >
+    <test-navigation class="h-full flex gap-2" auto-score-items>
       <test-stamp class="flex flex-col flex-grow pt-8 px-8 w-full">
         <template>
           <div class="flex items-center gap-2 justify-between">
