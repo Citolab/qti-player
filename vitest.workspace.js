@@ -1,22 +1,14 @@
-import { defineWorkspace } from 'vitest/config'
+import { defineConfig } from 'vitest/config'
+import { playwright } from '@vitest/browser-playwright'
 
-export default defineWorkspace([
-  // If you want to keep running your existing tests in Node.js, uncomment the next line.
-  // 'vite.config.js',
-  {
-    extends: 'vite.config.js',
-    test: {
-      include: ['tests/**/*.test.ts'],
-
-      browser: {
-        testerHtmlPath: './dist/index.html',
-        enabled: true,
-        provider: 'playwright',
-        // https://vitest.dev/guide/browser/playwright
-        instances: [
-          { browser: 'chromium' },
-        ],
-      },
+export default defineConfig({
+  test: {
+    include: ['tests/**/*.test.ts'],
+    browser: {
+      enabled: true,
+      testerHtmlPath: './dist/index.html',
+      provider: playwright(),
+      instances: [{ browser: 'chromium' }],
     },
   },
-])
+})

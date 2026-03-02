@@ -1,41 +1,12 @@
-import { expect, test } from 'vitest'
-import { page, userEvent } from '@vitest/browser/context'
+import { test } from 'vitest'
+import { findByText, fireEvent } from '@testing-library/dom'
 
-import { getByText, fireEvent, getByRole, findByRole,  } from '@testing-library/dom'
+test('can move through test items', async () => {
+  const nextButton = await findByText(document.body, 'Volgende')
+  await new Promise((resolve) => setTimeout(resolve, 500)) // allow initial item to load
 
-test('renders name', async () => {
-  
-  const element = getByText(document, 'Volgende')
-  
-  
-  const selectElement = await findByRole(document, 'combobox');
-  
-  await userEvent.selectOptions(selectElement, './kennisnet-1/');
-  
-  await new Promise(resolve => setTimeout(resolve, 500)); // take time to load test
-
-  await fireEvent.click(element)
-  await new Promise(resolve => setTimeout(resolve, 1));
-
-  await fireEvent.click(element)
-  await new Promise(resolve => setTimeout(resolve, 1));
- 
-  await fireEvent.click(element)
-  await new Promise(resolve => setTimeout(resolve, 1));
-
-  await fireEvent.click(element)
-  await new Promise(resolve => setTimeout(resolve, 1));
-
-  await fireEvent.click(element)
-  await new Promise(resolve => setTimeout(resolve, 1));
-
-  await fireEvent.click(element)
-  await new Promise(resolve => setTimeout(resolve, 1));
-
-  await fireEvent.click(element)
-  await new Promise(resolve => setTimeout(resolve, 1));
-  
-  await fireEvent.click(element)
-  await new Promise(resolve => setTimeout(resolve, 1));
-
+  for (let i = 0; i < 8; i += 1) {
+    await fireEvent.click(nextButton)
+    await new Promise((resolve) => setTimeout(resolve, 1))
+  }
 })
