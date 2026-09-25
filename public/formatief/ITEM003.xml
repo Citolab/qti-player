@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" adaptive="false" time-dependent="false" xml:lang="nl-NL" identifier="ITEM003" title="Verleden tijd">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="string">
+    <qti-correct-response><qti-value>fietste</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <p>Vul het werkwoord <em>fietsen</em> in, in de verleden tijd.</p>
+    <p>Gisteren <qti-text-entry-interaction response-identifier="RESPONSE" expected-length="10" /> ik in de regen naar school.</p>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> De stam <em>fiets</em> eindigt op een s, en die zit in 't kofschip.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="HINT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body><p><strong>Nog niet helemaal goed.</strong> Verleden tijd: kijk naar de laatste letter van de stam. Zit die letter in <em>'t kofschip</em>?</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> De stam is <em>fiets</em>. De s zit in 't kofschip (t, k, f, s, ch, p), dus stam + te: <em>fietste</em>.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-string-match case-sensitive="false"><qti-variable identifier="RESPONSE" /><qti-correct identifier="RESPONSE" /></qti-string-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else-if>
+        <qti-lte><qti-variable identifier="numAttempts" /><qti-base-value base-type="integer">1</qti-base-value></qti-lte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">HINT</qti-base-value></qti-set-outcome-value>
+      </qti-response-else-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

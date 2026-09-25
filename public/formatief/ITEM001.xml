@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" adaptive="false" time-dependent="false" xml:lang="nl-NL" identifier="ITEM001" title="Hij wordt">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>C</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-outcome-declaration identifier="KEUZE" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <qti-choice-interaction response-identifier="RESPONSE" max-choices="1">
+      <qti-prompt>Welke zin is goed geschreven?</qti-prompt>
+      <qti-simple-choice identifier="A">Hij word morgen twaalf jaar.
+        <qti-feedback-inline identifier="A" outcome-identifier="KEUZE" show-hide="show">Bij <em>hij</em> hoort stam + t.</qti-feedback-inline>
+      </qti-simple-choice>
+      <qti-simple-choice identifier="B">Wordt jij morgen ook twaalf?
+        <qti-feedback-inline identifier="B" outcome-identifier="KEUZE" show-hide="show">Staat <em>jij</em> áchter de persoonsvorm? Dan geen t.</qti-feedback-inline>
+      </qti-simple-choice>
+      <qti-simple-choice identifier="C">Mijn zus wordt morgen twaalf jaar.
+        <qti-feedback-inline identifier="C" outcome-identifier="KEUZE" show-hide="show">Klopt: <em>mijn zus</em> = zij, dus stam + t.</qti-feedback-inline>
+      </qti-simple-choice>
+      <qti-simple-choice identifier="D">Jij wort morgen twaalf jaar.
+        <qti-feedback-inline identifier="D" outcome-identifier="KEUZE" show-hide="show">De stam van <em>worden</em> is <em>word</em>, met een d.</qti-feedback-inline>
+      </qti-simple-choice>
+    </qti-choice-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Het onderwerp <em>mijn zus</em> is hetzelfde als <em>zij</em>: stam + t.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="HINT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body><p><strong>Nog niet helemaal goed.</strong> Zoek eerst het onderwerp van de zin. Welk persoonlijk voornaamwoord past daarbij?</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> Het goede antwoord is <em>Mijn zus wordt morgen twaalf jaar.</em> Mijn zus = zij, en bij zij hoort stam (word) + t = wordt.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-set-outcome-value identifier="KEUZE"><qti-variable identifier="RESPONSE" /></qti-set-outcome-value>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE" /><qti-correct identifier="RESPONSE" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else-if>
+        <qti-lte><qti-variable identifier="numAttempts" /><qti-base-value base-type="integer">1</qti-base-value></qti-lte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">HINT</qti-base-value></qti-set-outcome-value>
+      </qti-response-else-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

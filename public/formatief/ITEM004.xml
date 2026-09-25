@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" adaptive="false" time-dependent="false" xml:lang="nl-NL" identifier="ITEM004" title="'t Kofschip">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="identifier">
+    <qti-correct-response>
+      <qti-value>MAKEN</qti-value><qti-value>DANSEN</qti-value><qti-value>KOKEN</qti-value>
+    </qti-correct-response>
+    <qti-mapping default-value="-1" lower-bound="0">
+      <qti-map-entry map-key="MAKEN" mapped-value="1" />
+      <qti-map-entry map-key="DANSEN" mapped-value="1" />
+      <qti-map-entry map-key="KOKEN" mapped-value="1" />
+    </qti-mapping>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>3</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-outcome-declaration identifier="KEUZE" base-type="identifier" cardinality="multiple" />
+  <qti-item-body>
+    <qti-choice-interaction response-identifier="RESPONSE" max-choices="0">
+      <qti-prompt>Welke werkwoorden krijgen in de verleden tijd <strong>-te</strong>? Kies er drie.</qti-prompt>
+      <qti-simple-choice identifier="MAKEN">maken
+        <qti-feedback-inline identifier="MAKEN" outcome-identifier="KEUZE" show-hide="show">Ja: maak → k → maakte.</qti-feedback-inline>
+      </qti-simple-choice>
+      <qti-simple-choice identifier="BOUWEN">bouwen
+        <qti-feedback-inline identifier="BOUWEN" outcome-identifier="KEUZE" show-hide="show">Nee: bouw → w → bouwde.</qti-feedback-inline>
+      </qti-simple-choice>
+      <qti-simple-choice identifier="DANSEN">dansen
+        <qti-feedback-inline identifier="DANSEN" outcome-identifier="KEUZE" show-hide="show">Ja: dans → s → danste.</qti-feedback-inline>
+      </qti-simple-choice>
+      <qti-simple-choice identifier="LEVEN">leven
+        <qti-feedback-inline identifier="LEVEN" outcome-identifier="KEUZE" show-hide="show">Pas op: kijk naar de v van leven, niet naar de f van leef → leefde.</qti-feedback-inline>
+      </qti-simple-choice>
+      <qti-simple-choice identifier="KOKEN">koken
+        <qti-feedback-inline identifier="KOKEN" outcome-identifier="KEUZE" show-hide="show">Ja: kook → k → kookte.</qti-feedback-inline>
+      </qti-simple-choice>
+      <qti-simple-choice identifier="HOREN">horen
+        <qti-feedback-inline identifier="HOREN" outcome-identifier="KEUZE" show-hide="show">Nee: hoor → r → hoorde.</qti-feedback-inline>
+      </qti-simple-choice>
+    </qti-choice-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Maken, dansen en koken hebben een stam die eindigt op een letter uit 't kofschip.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="HINT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body><p><strong>Nog niet helemaal goed.</strong> Bekijk de feedback bij je keuzes en probeer het nog een keer.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> Maakte, danste en kookte: de stam eindigt op een letter uit 't kofschip. Bouwde, hoorde en leefde krijgen -de. Bij <em>leven</em> kijk je naar de v van het hele werkwoord.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-set-outcome-value identifier="KEUZE"><qti-variable identifier="RESPONSE" /></qti-set-outcome-value>
+    <qti-set-outcome-value identifier="SCORE"><qti-map-response identifier="RESPONSE" /></qti-set-outcome-value>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else-if>
+        <qti-lte><qti-variable identifier="numAttempts" /><qti-base-value base-type="integer">1</qti-base-value></qti-lte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">HINT</qti-base-value></qti-set-outcome-value>
+      </qti-response-else-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<qti-assessment-test xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0"
-  identifier="_ce0e519b-1b33-5503-b093-37dda626e3c4" title="Demotoets"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd">
-  <qti-outcome-declaration identifier="MAX_SCORE" base-type="float" cardinality="single">
-    <qti-default-value>
-      <qti-value>0</qti-value>
-    </qti-default-value>
-  </qti-outcome-declaration>
+<!--
+  SUMMATIEF: een toets afnemen en achteraf beoordelen.
+  - nonlinear + simultaneous: vrij bladeren, antwoorden pas bij inleveren beoordeeld.
+  - qti-item-session-control: 1 poging, geen feedback tijdens de toets.
+  - Outcome processing + qti-test-feedback leveren de uitslag na het inleveren.
+-->
+<qti-assessment-test xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="summatief-demotoets" title="Demotoets (summatief)">
   <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
-    <qti-default-value>
-      <qti-value>0</qti-value>
-    </qti-default-value>
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
   </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="PERCENTAGE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
 
   <qti-rubric-block use="instructions" view="candidate" class="qti-rubric-discretionary-placement">
     <qti-content-body>
-      <p>Instructions for this section in here. These instructions would NOT be displayed in
-      different sections if this test had multiple sections.</p>
+      <p><strong>Zo werkt deze toets</strong></p>
+      <ul>
+        <li>Je mag vrij heen en weer bladeren tussen de vragen.</li>
+        <li>Je krijgt tijdens de toets <strong>geen</strong> feedback.</li>
+        <li>Klaar? Klik op <em>Inleveren</em>. Daarna zie je je uitslag.</li>
+      </ul>
     </qti-content-body>
   </qti-rubric-block>
 
-  <qti-test-part identifier="TEST-PART" navigation-mode="nonlinear" submission-mode="simultaneous">
-    <qti-assessment-section identifier="SECTION" title="Section" visible="true">
-      <qti-assessment-item-ref identifier="INTRODUCTION" href="INTRODUCTION.xml"
-        category="info" />
+  <qti-test-part identifier="TOETS" navigation-mode="nonlinear" submission-mode="simultaneous">
+    <qti-item-session-control max-attempts="1" show-feedback="false" />
+    <qti-assessment-section identifier="SECTION" title="Demotoets" visible="true">
+      <qti-assessment-item-ref identifier="INTRODUCTION" href="INTRODUCTION.xml" category="info" />
       <qti-assessment-item-ref identifier="ITEM001-TEST" href="ITEM001.xml" />
       <qti-assessment-item-ref identifier="ITEM002-TEST" href="ITEM002.xml" />
       <qti-assessment-item-ref identifier="ITEM003-TEST" href="ITEM003.xml" />
@@ -37,15 +44,32 @@
     </qti-assessment-section>
   </qti-test-part>
   <qti-outcome-processing>
-    <qti-set-outcome-value identifier="MAX_SCORE">
-      <qti-sum>
-        <qti-test-variables variable-identifier="MAX_SCORE" />
-      </qti-sum>
-    </qti-set-outcome-value>
     <qti-set-outcome-value identifier="SCORE">
-      <qti-sum>
-        <qti-test-variables variable-identifier="SCORE" />
-      </qti-sum>
+      <qti-sum><qti-test-variables variable-identifier="SCORE" /></qti-sum>
     </qti-set-outcome-value>
+    <qti-set-outcome-value identifier="MAXSCORE">
+      <qti-sum><qti-test-variables variable-identifier="MAXSCORE" /></qti-sum>
+    </qti-set-outcome-value>
+    <qti-set-outcome-value identifier="PERCENTAGE">
+      <qti-product>
+        <qti-divide><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-divide>
+        <qti-base-value base-type="float">100</qti-base-value>
+      </qti-product>
+    </qti-set-outcome-value>
+    <qti-outcome-condition>
+      <qti-outcome-if>
+        <qti-gte><qti-variable identifier="PERCENTAGE" /><qti-base-value base-type="float">55</qti-base-value></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GESLAAGD</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-if>
+      <qti-outcome-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">NIET_GESLAAGD</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-else>
+    </qti-outcome-condition>
   </qti-outcome-processing>
+  <qti-test-feedback identifier="GESLAAGD" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body>Gefeliciteerd, je hebt de toets gehaald (55% of meer).</qti-content-body>
+  </qti-test-feedback>
+  <qti-test-feedback identifier="NIET_GESLAAGD" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body>Je hebt de toets helaas niet gehaald. Je hebt minder dan 55% van de punten.</qti-content-body>
+  </qti-test-feedback>
 </qti-assessment-test>

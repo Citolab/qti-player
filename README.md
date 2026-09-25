@@ -1,151 +1,73 @@
 # QTI Player Example
 
-This repository contains a minimal, fully functional example of a **QTI Player** using [`@citolab/qti-components`](https://github.com/Citolab/qti-components). It serves as a _"Hello World"_ or _cookbook-style_ reference for implementing a QTI player using:
+A minimal, fully functional **QTI 3 player** built with [`@citolab/qti-components`](https://github.com/Citolab/qti-components), plain JavaScript, Tailwind and [daisyUI](https://daisyui.com/). Everything lives in a single `index.html`.
 
-- Plain JavaScript (no frameworks)
-- Web Components
-- Tailwind CSS with DaisyUI
-- `Navigo` for client-side routing
-- QTI-specific components from `@citolab/qti-components`
+The demo shows how **one player** delivers both formative and summative tests. The player holds no opinion of its own: all behaviour comes from the QTI package.
 
-## 🧩 What’s in the Box
+## 🗂️ Demo packages
 
-This example demonstrates how to:
+| Route          | Package              | Mode                                                                 |
+| -------------- | -------------------- | -------------------------------------------------------------------- |
+| `#/formatief`  | `public/formatief`   | Formative: werkwoordspelling, 2 attempts, hint + explanation          |
+| `#/summatief`  | `public/kennisnet-1` | Summative: browse freely, no feedback, result after handing in        |
+| `#/oefenen`    | `public/kennisnet-2` | Practice: 1 attempt per question, feedback straight away              |
 
-- Embed and use the core QTI test component (`<qti-test>`)
-- Render a test from XML using `<test-container>`
-- Handle linear and nonlinear navigation (`<test-next>`, `<test-prev>`, etc.)
-- Display navigation UI with `<test-navigation>`
-- Add custom view toggles and scoring controls
-- Switch themes using `theme-change`
-- Use `<test-stamp>` for dynamic templating with contextual conditions
-- Maintain session state via `sessionStorage`
-- Route between test packages and specific items using `Navigo`
-- Render debug/test context with `<test-print-context>` and `<test-stamp debug>`
+Deep links to an item work too: `#/formatief/KOFSCHIP`.
 
-## 📂 Project Structure
+## 🧠 What the QTI decides
 
-There’s just a single HTML file:
+| QTI                                                          | Player behaviour                                                              |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| `navigation-mode="linear"`                                   | progress `steps`, no jumping back                                             |
+| `navigation-mode="nonlinear"`                                | item buttons + previous                                                       |
+| `submission-mode="individual"`                               | **Controleer** button (`<test-end-attempt>`) + attempt badge                  |
+| `submission-mode="simultaneous"`                             | items are scored silently on every change (`autoScoreItems`), **Inleveren**   |
+| `<qti-item-session-control max-attempts="2">`                | Controleer locks after 2 attempts or a correct answer, then Volgende unlocks  |
+| `<qti-item-session-control show-feedback="true/false">`      | whether feedback stays visible after the last attempt                         |
+| `qti-feedback-inline` / `qti-feedback-block`                 | inline feedback per choice, plus a block with a hint (attempt 1) or explanation (attempt 2) |
+| `qti-rubric-block class="qti-rubric-discretionary-placement"`| instructions shown above the item                                             |
+| `qti-outcome-processing` + `qti-test-feedback access="atEnd"`| result report: score, percentage and the matching test feedback               |
 
+### Formative item pattern
+
+Each formative item sets `FEEDBACK` from its own response processing. `numAttempts` separates the first attempt from the next ones:
+
+```xml
+<qti-response-condition>
+  <qti-response-if>        <!-- SCORE >= MAXSCORE      --> FEEDBACK = GOED   </qti-response-if>
+  <qti-response-else-if>   <!-- numAttempts <= 1       --> FEEDBACK = HINT   </qti-response-else-if>
+  <qti-response-else>      <!-- after that             --> FEEDBACK = UITLEG </qti-response-else>
+</qti-response-condition>
 ```
-index.html
-```
 
-This file includes:
+Choice feedback copies the response into an outcome (`KEUZE = RESPONSE`), so a `qti-feedback-inline identifier="A"` inside choice A appears when A was chosen.
 
-- QTI component imports via `@citolab/qti-components`
-- Test loading logic using JavaScript and routing with Navigo
-- Theme support (custom themes + DaisyUI)
-- Custom test toolbar with:
-  - View toggle
-  - Scoring buttons
-  - Feedback and correct answer display
-  - Navigation via list or thumbnail grid
-- A collapsible side pane for:
-  - Test package selection
-  - Theme switching
-  - Debug context info display
+## 🧩 Stamp context
 
-## 🧠 Stamp Context
-
-Dynamic rendering is handled using the `<test-stamp>` element, which provides contextual access to:
-
-- `item`
-- `section`
-- `testpart`
-- `test`
-
-This allows you to conditionally show/hhide components based on the current context.
-
-### Example
+`<test-stamp>` renders its template with `activeItem`, `activeSection`, `activeTestpart`, `test` and `view`. Handy fields for session control are `numAttempts`, `maxAttempts`, `done`, `optimal`, `score` and `maxScore`. Open the gear icon to see the live context.
 
 ```html
-<test-stamp>
-  <template>
-    <template type="if" if="{{ testpart.navigationMode == 'nonlinear' }}">
-      <test-prev class="btn btn-outline" role="button">
-        <i class="bi bi-arrow-left-short"></i>
-      </test-prev>
-    </template>
-  </template>
-</test-stamp>
+<template type="if" if="{{ activeTestpart.submissionMode == 'individual' }}">
+  <span class="badge">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts }}</span>
+  <test-end-attempt class="btn btn-secondary">Controleer</test-end-attempt>
+</template>
 ```
 
-Use `<test-stamp debug></test-stamp>` to inspect the available context in the UI.
+## ⚠️ Workarounds for qti-components 9.0.0
 
-## 🗂️ Test Packages
+`index.html` contains two small, commented workarounds that can go once they are fixed upstream:
 
-The following example test packages are configured:
+- `<qti-test-variables>` never finds its test element (selector typo `qti-asssessment-test` + missed connected event), so test totals are always 0. The player patches `getResult`.
+- `qtiTest.outcomeProcessing()` only searches the light DOM. The player calls `process()` on the `qti-outcome-processing` inside the test instead.
 
-```js
-map.set("kennisnet1", "/kennisnet-1");
-map.set("kennisnet2", "/kennisnet-2");
-```
+Items are loaded lazily. Before reporting, the player adds the declared `MAXSCORE` of items that were never opened, so totals match the whole test.
 
-You can navigate to these using:
-
-```
-/kennisnet1
-/kennisnet2
-```
-
-Each test is expected to include:
-
-- `/AssessmentTest.xml`
-- `/items.json` (metadata)
-
-## 🌈 Theme Support
-
-Built-in themes are available through [DaisyUI](https://daisyui.com/) and can be changed using the theme dropdown in the side pane. A custom `wikiwijs` theme is also included.
-
-To add your own themes, extend the `data-theme` styles in the `<style>` block inside the HTML.
-
-## 🔧 Development Setup
-
-No build step or framework needed! Just serve this HTML with a simple HTTP server.
-
-### Option 1: Live Server (VS Code)
-
-Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension and right-click `index.html` → **"Open with Live Server"**.
-
-### Option 2: Using `vite`
-
-Create a minimal `vite.config.js`:
-
-```js
-export default {
-  base: './',
-};
-```
-
-Install Vite and run:
+## 🔧 Development
 
 ```bash
-npm install vite
-npx vite
+pnpm install
+pnpm dev            # http://localhost:5173
+pnpm test:browser   # vitest + playwright
 ```
 
-Make sure `%VITE_BASE_HREF%` is replaced with `'/'` or a relative path in the final build if needed.
-
-## 📦 Dependencies (CDN-based)
-
-- [@citolab/qti-components](https://github.com/Citolab/qti-components)
-- [Navigo](https://github.com/krasimir/navigo)
-- [Tailwind via CDN](https://tailwindcss.com/docs/installation/play-cdn)
-- [DaisyUI](https://daisyui.com/)
-- [Bootstrap Icons](https://icons.getbootstrap.com/)
-- [theme-change](https://github.com/saadeghi/theme-change)
-
-## 🧪 Testing & Debugging
-
-Open the side pane (gear icon) to:
-
-- Switch themes
-- View `test-stamp` context with `<test-stamp debug>`
-- Inspect current test item variables via `<test-print-item-variables>`
-
----
-
-## 📎 License
-
-This project is open source and can be used freely as a reference or starting point for building your own QTI players.
+Session state is kept per package in `sessionStorage`. Use **Opnieuw** or **Sessie wissen** to start over.

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  FORMATIEF: oefenen met directe feedback.
+  - linear + individual: elke vraag wordt apart nagekeken, pas daarna mag je door.
+  - qti-item-session-control: max 2 pogingen, feedback ook na de laatste poging tonen.
+  - De items zelf bepalen de feedback (hint na poging 1, uitleg na poging 2).
+  - Outcome processing + qti-test-feedback leveren de eindrapportage.
+-->
+<qti-assessment-test xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0"
+  identifier="formatief-werkwoordspelling" title="Oefentoets werkwoordspelling"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd">
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="PERCENTAGE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+
+  <qti-test-part identifier="OEFENEN" navigation-mode="linear" submission-mode="individual">
+    <qti-item-session-control max-attempts="2" show-feedback="true" />
+    <qti-assessment-section identifier="WERKWOORDSPELLING" title="Werkwoordspelling" visible="true">
+      <qti-rubric-block use="instructions" view="candidate" class="qti-rubric-discretionary-placement">
+        <qti-content-body>
+          <p><strong>Zo werkt deze oefentoets</strong></p>
+          <ul>
+            <li>Je krijgt 6 vragen over werkwoordspelling.</li>
+            <li>Klik op <em>Controleer</em> om je antwoord na te kijken.</li>
+            <li>Fout? Dan krijg je een tip en mag je het <strong>nog één keer</strong> proberen.</li>
+            <li>Na je tweede poging zie je de uitleg en ga je door naar de volgende vraag.</li>
+          </ul>
+        </qti-content-body>
+      </qti-rubric-block>
+      <qti-assessment-item-ref identifier="PERSOONSVORM" href="ITEM001.xml" />
+      <qti-assessment-item-ref identifier="VIND-VINDT" href="ITEM002.xml" />
+      <qti-assessment-item-ref identifier="VERLEDEN-TIJD" href="ITEM003.xml" />
+      <qti-assessment-item-ref identifier="KOFSCHIP" href="ITEM004.xml" />
+      <qti-assessment-item-ref identifier="FOUTEN-ZOEKEN" href="ITEM005.xml" />
+      <qti-assessment-item-ref identifier="STAPPENPLAN" href="ITEM006.xml" />
+    </qti-assessment-section>
+  </qti-test-part>
+
+  <qti-outcome-processing>
+    <qti-set-outcome-value identifier="SCORE">
+      <qti-sum><qti-test-variables variable-identifier="SCORE" /></qti-sum>
+    </qti-set-outcome-value>
+    <qti-set-outcome-value identifier="MAXSCORE">
+      <qti-sum><qti-test-variables variable-identifier="MAXSCORE" /></qti-sum>
+    </qti-set-outcome-value>
+    <qti-set-outcome-value identifier="PERCENTAGE">
+      <qti-product>
+        <qti-divide>
+          <qti-variable identifier="SCORE" />
+          <qti-variable identifier="MAXSCORE" />
+        </qti-divide>
+        <qti-base-value base-type="float">100</qti-base-value>
+      </qti-product>
+    </qti-set-outcome-value>
+    <qti-outcome-condition>
+      <qti-outcome-if>
+        <qti-gte><qti-variable identifier="PERCENTAGE" /><qti-base-value base-type="float">80</qti-base-value></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-if>
+      <qti-outcome-else-if>
+        <qti-gte><qti-variable identifier="PERCENTAGE" /><qti-base-value base-type="float">50</qti-base-value></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">VOLDOENDE</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-else-if>
+      <qti-outcome-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">OEFENEN</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-else>
+    </qti-outcome-condition>
+  </qti-outcome-processing>
+
+  <qti-test-feedback identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body>Top! Je beheerst de werkwoordspelling goed. Probeer eens de summatieve toets.</qti-content-body>
+  </qti-test-feedback>
+  <qti-test-feedback identifier="VOLDOENDE" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body>Je bent op de goede weg. Kijk nog eens naar 't kofschip en het stappenplan voor de tegenwoordige tijd.</qti-content-body>
+  </qti-test-feedback>
+  <qti-test-feedback identifier="OEFENEN" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body>Werkwoordspelling is nog lastig voor je. Lees de uitleg bij de vragen nog eens en maak de oefentoets opnieuw.</qti-content-body>
+  </qti-test-feedback>
+</qti-assessment-test>

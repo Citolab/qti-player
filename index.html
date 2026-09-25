@@ -1,411 +1,263 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cito">
+<html lang="nl" data-theme="cito">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QTI Player</title>
-
   <base href="%VITE_BASE_HREF%" />
-  <script src="https://cdn.jsdelivr.net/npm/navigo@8.11.1/lib/navigo.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="./src/themes.css" rel="stylesheet" />
 
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script type="module">
+    import { QtiTestVariablesExpression } from "@citolab/qti-components";
+    import { getManifestInfo } from "@citolab/qti-components/qti-loader";
 
-  <link rel="stylesheet" href="./src/themes.css" />
+    // Workaround (qti-components 9.0.0): <qti-test-variables> never finds its test element
+    // (selector typo "qti-asssessment-test" + missed connected event), so test totals are always 0.
+    customElements.get("qti-test-variables").prototype.getResult = function () {
+      const items = [...this.closest("qti-assessment-test").querySelectorAll("qti-assessment-item-ref")].map((ref) => ({ item: ref.identifier, weight: 1 }));
+      return new QtiTestVariablesExpression(this._testContext, this.getAttribute("variable-identifier"), items).calculate();
+    };
 
-  <!-- only for item previews, maybe we should do something about this -->
-  <!-- dit moet eigenlijk in een shadowroot <qti-item-preview href={{ item.href }} .variables={{ item.variables }}> of zo-->
-  <!-- <link rel="stylesheet" href="./node_modules/@citolab//qti-components/dist/item.css" /> -->
-
-  <style>
-    test-container {
-      --qti-bg: var(--color-base-100);
-      --qti-bg-active: var(--color-base-200);
-      --qti-border-active: var(--color-primary);
-    }
-  </style>
-
-  <script type="module" defer>
-    import "@citolab/qti-components";
-  </script>
-
-  <script defer>
-    const map = new Map();
-    map.set("kennisnet1", "/kennisnet-1");
-    map.set("kennisnet2", "/kennisnet-2");
-  </script>
-
-  <script type="module" defer>
-    import { getManifestInfo } from '@citolab/qti-components/qti-loader';
+    // Route: #/<package>/<item>. Every package is a plain QTI 3 content package in /public.
+    const packages = { formatief: "formatief", summatief: "kennisnet-1", oefenen: "kennisnet-2" };
+    const [route, itemId] = location.hash.slice(2).split("/");
+    const pkg = packages[route] ? route : "formatief";
+    const folder = packages[pkg];
 
     const qtiTest = document.querySelector("qti-test");
-    let testContainer = document.querySelector("test-container");
     const testNavigation = document.querySelector("test-navigation");
-    let pkg = "null";
+    const testContainer = document.querySelector("test-container");
+    let testElement;
 
-    const router = new Navigo(`%VITE_BASE_HREF%`, true, "#");
+    document.querySelector(`[href="#/${pkg}"]`)?.classList.add("tab-active");
+    window.addEventListener("hashchange", () => location.hash.slice(2).split("/")[0] !== pkg && location.reload());
 
-    router.on("/", () => {
-      router.navigate("/kennisnet1");
+    // 1. Load the test from the package manifest (items.json adds optional titles / metadata)
+    const { testURL } = await getManifestInfo(`${folder}/imsmanifest.xml`);
+    testNavigation.configContext = { infoItemCategory: "info", inlineChoicePrompt: "Kies…" };
+    testNavigation.initContext = await fetch(`${folder}/items.json`).then((r) => (r.ok ? r.json() : [])).catch(() => []);
+    testContainer.setAttribute("test-url", testURL);
+
+    // 2. When the test is ready: restore the session and open the requested item.
+    //    Simultaneous submission (summative) scores every change silently in the background;
+    //    individual submission (formative) scores only when the candidate clicks "Controleer".
+    qtiTest.addEventListener("qti-assessment-test-connected", (e) => {
+      testElement = e.detail;
+      testNavigation.autoScoreItems = testElement.querySelector("qti-test-part")?.submissionMode === "simultaneous";
+      const saved = sessionStorage.getItem(pkg);
+      if (saved) qtiTest.testContext = JSON.parse(saved);
+      qtiTest.navigateTo("item", itemId);
     });
-    router.on("/:package", ({ data }) => {
-      qtiTest.navigate = "item";
-      pkg = data.package;
-      changeTest(map.get(data.package));
-    });
-    router.on("/:package/:item", ({ data }) => {
-      pkg = data.package;
-      changeTest(map.get(data.package));
-      qtiTest.addEventListener("qti-assessment-test-connected", () => {
-        if (sessionStorage.getItem(pkg) !== null)
-          qtiTest.testContext = JSON.parse(sessionStorage.getItem(pkg));
-        qtiTest.navigateTo("item", data.item);
-      });
-    });
-    router.resolve();
+    qtiTest.addEventListener("qti-test-context-updated", (e) => sessionStorage.setItem(pkg, JSON.stringify(e.detail)));
+    qtiTest.addEventListener("qti-request-navigation", (e) => history.replaceState(null, "", `${location.pathname}${location.search}#/${pkg}/${e.detail.id}`));
 
-    window.addEventListener("popstate", () => {
-      router.resolve();
-    });
+    // 3. Instructions (qti-rubric-block class="qti-rubric-discretionary-placement") go above the item
+    qtiTest.addEventListener("qti-rubric:discretionary-placement", (e) => document.querySelector("#rubric").append(e.detail.element));
 
-    qtiTest.addEventListener("qti-rubric:discretionary-placement", (e) => {
-      const popover = document.querySelector("#rubrikBlockContainer");
-      popover.prepend(e.detail.element);
-      popover.showPopover();
-      const button = document.querySelector(`[popovertarget="rubrikBlockContainer"]`)
-    });
+    // 4. Result reporting: run the test's outcome processing and show the qti-test-feedback that matches
+    window.showResults = async () => {
+      // Items that were never opened still count with their declared MAXSCORE (QTI: unpresented items keep default values)
+      const items = await Promise.all(qtiTest.testContext.items.map(async (item) => {
+        if (item.variables.some((v) => v.identifier === "MAXSCORE")) return item;
+        const xml = new DOMParser().parseFromString(await fetch(item.href).then((r) => r.text()), "text/xml");
+        const maxScore = xml.querySelector("qti-outcome-declaration[identifier=MAXSCORE] qti-value")?.textContent.trim();
+        return maxScore ? { ...item, variables: [...item.variables, { identifier: "MAXSCORE", value: maxScore }] } : item;
+      }));
+      qtiTest.testContext = { ...qtiTest.testContext, items };
 
-    qtiTest.addEventListener("qti-request-navigation", (e) => {
-      router.navigate(`/${pkg}/${e.detail.id}`, {
-        title: e.detail.id,
-        callHandler: false, // Don't trigger routing
-        updateBrowserURL: true, // Update the address bar
-      });
-    });
-
-    qtiTest.addEventListener("qti-test-context-updated", (e) => {
-      sessionStorage.setItem(pkg, JSON.stringify(e.detail));
-    });
-
-    async function changeTest(test) {
-      const testNavigation = document.querySelector("test-navigation");
-      testNavigation.configContext = {
-        infoItemCategory: "info",
-      };
-
-      const { testURL } = await getManifestInfo(`${test}/imsmanifest.xml`);
-
-      // Fix for Safari and Firefox
-      if (!testContainer) {
-        testContainer = document.querySelector("test-container")
-      }
-
-      testContainer.setAttribute("test-url", testURL);
-
-      try {
-        const response = await fetch(test + "/items.json");
-        testNavigation.initContext = response.ok ? await response.json() : [];
-      } catch {
-        console.info("No accompanying items.json found");
-      }
-    }
+      // qtiTest.outcomeProcessing() only searches the light DOM; the test lives in test-container's shadow root
+      testElement.querySelector("qti-outcome-processing")?.process();
+      const outcome = (id) => qtiTest.getOutcome(id)?.value;
+      const percentage = Math.round(outcome("PERCENTAGE") || 0);
+      document.querySelector("#result-score").textContent = `${outcome("SCORE") ?? 0} / ${outcome("MAXSCORE") ?? 0}`;
+      document.querySelector("#result-percentage").style.setProperty("--value", percentage);
+      document.querySelector("#result-percentage").textContent = `${percentage}%`;
+      document.querySelector("#result-feedback").innerHTML = [...testElement.querySelectorAll("qti-test-feedback")]
+        .filter((fb) => [outcome(fb.getAttribute("outcome-identifier"))].flat().includes(fb.identifier) === (fb.getAttribute("show-hide") !== "hide"))
+        .map((fb) => `<p>${fb.textContent.trim()}</p>`)
+        .join("");
+      document.querySelector("#results").showModal();
+    };
+    window.restart = () => {
+      sessionStorage.removeItem(pkg);
+      location.hash = `#/${pkg}`;
+      location.reload();
+    };
   </script>
-
-  <style type="text/tailwindcss">
-    nav {
-      anchor-name: --profile-button;
-    }
-
-    #popover-thumbs,
-    #popover-list {
-      position-anchor: --profile-button;
-      bottom: anchor(top);
-      left: anchor(left);
-
-      &:popover-open {
-        display: grid;
-        opacity: 1;
-
-        @starting-style {
-          display: grid;
-          opacity: 0;
-        }
-      }
-    }
-
-    #rubrikBlockContainer::backdrop {
-      @apply bg-white/50 backdrop-blur-sm select-none;
-    }
-    </style>
 </head>
 
-<body class="bg-base-200 text-base-content h-screen w-screen">
-  <!-- cache-transform -->
-  <qti-test class="h-full" >
-    <test-navigation class="h-full flex gap-2" auto-score-items>
-      <test-stamp class="flex flex-col flex-grow pt-8 px-8 w-full">
-        <template>
-          <div class="flex items-center gap-2 justify-between">
-            <div class="flex gap-2 items-center">
-              <button popovertarget="sidePane" popovertargetaction="toggle" class="btn">
-                <i class="bi bi-gear"></i>
-              </button>
-              <test-view-toggle class="flex items-center gap-2 cursor-pointer hover:bg-base-100 rounded-full p-2">
-                <template>
-                  <button type="button"
-                    class="relative w-10 inline-flex h-6 shrink-0 cursor-pointer rounded-full border-2 border-transparent {{ view == 'scorer' ? 'bg-primary text-white' : 'bg-gray-300'}}  transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:outline-hidden"
-                    role="switch" aria-checked="{{ view == 'scorer' ? 'true' : 'false'}}">
-                    <span aria-hidden="true"
-                      class="pointer-events-none inline-block size-5 {{ view == 'scorer' ? 'translate-x-4' : 'translate-x-0'}} transform rounded-full bg-white ring-0 shadow-sm transition duration-200 ease-in-out"></span>
-                  </button>
-                  Nakijken
-                </template>
-              </test-view-toggle>
+<body class="bg-base-200 text-base-content min-h-screen">
+  <qti-test>
+    <test-navigation class="drawer drawer-end">
+      <input id="debug" type="checkbox" class="drawer-toggle" />
 
-              <div class="flex gap-2 items-center">
-                <template type="if" if="{{ view == 'scorer' }}">
-                  <div class="flex gap-2">
-                    <test-scoring-buttons class="flex gap-2">
-                      <template>
-                        <template type="repeat" repeat="{{ scores }}">
-                          <label
-                            class="btn btn-circle {{ item == score ? '' : 'btn-soft'}}  {{ item > 0 ? 'btn-success border-success' : 'btn-error border-error'}} ">
-                            <input type="radio" ?checked="{{item == score}}" name="scoring-buttons" class="sr-only"
-                              ?disabled="{{ activeItem.hasCorrectResponse }}" value="{{item}}" />
+      <div class="drawer-content flex flex-col min-h-screen">
+        <!-- Top bar: choose a demo package -->
+        <header class="navbar bg-base-100 shadow-sm gap-2 px-4">
+          <div class="flex-1 font-bold">QTI Player</div>
+          <nav role="tablist" class="tabs tabs-box tabs-sm">
+            <a role="tab" class="tab" href="#/formatief"><i class="bi bi-lightbulb me-1"></i>Formatief</a>
+            <a role="tab" class="tab" href="#/summatief"><i class="bi bi-mortarboard me-1"></i>Summatief</a>
+            <a role="tab" class="tab" href="#/oefenen"><i class="bi bi-1-circle me-1"></i>Eén poging</a>
+          </nav>
+          <label for="debug" class="btn btn-ghost btn-sm btn-square" title="Instellingen"><i class="bi bi-gear"></i></label>
+        </header>
 
-                            <span>{{item}}</span>
-                          </label>
-                        </template>
-                      </template>
-                    </test-scoring-buttons>
-                  </div>
-                  <test-end-attempt class="btn">
-                    Feedback
-                  </test-end-attempt>
-                </template>
-              </div>
-            </div>
+        <main class="flex-1 w-full max-w-4xl mx-auto p-4 flex flex-col gap-4">
+          <!-- qti-rubric-block instructions land here -->
+          <div id="rubric" role="alert" class="alert alert-info alert-soft items-start hidden has-[qti-rubric-block]:flex">
+            <i class="bi bi-info-circle text-xl"></i>
           </div>
 
-          <dialog id="popover-thumbs" class="bg-base-200 p-8 shadow-lg rounded-lg w-[880px]"
-            style="top:50%; left:50%; transform:translate(-50%, -50%);">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-
-              <template type="repeat" repeat="{{ activeTestpart.items }}">
-                <test-item-link
-                  class="flex flex-col bg-base-100 w-[200px] aspect-4/3 rounded overflow-hidden gap-2 px-2 text-sm py-1  cursor-pointer relative"
-                  item-id="{{ item.identifier }}">
-                  <style>
-                    @scope {
-                      qti-assessment-item {
-                        min-width: 800px;
-                        transform: scale(0.25);
-                        transform-origin: top;
-                        user-select: none;
-                        pointer-events: none;
-                      }
-                    }
-                  </style>
-                  {{ item.itemDoc }}
-                </test-item-link>
-              </template>
-
-            </div>
-            <div class="flex items-center justify-end gap-4">
-              <button class="btn" onclick="document.getElementById('popover-thumbs').close()">
-                Sluiten
-              </button>
-              <button class="btn btn-primary" onclick="document.getElementById('popover-thumbs').close()">
-                Stoppen en inleveren
-              </button>
-            </div>
-          </dialog>
-
-          <div popover id="popover-list"
-            class="opacity-0 inset-auto hidden absolute m-0 transition-opacity duration-1000 transform -translate-y-2 p-8 shadow-lg rounded-lg">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-
-              <template type="repeat" repeat="{{ activeTestpart.items }}">
-                <test-item-link
-                  class="gap-2 px-2 text-sm py-1 flex items-center justify-between cursor-pointer {{ item.active ? 'bg-primary text-white' : 'bg-transparent text-slate-600 ' }}"
-                  item-id="{{ item.identifier }}">
-                  <div
-                    class="flex items-center justify-center w-4 h-4 border-2 cursor-pointer {{ item.completed ? 'bg-primary' : 'bg-transparent' }} p-0 {{ item.category === 'dep-informational' ? 'rounded' : 'rounded-full' }}">
-                  </div>
-                  <div class="flex flex-grow gap-1 py-0.5">
-                    {{ item.category === 'dep-informational' ? 'info' : item.title }}
-                  </div>
-                  <div class="w-4 text-right mr-2 text-xs text-slate-300">
-                    {{ item.index }}
-                  </div>
-                </test-item-link>
-              </template>
-
-            </div>
-          </div>
-
-          <!-- <template type="if" if="{{ activeItem === null }}"></template> -->
-
-
-
-          <!-- Collapsible Content -->
-          <div popover open class="bg-white p-8 shadow-2xl rounded-lg w-[880px] h-[400px]"
-            style="top:50%; left:50%; transform:translate(-50%, -50%);" id="rubrikBlockContainer">
-            <button onclick="this.parentElement.hidePopover()" class="btn btn-primary">sluiten</button>
-          </div>
-
-
-
-          <div class="flex flex-1 overflow-auto container mx-auto">
-            <div id="stimulusRefContainer"></div>
-            <test-container class="flex-1 p-16">
-              <template>
-                <link rel="stylesheet" href="./src/test-container.css" />
-              </template>
-            </test-container>
-          </div>
-
-          <div class="flex justify-between items-center fixed bottom-8 left-8 right-8">
-            <button popovertarget="popover-thumbs" class="btn"
-              onclick="document.getElementById('popover-thumbs').showModal()">
-              Inleveren
-              <i class="bi bi-grid"></i>
-            </button>
-
-            <template type="if" if="{{ activeTestpart.submissionMode == 'individual' }}">
-              <test-check-item class="btn btn-outline" role="button"
-                ?disabled="{{ !(activeItem.category != 'info' && activeTestpart.submissionMode == 'individual' && ( activeItem.numAttempts == 0 || activeItem.score != activeItem.maxScore )) }}">
-                <i class="bi bi-check"></i>Controleer
-              </test-check-item>
+          <test-container class="card bg-base-100 shadow-sm block p-8">
+            <template>
+              <style>
+                /* Item feedback lives inside the test's shadow root, so it is styled here with the daisyUI theme colors */
+                qti-feedback-block { --fb: var(--color-info); }
+                qti-feedback-block.qti-feedback-correct { --fb: var(--color-success); }
+                qti-feedback-block.qti-feedback-hint { --fb: var(--color-warning); }
+                qti-feedback-block::part(feedback) {
+                  margin-top: 1rem; padding: 0.25rem 1rem;
+                  border-left: 4px solid var(--fb); border-radius: var(--radius-field);
+                  background: color-mix(in oklab, var(--fb) 12%, transparent);
+                }
+                qti-feedback-inline::part(feedback) {
+                  margin-inline: 0.5rem; padding: 0 0.5rem; font-size: 0.875em;
+                  border-radius: var(--radius-field); background: var(--color-base-200);
+                }
+              </style>
             </template>
+          </test-container>
+        </main>
 
-            <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
-              <nav class="card card-border border-base-300 bg-base-100 shadow-xl">
-                <div class="card-body gap-4 flex-row items-center justify-between">
-                  <div class="flex items-center flex-grow gap-1">
-                    <div class="hidden flex-1 gap-1 overflow-auto md:flex">
+        <!-- Bottom bar: everything here is driven by the QTI test (navigation-, submission mode, session control) -->
+        <test-stamp class="block sticky bottom-0">
+          <template>
+            <footer class="bg-base-100 border-t border-base-300 p-4 flex flex-wrap items-center justify-between gap-4">
 
-                      <button popovertarget="rubrikBlockContainer" class="btn btn-outline"><i
-                          class="bi bi-info text-xl"></i></button>
-
-                      <template type="repeat" repeat="{{ activeTestpart.items }}">
-                        <test-item-link
-                          class="flex relative items-center justify-center btn btn-soft btn-square border-2  {{ item.active ? 'border-primary' : ''}} {{ item.category.includes === 'info' ? 'rounded' : 'rounded-full' }}"
-                          item-id="{{ item.identifier }}">
-                          {{ item.index}}
-                          <template type="if" if="{{ item.category == 'info' }}">
-                            <i class="bi bi-info text-xl"></i>
-                          </template>
-                          <template type="if" if="{{ view == 'scorer' }}">
-                            <div aria-label="status"
-                              class="status status-md absolute top-0 right-0  {{ item.score > 0 ? 'status-success' : item.score == 0 && item.completionStatus == 'completed' ? 'status-error' : item.completionStatus == 'completed' ? 'status-neutral' : 'bg-transparent' }}">
-                            </div>
-                          </template>
-                        </test-item-link>
-                      </template>
-                    </div>
-
-                    <div class="flex gap-2">
-                      <button popovertarget="popover-list" class="btn btn-outline">
-                        <i class="bi bi-list"></i>
-                      </button>
-                    </div>
-                  </div>
+              <!-- Nonlinear: jump to any item. Linear: show progress only -->
+              <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
+                <div class="flex flex-wrap gap-1">
+                  <template type="repeat" repeat="{{ activeTestpart.items }}">
+                    <test-item-link item-id="{{ item.identifier }}"
+                      class="btn btn-sm btn-square {{ item.active ? 'btn-primary' : item.completionStatus == 'completed' ? 'btn-soft btn-primary' : '' }}">
+                      {{ item.index ?? 'i' }}
+                    </test-item-link>
+                  </template>
                 </div>
-              </nav>
-            </template>
+              </template>
+              <template type="if" if="{{ activeTestpart.navigationMode == 'linear' }}">
+                <ul class="steps">
+                  <template type="repeat" repeat="{{ activeTestpart.items }}">
+                    <li class="step {{ item.done ? (item.optimal ? 'step-success' : 'step-error') : item.active ? 'step-primary' : '' }}"
+                      data-content="{{ item.done ? (item.optimal ? '✓' : '✕') : item.index }}"></li>
+                  </template>
+                </ul>
+              </template>
 
-            <div class="flex items-center gap-2">
-              <div>
+              <!-- Individual submission: check the answer, attempts come from qti-item-session-control -->
+              <template type="if" if="{{ activeTestpart.submissionMode == 'individual' }}">
+                <div class="flex items-center gap-2">
+                  <span class="badge badge-ghost">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts }}</span>
+                  <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}">
+                    <span class="badge badge-success"><i class="bi bi-check-lg"></i>Goed</span>
+                  </template>
+                  <template type="if" if="{{ activeItem.numAttempts > 0 && !activeItem.optimal && !activeItem.done }}">
+                    <span class="badge badge-warning"><i class="bi bi-arrow-repeat"></i>Probeer opnieuw</span>
+                  </template>
+                  <template type="if" if="{{ activeItem.done && !activeItem.optimal && activeItem.hasCorrectResponse }}">
+                    <span class="badge badge-error"><i class="bi bi-x-lg"></i>Bekijk de uitleg</span>
+                  </template>
+                  <test-end-attempt class="btn btn-secondary"><i class="bi bi-check2-circle"></i>Controleer</test-end-attempt>
+                </div>
+              </template>
+
+              <div class="flex items-center gap-2">
                 <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
-                  <test-prev class="btn btn-outline" role="button">
-                    <i class="bi bi-arrow-left-short"></i>
-                  </test-prev>
+                  <test-prev class="btn"><i class="bi bi-arrow-left"></i></test-prev>
                 </template>
-
-                <test-next class="btn btn-primary" role="button"
-                  enabled="{{ activeItem.category == 'info' && (activeTestpart.submissionMode == 'individual' && activeItem.numAttempts > 0) }}">
-                  <div class="hidden md:flex">Volgende</div>
-                  <i class="bi bi-arrow-right-short"></i>
-                </test-next>
-              </div>
-            </div>
-          </div>
-
-          <div id="sidePane" popover
-            class="relative! left-0 top-0 h-full w-1/2 base-100 shadow-lg p-4 shadow-lg z-50 h-full">
-            <div class="flex flex-col h-full">
-              <div>
-                <a href="/kennisnet1" class="btn" data-navigo> Kennisnet 1 </a>
-                <a href="/kennisnet2" class="btn" data-navigo> Kennisnet 2 </a>
-
-                <button popovertarget="sidePane" popovertargetaction="hide"
-                  class="px-3 py-1 bg-red-600 text-white rounded float-end">
-                  Close
-                </button>
-
-                <button onClick="sessionStorage.clear(); window.location.reload()" class="btn btn-error">
-                  Clear session storage
+                <test-next class="btn btn-primary">Volgende<i class="bi bi-arrow-right"></i></test-next>
+                <button class="btn btn-outline" onclick="showResults()">
+                  <i class="bi bi-flag"></i>{{ activeTestpart.submissionMode == 'simultaneous' ? 'Inleveren' : 'Resultaat' }}
                 </button>
               </div>
+            </footer>
+          </template>
+        </test-stamp>
+      </div>
 
-              <select class="select" data-choose-theme>
-                <optgroup label="Light Themes">
-                  <option value="cito">Cito</option>
-                  <option value="wikiwijs">Wikiwijs</option>
-                  <option value="light">Light</option>
-                  <option value="cupcake">Cupcake</option>
-                  <option value="bumblebee">Bumblebee</option>
-                  <option value="emerald">Emerald</option>
-                  <option value="corporate">Corporate</option>
-                  <option value="garden">Garden</option>
-                  <option value="forest">Forest</option>
-                  <option value="aqua">Aqua</option>
-                  <option value="lofi">Lofi</option>
-                  <option value="pastel">Pastel</option>
-                  <option value="fantasy">Fantasy</option>
-                  <option value="wireframe">Wireframe</option>
-                  <option value="autumn">Autumn</option>
-                  <option value="business">Business</option>
-                  <option value="lemonade">Lemonade</option>
-                  <option value="winter">Winter</option>
-                  <option value="sunset">Sunset</option>
-                  <option value="caramellatte">Caramellatte</option>
-                  <option value="silk">Silk</option>
-                </optgroup>
-                <optgroup label="Dark Themes">
-                  <option value="dark">Dark</option>
-                  <option value="synthwave">Synthwave</option>
-                  <option value="retro">Retro</option>
-                  <option value="cyberpunk">Cyberpunk</option>
-                  <option value="valentine">Valentine</option>
-                  <option value="halloween">Halloween</option>
-                  <option value="black">Black</option>
-                  <option value="luxury">Luxury</option>
-                  <option value="dracula">Dracula</option>
-                  <option value="cmyk">Cmyk</option>
-                  <option value="acid">Acid</option>
-                  <option value="night">Night</option>
-                  <option value="coffee">Coffee</option>
-                  <option value="dim">Dim</option>
-                  <option value="nord">Nord</option>
-                  <option value="abyss">Abyss</option>
-                </optgroup>
-              </select>
-
-              <test-print-item-variables class="text-sm"></test-print-item-variables>
-              <h1>Usable context</h1>
-              <div class="flex-1 overflow-auto">
-                <test-stamp debug></test-stamp>
-              </div>
+      <!-- Result report: totals from outcome processing (JS), rows from the computed context (stamp) -->
+      <dialog id="results" class="modal">
+        <div class="modal-box max-w-2xl">
+          <h3 class="text-lg font-bold mb-4">Resultaat</h3>
+          <div class="flex items-center gap-6 mb-4">
+            <div id="result-percentage" class="radial-progress text-primary" style="--value:0; --size:5rem" role="progressbar"></div>
+            <div class="stat p-0">
+              <div class="stat-title">Score</div>
+              <div id="result-score" class="stat-value"></div>
             </div>
           </div>
-        </template>
-      </test-stamp>
+          <div id="result-feedback" class="alert alert-soft mb-4 empty:hidden"></div>
+
+          <test-stamp>
+            <template>
+              <table class="table table-sm">
+                <thead><tr><th>#</th><th>Vraag</th><th>Pogingen</th><th class="text-right">Score</th></tr></thead>
+                <tbody>
+                  <template type="repeat" repeat="{{ activeTestpart.items }}">
+                    <template type="if" if="{{ item.index }}">
+                      <tr>
+                        <td>{{ item.index }}</td>
+                        <td>{{ item.title }}</td>
+                        <td>{{ activeTestpart.submissionMode == 'individual' ? item.numAttempts : '–' }}</td>
+                        <td class="text-right">
+                          <span class="badge {{ item.maxScore == null ? 'badge-ghost' : item.score >= item.maxScore ? 'badge-success' : item.score > 0 ? 'badge-warning' : 'badge-error' }}">
+                            {{ item.maxScore == null ? 'niet gemaakt' : item.score + ' / ' + item.maxScore }}
+                          </span>
+                        </td>
+                      </tr>
+                    </template>
+                  </template>
+                </tbody>
+              </table>
+            </template>
+          </test-stamp>
+
+          <div class="modal-action">
+            <button class="btn btn-ghost" onclick="restart()"><i class="bi bi-arrow-counterclockwise"></i>Opnieuw</button>
+            <form method="dialog"><button class="btn btn-primary">Sluiten</button></form>
+          </div>
+        </div>
+        <form method="dialog" class="modal-backdrop"><button>sluiten</button></form>
+      </dialog>
+
+      <!-- Settings / debug drawer -->
+      <aside class="drawer-side z-10">
+        <label for="debug" class="drawer-overlay"></label>
+        <div class="bg-base-100 min-h-full w-96 p-4 flex flex-col gap-4">
+          <select class="select w-full" data-choose-theme>
+            <option value="cito">Cito</option>
+            <option value="wikiwijs">Wikiwijs</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="corporate">Corporate</option>
+            <option value="nord">Nord</option>
+            <option value="dracula">Dracula</option>
+          </select>
+          <button class="btn btn-error btn-outline" onclick="restart()"><i class="bi bi-trash"></i>Sessie wissen</button>
+          <h2 class="font-bold">Item variabelen</h2>
+          <test-print-item-variables class="text-xs"></test-print-item-variables>
+          <h2 class="font-bold">Stamp context</h2>
+          <test-stamp debug class="text-xs overflow-auto"></test-stamp>
+        </div>
+      </aside>
     </test-navigation>
   </qti-test>
 </body>

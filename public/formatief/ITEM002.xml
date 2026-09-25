@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" adaptive="false" time-dependent="false" xml:lang="nl-NL" identifier="ITEM002" title="Vind of vindt">
+  <qti-response-declaration identifier="RESPONSE1" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>VINDT</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="RESPONSE2" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>VIND</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>2</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <p>Kies steeds de goede vorm.</p>
+    <p>Jij
+      <qti-inline-choice-interaction response-identifier="RESPONSE1">
+        <qti-inline-choice identifier="VIND">vind</qti-inline-choice>
+        <qti-inline-choice identifier="VINDT">vindt</qti-inline-choice>
+      </qti-inline-choice-interaction>
+      rekenen leuk, maar
+      <qti-inline-choice-interaction response-identifier="RESPONSE2">
+        <qti-inline-choice identifier="VIND">vind</qti-inline-choice>
+        <qti-inline-choice identifier="VINDT">vindt</qti-inline-choice>
+      </qti-inline-choice-interaction>
+      jij taal ook leuk?
+    </p>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Jij vóór de persoonsvorm: stam + t. Jij áchter de persoonsvorm: alleen de stam.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="HINT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body><p><strong>Nog niet helemaal goed.</strong> Let op waar <em>jij</em> staat: vóór of áchter de persoonsvorm?</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> <em>Jij vindt</em> (jij staat vóór de persoonsvorm: stam + t) en <em>vind jij</em> (jij staat áchter de persoonsvorm: geen t).</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE1" /><qti-correct identifier="RESPONSE1" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-sum><qti-variable identifier="SCORE" /><qti-base-value base-type="float">1</qti-base-value></qti-sum></qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE2" /><qti-correct identifier="RESPONSE2" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-sum><qti-variable identifier="SCORE" /><qti-base-value base-type="float">1</qti-base-value></qti-sum></qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else-if>
+        <qti-lte><qti-variable identifier="numAttempts" /><qti-base-value base-type="integer">1</qti-base-value></qti-lte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">HINT</qti-base-value></qti-set-outcome-value>
+      </qti-response-else-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

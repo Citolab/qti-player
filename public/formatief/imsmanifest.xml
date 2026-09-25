@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsglobal.org/xsd/qti/qtiv3p0/imscp_v1p1" identifier="MANIFEST_FORMATIEF">
+  <metadata>
+    <schema>QTI Package</schema>
+    <schemaversion>3.0.0</schemaversion>
+  </metadata>
+  <organizations/>
+  <resources>
+    <resource identifier="test" type="imsqti_test_xmlv3p0" href="AssessmentTest.xml">
+      <file href="AssessmentTest.xml"/>
+      <dependency identifierref="ITEM001"/>
+      <dependency identifierref="ITEM002"/>
+      <dependency identifierref="ITEM003"/>
+      <dependency identifierref="ITEM004"/>
+      <dependency identifierref="ITEM005"/>
+      <dependency identifierref="ITEM006"/>
+    </resource>
+    <resource identifier="ITEM001" type="imsqti_item_xmlv3p0" href="ITEM001.xml"><file href="ITEM001.xml"/></resource>
+    <resource identifier="ITEM002" type="imsqti_item_xmlv3p0" href="ITEM002.xml"><file href="ITEM002.xml"/></resource>
+    <resource identifier="ITEM003" type="imsqti_item_xmlv3p0" href="ITEM003.xml"><file href="ITEM003.xml"/></resource>
+    <resource identifier="ITEM004" type="imsqti_item_xmlv3p0" href="ITEM004.xml"><file href="ITEM004.xml"/></resource>
+    <resource identifier="ITEM005" type="imsqti_item_xmlv3p0" href="ITEM005.xml"><file href="ITEM005.xml"/></resource>
+    <resource identifier="ITEM006" type="imsqti_item_xmlv3p0" href="ITEM006.xml"><file href="ITEM006.xml"/></resource>
+  </resources>
+</manifest>

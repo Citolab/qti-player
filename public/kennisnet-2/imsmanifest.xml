@@ -9,7 +9,6 @@
     <resource identifier="test" type="imsqti_test_xmlv3p0" href="AssessmentTest.xml">
       <metadata/>
       <file href="AssessmentTest.xml"/>
-      <dependency identifierref="INTRODUCTION"/>
       <dependency identifierref="ITEM001"/>
       <dependency identifierref="ITEM002"/>
       <dependency identifierref="ITEM003"/>
@@ -23,10 +22,6 @@
       <dependency identifierref="ITEM011"/>
       <dependency identifierref="ITEM012"/>
       <dependency identifierref="ITEM013"/>
-    </resource>
-    <resource identifier="INTRODUCTION" type="imsqti_item_xmlv3p0" href="INTRODUCTION.xml">
-      <metadata/>
-      <file href="INTRODUCTION.xml"/>
     </resource>
     <resource identifier="ITEM001" type="imsqti_item_xmlv3p0" href="ITEM001.xml">
       <metadata/>
