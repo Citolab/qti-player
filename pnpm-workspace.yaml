@@ -1,0 +1,3 @@
+# Dependencies whose install scripts may run (pnpm 11 fails the install on unapproved ones).
+allowBuilds:
+  esbuild: true
