@@ -1,4 +1,9 @@
 {
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
     "settings": {
         "files.watcherExclude": {
             "**/.git/objects/**": true,
