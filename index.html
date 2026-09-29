@@ -116,6 +116,21 @@
             <i class="bi bi-info-circle text-xl"></i>
           </div>
 
+          <!-- Read aloud: speaks the active item's text block by block, highlighting the current word.
+               The hosts carry the daisyUI .btn look; the shadow <button part="button"> is reset to fill them. -->
+          <test-item-to-speech language="nl-NL" class="self-end join bg-base-100 shadow-sm rounded-field
+            [&_*::part(button)]:size-full [&_*::part(button)]:px-3 [&_*::part(button)]:py-0 [&_*::part(button)]:border-0
+            [&_*::part(button)]:bg-transparent [&_*::part(button)]:text-inherit [&_*::part(button)]:[font:inherit]
+            [&_*::part(button)]:inline-flex [&_*::part(button)]:items-center [&_*::part(button)]:justify-center [&_.btn-square::part(button)]:px-0">
+            <test-tts-prev class="btn btn-ghost btn-sm btn-square join-item p-0" title="Vorige alinea"><i class="bi bi-skip-backward-fill"></i></test-tts-prev>
+            <test-tts-play class="btn btn-ghost btn-sm join-item p-0" title="Voorlezen">
+              <span slot="play"><i class="bi bi-volume-up-fill"></i> Voorlezen</span>
+              <span slot="pause"><i class="bi bi-pause-fill"></i> Pauze</span>
+            </test-tts-play>
+            <test-tts-stop class="btn btn-ghost btn-sm btn-square join-item p-0" title="Stop"><i class="bi bi-stop-fill"></i></test-tts-stop>
+            <test-tts-next class="btn btn-ghost btn-sm btn-square join-item p-0" title="Volgende alinea"><i class="bi bi-skip-forward-fill"></i></test-tts-next>
+          </test-item-to-speech>
+
           <test-container class="card bg-base-100 shadow-sm block p-8">
             <template>
               <style>

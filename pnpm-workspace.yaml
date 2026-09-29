@@ -1,3 +1,5 @@
 # Dependencies whose install scripts may run (pnpm 11 fails the install on unapproved ones).
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@citolab/qti-components@9.2.0 || 9.3.0'
