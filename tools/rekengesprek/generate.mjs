@@ -241,12 +241,12 @@ const NOEMER = hotspotItem({
 
 const NO_SKIP = '<qti-item-session-control max-attempts="1" show-feedback="true" allow-skipping="false" />';
 const UNLIMITED = '<qti-item-session-control max-attempts="0" show-feedback="true" />';
-const ref = (id, inner = []) =>
-  inner.length
-    ? `<qti-assessment-item-ref identifier="${id}" href="${id}.xml">\n        ${inner.join('\n        ')}\n      </qti-assessment-item-ref>`
-    : `<qti-assessment-item-ref identifier="${id}" href="${id}.xml" />`;
+const ref = (id, inner = [], category) => {
+  const open = `<qti-assessment-item-ref identifier="${id}" href="${id}.xml"${category ? ` category="${category}"` : ''}`;
+  return inner.length ? `${open}>\n        ${inner.join('\n        ')}\n      </qti-assessment-item-ref>` : `${open} />`;
+};
 const introItems = [{ id: 'DAGBOEK', xml: DAGBOEK }, { id: 'TELLER', xml: TELLER }, { id: 'NOEMER', xml: NOEMER }];
-const introRefs = [ref('DAGBOEK', [NO_SKIP]), ref('TELLER', [UNLIMITED]), ref('NOEMER', [UNLIMITED])];
+const introRefs = [ref('DAGBOEK', [NO_SKIP], 'unscored'), ref('TELLER', [UNLIMITED]), ref('NOEMER', [UNLIMITED])];
 
 // ---------------------------------------------------------------- the four steps (RG_STAPPEN)
 // Every step: (tussenvraag, guided learners only) -> main question; wrong -> "even dieper kijken" -> retry -> uitleg.
@@ -350,7 +350,9 @@ ${comment}
       <qti-sum><qti-test-variables variable-identifier="SCORE" /></qti-sum>
     </qti-set-outcome-value>
     <qti-set-outcome-value identifier="MAXSCORE">
-      <qti-sum><qti-test-variables variable-identifier="MAXSCORE" /></qti-sum>
+      <!-- every scored item is worth 1 point: count the items this candidate was shown, so items a branch rule
+           or pre-condition passed over do not count against them (the rekendagboek is not scored) -->
+      <qti-number-presented exclude-category="unscored" />
     </qti-set-outcome-value>
     <qti-set-outcome-value identifier="PERCENTAGE">
       <qti-product>

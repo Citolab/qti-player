@@ -85,10 +85,7 @@
       document.querySelector("#result-score").textContent = `${outcome("SCORE") ?? 0} / ${outcome("MAXSCORE") ?? 0}`;
       document.querySelector("#result-percentage").style.setProperty("--value", percentage);
       document.querySelector("#result-percentage").textContent = `${percentage}%`;
-      document.querySelector("#result-feedback").innerHTML = [...testElement.querySelectorAll("qti-test-feedback")]
-        .filter((fb) => [outcome(fb.getAttribute("outcome-identifier"))].flat().includes(fb.identifier) === (fb.getAttribute("show-hide") !== "hide"))
-        .map((fb) => `<p>${fb.textContent.trim()}</p>`)
-        .join("");
+      document.querySelector("#result-feedback").innerHTML = qtiTest.getTestFeedback("atEnd").map((fb) => `<p>${fb.textContent.trim()}</p>`).join("");
       document.querySelector("#results").showModal();
     };
     window.restart = () => {

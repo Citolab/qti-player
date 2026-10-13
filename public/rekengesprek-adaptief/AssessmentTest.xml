@@ -34,7 +34,7 @@
           <p>Voor de versiering van de klas knipt Sam een halve meter lint af en Noor een kwart meter. Hoeveel meter lint hebben ze samen?</p>
         </qti-content-body>
       </qti-rubric-block>
-      <qti-assessment-item-ref identifier="DAGBOEK" href="DAGBOEK.xml">
+      <qti-assessment-item-ref identifier="DAGBOEK" href="DAGBOEK.xml" category="unscored">
         <qti-item-session-control max-attempts="1" show-feedback="true" allow-skipping="false" />
       </qti-assessment-item-ref>
       <qti-assessment-item-ref identifier="TELLER" href="TELLER.xml">
@@ -55,7 +55,9 @@
       <qti-sum><qti-test-variables variable-identifier="SCORE" /></qti-sum>
     </qti-set-outcome-value>
     <qti-set-outcome-value identifier="MAXSCORE">
-      <qti-sum><qti-test-variables variable-identifier="MAXSCORE" /></qti-sum>
+      <!-- every scored item is worth 1 point: count the items this candidate was shown, so items a branch rule
+           or pre-condition passed over do not count against them (the rekendagboek is not scored) -->
+      <qti-number-presented exclude-category="unscored" />
     </qti-set-outcome-value>
     <qti-set-outcome-value identifier="PERCENTAGE">
       <qti-product>
