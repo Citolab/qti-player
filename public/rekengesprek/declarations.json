@@ -1,0 +1,128 @@
+{
+  "TELLER": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "NOEMER": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S1_TUSSEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S1_MAIN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S1_V1": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S1_V2": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S1_RETRY": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S2_TUSSEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S2_MAIN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S2_V1": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S2_V2": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S2_RETRY": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S3_TUSSEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S3_MAIN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S3_V1": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S3_V2": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S3_RETRY": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S4_TUSSEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S4_MAIN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S4_V1": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S4_RETRY": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ]
+}

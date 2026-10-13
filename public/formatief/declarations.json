@@ -1,0 +1,38 @@
+{
+  "PERSOONSVORM": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "VIND-VINDT": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "2"
+    }
+  ],
+  "VERLEDEN-TIJD": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "KOFSCHIP": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "3"
+    }
+  ],
+  "FOUTEN-ZOEKEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "2"
+    }
+  ],
+  "STAPPENPLAN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ]
+}

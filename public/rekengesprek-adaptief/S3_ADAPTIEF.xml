@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd"
+  identifier="S3_ADAPTIEF" title="Stap 3 · Optellen (adaptief item)" adaptive="true" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>B</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="R_V1" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="R_V2" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>B</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="R_RETRY" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>B</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="multiple" />
+  <qti-outcome-declaration identifier="FASE" base-type="identifier" cardinality="single">
+    <qti-default-value><qti-value>MAIN</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="RESULT" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <p class="qti-well"><strong>Stap 3 · Optellen</strong> · één adaptief item</p>
+    <qti-choice-interaction response-identifier="RESPONSE" max-choices="1">
+      <qti-prompt>Hoeveel is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>4</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math>?</qti-prompt>
+      <qti-simple-choice identifier="A"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+      <qti-simple-choice identifier="B"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math></qti-simple-choice>
+      <qti-simple-choice identifier="C"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+    </qti-choice-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p>Goed zo! 2 kwarten + 1 kwart = 3 kwarten. De noemer blijft 4.</p></qti-content-body>
+    </qti-feedback-block>
+    
+    <qti-feedback-block identifier="VERDIEPING" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body>
+        <p>We gaan even een stapje terug om te kijken waar het spaak loopt. <strong>Even dieper kijken:</strong></p>
+        
+        <qti-choice-interaction response-identifier="R_V1" max-choices="1">
+          <qti-prompt>Wat gebeurt er met de noemer als je gelijknamige breuken optelt?</qti-prompt>
+          <qti-simple-choice identifier="A">Die blijft hetzelfde</qti-simple-choice>
+          <qti-simple-choice identifier="B">Die tel je op</qti-simple-choice>
+          <qti-simple-choice identifier="C">Die verdubbelt</qti-simple-choice>
+        </qti-choice-interaction>
+        <p><img src="resources/optellen.svg" alt="Twee kwarten plus een kwart is drie kwarten" /></p>
+        <qti-choice-interaction response-identifier="R_V2" max-choices="1">
+          <qti-prompt>2 vierde + 1 vierde = hoeveel vierden?</qti-prompt>
+          <qti-simple-choice identifier="A">2</qti-simple-choice>
+          <qti-simple-choice identifier="B">3</qti-simple-choice>
+          <qti-simple-choice identifier="C">4</qti-simple-choice>
+        </qti-choice-interaction>
+      </qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="V_UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-info">
+      <qti-content-body><p>De stukjes blijven even groot, dus de noemer verandert niet. 2 stukjes + 1 stukje = 3 stukjes van een kwart: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body>
+        <qti-choice-interaction response-identifier="R_RETRY" max-choices="1">
+          <qti-prompt>Probeer het nog eens. Hoeveel is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>4</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math>?</qti-prompt>
+          <qti-simple-choice identifier="A"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+          <qti-simple-choice identifier="B"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math></qti-simple-choice>
+          <qti-simple-choice identifier="C"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+        </qti-choice-interaction>
+      </qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY_GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p>Goed zo! 2 kwarten + 1 kwart = 3 kwarten. De noemer blijft 4.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY_FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Het goede antwoord is: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.</strong> Bij gelijknamige breuken tel je alleen de tellers op: 2 + 1 = 3. De noemer blijft 4, want de stukjes blijven kwarten. Dus <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <!-- attempt 1: the main question -->
+      <qti-response-if>
+        <qti-match><qti-variable identifier="FASE" /><qti-base-value base-type="identifier">MAIN</qti-base-value></qti-match>
+        <qti-response-condition>
+          <qti-response-if>
+            <qti-member><qti-variable identifier="RESPONSE" /><qti-multiple><qti-base-value base-type="identifier">B</qti-base-value></qti-multiple></qti-member>
+            <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">DIRECT</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">GOED</qti-base-value></qti-multiple></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="completionStatus"><qti-base-value base-type="identifier">completed</qti-base-value></qti-set-outcome-value>
+          </qti-response-if>
+          <qti-response-else>
+            <qti-set-outcome-value identifier="FASE"><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-else>
+        </qti-response-condition>
+      </qti-response-if>
+      <!-- attempt 2: "even dieper kijken", then offer the retry -->
+      <qti-response-else-if>
+        <qti-match><qti-variable identifier="FASE" /><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-match>
+        <qti-set-outcome-value identifier="FASE"><qti-base-value base-type="identifier">RETRY</qti-base-value></qti-set-outcome-value>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">VERDIEPING</qti-base-value><qti-base-value base-type="identifier">V_UITLEG</qti-base-value><qti-base-value base-type="identifier">RETRY</qti-base-value></qti-multiple></qti-set-outcome-value>
+      </qti-response-else-if>
+      <!-- attempt 3: the retry decides -->
+      <qti-response-else>
+        <qti-response-condition>
+          <qti-response-if>
+            <qti-member><qti-variable identifier="R_RETRY" /><qti-multiple><qti-base-value base-type="identifier">B</qti-base-value></qti-multiple></qti-member>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">RETRY</qti-base-value><qti-base-value base-type="identifier">RETRY_GOED</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-if>
+          <qti-response-else>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">RETRY</qti-base-value><qti-base-value base-type="identifier">RETRY_FOUT</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-else>
+        </qti-response-condition>
+        <qti-set-outcome-value identifier="completionStatus"><qti-base-value base-type="identifier">completed</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

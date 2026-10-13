@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsglobal.org/xsd/qti/qtiv3p0/imscp_v1p1" identifier="MANIFEST_REKENGESPREK_ADAPTIEF">
+  <metadata>
+    <schema>QTI Package</schema>
+    <schemaversion>3.0.0</schemaversion>
+  </metadata>
+  <organizations/>
+  <resources>
+    <resource identifier="test" type="imsqti_test_xmlv3p0" href="AssessmentTest.xml">
+      <file href="AssessmentTest.xml"/>
+      <dependency identifierref="DAGBOEK"/>
+      <dependency identifierref="TELLER"/>
+      <dependency identifierref="NOEMER"/>
+      <dependency identifierref="S1_ADAPTIEF"/>
+      <dependency identifierref="S2_ADAPTIEF"/>
+      <dependency identifierref="S3_ADAPTIEF"/>
+      <dependency identifierref="S4_ADAPTIEF"/>
+    </resource>
+    <resource identifier="DAGBOEK" type="imsqti_item_xmlv3p0" href="DAGBOEK.xml"><file href="DAGBOEK.xml"/></resource>
+    <resource identifier="TELLER" type="imsqti_item_xmlv3p0" href="TELLER.xml"><file href="TELLER.xml"/></resource>
+    <resource identifier="NOEMER" type="imsqti_item_xmlv3p0" href="NOEMER.xml"><file href="NOEMER.xml"/></resource>
+    <resource identifier="S1_ADAPTIEF" type="imsqti_item_xmlv3p0" href="S1_ADAPTIEF.xml"><file href="S1_ADAPTIEF.xml"/></resource>
+    <resource identifier="S2_ADAPTIEF" type="imsqti_item_xmlv3p0" href="S2_ADAPTIEF.xml"><file href="S2_ADAPTIEF.xml"/></resource>
+    <resource identifier="S3_ADAPTIEF" type="imsqti_item_xmlv3p0" href="S3_ADAPTIEF.xml"><file href="S3_ADAPTIEF.xml"/></resource>
+    <resource identifier="S4_ADAPTIEF" type="imsqti_item_xmlv3p0" href="S4_ADAPTIEF.xml"><file href="S4_ADAPTIEF.xml"/></resource>
+  </resources>
+</manifest>

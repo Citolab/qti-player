@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd"
+  identifier="S1_ADAPTIEF" title="Stap 1 · Gelijknamig maken (adaptief item)" adaptive="true" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="R_V1" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="R_V2" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="R_RETRY" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="multiple" />
+  <qti-outcome-declaration identifier="FASE" base-type="identifier" cardinality="single">
+    <qti-default-value><qti-value>MAIN</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="RESULT" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <p class="qti-well"><strong>Stap 1 · Gelijknamig maken</strong> · één adaptief item</p>
+    <qti-choice-interaction response-identifier="RESPONSE" max-choices="1">
+      <qti-prompt>Welke noemer kun je voor <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math> én <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math> gebruiken?</qti-prompt>
+      <qti-simple-choice identifier="A">4</qti-simple-choice>
+      <qti-simple-choice identifier="B">6</qti-simple-choice>
+      <qti-simple-choice identifier="C">8</qti-simple-choice>
+    </qti-choice-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p>Ja! 4 zit in de tafel van 2 én in de tafel van 4. Dus 4 kun je voor allebei gebruiken.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="GOED_ALT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p>8 kan ook: 8 zit in de tafel van 2 én van 4. Maar 4 is de kleinste, en daarmee blijft de som het makkelijkst. We rekenen verder met 4.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="VERDIEPING" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body>
+        <p>We gaan even een stapje terug om te kijken waar het spaak loopt. <strong>Even dieper kijken:</strong></p>
+        <p><img src="resources/noemer.svg" alt="Een strook in halven en een strook in kwarten" /></p>
+        <qti-choice-interaction response-identifier="R_V1" max-choices="1">
+          <qti-prompt>Even terug: hoeveel halven passen er in 1 hele?</qti-prompt>
+          <qti-simple-choice identifier="A">2</qti-simple-choice>
+          <qti-simple-choice identifier="B">3</qti-simple-choice>
+          <qti-simple-choice identifier="C">4</qti-simple-choice>
+        </qti-choice-interaction>
+        
+        <qti-choice-interaction response-identifier="R_V2" max-choices="1">
+          <qti-prompt>Is 4 een veelvoud van 2? Kijk naar de tafel van 2: 2, 4, 6, 8…</qti-prompt>
+          <qti-simple-choice identifier="A">Ja</qti-simple-choice>
+          <qti-simple-choice identifier="B">Nee</qti-simple-choice>
+        </qti-choice-interaction>
+      </qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="V_UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-info">
+      <qti-content-body><p>1 hele = 2 halven. 4 zit in de tafel van 2 én in de tafel van 4. Zo'n getal kun je als noemer voor allebei gebruiken.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body>
+        <qti-choice-interaction response-identifier="R_RETRY" max-choices="1">
+          <qti-prompt>Probeer het nog eens. Welke noemer kun je voor <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math> én <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math> gebruiken?</qti-prompt>
+          <qti-simple-choice identifier="A">4</qti-simple-choice>
+          <qti-simple-choice identifier="B">6</qti-simple-choice>
+          <qti-simple-choice identifier="C">8</qti-simple-choice>
+        </qti-choice-interaction>
+      </qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY_GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p>Ja! 4 zit in de tafel van 2 én in de tafel van 4. Dus 4 kun je voor allebei gebruiken.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY_FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Het goede antwoord is: 4.</strong> Zoek een getal dat in de tafel van 2 én in de tafel van 4 zit. Het kleinste is <strong>4</strong>. (8 kan ook, maar dan wordt het rekenen lastiger; 6 zit niet in de tafel van 4.)</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <!-- attempt 1: the main question -->
+      <qti-response-if>
+        <qti-match><qti-variable identifier="FASE" /><qti-base-value base-type="identifier">MAIN</qti-base-value></qti-match>
+        <qti-response-condition>
+          <qti-response-if>
+            <qti-member><qti-variable identifier="RESPONSE" /><qti-multiple><qti-base-value base-type="identifier">A</qti-base-value><qti-base-value base-type="identifier">C</qti-base-value></qti-multiple></qti-member>
+            <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">DIRECT</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">GOED</qti-base-value></qti-multiple></qti-set-outcome-value>
+            <qti-response-condition>
+              <qti-response-if>
+                <qti-member><qti-variable identifier="RESPONSE" /><qti-multiple><qti-base-value base-type="identifier">C</qti-base-value></qti-multiple></qti-member>
+                <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">GOED_ALT</qti-base-value></qti-multiple></qti-set-outcome-value>
+              </qti-response-if>
+            </qti-response-condition>
+            <qti-set-outcome-value identifier="completionStatus"><qti-base-value base-type="identifier">completed</qti-base-value></qti-set-outcome-value>
+          </qti-response-if>
+          <qti-response-else>
+            <qti-set-outcome-value identifier="FASE"><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-else>
+        </qti-response-condition>
+      </qti-response-if>
+      <!-- attempt 2: "even dieper kijken", then offer the retry -->
+      <qti-response-else-if>
+        <qti-match><qti-variable identifier="FASE" /><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-match>
+        <qti-set-outcome-value identifier="FASE"><qti-base-value base-type="identifier">RETRY</qti-base-value></qti-set-outcome-value>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">VERDIEPING</qti-base-value><qti-base-value base-type="identifier">V_UITLEG</qti-base-value><qti-base-value base-type="identifier">RETRY</qti-base-value></qti-multiple></qti-set-outcome-value>
+      </qti-response-else-if>
+      <!-- attempt 3: the retry decides -->
+      <qti-response-else>
+        <qti-response-condition>
+          <qti-response-if>
+            <qti-member><qti-variable identifier="R_RETRY" /><qti-multiple><qti-base-value base-type="identifier">A</qti-base-value><qti-base-value base-type="identifier">C</qti-base-value></qti-multiple></qti-member>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">RETRY</qti-base-value><qti-base-value base-type="identifier">RETRY_GOED</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-if>
+          <qti-response-else>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">RETRY</qti-base-value><qti-base-value base-type="identifier">RETRY_FOUT</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-else>
+        </qti-response-condition>
+        <qti-set-outcome-value identifier="completionStatus"><qti-base-value base-type="identifier">completed</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

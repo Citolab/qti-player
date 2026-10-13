@@ -1,0 +1,80 @@
+{
+  "ITEM001-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "3"
+    }
+  ],
+  "ITEM002-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "4"
+    }
+  ],
+  "ITEM003-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "5"
+    }
+  ],
+  "ITEM004-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "3"
+    }
+  ],
+  "ITEM005-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "ITEM006-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "ITEM007-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "ITEM008-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "ITEM009-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "ITEM010-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "ITEM011-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "ITEM012-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "ITEM013-TEST": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ]
+}

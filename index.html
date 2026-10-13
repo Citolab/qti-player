@@ -15,18 +15,14 @@
   <link href="./src/themes.css" rel="stylesheet" />
 
   <script type="module">
-    import { QtiTestVariablesExpression } from "@citolab/qti-components";
+    import "@citolab/qti-components"; // registers the components
     import { getManifestInfo } from "@citolab/qti-components/qti-loader";
 
-    // Workaround (qti-components 9.0.0): <qti-test-variables> never finds its test element
-    // (selector typo "qti-asssessment-test" + missed connected event), so test totals are always 0.
-    customElements.get("qti-test-variables").prototype.getResult = function () {
-      const items = [...this.closest("qti-assessment-test").querySelectorAll("qti-assessment-item-ref")].map((ref) => ({ item: ref.identifier, weight: 1 }));
-      return new QtiTestVariablesExpression(this._testContext, this.getAttribute("variable-identifier"), items).calculate();
-    };
-
     // Route: #/<package>/<item>. Every package is a plain QTI 3 content package in /public.
-    const packages = { formatief: "formatief", summatief: "kennisnet-1", oefenen: "kennisnet-2" };
+    const packages = {
+      formatief: "formatief", summatief: "kennisnet-1", oefenen: "kennisnet-2",
+      rekengesprek: "rekengesprek", "rekengesprek-adaptief": "rekengesprek-adaptief",
+    };
     const [route, itemId] = location.hash.slice(2).split("/");
     const pkg = packages[route] ? route : "formatief";
     const folder = packages[pkg];
@@ -39,41 +35,51 @@
     document.querySelector(`[href="#/${pkg}"]`)?.classList.add("tab-active");
     window.addEventListener("hashchange", () => location.hash.slice(2).split("/")[0] !== pkg && location.reload());
 
-    // 1. Load the test from the package manifest (items.json adds optional titles / metadata)
-    const { testURL } = await getManifestInfo(`${folder}/imsmanifest.xml`);
+    // 1. Session, per package: qtiTest.state holds the answers and the position; assigned before the test
+    //    loads, it is applied once it does.
+    const saved = sessionStorage.getItem(pkg);
+    if (saved) qtiTest.state = JSON.parse(saved);
+    qtiTest.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(pkg, JSON.stringify(e.detail)));
+    // A branch rule to EXIT_TEST, or no item left in a linear part, ends the test
+    qtiTest.addEventListener("cito-test-end-reached", () => showResults());
+
+    // 2. Load the test from the package manifest. items.json adds optional titles / metadata; declarations.json
+    //    (tools/item-declarations.mjs) holds each item's declared MAXSCORE, read once when the package was built.
+    const json = (file) => fetch(`${folder}/${file}`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    const [{ testURL }, itemInfo, declarations] = await Promise.all([getManifestInfo(`${folder}/imsmanifest.xml`), json("items.json"), json("declarations.json")]);
     testNavigation.configContext = { infoItemCategory: "info", inlineChoicePrompt: "Kies…" };
-    testNavigation.initContext = await fetch(`${folder}/items.json`).then((r) => (r.ok ? r.json() : [])).catch(() => []);
+    testNavigation.initContext = itemInfo ?? [];
     testContainer.setAttribute("test-url", testURL);
 
-    // 2. When the test is ready: restore the session and open the requested item.
+    // 3. When the test is ready: seed the declared MAXSCORE of items the candidate has not opened, so test outcome
+    //    processing totals the whole test (QTI: an item that is not presented keeps its declared defaults).
+    //    Then open the deep-linked item (without one, the restored position or the first item).
     //    Simultaneous submission (summative) scores every change silently in the background;
     //    individual submission (formative) scores only when the candidate clicks "Controleer".
-    qtiTest.addEventListener("qti-assessment-test-connected", (e) => {
+    qtiTest.addEventListener("cito-test-loaded", (e) => {
       testElement = e.detail;
+      for (const item of qtiTest.testContext.items) {
+        const known = new Set(item.variables.map((v) => v.identifier));
+        const values = (declarations?.[item.identifier] ?? []).filter((v) => !known.has(v.identifier)).map((v) => ({ ...v, type: "outcome" }));
+        if (values.length) qtiTest.updateItemVariables(item.identifier, values);
+      }
       testNavigation.autoScoreItems = testElement.querySelector("qti-test-part")?.submissionMode === "simultaneous";
-      const saved = sessionStorage.getItem(pkg);
-      if (saved) qtiTest.testContext = JSON.parse(saved);
-      qtiTest.navigateTo("item", itemId);
+      if (itemId) qtiTest.navigateTo("item", itemId);
     });
-    qtiTest.addEventListener("qti-test-context-updated", (e) => sessionStorage.setItem(pkg, JSON.stringify(e.detail)));
-    qtiTest.addEventListener("qti-request-navigation", (e) => history.replaceState(null, "", `${location.pathname}${location.search}#/${pkg}/${e.detail.id}`));
+    // Keep the deep link on the active item. The first navigation only opens what the URL already asks for, so leave
+    // the URL alone then: a host that checks the address it opened (the vitest browser runner) must find it unchanged.
+    let initialNavigation = true;
+    qtiTest.addEventListener("cito-test-navigated", (e) => {
+      if (initialNavigation) return void (initialNavigation = false);
+      history.replaceState(null, "", `${location.pathname}${location.search}#/${pkg}/${e.detail.id}`);
+    });
 
-    // 3. Instructions (qti-rubric-block class="qti-rubric-discretionary-placement") go above the item
-    qtiTest.addEventListener("qti-rubric:discretionary-placement", (e) => document.querySelector("#rubric").append(e.detail.element));
+    // 4. Instructions (qti-rubric-block class="qti-rubric-discretionary-placement") go above the item
+    qtiTest.addEventListener("cito-item-rubric-placement", (e) => document.querySelector("#rubric").append(e.detail.element));
 
-    // 4. Result reporting: run the test's outcome processing and show the qti-test-feedback that matches
-    window.showResults = async () => {
-      // Items that were never opened still count with their declared MAXSCORE (QTI: unpresented items keep default values)
-      const items = await Promise.all(qtiTest.testContext.items.map(async (item) => {
-        if (item.variables.some((v) => v.identifier === "MAXSCORE")) return item;
-        const xml = new DOMParser().parseFromString(await fetch(item.href).then((r) => r.text()), "text/xml");
-        const maxScore = xml.querySelector("qti-outcome-declaration[identifier=MAXSCORE] qti-value")?.textContent.trim();
-        return maxScore ? { ...item, variables: [...item.variables, { identifier: "MAXSCORE", value: maxScore }] } : item;
-      }));
-      qtiTest.testContext = { ...qtiTest.testContext, items };
-
-      // qtiTest.outcomeProcessing() only searches the light DOM; the test lives in test-container's shadow root
-      testElement.querySelector("qti-outcome-processing")?.process();
+    // 5. Result reporting: run the test's outcome processing and show the qti-test-feedback that matches
+    window.showResults = () => {
+      qtiTest.outcomeProcessing();
       const outcome = (id) => qtiTest.getOutcome(id)?.value;
       const percentage = Math.round(outcome("PERCENTAGE") || 0);
       document.querySelector("#result-score").textContent = `${outcome("SCORE") ?? 0} / ${outcome("MAXSCORE") ?? 0}`;
@@ -94,7 +100,7 @@
 </head>
 
 <body class="bg-base-200 text-base-content min-h-screen">
-  <qti-test>
+  <qti-test navigate="item">
     <test-navigation class="drawer drawer-end">
       <input id="debug" type="checkbox" class="drawer-toggle" />
 
@@ -106,13 +112,15 @@
             <a role="tab" class="tab" href="#/formatief"><i class="bi bi-lightbulb me-1"></i>Formatief</a>
             <a role="tab" class="tab" href="#/summatief"><i class="bi bi-mortarboard me-1"></i>Summatief</a>
             <a role="tab" class="tab" href="#/oefenen"><i class="bi bi-1-circle me-1"></i>Eén poging</a>
+            <a role="tab" class="tab" href="#/rekengesprek"><i class="bi bi-chat-dots me-1"></i>Adaptief: toets</a>
+            <a role="tab" class="tab" href="#/rekengesprek-adaptief"><i class="bi bi-diagram-3 me-1"></i>Adaptief: item</a>
           </nav>
           <label for="debug" class="btn btn-ghost btn-sm btn-square" title="Instellingen"><i class="bi bi-gear"></i></label>
         </header>
 
         <main class="flex-1 w-full max-w-4xl mx-auto p-4 flex flex-col gap-4">
           <!-- qti-rubric-block instructions land here -->
-          <div id="rubric" role="alert" class="alert alert-info alert-soft items-start hidden has-[qti-rubric-block]:flex">
+          <div id="rubric" role="alert" class="alert alert-info alert-soft items-start hidden has-[qti-rubric-block]:flex [&_math]:text-[1.15em] [&_math]:[math-style:normal]">
             <i class="bi bi-info-circle text-xl"></i>
           </div>
 
@@ -143,6 +151,8 @@
                   border-left: 4px solid var(--fb); border-radius: var(--radius-field);
                   background: color-mix(in oklab, var(--fb) 12%, transparent);
                 }
+                /* MathML fractions (½) render at text size by default, which is too small to read */
+                math { font-size: 1.15em; math-style: normal; }
                 qti-feedback-inline::part(feedback) {
                   margin-inline: 0.5rem; padding: 0 0.5rem; font-size: 0.875em;
                   border-radius: var(--radius-field); background: var(--color-base-200);
@@ -169,10 +179,11 @@
                 </div>
               </template>
               <template type="if" if="{{ activeTestpart.navigationMode == 'linear' }}">
-                <ul class="steps">
+                <ul class="steps max-w-full overflow-x-auto">
                   <template type="repeat" repeat="{{ activeTestpart.items }}">
-                    <li class="step {{ item.done ? (item.optimal ? 'step-success' : 'step-error') : item.active ? 'step-primary' : '' }}"
-                      data-content="{{ item.done ? (item.optimal ? '✓' : '✕') : item.index }}"></li>
+                    <li class="step {{ item.done ? (item.maxScore == null ? 'step-neutral' : item.optimal ? 'step-success' : 'step-error') : item.active ? 'step-primary' : '' }}"
+                      data-content="{{ item.done ? (item.maxScore == null ? '•' : item.optimal ? '✓' : '✕') : item.index }}"
+                      title="{{ item.title }}"></li>
                   </template>
                 </ul>
               </template>
@@ -180,7 +191,7 @@
               <!-- Individual submission: check the answer, attempts come from qti-item-session-control -->
               <template type="if" if="{{ activeTestpart.submissionMode == 'individual' }}">
                 <div class="flex items-center gap-2">
-                  <span class="badge badge-ghost">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts }}</span>
+                  <span class="badge badge-ghost">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts > 0 ? activeItem.maxAttempts : '∞' }}</span>
                   <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}">
                     <span class="badge badge-success"><i class="bi bi-check-lg"></i>Goed</span>
                   </template>

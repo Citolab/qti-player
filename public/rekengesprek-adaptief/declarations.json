@@ -1,0 +1,38 @@
+{
+  "TELLER": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "NOEMER": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S1_ADAPTIEF": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S2_ADAPTIEF": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S3_ADAPTIEF": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "S4_ADAPTIEF": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ]
+}

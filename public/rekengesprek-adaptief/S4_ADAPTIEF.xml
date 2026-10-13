@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd"
+  identifier="S4_ADAPTIEF" title="Stap 4 · Antwoord controleren (adaptief item)" adaptive="true" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="R_V1" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="R_RETRY" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="multiple" />
+  <qti-outcome-declaration identifier="FASE" base-type="identifier" cardinality="single">
+    <qti-default-value><qti-value>MAIN</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="RESULT" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <p class="qti-well"><strong>Stap 4 · Antwoord controleren</strong> · één adaptief item</p>
+    <qti-choice-interaction response-identifier="RESPONSE" max-choices="1">
+      <qti-prompt>Kun je <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math> nog verder vereenvoudigen?</qti-prompt>
+      <qti-simple-choice identifier="A">Nee, <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math> is al het eenvoudigst</qti-simple-choice>
+      <qti-simple-choice identifier="B">Ja, dat wordt <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math></qti-simple-choice>
+      <qti-simple-choice identifier="C">Ja, dat wordt <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>6</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+    </qti-choice-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p>Precies! 3 en 4 kun je niet allebei door hetzelfde getal delen. Het antwoord is klaar: Sam en Noor hebben samen ¾ meter lint.</p></qti-content-body>
+    </qti-feedback-block>
+    
+    <qti-feedback-block identifier="VERDIEPING" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body>
+        <p>We gaan even een stapje terug om te kijken waar het spaak loopt. <strong>Even dieper kijken:</strong></p>
+        <p><img src="resources/controle.svg" alt="Drie kwart naast een hele strook" /></p>
+        <qti-choice-interaction response-identifier="R_V1" max-choices="1">
+          <qti-prompt>Is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math> meer of minder dan 1 hele?</qti-prompt>
+          <qti-simple-choice identifier="A">Minder</qti-simple-choice>
+          <qti-simple-choice identifier="B">Meer</qti-simple-choice>
+          <qti-simple-choice identifier="C">Precies 1</qti-simple-choice>
+        </qti-choice-interaction>
+      </qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="V_UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-info">
+      <qti-content-body><p>3 van de 4 stukjes: dat is minder dan 1 hele. Logisch: een halve meter en een kwart meter is samen minder dan een meter.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body>
+        <qti-choice-interaction response-identifier="R_RETRY" max-choices="1">
+          <qti-prompt>Probeer het nog eens. Kun je <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math> nog verder vereenvoudigen?</qti-prompt>
+          <qti-simple-choice identifier="A">Nee, <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math> is al het eenvoudigst</qti-simple-choice>
+          <qti-simple-choice identifier="B">Ja, dat wordt <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math></qti-simple-choice>
+          <qti-simple-choice identifier="C">Ja, dat wordt <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>6</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+        </qti-choice-interaction>
+      </qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY_GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p>Precies! 3 en 4 kun je niet allebei door hetzelfde getal delen. Het antwoord is klaar: Sam en Noor hebben samen ¾ meter lint.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="RETRY_FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Het goede antwoord is: Nee, <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math> is al het eenvoudigst.</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math> is al zo eenvoudig mogelijk: 3 en 4 kun je niet allebei door hetzelfde getal delen. (<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>6</mn><mn>8</mn></mfrac></math> is evenveel, maar niet eenvoudiger; <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math> is minder dan <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.)</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <!-- attempt 1: the main question -->
+      <qti-response-if>
+        <qti-match><qti-variable identifier="FASE" /><qti-base-value base-type="identifier">MAIN</qti-base-value></qti-match>
+        <qti-response-condition>
+          <qti-response-if>
+            <qti-member><qti-variable identifier="RESPONSE" /><qti-multiple><qti-base-value base-type="identifier">A</qti-base-value></qti-multiple></qti-member>
+            <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">DIRECT</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">GOED</qti-base-value></qti-multiple></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="completionStatus"><qti-base-value base-type="identifier">completed</qti-base-value></qti-set-outcome-value>
+          </qti-response-if>
+          <qti-response-else>
+            <qti-set-outcome-value identifier="FASE"><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-else>
+        </qti-response-condition>
+      </qti-response-if>
+      <!-- attempt 2: "even dieper kijken", then offer the retry -->
+      <qti-response-else-if>
+        <qti-match><qti-variable identifier="FASE" /><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-match>
+        <qti-set-outcome-value identifier="FASE"><qti-base-value base-type="identifier">RETRY</qti-base-value></qti-set-outcome-value>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">VERDIEPING</qti-base-value><qti-base-value base-type="identifier">V_UITLEG</qti-base-value><qti-base-value base-type="identifier">RETRY</qti-base-value></qti-multiple></qti-set-outcome-value>
+      </qti-response-else-if>
+      <!-- attempt 3: the retry decides -->
+      <qti-response-else>
+        <qti-response-condition>
+          <qti-response-if>
+            <qti-member><qti-variable identifier="R_RETRY" /><qti-multiple><qti-base-value base-type="identifier">A</qti-base-value></qti-multiple></qti-member>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">RETRY</qti-base-value><qti-base-value base-type="identifier">RETRY_GOED</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-if>
+          <qti-response-else>
+            <qti-set-outcome-value identifier="RESULT"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+            <qti-set-outcome-value identifier="FEEDBACK"><qti-multiple><qti-base-value base-type="identifier">RETRY</qti-base-value><qti-base-value base-type="identifier">RETRY_FOUT</qti-base-value></qti-multiple></qti-set-outcome-value>
+          </qti-response-else>
+        </qti-response-condition>
+        <qti-set-outcome-value identifier="completionStatus"><qti-base-value base-type="identifier">completed</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

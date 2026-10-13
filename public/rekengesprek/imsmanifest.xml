@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsglobal.org/xsd/qti/qtiv3p0/imscp_v1p1" identifier="MANIFEST_REKENGESPREK">
+  <metadata>
+    <schema>QTI Package</schema>
+    <schemaversion>3.0.0</schemaversion>
+  </metadata>
+  <organizations/>
+  <resources>
+    <resource identifier="test" type="imsqti_test_xmlv3p0" href="AssessmentTest.xml">
+      <file href="AssessmentTest.xml"/>
+      <dependency identifierref="DAGBOEK"/>
+      <dependency identifierref="TELLER"/>
+      <dependency identifierref="NOEMER"/>
+      <dependency identifierref="S1_TUSSEN"/>
+      <dependency identifierref="S1_MAIN"/>
+      <dependency identifierref="S1_V1"/>
+      <dependency identifierref="S1_V2"/>
+      <dependency identifierref="S1_RETRY"/>
+      <dependency identifierref="S2_TUSSEN"/>
+      <dependency identifierref="S2_MAIN"/>
+      <dependency identifierref="S2_V1"/>
+      <dependency identifierref="S2_V2"/>
+      <dependency identifierref="S2_RETRY"/>
+      <dependency identifierref="S3_TUSSEN"/>
+      <dependency identifierref="S3_MAIN"/>
+      <dependency identifierref="S3_V1"/>
+      <dependency identifierref="S3_V2"/>
+      <dependency identifierref="S3_RETRY"/>
+      <dependency identifierref="S4_TUSSEN"/>
+      <dependency identifierref="S4_MAIN"/>
+      <dependency identifierref="S4_V1"/>
+      <dependency identifierref="S4_RETRY"/>
+    </resource>
+    <resource identifier="DAGBOEK" type="imsqti_item_xmlv3p0" href="DAGBOEK.xml"><file href="DAGBOEK.xml"/></resource>
+    <resource identifier="TELLER" type="imsqti_item_xmlv3p0" href="TELLER.xml"><file href="TELLER.xml"/></resource>
+    <resource identifier="NOEMER" type="imsqti_item_xmlv3p0" href="NOEMER.xml"><file href="NOEMER.xml"/></resource>
+    <resource identifier="S1_TUSSEN" type="imsqti_item_xmlv3p0" href="S1_TUSSEN.xml"><file href="S1_TUSSEN.xml"/></resource>
+    <resource identifier="S1_MAIN" type="imsqti_item_xmlv3p0" href="S1_MAIN.xml"><file href="S1_MAIN.xml"/></resource>
+    <resource identifier="S1_V1" type="imsqti_item_xmlv3p0" href="S1_V1.xml"><file href="S1_V1.xml"/></resource>
+    <resource identifier="S1_V2" type="imsqti_item_xmlv3p0" href="S1_V2.xml"><file href="S1_V2.xml"/></resource>
+    <resource identifier="S1_RETRY" type="imsqti_item_xmlv3p0" href="S1_RETRY.xml"><file href="S1_RETRY.xml"/></resource>
+    <resource identifier="S2_TUSSEN" type="imsqti_item_xmlv3p0" href="S2_TUSSEN.xml"><file href="S2_TUSSEN.xml"/></resource>
+    <resource identifier="S2_MAIN" type="imsqti_item_xmlv3p0" href="S2_MAIN.xml"><file href="S2_MAIN.xml"/></resource>
+    <resource identifier="S2_V1" type="imsqti_item_xmlv3p0" href="S2_V1.xml"><file href="S2_V1.xml"/></resource>
+    <resource identifier="S2_V2" type="imsqti_item_xmlv3p0" href="S2_V2.xml"><file href="S2_V2.xml"/></resource>
+    <resource identifier="S2_RETRY" type="imsqti_item_xmlv3p0" href="S2_RETRY.xml"><file href="S2_RETRY.xml"/></resource>
+    <resource identifier="S3_TUSSEN" type="imsqti_item_xmlv3p0" href="S3_TUSSEN.xml"><file href="S3_TUSSEN.xml"/></resource>
+    <resource identifier="S3_MAIN" type="imsqti_item_xmlv3p0" href="S3_MAIN.xml"><file href="S3_MAIN.xml"/></resource>
+    <resource identifier="S3_V1" type="imsqti_item_xmlv3p0" href="S3_V1.xml"><file href="S3_V1.xml"/></resource>
+    <resource identifier="S3_V2" type="imsqti_item_xmlv3p0" href="S3_V2.xml"><file href="S3_V2.xml"/></resource>
+    <resource identifier="S3_RETRY" type="imsqti_item_xmlv3p0" href="S3_RETRY.xml"><file href="S3_RETRY.xml"/></resource>
+    <resource identifier="S4_TUSSEN" type="imsqti_item_xmlv3p0" href="S4_TUSSEN.xml"><file href="S4_TUSSEN.xml"/></resource>
+    <resource identifier="S4_MAIN" type="imsqti_item_xmlv3p0" href="S4_MAIN.xml"><file href="S4_MAIN.xml"/></resource>
+    <resource identifier="S4_V1" type="imsqti_item_xmlv3p0" href="S4_V1.xml"><file href="S4_V1.xml"/></resource>
+    <resource identifier="S4_RETRY" type="imsqti_item_xmlv3p0" href="S4_RETRY.xml"><file href="S4_RETRY.xml"/></resource>
+  </resources>
+</manifest>

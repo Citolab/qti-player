@@ -1,0 +1,30 @@
+[
+  {
+    "identifier": "DAGBOEK",
+    "title": "Mijn rekendagboek"
+  },
+  {
+    "identifier": "TELLER",
+    "title": "Teller aanwijzen"
+  },
+  {
+    "identifier": "NOEMER",
+    "title": "Noemer aanwijzen"
+  },
+  {
+    "identifier": "S1_ADAPTIEF",
+    "title": "Stap 1 · Gelijknamig maken (adaptief item)"
+  },
+  {
+    "identifier": "S2_ADAPTIEF",
+    "title": "Stap 2 · 1/2 omzetten (adaptief item)"
+  },
+  {
+    "identifier": "S3_ADAPTIEF",
+    "title": "Stap 3 · Optellen (adaptief item)"
+  },
+  {
+    "identifier": "S4_ADAPTIEF",
+    "title": "Stap 4 · Antwoord controleren (adaptief item)"
+  }
+]

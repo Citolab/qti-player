@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd"
+  identifier="DAGBOEK" title="Mijn rekendagboek" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="GEVOEL" cardinality="single" base-type="identifier" />
+  <qti-response-declaration identifier="VERTROUWEN" cardinality="single" base-type="integer">
+    <qti-default-value><qti-value>3</qti-value></qti-default-value>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="KAARTJES" cardinality="multiple" base-type="identifier" />
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-outcome-declaration identifier="MODE" base-type="identifier" cardinality="single">
+    <qti-default-value><qti-value>ZELFSTANDIG</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-item-body>
+    <p class="qti-well"><strong>📓 Mijn rekendagboek</strong></p>
+    <qti-choice-interaction response-identifier="GEVOEL" max-choices="1" min-choices="1" class="qti-orientation-horizontal">
+      <qti-prompt>Voordat we gaan rekenen: hoe voel jij je vandaag bij rekenen?</qti-prompt>
+      <qti-simple-choice identifier="BLIJ">😄 Blij</qti-simple-choice>
+      <qti-simple-choice identifier="OKE">🙂 Oké</qti-simple-choice>
+      <qti-simple-choice identifier="TWIJFEL">😐 Twijfel</qti-simple-choice>
+      <qti-simple-choice identifier="SPANNEND">😳 Spannend</qti-simple-choice>
+      <qti-simple-choice identifier="ZWAAR">😫 Zwaar</qti-simple-choice>
+    </qti-choice-interaction>
+    <qti-slider-interaction response-identifier="VERTROUWEN" lower-bound="1" upper-bound="5" step="1" step-label="true">
+      <qti-prompt>Hoeveel vertrouwen heb je in breuken? (1 = nog onzeker, 5 = heel zeker)</qti-prompt>
+    </qti-slider-interaction>
+    <qti-choice-interaction response-identifier="KAARTJES" max-choices="0" min-choices="0">
+      <qti-prompt>Welke kaartjes passen bij jou?</qti-prompt>
+      <qti-simple-choice identifier="K1">Ik durf hulp te vragen</qti-simple-choice>
+      <qti-simple-choice identifier="K2">Ik geef snel op</qti-simple-choice>
+      <qti-simple-choice identifier="K3">Ik vind breuken lastig</qti-simple-choice>
+      <qti-simple-choice identifier="K4">Ik werk graag met tekeningen</qti-simple-choice>
+      <qti-simple-choice identifier="K5">Ik reken graag uit mijn hoofd</qti-simple-choice>
+      <qti-simple-choice identifier="K6">Ik word onrustig van de timer</qti-simple-choice>
+    </qti-choice-interaction>
+    <qti-feedback-block identifier="DANK" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p>Dank je wel! Dan gaan we nu samen rekenen.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">DANK</qti-base-value></qti-set-outcome-value>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member><qti-variable identifier="GEVOEL" /><qti-multiple><qti-base-value base-type="identifier">TWIJFEL</qti-base-value><qti-base-value base-type="identifier">SPANNEND</qti-base-value><qti-base-value base-type="identifier">ZWAAR</qti-base-value></qti-multiple></qti-member>
+        <qti-set-outcome-value identifier="MODE"><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>
