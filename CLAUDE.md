@@ -19,6 +19,8 @@ Browser tests run against the **built** `dist/index.html` (`testerHtmlPath` in `
 pnpm vitest --config vitest.workspace.js tests/Player.test.ts -t "can move through test items"
 ```
 
+Browser tests: `tests/Player.test.ts` (default route) and `tests/Rekengesprek.test.ts`, which loads the player in a same-origin iframe on the `#/rekengesprek` and `#/rekengesprek-adaptief` routes and clicks through them (answer, Controleer, Volgende), checking the route and the final score.
+
 There is no linter configured. CI (`.github/workflows/publish.yml`) only installs, builds and deploys `dist/` to GitHub Pages on push to `main` — it does not run tests.
 
 ## Architecture
