@@ -33,13 +33,13 @@ Script flow in `index.html`:
 1. **Routing**: `#/<route>/<itemId>`; a `packages` map translates route → folder in `public/` (`formatief` → `formatief`, `summatief` → `kennisnet-1`, `oefenen` → `kennisnet-2`). Changing package triggers a full reload. Adding a demo package = add a folder in `public/` + entry in `packages` + a tab link.
 2. **Loading**: `getManifestInfo(<folder>/imsmanifest.xml)` gives the test URL set on `<test-container>`; optional `<folder>/items.json` feeds `testNavigation.initContext`; `<folder>/declarations.json` (written by `pnpm packages` → `tools/item-declarations.mjs`) holds each item's declared `MAXSCORE`, seeded with `qtiTest.updateItemVariables` on `cito-test-loaded`. Rerun `pnpm packages` after changing a package.
 3. **Session**: `qtiTest.state` (a `QtiTestState`: answers + position) is saved to `sessionStorage` per package on `cito-test-state-changed` and assigned back before the test loads; `<qti-test navigate="item">` then opens the restored item, or the first one. On `cito-test-loaded`, `autoScoreItems` is enabled for `simultaneous` submission and a deep-linked item is opened. `cito-test-navigated` updates the hash via `replaceState`.
-4. **Results** (`window.showResults`): runs `qtiTest.outcomeProcessing()`, and renders matching `qti-test-feedback` (qti-components renders nothing for it).
+4. **Results** (`window.showResults`): runs `qtiTest.outcomeProcessing()`, and shows the `qti-test-feedback` that `qtiTest.getTestFeedback("atEnd")` returns (the element itself renders nothing).
 
 Use the `cito-` public events (`cito-test-loaded`, `cito-test-navigated`, `cito-test-state-changed`, `cito-item-rubric-placement`, …); the old `qti-*` names are deprecated and log a warning.
 
 ### Sequencing (pre-conditions, branch rules)
 
-`@citolab/qti-components` is `10.0.0-next.2` (the `next` dist-tag), which has `qti-pre-condition`, `qti-branch-rule`, `ITEMREF.VAR` lookups in `qti-variable`, boolean `qti-match`, extended-text `min-strings` (PR #289) and adaptive items that are `done` on `completionStatus = completed` (PR #298). `index.html` listens to `cito-test-end-reached` (opens the results). Skipped items are not tracked: QTI treats them as items that were not presented. A total over the candidate's own route belongs in the test's outcome processing (`qti-number-presented`, coming in qti-components; see `docs/rekengesprek-qti3-findings.md`).
+`@citolab/qti-components` is `10.0.0-next.3` (the `next` dist-tag), which has `qti-number-presented` and `qtiTest.getTestFeedback()` (PR #300), `qti-pre-condition`, `qti-branch-rule`, `ITEMREF.VAR` lookups in `qti-variable`, boolean `qti-match`, extended-text `min-strings` (PR #289) and adaptive items that are `done` on `completionStatus = completed` (PR #298). `index.html` listens to `cito-test-end-reached` (opens the results). Skipped items are not tracked: QTI treats them as items that were not presented. A total over the candidate's own route belongs in the test's outcome processing: the rekengesprek computes `MAXSCORE` with `qti-number-presented` (the unscored rekendagboek has category `unscored`).
 
 ### Rekengesprek packages
 

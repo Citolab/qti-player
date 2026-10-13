@@ -15,7 +15,7 @@
     "@lit/context": "^1.1.6"
   },
   "devDependencies": {
-    "@citolab/qti-components": "https://pkg.pr.new/Citolab/qti-components/@citolab/qti-components@917d2df",
+    "@citolab/qti-components": "10.0.0-next.3",
     "@testing-library/dom": "^10.4.1",
     "@vitest/browser": "^4.0.18",
     "@vitest/browser-playwright": "^4.0.18",

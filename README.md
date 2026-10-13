@@ -57,10 +57,10 @@ Choice feedback copies the response into an outcome (`KEUZE = RESPONSE`), so a `
 </template>
 ```
 
-## ⚠️ What the player still does itself (qti-components 10.0.0-next.2)
+## ⚠️ What the player still does itself (qti-components 10.0.0-next.3)
 
 - Items are loaded lazily, so items that were never opened have no `MAXSCORE` in the test. `pnpm packages` (`tools/item-declarations.mjs`) reads every item's declared `MAXSCORE` once into `public/<package>/declarations.json`; the player seeds those values with `qtiTest.updateItemVariables` when the test loads, so totals cover the whole test without fetching items at results time.
-- `qti-test-feedback` renders nothing; the result dialog shows the one that matches.
+- `qti-test-feedback` renders nothing where it is declared; the result dialog shows the ones `qtiTest.getTestFeedback("atEnd")` returns.
 
 ## 🔧 Development
 

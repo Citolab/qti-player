@@ -64,7 +64,7 @@ adaptivity lived in the **test**:
 | `qti-variable` with item prefix (`ITEM.SCORE`) | qti-variable | ❌ resolves item scope + test outcomes only | 🛠 | pre-conditions and `DIRECT` in outcome processing | fallback in `QtiExpression.resolveVariable` |
 | `qti-match` on `boolean` | qti-match | ❌ bug: `ScoringHelper.compareSingleValues` has no boolean case → always false | 🛠 | "Ik weet het niet" gave FOUT instead of WEETNIET | `case 'boolean'` |
 | `qti-extended-text-interaction` `min-strings` (default 0) | ExtendedTextInteraction | ❌ bug: empty is always invalid, `min-strings` "not implemented" | 🛠 | WATDEED: Controleer stayed disabled with an empty optional text box (`allow-skipping="false"`) | read `min-strings` in `validate()` |
-| Skipped items visible to the UI | – | ❌ no concept | ➖ dropped | skipped items are items that were not presented; a total over the route uses `qti-number-presented` (in progress in qti-components) | `skipped` on `ComputedItem`, persisted in the session |
+| Skipped items visible to the UI | – | ❌ no concept | ➖ dropped | skipped items are items that were not presented; a total over the route uses `qti-number-presented` (qti-components #300, in 10.0.0-next.3): the rekengesprek counts MAXSCORE that way | `skipped` on `ComputedItem`, persisted in the session |
 | End of test from branching | `EXIT_TEST` | ❌ no concept | 🛠 `cito-test-end-reached` event | results dialog opens after S4 main right | test-level "ended" state |
 | `qti-item-session-control max-attempts="0"` (unlimited) | 7.19 | ✅ | ✅ | TELLER: wrong, wrong, right; Volgende only after right | – |
 | `allow-skipping="false"` + `min-choices` | 7.19 | ✅ | ✅ | DAGBOEK: Controleer disabled until a mood is chosen | – |
@@ -79,7 +79,7 @@ adaptivity lived in the **test**:
 | Adaptive item, interactions inside `qti-feedback-block` | 3.7.2 | ✅ | ✅ | rekengesprek-adaptief: dieper-kijken and retry questions appear per attempt, outcomes persist | – |
 | Adaptive item: `done` from `completionStatus` | 7.19 (max-attempts ignored for adaptive) | ❌ `done` = `numAttempts ≥ maxAttempts` (default 1) | 🛠 PR #298 | `done: true` after attempt 1 while `completionStatus` was not completed; in a multi-item test Volgende would unlock too early | use `completionStatus === 'completed'` for adaptive items |
 | Adaptive item: no more attempts after `completed` | 3.7.2 | ❌ Controleer stays enabled | 🛠 PR #298 | after RETRY_FOUT, Controleer is still active | disable `test-end-attempt` when adaptive and completed |
-| `qti-test-feedback` | 5.x | ❌ renders nothing | ➖ | `showResults()` in `index.html` picks the matching one | render with `access="atEnd"` |
+| `qti-test-feedback` | 5.x | ❌ renders nothing | 🛠 PR #300 | `qtiTest.getTestFeedback("atEnd")` returns the matching ones; `showResults()` shows them | – |
 | `qti-rubric-block` with discretionary placement | – | ✅ | ✅ | the sum and its story sit above every item | – |
 
 ## Validator notes (qti-azure `validate_qti_item`)
