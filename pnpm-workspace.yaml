@@ -1,3 +1,6 @@
+# A single-package workspace; older pnpm (e.g. on StackBlitz) rejects this file without `packages`.
+packages:
+  - '.'
 # Dependencies whose install scripts may run (pnpm 11 fails the install on unapproved ones).
 allowBuilds:
   esbuild: true
