@@ -9,7 +9,7 @@
     "build": "vite build --mode production",
     "preview": "vite build --mode development && vite preview",
     "test:browser": "vite build --mode testing && vitest --config vitest.workspace.js",
-    "packages": "node tools/rekengesprek/generate.mjs && node tools/item-declarations.mjs"
+    "packages": "node tools/item-declarations.mjs"
   },
   "dependencies": {
     "@lit/context": "^1.1.6"

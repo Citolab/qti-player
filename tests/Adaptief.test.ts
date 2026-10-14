@@ -1,7 +1,7 @@
 import { afterEach, expect, test, vi } from 'vitest'
 
 /**
- * The rekengesprek demos, driven through the real controls: answer, Controleer, Volgende.
+ * The adaptive demos, driven through the real controls: answer, Controleer, Volgende.
  *
  * The tester page is the player itself on its default route, so each test loads the player in an
  * iframe on the route it needs (same origin, so the test can reach into it).
@@ -88,12 +88,13 @@ const hotspot = (id: string) => `qti-hotspot-choice[identifier="${id}"]`
 const mainChoice = (id: string) => `qti-choice-interaction[response-identifier="RESPONSE"] ${choice(id)}`
 
 test('adaptief via de toets: every step right straight away skips all follow-up questions', async () => {
-  const player = await openPlayer('rekengesprek')
+  const player = await openPlayer('adaptief-toets')
   expect(player.current()).toBe('DAGBOEK')
 
-  expect(await player.answer(choice('BLIJ'))).toBe('TELLER')
+  await player.click(choice('BLIJ'))
+  expect(await player.answer(choice('ZELFSTANDIG'))).toBe('TELLER')
   expect(await player.answer(hotspot('A_T'))).toBe('NOEMER')
-  // a confident learner gets no tussenvraag: straight to the first main question
+  // working zelfstandig: no tussenvraag: straight to the first main question
   expect(await player.answer(hotspot('B_N'))).toBe('S1_MAIN')
   expect(await player.answer(choice('A'))).toBe('S2_MAIN')
   expect(await player.answer(choice('B'))).toBe('S3_MAIN')
@@ -109,10 +110,11 @@ test('adaptief via de toets: every step right straight away skips all follow-up 
   })
 }, 60000)
 
-test('adaptief via de toets: an unsure learner gets the tussenvragen, a wrong step goes deeper', async () => {
-  const player = await openPlayer('rekengesprek')
+test('adaptief via de toets: working met begeleiding gives the tussenvragen, a wrong step goes deeper', async () => {
+  const player = await openPlayer('adaptief-toets')
 
-  expect(await player.answer(choice('TWIJFEL'))).toBe('TELLER')
+  await player.click(choice('TWIJFEL'))
+  expect(await player.answer(choice('BEGELEID'))).toBe('TELLER')
   // pointing at the teller allows unlimited attempts: a wrong hotspot keeps Volgende locked
   await player.click(hotspot('A_N'))
   await player.check()
@@ -142,7 +144,7 @@ test('adaptief via de toets: an unsure learner gets the tussenvragen, a wrong st
 }, 90000)
 
 test('adaptief binnen het item: a wrong answer keeps the item open until it completes itself', async () => {
-  const player = await openPlayer('rekengesprek-adaptief')
+  const player = await openPlayer('adaptief-item')
 
   expect(await player.answer(choice('BLIJ'))).toBe('TELLER')
   expect(await player.answer(hotspot('A_T'))).toBe('NOEMER')

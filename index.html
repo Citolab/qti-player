@@ -21,7 +21,7 @@
     // Route: #/<package>/<item>. Every package is a plain QTI 3 content package in /public.
     const packages = {
       formatief: "formatief", summatief: "kennisnet-1", oefenen: "kennisnet-2",
-      rekengesprek: "rekengesprek", "rekengesprek-adaptief": "rekengesprek-adaptief",
+      "adaptief-toets": "adaptief-toets", "adaptief-item": "adaptief-item",
     };
     const [route, itemId] = location.hash.slice(2).split("/");
     const pkg = packages[route] ? route : "formatief";
@@ -109,8 +109,8 @@
             <a role="tab" class="tab" href="#/formatief"><i class="bi bi-lightbulb me-1"></i>Formatief</a>
             <a role="tab" class="tab" href="#/summatief"><i class="bi bi-mortarboard me-1"></i>Summatief</a>
             <a role="tab" class="tab" href="#/oefenen"><i class="bi bi-1-circle me-1"></i>Eén poging</a>
-            <a role="tab" class="tab" href="#/rekengesprek"><i class="bi bi-chat-dots me-1"></i>Adaptief: toets</a>
-            <a role="tab" class="tab" href="#/rekengesprek-adaptief"><i class="bi bi-diagram-3 me-1"></i>Adaptief: item</a>
+            <a role="tab" class="tab" href="#/adaptief-toets"><i class="bi bi-chat-dots me-1"></i>Adaptief: toets</a>
+            <a role="tab" class="tab" href="#/adaptief-item"><i class="bi bi-diagram-3 me-1"></i>Adaptief: item</a>
           </nav>
           <label for="debug" class="btn btn-ghost btn-sm btn-square" title="Instellingen"><i class="bi bi-gear"></i></label>
         </header>

@@ -7,6 +7,7 @@
     <qti-default-value><qti-value>3</qti-value></qti-default-value>
   </qti-response-declaration>
   <qti-response-declaration identifier="KAARTJES" cardinality="multiple" base-type="identifier" />
+  <qti-response-declaration identifier="WERKWIJZE" cardinality="single" base-type="identifier" />
   <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
   <qti-outcome-declaration identifier="MODE" base-type="identifier" cardinality="single">
     <qti-default-value><qti-value>ZELFSTANDIG</qti-value></qti-default-value>
@@ -33,6 +34,11 @@
       <qti-simple-choice identifier="K5">Ik reken graag uit mijn hoofd</qti-simple-choice>
       <qti-simple-choice identifier="K6">Ik word onrustig van de timer</qti-simple-choice>
     </qti-choice-interaction>
+    <qti-choice-interaction response-identifier="WERKWIJZE" max-choices="1" min-choices="1">
+      <qti-prompt>Hoe wil je vandaag werken?</qti-prompt>
+      <qti-simple-choice identifier="BEGELEID">Met begeleiding: bij elke stap eerst een tussenvraag</qti-simple-choice>
+      <qti-simple-choice identifier="ZELFSTANDIG">Zelfstandig: meteen naar de opgaven</qti-simple-choice>
+    </qti-choice-interaction>
     <qti-feedback-block identifier="DANK" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
       <qti-content-body><p>Dank je wel! Dan gaan we nu samen rekenen.</p></qti-content-body>
     </qti-feedback-block>
@@ -41,7 +47,7 @@
     <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">DANK</qti-base-value></qti-set-outcome-value>
     <qti-response-condition>
       <qti-response-if>
-        <qti-member><qti-variable identifier="GEVOEL" /><qti-multiple><qti-base-value base-type="identifier">TWIJFEL</qti-base-value><qti-base-value base-type="identifier">SPANNEND</qti-base-value><qti-base-value base-type="identifier">ZWAAR</qti-base-value></qti-multiple></qti-member>
+        <qti-match><qti-variable identifier="WERKWIJZE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match>
         <qti-set-outcome-value identifier="MODE"><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-set-outcome-value>
       </qti-response-if>
     </qti-response-condition>
