@@ -39,7 +39,7 @@ Use the `cito-` public events (`cito-test-loaded`, `cito-test-navigated`, `cito-
 
 ### Sequencing (pre-conditions, branch rules)
 
-`@citolab/qti-components` is `10.0.0-next.3` (the `next` dist-tag), which has `qti-number-presented` and `qtiTest.getTestFeedback()` (PR #300), `qti-pre-condition`, `qti-branch-rule`, `ITEMREF.VAR` lookups in `qti-variable`, boolean `qti-match`, extended-text `min-strings` (PR #289) and adaptive items that are `done` on `completionStatus = completed` (PR #298). `index.html` listens to `cito-test-end-reached` (opens the results). Skipped items are not tracked: QTI treats them as items that were not presented. A total over the candidate's own route belongs in the test's outcome processing: the rekengesprek computes `MAXSCORE` with `qti-number-presented` (the unscored rekendagboek has category `unscored`).
+`@citolab/qti-components` is `9.5.0`, which has `qti-number-presented` and `qtiTest.getTestFeedback()` (PR #300), `qti-pre-condition`, `qti-branch-rule`, `ITEMREF.VAR` lookups in `qti-variable`, boolean `qti-match`, extended-text `min-strings` (PR #289) and adaptive items that are `done` on `completionStatus = completed` (PR #298). `index.html` listens to `cito-test-end-reached` (opens the results). Skipped items are not tracked: QTI treats them as items that were not presented. A total over the candidate's own route belongs in the test's outcome processing: the rekengesprek computes `MAXSCORE` with `qti-number-presented` (the unscored rekendagboek has category `unscored`).
 
 ### Rekengesprek packages
 

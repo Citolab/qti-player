@@ -13,8 +13,8 @@ importers:
         version: 1.1.6
     devDependencies:
       '@citolab/qti-components':
-        specifier: 10.0.0-next.3
-        version: 10.0.0-next.3
+        specifier: 9.5.0
+        version: 9.5.0
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.1
@@ -51,8 +51,8 @@ packages:
   '@blazediff/core@1.9.1':
     resolution: {integrity: sha512-ehg3jIkYKulZh+8om/O25vkvSsXXwC+skXmyA87FFx6A/45eqOkZsBltMw/TVteb0mloiGT8oGRTcjRAz66zaA==}
 
-  '@citolab/qti-components@10.0.0-next.3':
-    resolution: {integrity: sha512-GNkiJXG13h3zurfrE2YrFvxK0FgBRntFOALbge1UnO1N85gJ1SBPhr2iEbQKeKBXjaA4t3ipBF0t6ZV3mCQ3YA==}
+  '@citolab/qti-components@9.5.0':
+    resolution: {integrity: sha512-O2WSdJnqLc6HEOOwhm2dmNT3JUwadbQNJD1/oE492pDvUqd9ctov0DwGIZnf61Y2TLrJ1sJYqv5CkAFqj6kZag==}
 
   '@esbuild/aix-ppc64@0.28.2':
     resolution: {integrity: sha512-XExcO+dvLKvVtNTibSTBej1NCAbaGhWn9Ww1ZPx80qsahhPFe/8jgWP0IchNe0F3HwkU7n8ejhH8bjonqht8mQ==}
@@ -727,7 +727,7 @@ snapshots:
 
   '@blazediff/core@1.9.1': {}
 
-  '@citolab/qti-components@10.0.0-next.3':
+  '@citolab/qti-components@9.5.0':
     dependencies:
       '@heximal/templates': 0.1.5
       '@lit/context': 1.1.6

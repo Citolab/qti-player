@@ -25,7 +25,7 @@ main question; wrong → "even dieper kijken" → retry → uitleg. Both are gen
 
 Both tests compute `DIRECT` (steps right straight away) the same way and show the same `qti-test-feedback`.
 
-Missing player features were built here first and are now in qti-components (PR #289, #290, #298); the player runs on `@citolab/qti-components@10.0.0-next.2`.
+Missing player features were built here first and are now in qti-components (PR #289, #290, #298); the player runs on `@citolab/qti-components@9.5.0`.
 
 ## Findings from the full rebuild
 
