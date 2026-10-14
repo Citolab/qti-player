@@ -2,6 +2,8 @@
 
 A minimal, fully functional **QTI 3 player** built with [`@citolab/qti-components`](https://github.com/Citolab/qti-components), plain JavaScript, Tailwind and [daisyUI](https://daisyui.com/). Everything lives in a single `index.html`.
 
+**[▶️ Live demo](https://citolab.github.io/qti-player/)** · **[⚡ Open in StackBlitz](https://stackblitz.com/~/github.com/Citolab/qti-player?file=index.html)**
+
 The demo shows how **one player** delivers both formative and summative tests. The player holds no opinion of its own: all behaviour comes from the QTI package.
 
 ## 🗂️ Demo packages
