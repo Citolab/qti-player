@@ -9,6 +9,7 @@
     "build": "vite build --mode production",
     "preview": "vite build --mode development && vite preview",
     "test:browser": "vite build --mode testing && vitest --config vitest.workspace.js",
+    "test:browser:slow": "STEP_DELAY=800 pnpm test:browser",
     "packages": "node tools/item-declarations.mjs"
   },
   "dependencies": {

@@ -1,4 +1,5 @@
 import { afterEach, expect, test, vi } from 'vitest'
+import { pause } from './pause'
 
 /**
  * The adaptive demos, driven through the real controls: answer, Controleer, Volgende.
@@ -45,12 +46,14 @@ async function openPlayer(route: string) {
   /** Click an element inside the item that is on screen. */
   const click = async (selector: string) => {
     const el = await until(() => item()?.querySelector<HTMLElement>(selector), `${selector} not found on ${current()}`)
+    await pause()
     el.click()
   }
 
   /** Controleer: end the attempt. */
   const check = async () => {
     await until(() => enabled('test-end-attempt'), `Controleer stays disabled on ${current()}`)
+    await pause()
     button('test-end-attempt').click()
   }
 
@@ -58,6 +61,7 @@ async function openPlayer(route: string) {
   const next = async () => {
     const from = current()
     await until(() => enabled('test-next'), `Volgende stays disabled on ${from}`)
+    await pause()
     button('test-next').click()
     return until(() => (current() !== from || resultsOpen()) && current(), `stayed on ${from}`)
   }
@@ -108,7 +112,7 @@ test('adaptief via de toets: every step right straight away skips all follow-up 
     score: '6 / 6',
     feedback: expect.stringContaining('Alle vier de stappen in één keer goed'),
   })
-}, 60000)
+})
 
 test('adaptief via de toets: working met begeleiding gives the tussenvragen, a wrong step goes deeper', async () => {
   const player = await openPlayer('adaptief-toets')
@@ -141,7 +145,7 @@ test('adaptief via de toets: working met begeleiding gives the tussenvragen, a w
     score: '12 / 13',
     feedback: expect.stringContaining('Een deel van de stappen ging meteen goed'),
   })
-}, 90000)
+})
 
 test('adaptief binnen het item: a wrong answer keeps the item open until it completes itself', async () => {
   const player = await openPlayer('adaptief-item')
@@ -176,4 +180,4 @@ test('adaptief binnen het item: a wrong answer keeps the item open until it comp
     score: '5 / 6',
     feedback: expect.stringContaining('Een deel van de stappen ging meteen goed'),
   })
-}, 60000)
+})

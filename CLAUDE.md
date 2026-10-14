@@ -19,6 +19,8 @@ Browser tests run against the **built** `dist/index.html` (`testerHtmlPath` in `
 pnpm vitest --config vitest.workspace.js tests/Player.test.ts -t "can move through test items"
 ```
 
+`pnpm test:browser:slow` (or `STEP_DELAY=<ms> pnpm test:browser`) pauses before every click (`tests/pause.ts`), to follow a run in the Vitest browser UI.
+
 Browser tests: `tests/Player.test.ts` (default route) and `tests/Adaptief.test.ts`, which loads the player in a same-origin iframe on the `#/adaptief-toets` and `#/adaptief-item` routes and clicks through them (answer, Controleer, Volgende), checking the route and the final score.
 
 There is no linter configured. CI (`.github/workflows/publish.yml`) only installs, builds and deploys `dist/` to GitHub Pages on push to `main` — it does not run tests.
