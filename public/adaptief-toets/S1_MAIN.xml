@@ -16,19 +16,19 @@
     <p class="qti-well"><strong>Stap 1 · Gelijknamig maken</strong></p>
     
     <qti-choice-interaction response-identifier="RESPONSE" max-choices="1" min-choices="1">
-      <qti-prompt>Welke noemer kun je voor <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math> én <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math> gebruiken?</qti-prompt>
-      <qti-simple-choice identifier="A">4</qti-simple-choice>
-      <qti-simple-choice identifier="B">6</qti-simple-choice>
-      <qti-simple-choice identifier="C">8</qti-simple-choice>
+      <qti-prompt>Welke noemer kun je voor <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>3</mn></mfrac></math> én <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math> gebruiken?</qti-prompt>
+      <qti-simple-choice identifier="A">6</qti-simple-choice>
+      <qti-simple-choice identifier="B">9</qti-simple-choice>
+      <qti-simple-choice identifier="C">12</qti-simple-choice>
     </qti-choice-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Ja! 4 zit in de tafel van 2 én in de tafel van 4. Dus 4 kun je voor allebei gebruiken.</p></qti-content-body>
+      <qti-content-body><p>Ja! 6 zit in de tafel van 3 én in de tafel van 6. Dus 6 kun je voor allebei gebruiken.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="GOED_ALT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>8 kan ook: 8 zit in de tafel van 2 én van 4. Maar 4 is de kleinste, en daarmee blijft de som het makkelijkst. We rekenen verder met 4.</p></qti-content-body>
+      <qti-content-body><p>12 kan ook: 12 zit in de tafel van 3 én van 6. Maar 6 is de kleinste, dan blijven de getallen klein. We rekenen verder met 6.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
-      <qti-content-body><p>We gaan even een stapje terug om te kijken waar het spaak loopt.</p></qti-content-body>
+      <qti-content-body><p>Nog niet goed. We bekijken het eerst in kleinere stappen.</p></qti-content-body>
     </qti-feedback-block>
   </qti-item-body>
   <qti-response-processing>

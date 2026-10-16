@@ -15,15 +15,15 @@
   <qti-item-body>
     <p class="qti-well"><strong>Verkennen</strong> · de som lezen</p>
     <qti-hotspot-interaction response-identifier="RESPONSE" max-choices="1">
-      <qti-prompt>Klik nu op de <strong>noemer</strong> van <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math>.</qti-prompt>
-      <img src="resources/som.svg" width="400" height="200" alt="De som: een half plus een kwart is vraagteken" />
-      <qti-hotspot-choice identifier="A_T" shape="rect" coords="50,30,110,92" aria-label="teller van een half" />
-      <qti-hotspot-choice identifier="A_N" shape="rect" coords="50,108,110,172" aria-label="noemer van een half" />
-      <qti-hotspot-choice identifier="B_T" shape="rect" coords="210,30,270,92" aria-label="teller van een kwart" />
-      <qti-hotspot-choice identifier="B_N" shape="rect" coords="210,108,270,172" aria-label="noemer van een kwart" />
+      <qti-prompt>Klik nu op de <strong>noemer</strong> van <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math>.</qti-prompt>
+      <img src="resources/som.svg" width="400" height="200" alt="De som: twee derde plus een zesde is vraagteken" />
+      <qti-hotspot-choice identifier="A_T" shape="rect" coords="50,30,110,92" aria-label="teller van twee derde" />
+      <qti-hotspot-choice identifier="A_N" shape="rect" coords="50,108,110,172" aria-label="noemer van twee derde" />
+      <qti-hotspot-choice identifier="B_T" shape="rect" coords="210,30,270,92" aria-label="teller van een zesde" />
+      <qti-hotspot-choice identifier="B_N" shape="rect" coords="210,108,270,172" aria-label="noemer van een zesde" />
     </qti-hotspot-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Precies! De noemer staat onder de streep en vertelt hoe groot de stukjes zijn: kwarten.</p></qti-content-body>
+      <qti-content-body><p>Precies! De noemer staat onder de streep en vertelt hoe groot de stukjes zijn: zesden.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
       <qti-content-body><p>Dat is hem niet. De noemer staat <strong>onder</strong> de breukstreep. Probeer het nog eens.</p></qti-content-body>

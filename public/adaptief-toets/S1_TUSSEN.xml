@@ -16,16 +16,16 @@
     <p class="qti-well"><strong>Stap 1 · Gelijknamig maken</strong> · tussenvraag</p>
     
     <qti-choice-interaction response-identifier="RESPONSE" max-choices="1" min-choices="1">
-      <qti-prompt>Kijk eerst naar de noemers: 2 en 4. Zijn die gelijk?</qti-prompt>
+      <qti-prompt>Kijk eerst naar de noemers: 3 en 6. Zijn die gelijk?</qti-prompt>
       <qti-simple-choice identifier="A">Ja</qti-simple-choice>
       <qti-simple-choice identifier="B">Nee</qti-simple-choice>
     </qti-choice-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Klopt, 2 en 4 zijn verschillend. Daarom zoeken we eerst een noemer die voor allebei werkt.</p></qti-content-body>
+      <qti-content-body><p>Klopt, 3 en 6 zijn verschillend. Daarom zoeken we eerst een noemer die bij allebei past.</p></qti-content-body>
     </qti-feedback-block>
     
     <qti-feedback-block identifier="FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
-      <qti-content-body><p>Kijk nog eens goed: onder de streep staat bij de ene breuk een 2 en bij de andere een 4. Die zijn niet gelijk, dus zoeken we eerst een noemer die voor allebei werkt.</p></qti-content-body>
+      <qti-content-body><p>Kijk nog eens goed: onder de streep staat bij de ene breuk een 3 en bij de andere een 6. Die zijn niet gelijk, dus zoeken we eerst een noemer die bij allebei past.</p></qti-content-body>
     </qti-feedback-block>
   </qti-item-body>
   <qti-response-processing>

@@ -8,7 +8,7 @@
   <resources>
     <resource identifier="test" type="imsqti_test_xmlv3p0" href="AssessmentTest.xml">
       <file href="AssessmentTest.xml"/>
-      <dependency identifierref="DAGBOEK"/>
+      <dependency identifierref="INTRO"/>
       <dependency identifierref="TELLER"/>
       <dependency identifierref="NOEMER"/>
       <dependency identifierref="S1_TUSSEN"/>
@@ -31,7 +31,7 @@
       <dependency identifierref="S4_V1"/>
       <dependency identifierref="S4_RETRY"/>
     </resource>
-    <resource identifier="DAGBOEK" type="imsqti_item_xmlv3p0" href="DAGBOEK.xml"><file href="DAGBOEK.xml"/></resource>
+    <resource identifier="INTRO" type="imsqti_item_xmlv3p0" href="INTRO.xml"><file href="INTRO.xml"/></resource>
     <resource identifier="TELLER" type="imsqti_item_xmlv3p0" href="TELLER.xml"><file href="TELLER.xml"/></resource>
     <resource identifier="NOEMER" type="imsqti_item_xmlv3p0" href="NOEMER.xml"><file href="NOEMER.xml"/></resource>
     <resource identifier="S1_TUSSEN" type="imsqti_item_xmlv3p0" href="S1_TUSSEN.xml"><file href="S1_TUSSEN.xml"/></resource>

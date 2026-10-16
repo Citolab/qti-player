@@ -41,11 +41,11 @@ Use the `cito-` public events (`cito-test-loaded`, `cito-test-navigated`, `cito-
 
 ### Sequencing (pre-conditions, branch rules)
 
-`@citolab/qti-components` is `9.5.0`, which has `qti-number-presented` and `qtiTest.getTestFeedback()` (PR #300), `qti-pre-condition`, `qti-branch-rule`, `ITEMREF.VAR` lookups in `qti-variable`, boolean `qti-match`, extended-text `min-strings` (PR #289) and adaptive items that are `done` on `completionStatus = completed` (PR #298). `index.html` listens to `cito-test-end-reached` (opens the results). Skipped items are not tracked: QTI treats them as items that were not presented. A total over the candidate's own route belongs in the test's outcome processing: `adaptief-toets` computes `MAXSCORE` with `qti-number-presented` (the unscored rekendagboek has category `unscored`).
+`@citolab/qti-components` is `9.5.0`, which has `qti-number-presented` and `qtiTest.getTestFeedback()` (PR #300), `qti-pre-condition`, `qti-branch-rule`, `ITEMREF.VAR` lookups in `qti-variable`, boolean `qti-match`, extended-text `min-strings` (PR #289) and adaptive items that are `done` on `completionStatus = completed` (PR #298). `index.html` listens to `cito-test-end-reached` (opens the results). Skipped items are not tracked: QTI treats them as items that were not presented. A total over the candidate's own route belongs in the test's outcome processing: `adaptief-toets` computes `MAXSCORE` with `qti-number-presented` (the unscored intro item has category `unscored`).
 
 ### Adaptive packages
 
-Two small demos of the same four-step mini-lesson (½ + ¼), to compare where adaptivity lives: `public/adaptief-toets` adapts in the **test** (plain items + `qti-branch-rule`), `public/adaptief-item` adapts in the **item** (one `adaptive="true"` item per step, flow driven by a `FASE` outcome).
+Two small demos of the same four-step mini-lesson (⅔ + ⅙), to compare where adaptivity lives: `public/adaptief-toets` adapts in the **test** (plain items + `qti-branch-rule`), `public/adaptief-item` adapts in the **item** (one `adaptive="true"` item per step, flow driven by a `FASE` outcome).
 
 ### Environment / base paths
 

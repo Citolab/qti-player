@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd"
-  identifier="S3_V1" title="Stap 3 · Optellen · even dieper kijken 1" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  identifier="S3_V1" title="Stap 3 · Optellen · hulpvraag 1" adaptive="false" time-dependent="false" xml:lang="nl-NL">
   <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
     <qti-correct-response><qti-value>A</qti-value></qti-correct-response>
   </qti-response-declaration>
@@ -13,7 +13,7 @@
   </qti-outcome-declaration>
   <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
   <qti-item-body>
-    <p class="qti-well"><strong>Stap 3 · Optellen</strong> · even dieper kijken (1/2)</p>
+    <p class="qti-well"><strong>Stap 3 · Optellen</strong> · hulpvraag 1 van 2</p>
     
     <qti-choice-interaction response-identifier="RESPONSE" max-choices="1" min-choices="1">
       <qti-prompt>Wat gebeurt er met de noemer als je gelijknamige breuken optelt?</qti-prompt>

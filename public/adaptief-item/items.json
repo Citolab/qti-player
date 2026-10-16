@@ -1,7 +1,7 @@
 [
   {
-    "identifier": "DAGBOEK",
-    "title": "Mijn rekendagboek"
+    "identifier": "INTRO",
+    "title": "Introductie"
   },
   {
     "identifier": "TELLER",
@@ -17,7 +17,7 @@
   },
   {
     "identifier": "S2_ADAPTIEF",
-    "title": "Stap 2 · 1/2 omzetten (adaptief item)"
+    "title": "Stap 2 · 2/3 omzetten (adaptief item)"
   },
   {
     "identifier": "S3_ADAPTIEF",

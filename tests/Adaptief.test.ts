@@ -93,9 +93,8 @@ const mainChoice = (id: string) => `qti-choice-interaction[response-identifier="
 
 test('adaptief via de toets: every step right straight away skips all follow-up questions', async () => {
   const player = await openPlayer('adaptief-toets')
-  expect(player.current()).toBe('DAGBOEK')
+  expect(player.current()).toBe('INTRO')
 
-  await player.click(choice('BLIJ'))
   expect(await player.answer(choice('ZELFSTANDIG'))).toBe('TELLER')
   expect(await player.answer(hotspot('A_T'))).toBe('NOEMER')
   // working zelfstandig: no tussenvraag: straight to the first main question
@@ -110,14 +109,13 @@ test('adaptief via de toets: every step right straight away skips all follow-up 
   // MAXSCORE counts only the presented scored items (qti-number-presented)
   expect(await player.results()).toEqual({
     score: '6 / 6',
-    feedback: expect.stringContaining('Alle vier de stappen in één keer goed'),
+    feedback: expect.stringContaining('elke stap was meteen goed'),
   })
 })
 
 test('adaptief via de toets: working met begeleiding gives the tussenvragen, a wrong step goes deeper', async () => {
   const player = await openPlayer('adaptief-toets')
 
-  await player.click(choice('TWIJFEL'))
   expect(await player.answer(choice('BEGELEID'))).toBe('TELLER')
   // pointing at the teller allows unlimited attempts: a wrong hotspot keeps Volgende locked
   await player.click(hotspot('A_N'))
@@ -129,7 +127,7 @@ test('adaptief via de toets: working met begeleiding gives the tussenvragen, a w
   expect(await player.answer(choice('B'))).toBe('S1_MAIN')
   expect(await player.answer(choice('A'))).toBe('S2_TUSSEN') // right: the follow-up questions of step 1 are skipped
   expect(await player.answer(choice('A'))).toBe('S2_MAIN')
-  expect(await player.answer(choice('A'))).toBe('S2_V1') // wrong: even dieper kijken
+  expect(await player.answer(choice('A'))).toBe('S2_V1') // wrong: the hulpvragen
   expect(await player.answer(choice('B'))).toBe('S2_V2')
   expect(await player.answer(choice('A'))).toBe('S2_RETRY')
   expect(await player.answer(choice('B'))).toBe('S3_TUSSEN')
@@ -143,14 +141,14 @@ test('adaptief via de toets: working met begeleiding gives the tussenvragen, a w
   // 13 scored items presented, the wrong main question of step 2 is the only miss
   expect(await player.results()).toEqual({
     score: '12 / 13',
-    feedback: expect.stringContaining('Een deel van de stappen ging meteen goed'),
+    feedback: expect.stringContaining('Een paar stappen waren meteen goed'),
   })
 })
 
 test('adaptief binnen het item: a wrong answer keeps the item open until it completes itself', async () => {
   const player = await openPlayer('adaptief-item')
 
-  expect(await player.answer(choice('BLIJ'))).toBe('TELLER')
+  expect(await player.answer(choice('JA'))).toBe('TELLER')
   expect(await player.answer(hotspot('A_T'))).toBe('NOEMER')
   expect(await player.answer(hotspot('B_N'))).toBe('S1_ADAPTIEF')
 
@@ -178,6 +176,6 @@ test('adaptief binnen het item: a wrong answer keeps the item open until it comp
   // SCORE only counts steps right straight away: step 1 needed the retry
   expect(await player.results()).toEqual({
     score: '5 / 6',
-    feedback: expect.stringContaining('Een deel van de stappen ging meteen goed'),
+    feedback: expect.stringContaining('Een paar stappen waren meteen goed'),
   })
 })

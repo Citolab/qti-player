@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd"
-  identifier="S3_V2" title="Stap 3 · Optellen · even dieper kijken 2" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  identifier="S3_V2" title="Stap 3 · Optellen · hulpvraag 2" adaptive="false" time-dependent="false" xml:lang="nl-NL">
   <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
     <qti-correct-response><qti-value>B</qti-value></qti-correct-response>
   </qti-response-declaration>
@@ -13,20 +13,20 @@
   </qti-outcome-declaration>
   <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
   <qti-item-body>
-    <p class="qti-well"><strong>Stap 3 · Optellen</strong> · even dieper kijken (2/2)</p>
-    <p><img src="resources/optellen.svg" alt="Twee kwarten plus een kwart is drie kwarten" /></p>
+    <p class="qti-well"><strong>Stap 3 · Optellen</strong> · hulpvraag 2 van 2</p>
+    <p><img src="resources/optellen.svg" alt="Vier zesde plus een zesde is vijf zesde" /></p>
     <qti-choice-interaction response-identifier="RESPONSE" max-choices="1" min-choices="1">
-      <qti-prompt>2 vierde + 1 vierde = hoeveel vierden?</qti-prompt>
-      <qti-simple-choice identifier="A">2</qti-simple-choice>
-      <qti-simple-choice identifier="B">3</qti-simple-choice>
-      <qti-simple-choice identifier="C">4</qti-simple-choice>
+      <qti-prompt>4 zesde + 1 zesde = hoeveel zesden?</qti-prompt>
+      <qti-simple-choice identifier="A">4</qti-simple-choice>
+      <qti-simple-choice identifier="B">5</qti-simple-choice>
+      <qti-simple-choice identifier="C">6</qti-simple-choice>
     </qti-choice-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>2 stukjes + 1 stukje = 3 stukjes van een kwart: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.</p></qti-content-body>
+      <qti-content-body><p>4 stukjes + 1 stukje = 5 stukjes van een zesde: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>6</mn></mfrac></math>.</p></qti-content-body>
     </qti-feedback-block>
     
     <qti-feedback-block identifier="FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
-      <qti-content-body><p>Het goede antwoord is <strong>3</strong>. 2 stukjes + 1 stukje = 3 stukjes van een kwart: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.</p></qti-content-body>
+      <qti-content-body><p>Het goede antwoord is <strong>5</strong>. 4 stukjes + 1 stukje = 5 stukjes van een zesde: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>6</mn></mfrac></math>.</p></qti-content-body>
     </qti-feedback-block>
   </qti-item-body>
   <qti-response-processing>

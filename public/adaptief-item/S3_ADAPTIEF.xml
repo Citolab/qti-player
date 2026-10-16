@@ -28,18 +28,18 @@
   <qti-item-body>
     <p class="qti-well"><strong>Stap 3 · Optellen</strong> · één adaptief item</p>
     <qti-choice-interaction response-identifier="RESPONSE" max-choices="1">
-      <qti-prompt>Hoeveel is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>4</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math>?</qti-prompt>
-      <qti-simple-choice identifier="A"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>8</mn></mfrac></math></qti-simple-choice>
-      <qti-simple-choice identifier="B"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math></qti-simple-choice>
-      <qti-simple-choice identifier="C"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+      <qti-prompt>Hoeveel is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>4</mn><mn>6</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math>?</qti-prompt>
+      <qti-simple-choice identifier="A"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>12</mn></mfrac></math></qti-simple-choice>
+      <qti-simple-choice identifier="B"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>6</mn></mfrac></math></qti-simple-choice>
+      <qti-simple-choice identifier="C"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>4</mn><mn>12</mn></mfrac></math></qti-simple-choice>
     </qti-choice-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Goed zo! 2 kwarten + 1 kwart = 3 kwarten. De noemer blijft 4.</p></qti-content-body>
+      <qti-content-body><p>Goed zo! 4 zesden + 1 zesde = 5 zesden. De noemer blijft 6.</p></qti-content-body>
     </qti-feedback-block>
     
     <qti-feedback-block identifier="VERDIEPING" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
       <qti-content-body>
-        <p>We gaan even een stapje terug om te kijken waar het spaak loopt. <strong>Even dieper kijken:</strong></p>
+        <p>Nog niet goed. We bekijken het eerst in kleinere stappen. <strong>Hulpvragen:</strong></p>
         
         <qti-choice-interaction response-identifier="R_V1" max-choices="1">
           <qti-prompt>Wat gebeurt er met de noemer als je gelijknamige breuken optelt?</qti-prompt>
@@ -47,33 +47,33 @@
           <qti-simple-choice identifier="B">Die tel je op</qti-simple-choice>
           <qti-simple-choice identifier="C">Die verdubbelt</qti-simple-choice>
         </qti-choice-interaction>
-        <p><img src="resources/optellen.svg" alt="Twee kwarten plus een kwart is drie kwarten" /></p>
+        <p><img src="resources/optellen.svg" alt="Vier zesde plus een zesde is vijf zesde" /></p>
         <qti-choice-interaction response-identifier="R_V2" max-choices="1">
-          <qti-prompt>2 vierde + 1 vierde = hoeveel vierden?</qti-prompt>
-          <qti-simple-choice identifier="A">2</qti-simple-choice>
-          <qti-simple-choice identifier="B">3</qti-simple-choice>
-          <qti-simple-choice identifier="C">4</qti-simple-choice>
+          <qti-prompt>4 zesde + 1 zesde = hoeveel zesden?</qti-prompt>
+          <qti-simple-choice identifier="A">4</qti-simple-choice>
+          <qti-simple-choice identifier="B">5</qti-simple-choice>
+          <qti-simple-choice identifier="C">6</qti-simple-choice>
         </qti-choice-interaction>
       </qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="V_UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-info">
-      <qti-content-body><p>De stukjes blijven even groot, dus de noemer verandert niet. 2 stukjes + 1 stukje = 3 stukjes van een kwart: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.</p></qti-content-body>
+      <qti-content-body><p>De stukjes blijven even groot, dus de noemer verandert niet. 4 stukjes + 1 stukje = 5 stukjes van een zesde: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>6</mn></mfrac></math>.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="RETRY" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
       <qti-content-body>
         <qti-choice-interaction response-identifier="R_RETRY" max-choices="1">
-          <qti-prompt>Probeer het nog eens. Hoeveel is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>4</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math>?</qti-prompt>
-          <qti-simple-choice identifier="A"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>8</mn></mfrac></math></qti-simple-choice>
-          <qti-simple-choice identifier="B"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math></qti-simple-choice>
-          <qti-simple-choice identifier="C"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+          <qti-prompt>Probeer het nog eens. Hoeveel is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>4</mn><mn>6</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math>?</qti-prompt>
+          <qti-simple-choice identifier="A"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>12</mn></mfrac></math></qti-simple-choice>
+          <qti-simple-choice identifier="B"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>6</mn></mfrac></math></qti-simple-choice>
+          <qti-simple-choice identifier="C"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>4</mn><mn>12</mn></mfrac></math></qti-simple-choice>
         </qti-choice-interaction>
       </qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="RETRY_GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Goed zo! 2 kwarten + 1 kwart = 3 kwarten. De noemer blijft 4.</p></qti-content-body>
+      <qti-content-body><p>Goed zo! 4 zesden + 1 zesde = 5 zesden. De noemer blijft 6.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="RETRY_FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
-      <qti-content-body><p><strong>Het goede antwoord is: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.</strong> Bij gelijknamige breuken tel je alleen de tellers op: 2 + 1 = 3. De noemer blijft 4, want de stukjes blijven kwarten. Dus <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>.</p></qti-content-body>
+      <qti-content-body><p><strong>Het goede antwoord is: <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>6</mn></mfrac></math>.</strong> Bij gelijknamige breuken tel je alleen de tellers op: 4 + 1 = 5. De noemer blijft 6, want de stukjes blijven zesden. Dus <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>6</mn></mfrac></math>.</p></qti-content-body>
     </qti-feedback-block>
   </qti-item-body>
   <qti-response-processing>
@@ -95,7 +95,7 @@
           </qti-response-else>
         </qti-response-condition>
       </qti-response-if>
-      <!-- attempt 2: "even dieper kijken", then offer the retry -->
+      <!-- attempt 2: the hulpvragen, then offer the retry -->
       <qti-response-else-if>
         <qti-match><qti-variable identifier="FASE" /><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-match>
         <qti-set-outcome-value identifier="FASE"><qti-base-value base-type="identifier">RETRY</qti-base-value></qti-set-outcome-value>

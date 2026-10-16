@@ -13,8 +13,8 @@ The demo shows how **one player** delivers both formative and summative tests. T
 | `#/formatief`  | `public/formatief`   | Formative: werkwoordspelling, 2 attempts, hint + explanation          |
 | `#/summatief`  | `public/kennisnet-1` | Summative: browse freely, no feedback, result after handing in        |
 | `#/oefenen`    | `public/kennisnet-2` | Practice: 1 attempt per question, feedback straight away              |
-| `#/adaptief-toets` | `public/adaptief-toets` | ½ + ¼, adaptive **in the test**: one item per question, `qti-branch-rule` skips "even dieper kijken" when a step is right straight away |
-| `#/adaptief-item` | `public/adaptief-item` | The same four steps, adaptive **in the item**: one `adaptive="true"` item per step walks main question → even dieper kijken → retry |
+| `#/adaptief-toets` | `public/adaptief-toets` | ⅔ + ⅙, adaptive **in the test**: one item per question, `qti-branch-rule` skips the hulpvragen when a step is right straight away |
+| `#/adaptief-item` | `public/adaptief-item` | The same four steps, adaptive **in the item**: one `adaptive="true"` item per step walks main question → hulpvragen → retry |
 
 Deep links to an item work too: `#/formatief/KOFSCHIP`.
 

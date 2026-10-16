@@ -16,16 +16,16 @@
     <p class="qti-well"><strong>Stap 4 · Antwoord controleren</strong> · tussenvraag</p>
     
     <qti-choice-interaction response-identifier="RESPONSE" max-choices="1" min-choices="1">
-      <qti-prompt>Is er een getal groter dan 1 waar je 3 én 4 allebei door kunt delen?</qti-prompt>
+      <qti-prompt>Is er een getal groter dan 1 waar je 5 én 6 allebei door kunt delen?</qti-prompt>
       <qti-simple-choice identifier="A">Ja</qti-simple-choice>
       <qti-simple-choice identifier="B">Nee</qti-simple-choice>
     </qti-choice-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Klopt: 3 en 4 hebben geen gemeenschappelijke deler. Dan kun je de breuk niet vereenvoudigen.</p></qti-content-body>
+      <qti-content-body><p>Klopt: 5 en 6 hebben geen gemeenschappelijke deler. Dan kun je de breuk niet vereenvoudigen.</p></qti-content-body>
     </qti-feedback-block>
     
     <qti-feedback-block identifier="FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
-      <qti-content-body><p>Probeer maar: 2 past niet in 3, en 3 past niet in 4. Er is geen getal waar je allebei door kunt delen.</p></qti-content-body>
+      <qti-content-body><p>Probeer maar: 2 en 3 passen niet in 5, en 5 past niet in 6. Er is geen getal waar je allebei door kunt delen.</p></qti-content-body>
     </qti-feedback-block>
   </qti-item-body>
   <qti-response-processing>

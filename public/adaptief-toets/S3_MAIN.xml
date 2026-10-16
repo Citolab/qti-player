@@ -16,17 +16,17 @@
     <p class="qti-well"><strong>Stap 3 · Optellen</strong></p>
     
     <qti-choice-interaction response-identifier="RESPONSE" max-choices="1" min-choices="1">
-      <qti-prompt>Hoeveel is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>4</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math>?</qti-prompt>
-      <qti-simple-choice identifier="A"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>8</mn></mfrac></math></qti-simple-choice>
-      <qti-simple-choice identifier="B"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>4</mn></mfrac></math></qti-simple-choice>
-      <qti-simple-choice identifier="C"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>8</mn></mfrac></math></qti-simple-choice>
+      <qti-prompt>Hoeveel is <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>4</mn><mn>6</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math>?</qti-prompt>
+      <qti-simple-choice identifier="A"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>12</mn></mfrac></math></qti-simple-choice>
+      <qti-simple-choice identifier="B"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mn>6</mn></mfrac></math></qti-simple-choice>
+      <qti-simple-choice identifier="C"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>4</mn><mn>12</mn></mfrac></math></qti-simple-choice>
     </qti-choice-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Goed zo! 2 kwarten + 1 kwart = 3 kwarten. De noemer blijft 4.</p></qti-content-body>
+      <qti-content-body><p>Goed zo! 4 zesden + 1 zesde = 5 zesden. De noemer blijft 6.</p></qti-content-body>
     </qti-feedback-block>
     
     <qti-feedback-block identifier="FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
-      <qti-content-body><p>We gaan even een stapje terug om te kijken waar het spaak loopt.</p></qti-content-body>
+      <qti-content-body><p>Nog niet goed. We bekijken het eerst in kleinere stappen.</p></qti-content-body>
     </qti-feedback-block>
   </qti-item-body>
   <qti-response-processing>

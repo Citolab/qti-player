@@ -2,10 +2,10 @@
 <!--
   Adaptivity in the TEST. Every question is a plain, non-adaptive item.
   - qti-pre-condition on S<n>_TUSSEN: only shown when the learner chose "Met begeleiding" in the
-    rekendagboek (DAGBOEK.MODE = BEGELEID; the other mode is ZELFSTANDIG). Conditions read earlier
+    intro (INTRO.MODE = BEGELEID; the other mode is ZELFSTANDIG). Conditions read earlier
     item outcomes with the item prefix.
   - qti-branch-rule on S<n>_MAIN: right -> jump to the next step (last step: EXIT_TEST), skipping
-    "even dieper kijken" (S<n>_V*) and the retry (S<n>_RETRY). Wrong -> the next items in order.
+    the hulpvragen (S<n>_V*) and the retry (S<n>_RETRY). Wrong -> the next items in order.
   - qti-item-session-control: 1 attempt, unlimited for pointing at teller / noemer.
   Compare public/adaptief-item, where the step flow lives inside one adaptive item per step.
 -->
@@ -26,16 +26,16 @@
   </qti-outcome-declaration>
   <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
 
-  <qti-test-part identifier="GESPREK" navigation-mode="linear" submission-mode="individual">
+  <qti-test-part identifier="LES" navigation-mode="linear" submission-mode="individual">
     <qti-item-session-control max-attempts="1" show-feedback="true" />
-    <qti-assessment-section identifier="SOM" title="Samen door één som" visible="true">
+    <qti-assessment-section identifier="SOM" title="Eén som in vier stappen" visible="true">
       <qti-rubric-block use="instructions" view="candidate" class="qti-rubric-discretionary-placement">
         <qti-content-body>
-          <p><strong>De som van dit gesprek:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math> = ?</p>
-          <p>Voor de versiering van de klas knipt Sam een halve meter lint af en Noor een kwart meter. Hoeveel meter lint hebben ze samen?</p>
+          <p><strong>De som:</strong> <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>3</mn></mfrac></math> + <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math> = ?</p>
+          <p>Fien verft <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>3</mn></mfrac></math> van het tuinhek, haar buurjongen Mo verft <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math>. Welk deel van het hek is samen geverfd?</p>
         </qti-content-body>
       </qti-rubric-block>
-      <qti-assessment-item-ref identifier="DAGBOEK" href="DAGBOEK.xml" category="unscored">
+      <qti-assessment-item-ref identifier="INTRO" href="INTRO.xml" category="unscored">
         <qti-item-session-control max-attempts="1" show-feedback="true" allow-skipping="false" />
       </qti-assessment-item-ref>
       <qti-assessment-item-ref identifier="TELLER" href="TELLER.xml">
@@ -45,7 +45,7 @@
         <qti-item-session-control max-attempts="0" show-feedback="true" />
       </qti-assessment-item-ref>
       <qti-assessment-item-ref identifier="S1_TUSSEN" href="S1_TUSSEN.xml">
-        <qti-pre-condition><qti-match><qti-variable identifier="DAGBOEK.MODE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match></qti-pre-condition>
+        <qti-pre-condition><qti-match><qti-variable identifier="INTRO.MODE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match></qti-pre-condition>
       </qti-assessment-item-ref>
       <qti-assessment-item-ref identifier="S1_MAIN" href="S1_MAIN.xml">
         <qti-branch-rule target="S2_TUSSEN"><qti-gte><qti-variable identifier="S1_MAIN.SCORE" /><qti-base-value base-type="float">1</qti-base-value></qti-gte></qti-branch-rule>
@@ -54,7 +54,7 @@
       <qti-assessment-item-ref identifier="S1_V2" href="S1_V2.xml" />
       <qti-assessment-item-ref identifier="S1_RETRY" href="S1_RETRY.xml" />
       <qti-assessment-item-ref identifier="S2_TUSSEN" href="S2_TUSSEN.xml">
-        <qti-pre-condition><qti-match><qti-variable identifier="DAGBOEK.MODE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match></qti-pre-condition>
+        <qti-pre-condition><qti-match><qti-variable identifier="INTRO.MODE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match></qti-pre-condition>
       </qti-assessment-item-ref>
       <qti-assessment-item-ref identifier="S2_MAIN" href="S2_MAIN.xml">
         <qti-branch-rule target="S3_TUSSEN"><qti-gte><qti-variable identifier="S2_MAIN.SCORE" /><qti-base-value base-type="float">1</qti-base-value></qti-gte></qti-branch-rule>
@@ -63,7 +63,7 @@
       <qti-assessment-item-ref identifier="S2_V2" href="S2_V2.xml" />
       <qti-assessment-item-ref identifier="S2_RETRY" href="S2_RETRY.xml" />
       <qti-assessment-item-ref identifier="S3_TUSSEN" href="S3_TUSSEN.xml">
-        <qti-pre-condition><qti-match><qti-variable identifier="DAGBOEK.MODE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match></qti-pre-condition>
+        <qti-pre-condition><qti-match><qti-variable identifier="INTRO.MODE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match></qti-pre-condition>
       </qti-assessment-item-ref>
       <qti-assessment-item-ref identifier="S3_MAIN" href="S3_MAIN.xml">
         <qti-branch-rule target="S4_TUSSEN"><qti-gte><qti-variable identifier="S3_MAIN.SCORE" /><qti-base-value base-type="float">1</qti-base-value></qti-gte></qti-branch-rule>
@@ -72,7 +72,7 @@
       <qti-assessment-item-ref identifier="S3_V2" href="S3_V2.xml" />
       <qti-assessment-item-ref identifier="S3_RETRY" href="S3_RETRY.xml" />
       <qti-assessment-item-ref identifier="S4_TUSSEN" href="S4_TUSSEN.xml">
-        <qti-pre-condition><qti-match><qti-variable identifier="DAGBOEK.MODE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match></qti-pre-condition>
+        <qti-pre-condition><qti-match><qti-variable identifier="INTRO.MODE" /><qti-base-value base-type="identifier">BEGELEID</qti-base-value></qti-match></qti-pre-condition>
       </qti-assessment-item-ref>
       <qti-assessment-item-ref identifier="S4_MAIN" href="S4_MAIN.xml">
         <qti-branch-rule target="EXIT_TEST"><qti-gte><qti-variable identifier="S4_MAIN.SCORE" /><qti-base-value base-type="float">1</qti-base-value></qti-gte></qti-branch-rule>
@@ -88,7 +88,7 @@
     </qti-set-outcome-value>
     <qti-set-outcome-value identifier="MAXSCORE">
       <!-- every scored item is worth 1 point: count the items this candidate was shown, so items a branch rule
-           or pre-condition passed over do not count against them (the rekendagboek is not scored) -->
+           or pre-condition passed over do not count against them (the intro is not scored) -->
       <qti-number-presented exclude-category="unscored" />
     </qti-set-outcome-value>
     <qti-set-outcome-value identifier="PERCENTAGE">
@@ -117,12 +117,12 @@
   </qti-outcome-processing>
 
   <qti-test-feedback identifier="ZELFSTANDIG" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
-    <qti-content-body>Alle vier de stappen in één keer goed. Je kunt breuken met verschillende noemers zelfstandig optellen.</qti-content-body>
+    <qti-content-body>Knap: elke stap was meteen goed. Breuken met verschillende noemers optellen lukt je al zelfstandig.</qti-content-body>
   </qti-test-feedback>
   <qti-test-feedback identifier="OP_WEG" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
-    <qti-content-body>Een deel van de stappen ging meteen goed, bij de andere hielp het om even dieper te kijken. Oefen die stappen nog eens met stroken.</qti-content-body>
+    <qti-content-body>Een paar stappen waren meteen goed, bij de andere hielpen de hulpvragen. Oefen die stappen nog eens met stroken.</qti-content-body>
   </qti-test-feedback>
   <qti-test-feedback identifier="BEGELEIDING" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
-    <qti-content-body>De meeste stappen gingen nog niet in één keer. Dat is niet erg: we oefenen samen verder met stroken en tekeningen.</qti-content-body>
+    <qti-content-body>De meeste stappen lukten nog niet meteen. Geen probleem: met stroken en tekeningen oefen je verder, dan wordt het steeds makkelijker.</qti-content-body>
   </qti-test-feedback>
 </qti-assessment-test>

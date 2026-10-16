@@ -28,53 +28,53 @@
   <qti-item-body>
     <p class="qti-well"><strong>Stap 1 · Gelijknamig maken</strong> · één adaptief item</p>
     <qti-choice-interaction response-identifier="RESPONSE" max-choices="1">
-      <qti-prompt>Welke noemer kun je voor <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math> én <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math> gebruiken?</qti-prompt>
-      <qti-simple-choice identifier="A">4</qti-simple-choice>
-      <qti-simple-choice identifier="B">6</qti-simple-choice>
-      <qti-simple-choice identifier="C">8</qti-simple-choice>
+      <qti-prompt>Welke noemer kun je voor <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>3</mn></mfrac></math> én <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math> gebruiken?</qti-prompt>
+      <qti-simple-choice identifier="A">6</qti-simple-choice>
+      <qti-simple-choice identifier="B">9</qti-simple-choice>
+      <qti-simple-choice identifier="C">12</qti-simple-choice>
     </qti-choice-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Ja! 4 zit in de tafel van 2 én in de tafel van 4. Dus 4 kun je voor allebei gebruiken.</p></qti-content-body>
+      <qti-content-body><p>Ja! 6 zit in de tafel van 3 én in de tafel van 6. Dus 6 kun je voor allebei gebruiken.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="GOED_ALT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>8 kan ook: 8 zit in de tafel van 2 én van 4. Maar 4 is de kleinste, en daarmee blijft de som het makkelijkst. We rekenen verder met 4.</p></qti-content-body>
+      <qti-content-body><p>12 kan ook: 12 zit in de tafel van 3 én van 6. Maar 6 is de kleinste, dan blijven de getallen klein. We rekenen verder met 6.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="VERDIEPING" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
       <qti-content-body>
-        <p>We gaan even een stapje terug om te kijken waar het spaak loopt. <strong>Even dieper kijken:</strong></p>
-        <p><img src="resources/noemer.svg" alt="Een strook in halven en een strook in kwarten" /></p>
+        <p>Nog niet goed. We bekijken het eerst in kleinere stappen. <strong>Hulpvragen:</strong></p>
+        <p><img src="resources/noemer.svg" alt="Een strook in derden en een strook in zesden" /></p>
         <qti-choice-interaction response-identifier="R_V1" max-choices="1">
-          <qti-prompt>Even terug: hoeveel halven passen er in 1 hele?</qti-prompt>
+          <qti-prompt>Kijk naar de stroken: hoeveel zesden passen er in 1 derde?</qti-prompt>
           <qti-simple-choice identifier="A">2</qti-simple-choice>
           <qti-simple-choice identifier="B">3</qti-simple-choice>
-          <qti-simple-choice identifier="C">4</qti-simple-choice>
+          <qti-simple-choice identifier="C">6</qti-simple-choice>
         </qti-choice-interaction>
         
         <qti-choice-interaction response-identifier="R_V2" max-choices="1">
-          <qti-prompt>Is 4 een veelvoud van 2? Kijk naar de tafel van 2: 2, 4, 6, 8…</qti-prompt>
+          <qti-prompt>Zit 6 in de tafel van 3? Tel maar: 3, 6, 9, 12…</qti-prompt>
           <qti-simple-choice identifier="A">Ja</qti-simple-choice>
           <qti-simple-choice identifier="B">Nee</qti-simple-choice>
         </qti-choice-interaction>
       </qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="V_UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-info">
-      <qti-content-body><p>1 hele = 2 halven. 4 zit in de tafel van 2 én in de tafel van 4. Zo'n getal kun je als noemer voor allebei gebruiken.</p></qti-content-body>
+      <qti-content-body><p>1 derde = 2 zesden. 6 zit in de tafel van 3 én in de tafel van 6. Zo'n getal kun je als noemer voor allebei gebruiken.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="RETRY" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
       <qti-content-body>
         <qti-choice-interaction response-identifier="R_RETRY" max-choices="1">
-          <qti-prompt>Probeer het nog eens. Welke noemer kun je voor <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math> én <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>4</mn></mfrac></math> gebruiken?</qti-prompt>
-          <qti-simple-choice identifier="A">4</qti-simple-choice>
-          <qti-simple-choice identifier="B">6</qti-simple-choice>
-          <qti-simple-choice identifier="C">8</qti-simple-choice>
+          <qti-prompt>Probeer het nog eens. Welke noemer kun je voor <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>3</mn></mfrac></math> én <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>6</mn></mfrac></math> gebruiken?</qti-prompt>
+          <qti-simple-choice identifier="A">6</qti-simple-choice>
+          <qti-simple-choice identifier="B">9</qti-simple-choice>
+          <qti-simple-choice identifier="C">12</qti-simple-choice>
         </qti-choice-interaction>
       </qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="RETRY_GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
-      <qti-content-body><p>Ja! 4 zit in de tafel van 2 én in de tafel van 4. Dus 4 kun je voor allebei gebruiken.</p></qti-content-body>
+      <qti-content-body><p>Ja! 6 zit in de tafel van 3 én in de tafel van 6. Dus 6 kun je voor allebei gebruiken.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="RETRY_FOUT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
-      <qti-content-body><p><strong>Het goede antwoord is: 4.</strong> Zoek een getal dat in de tafel van 2 én in de tafel van 4 zit. Het kleinste is <strong>4</strong>. (8 kan ook, maar dan wordt het rekenen lastiger; 6 zit niet in de tafel van 4.)</p></qti-content-body>
+      <qti-content-body><p><strong>Het goede antwoord is: 6.</strong> Zoek een getal dat in de tafel van 3 én in de tafel van 6 zit. Het kleinste is <strong>6</strong>. (12 kan ook, maar dan worden de getallen groter; 9 zit niet in de tafel van 6.)</p></qti-content-body>
     </qti-feedback-block>
   </qti-item-body>
   <qti-response-processing>
@@ -102,7 +102,7 @@
           </qti-response-else>
         </qti-response-condition>
       </qti-response-if>
-      <!-- attempt 2: "even dieper kijken", then offer the retry -->
+      <!-- attempt 2: the hulpvragen, then offer the retry -->
       <qti-response-else-if>
         <qti-match><qti-variable identifier="FASE" /><qti-base-value base-type="identifier">VERDIEPING</qti-base-value></qti-match>
         <qti-set-outcome-value identifier="FASE"><qti-base-value base-type="identifier">RETRY</qti-base-value></qti-set-outcome-value>

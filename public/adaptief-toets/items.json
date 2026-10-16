@@ -1,7 +1,7 @@
 [
   {
-    "identifier": "DAGBOEK",
-    "title": "Mijn rekendagboek"
+    "identifier": "INTRO",
+    "title": "Introductie"
   },
   {
     "identifier": "TELLER",
@@ -21,11 +21,11 @@
   },
   {
     "identifier": "S1_V1",
-    "title": "Stap 1 · Gelijknamig maken · even dieper kijken 1"
+    "title": "Stap 1 · Gelijknamig maken · hulpvraag 1"
   },
   {
     "identifier": "S1_V2",
-    "title": "Stap 1 · Gelijknamig maken · even dieper kijken 2"
+    "title": "Stap 1 · Gelijknamig maken · hulpvraag 2"
   },
   {
     "identifier": "S1_RETRY",
@@ -33,23 +33,23 @@
   },
   {
     "identifier": "S2_TUSSEN",
-    "title": "Stap 2 · 1/2 omzetten · tussenvraag"
+    "title": "Stap 2 · 2/3 omzetten · tussenvraag"
   },
   {
     "identifier": "S2_MAIN",
-    "title": "Stap 2 · 1/2 omzetten"
+    "title": "Stap 2 · 2/3 omzetten"
   },
   {
     "identifier": "S2_V1",
-    "title": "Stap 2 · 1/2 omzetten · even dieper kijken 1"
+    "title": "Stap 2 · 2/3 omzetten · hulpvraag 1"
   },
   {
     "identifier": "S2_V2",
-    "title": "Stap 2 · 1/2 omzetten · even dieper kijken 2"
+    "title": "Stap 2 · 2/3 omzetten · hulpvraag 2"
   },
   {
     "identifier": "S2_RETRY",
-    "title": "Stap 2 · 1/2 omzetten · nog een poging"
+    "title": "Stap 2 · 2/3 omzetten · nog een poging"
   },
   {
     "identifier": "S3_TUSSEN",
@@ -61,11 +61,11 @@
   },
   {
     "identifier": "S3_V1",
-    "title": "Stap 3 · Optellen · even dieper kijken 1"
+    "title": "Stap 3 · Optellen · hulpvraag 1"
   },
   {
     "identifier": "S3_V2",
-    "title": "Stap 3 · Optellen · even dieper kijken 2"
+    "title": "Stap 3 · Optellen · hulpvraag 2"
   },
   {
     "identifier": "S3_RETRY",
@@ -81,7 +81,7 @@
   },
   {
     "identifier": "S4_V1",
-    "title": "Stap 4 · Antwoord controleren · even dieper kijken 1"
+    "title": "Stap 4 · Antwoord controleren · hulpvraag 1"
   },
   {
     "identifier": "S4_RETRY",
