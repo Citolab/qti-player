@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Summatief</title>
+  <title>Facet</title>
 
   <!-- Tailwind with its preflight, as everyone uses it -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -25,7 +25,7 @@
       --radius-field: var(--cito-radius-field, 0.25rem);
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
        item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
@@ -48,9 +48,9 @@
       --cito-radius-field: 0.3rem;
       --cito-depth: 1;
       --cito-color-border: var(--cito-color-primary);
-      --cito-font-family: "IBM Plex Sans", system-ui, sans-serif;
+      --cito-font-family: "Open Sans", system-ui, sans-serif;
     }
-    body { margin: 0; font-family: var(--cito-font-family); color: var(--cito-color-base-content); background: oklch(97% 0.008 315); min-height: 100vh; }
+    body { margin: 0; font-family: var(--cito-font-family); color: var(--cito-color-base-content); background: oklch(95.5% 0.003 315); min-height: 100vh; }
   </style>
 
   <script type="module">
@@ -62,10 +62,10 @@
     //  - where instructions go: nothing to do here, they show above the item, inside the card (the default)
     //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
     //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
-    //  - scoring: auto-score-items on <test-navigation> scores every answer silently; Inleveren only shows an overview
+    //  - scoring: auto-score-items on <test-navigation> scores every answer silently; Overzicht only shows an overview
 
     // Restore and deep link: the state (answers and position) is kept in sessionStorage, #/<id> opens that item
-    const test = document.querySelector("qti-test"), KEY = "summatief";
+    const test = document.querySelector("qti-test"), KEY = "facet";
     if (sessionStorage.getItem(KEY)) test.state = JSON.parse(sessionStorage.getItem(KEY));
     test.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
     // The first navigation opens the restored position; a link in the address bar wins over that
@@ -78,58 +78,64 @@
     });
   </script>
 </head>
-
 <!--
-  SUMMATIEF: een toets maken en inleveren (nonlinear + simultaneous, 1 poging, geen feedback).
-  Template: links een kolom met vraagnummers om vrij te bladeren, rechts de vraag. Er is geen Nakijken: elk antwoord
-  wordt op de achtergrond gescoord (autoScoreItems) en pas na het inleveren getoond.
+  FACET: een toets in de indeling van Facet (nonlinear + simultaneous, 1 poging, geen feedback).
+  Template: een paarse balk met de titel en "Vraag n van N", de vraag in een witte kaart, en onderin Vorige, de vraagnummers,
+  Overzicht en Volgende. Elk antwoord wordt op de achtergrond gescoord (auto-score-items); Overzicht toont de stand.
 -->
 <body>
   <qti-test navigate="item">
     <test-navigation auto-score-items class="flex min-h-screen flex-col">
-      <header class="flex items-center justify-between gap-4 bg-brand px-6 py-4 text-on-brand">
-        <div class="flex items-center gap-3">
-          <span class="grid size-9 place-items-center rounded-field bg-on-brand/15 text-lg"><i class="bi bi-mortarboard-fill"></i></span>
-          <h1 class="text-lg font-semibold">Digitale toets</h1>
-        </div>
-        <button class="cursor-pointer rounded-field bg-on-brand px-4 py-2 font-semibold text-brand hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-brand" onclick="document.querySelector('#results').showModal()">Inleveren</button>
-      </header>
+      <!-- Top: the test, the question you are on, and a place for tools -->
+      <test-stamp class="block">
+        <template>
+          <header class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 bg-brand px-6 py-3 text-on-brand">
+            <p class="truncate text-sm opacity-90">{{ test.title }}</p>
+            <p class="text-base font-semibold tabular-nums">Vraag {{ activeItem.index }} van {{ activeTestpart.items.filter((i) => i.index).length }}</p>
+            <div class="flex justify-end gap-5 text-lg opacity-80" aria-hidden="true">
+              <i class="bi bi-search"></i><i class="bi bi-app"></i><i class="bi bi-question-circle"></i>
+            </div>
+          </header>
+        </template>
+      </test-stamp>
 
-      <div class="mx-auto grid w-full max-w-5xl flex-1 gap-6 px-4 py-6 md:grid-cols-[5.5rem_minmax(0,1fr)]">
-        <!-- Question numbers: jump to any item. A check mark means answered. -->
-        <test-stamp class="block md:sticky md:top-6 md:self-start">
-          <template>
-            <nav aria-label="Vragen" class="grid grid-cols-5 gap-1.5 md:grid-cols-2">
-              <template type="repeat" repeat="{{ activeTestpart.items }}">
-                <test-item-link item-id="{{ item.identifier }}" class="{{ item.active ? 'font-bold' : '' }}">{{ item.index ?? 'i' }}{{ item.completionStatus == 'completed' ? ' ✓' : '' }}</test-item-link>
-              </template>
-            </nav>
-          </template>
-        </test-stamp>
-
-        <main class="flex min-w-0 flex-col gap-4">
-          <test-item-to-speech language="nl-NL" class="flex gap-1 self-end">
-            <test-tts-play label="Voorlezen" pause-label="Pauze"></test-tts-play>
-            <test-tts-stop label="Stop"></test-tts-stop>
-          </test-item-to-speech>
-          <test-container test-url="../../summatief/AssessmentTest.xml" class="block rounded-box border border-brand bg-surface p-8">
+      <!-- The question: a white card, the text in a column of a readable width -->
+      <main class="flex-1 px-4 py-6 sm:px-8">
+        <div class="mx-auto aspect-[4/3] w-full max-w-6xl rounded-lg bg-surface px-6 py-10 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_12px_32px_-12px_rgb(0_0_0/0.18)] sm:px-12">
+          <test-container test-url="../../facet/AssessmentTest.xml" class="mx-auto block max-w-[46rem]">
             <template>
               <style>
                 math { font-size: 1.15em; math-style: normal; }
               </style>
             </template>
           </test-container>
-          <div class="flex items-center justify-between">
-            <test-prev>Vorige</test-prev>
-            <test-next>Volgende</test-next>
-          </div>
-        </main>
-      </div>
+        </div>
+      </main>
+
+      <!-- Bottom: back, the question numbers, overview, forward. Flat on the purple bar, the active number is a white pill. -->
+      <test-stamp class="sticky bottom-0 block">
+        <template>
+          <footer class="flex items-center gap-2 bg-brand px-3 py-2 text-on-brand shadow-[0_-1px_0_rgb(255_255_255/0.1)]">
+            <test-prev class="[--test-button-border-radius:0.5rem] [--test-button-size:2.5rem] [--test-button-border-color:transparent] [--test-button-background-color:transparent] [--test-button-color:var(--cito-color-primary-content)] [--test-button-hover-background-color:rgb(255_255_255/0.14)] [&::part(button)]:pr-5 [&::part(button)]:text-sm [&::part(button)]:font-semibold [&::part(button)]:uppercase [&::part(button)]:tracking-wider"><i class="bi bi-chevron-left"></i>Vorige</test-prev>
+
+            <nav aria-label="Vragen" class="flex min-w-0 flex-1 justify-center gap-1 overflow-x-auto px-2">
+              <template type="repeat" repeat="{{ activeTestpart.items }}">
+                <test-item-link item-id="{{ item.identifier }}"
+                  class="shrink-0 [--test-button-border-radius:0.5rem] [--test-button-size:2.5rem] [--test-button-border-color:transparent] [&::part(button)]:min-w-10 [&::part(button)]:px-2 [&::part(button)]:text-base [&::part(button)]:tabular-nums {{ item.active ? '[--test-button-background-color:white] [--test-button-color:var(--cito-color-primary)] [--test-button-hover-background-color:white] font-bold' : '[--test-button-background-color:transparent] [--test-button-color:var(--cito-color-primary-content)] [--test-button-hover-background-color:rgb(255_255_255/0.14)]' }}">{{ item.index ?? 'i' }}</test-item-link>
+              </template>
+            </nav>
+
+            <button class="flex h-10 cursor-pointer items-center gap-2 rounded-lg border border-solid border-white/30 bg-transparent px-4 text-sm font-semibold uppercase tracking-wider text-on-brand hover:bg-white/10" onclick="document.querySelector('#results').showModal()"><i class="bi bi-list-ul text-lg"></i>Overzicht</button>
+
+            <test-next class="[--test-button-border-radius:0.5rem] [--test-button-size:2.5rem] [--test-button-border-color:transparent] [--test-button-primary-background-color:transparent] [--test-button-primary-color:var(--cito-color-primary-content)] [--test-button-primary-hover-background-color:rgb(255_255_255/0.14)] [&::part(button)]:pl-5 [&::part(button)]:text-sm [&::part(button)]:font-semibold [&::part(button)]:uppercase [&::part(button)]:tracking-wider">Volgende<i class="bi bi-chevron-right"></i></test-next>
+          </footer>
+        </template>
+      </test-stamp>
 
       <!-- Overzicht: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
       <dialog id="results" class="m-auto w-[min(40rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
         <div class="flex max-h-[85vh] flex-col gap-5 overflow-y-auto p-6">
-          <h2 class="text-xl font-bold">Ingeleverd</h2>
+          <h2 class="text-xl font-bold">Overzicht</h2>
           <test-stamp>
             <template>
               <div class="grid grid-cols-3 gap-3 text-center">
@@ -166,7 +172,7 @@
             </template>
           </test-stamp>
           <div class="flex justify-end gap-2">
-            <button class="cursor-pointer rounded-field px-4 py-2 font-medium hover:bg-page" onclick="sessionStorage.removeItem('summatief'); history.replaceState(null, '', location.pathname); location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
+            <button class="cursor-pointer rounded-field px-4 py-2 font-medium hover:bg-page" onclick="sessionStorage.removeItem('facet'); history.replaceState(null, '', location.pathname); location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
             <form method="dialog"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
           </div>
         </div>

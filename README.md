@@ -11,7 +11,7 @@ The player holds no opinion of its own: all behaviour comes from the QTI package
 | Example (`#/…`)  | Page                          | Package               | Theme (in the page) | Mode                                                                 |
 | ---------------- | ----------------------------- | --------------------- | ------------------- | -------------------------------------------------------------------- |
 | `formatief`      | `examples/formatief`          | `public/formatief`    | playful             | Formative: werkwoordspelling, 2 attempts, hint + explanation          |
-| `summatief`      | `examples/summatief`          | `public/summatief`    | kennisnet           | Summative: browse freely, no feedback, result after handing in        |
+| `facet`          | `examples/facet`              | `public/facet`        | kennisnet           | Summative, in the layout of Facet: question numbers at the bottom, overview        |
 | `oefenen`        | `examples/oefenen`            | `public/oefenen`      | soft                | Practice: 1 attempt per question, feedback straight away              |
 | `adaptief-toets` | `examples/adaptief-toets`     | `public/adaptief-toets` | cito              | ⅔ + ⅙, adaptive **in the test**: `qti-branch-rule` skips the hulpvragen when a step is right straight away |
 | `adaptief-item`  | `examples/adaptief-item`      | `public/adaptief-item`  | nacht (dark)      | The same four steps, adaptive **in the item**: one `adaptive="true"` item per step |
