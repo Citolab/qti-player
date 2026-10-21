@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   OEFENEN MET ÉÉN POGING: lineair, elke vraag direct nakijken.
-  - linear + individual: na Controleer pas door naar de volgende vraag.
+  - linear + individual: na Nakijken pas door naar de volgende vraag.
   - qti-item-session-control: 1 poging, feedback wél tonen (show-feedback="true").
 -->
 <qti-assessment-test xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="kennisnet-2" title="Oefentoets (1 poging)">
@@ -21,7 +21,7 @@
     <qti-assessment-section identifier="SECTION" title="Oefentoets" visible="true">
       <qti-rubric-block use="instructions" view="candidate" class="qti-rubric-discretionary-placement">
         <qti-content-body>
-          <p>Je hebt per vraag <strong>één poging</strong>. Na <em>Controleer</em> zie je meteen of je antwoord goed is.</p>
+          <p>Je hebt per vraag <strong>één poging</strong>. Na <em>Nakijken</em> zie je meteen of je antwoord goed is.</p>
         </qti-content-body>
       </qti-rubric-block>
       <qti-assessment-item-ref identifier="ITEM001-TEST" href="ITEM001.xml" />

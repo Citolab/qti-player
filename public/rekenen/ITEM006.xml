@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" adaptive="false" time-dependent="false" xml:lang="nl-NL" identifier="GROOTSTE" title="Grootste getal">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>C</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <qti-choice-interaction response-identifier="RESPONSE" max-choices="1">
+      <qti-prompt>Welk getal is het grootst?</qti-prompt>
+      <qti-simple-choice identifier="A">0,5</qti-simple-choice>
+      <qti-simple-choice identifier="B">0,45</qti-simple-choice>
+      <qti-simple-choice identifier="C">0,6</qti-simple-choice>
+      <qti-simple-choice identifier="D">0,09</qti-simple-choice>
+    </qti-choice-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed gerekend!</strong> 0,6 = 0,60 is meer dan 0,50 en 0,45.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="HINT" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-hint">
+      <qti-content-body><p><strong>Nog niet juist.</strong> Schrijf alle getallen met twee decimalen: 0,50 en 0,45 en 0,60 en 0,09.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Zo werkt het:</strong> met twee decimalen is het 0,50 &lt; 0,45? Nee: 0,45 &lt; 0,50 &lt; <strong>0,60</strong>, en 0,09 is het kleinst. Het grootste getal is 0,6.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE" /><qti-correct identifier="RESPONSE" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else-if>
+        <qti-lt><qti-variable identifier="numAttempts" /><qti-base-value base-type="integer">3</qti-base-value></qti-lt>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">HINT</qti-base-value></qti-set-outcome-value>
+      </qti-response-else-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsglobal.org/xsd/qti/qtiv3p0/imscp_v1p1" identifier="MANIFEST_REKENEN">
+  <metadata>
+    <schema>QTI Package</schema>
+    <schemaversion>3.0.0</schemaversion>
+  </metadata>
+  <organizations/>
+  <resources>
+    <resource identifier="test" type="imsqti_test_xmlv3p0" href="AssessmentTest.xml">
+      <file href="AssessmentTest.xml"/>
+      <dependency identifierref="OPTELLEN"/>
+      <dependency identifierref="TAFELS"/>
+      <dependency identifierref="DELEN"/>
+      <dependency identifierref="PROCENTEN"/>
+      <dependency identifierref="TERUGKRIJGEN"/>
+      <dependency identifierref="GROOTSTE"/>
+    </resource>
+    <resource identifier="OPTELLEN" type="imsqti_item_xmlv3p0" href="ITEM001.xml"><file href="ITEM001.xml"/></resource>
+    <resource identifier="TAFELS" type="imsqti_item_xmlv3p0" href="ITEM002.xml"><file href="ITEM002.xml"/></resource>
+    <resource identifier="DELEN" type="imsqti_item_xmlv3p0" href="ITEM003.xml"><file href="ITEM003.xml"/></resource>
+    <resource identifier="PROCENTEN" type="imsqti_item_xmlv3p0" href="ITEM004.xml"><file href="ITEM004.xml"/></resource>
+    <resource identifier="TERUGKRIJGEN" type="imsqti_item_xmlv3p0" href="ITEM005.xml"><file href="ITEM005.xml"/></resource>
+    <resource identifier="GROOTSTE" type="imsqti_item_xmlv3p0" href="ITEM006.xml"><file href="ITEM006.xml"/></resource>
+  </resources>
+</manifest>

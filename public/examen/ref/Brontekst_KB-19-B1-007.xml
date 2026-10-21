@@ -1,0 +1,31 @@
+<qti-assessment-stimulus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_stimulusv3p0_v1p0.xsd" identifier="RES-Brontekst_KB-19-B1-007_xml" title="Brontekst_KB-19-B1-007" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0">
+  <qti-stylesheet href="../css/cito_Edituserstyle_source.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_itemstyle_source.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle_source.css" type="text/css" />
+  <qti-stimulus-body>
+    <p id="c1-id-12" lang="en-US">
+      <strong id="c1-id-13">
+        <span lang="EN-US" id="c1-id-14">All About Nutella</span>
+      </strong>
+    </p>
+    <p id="c1-id-15" lang="en-US">
+      <strong id="c1-id-16">
+        <span lang="EN-US" id="c1-id-17">
+          <img src="../img/enkb18-nutella.jpg" id="Id028c74d-964a-463b-943d-0dd951ab1dc5" alt="" width="150" height="150" />
+        </span>
+      </strong>
+    </p>
+    <p id="c1-id-18" lang="en-US">
+      <span lang="EN-US" id="c1-id-19"><strong id="c1-id-20">(1)</strong> Back in 1806, Napoleon tried to freeze out British commerce as a means to win the Napoleonic wars and take over the world. The result was a disastrous continental blockade that caused the cost of chocolate to skyrocket and left Piedmontese chocolatiers at a disadvantage. Ever resourceful, chocolatiers in Turin started adding chopped hazelnuts to chocolate to stretch the supply as much as possible. The ensuing deliciousness was a fateful paste named 'gianduia.' Over a century later, chocolate again became expensive and scarce due to rationing in Europe during World War II. An Italian pastry maker named Pietro Ferrero once again turned to the mighty hazelnut for salvation in 1946 and created Pasta Gianduja, renamed 'Nutella' in 1964.</span>
+    </p>
+    <p id="c1-id-21" lang="en-US">
+      <span lang="EN-US" id="c1-id-22"><strong id="c1-id-23">(2)</strong> The chocolate and hazelnut substance was named after a character from an Italian comedy named Gianduja. The character is depicted as a smiling Piedmontese man with a three-point hat who rides around town clutching a duja — which in the Piedmontese dialect means 'container.' The duja was said to hold wine... but could have just as easily held a few pounds of that chocolatey hazelnut goodness, no? Gianduja masks are sold all over the Piedmont region of Italy, and his face was plastered all over early Nutella advertisements.</span>
+    </p>
+    <p id="c1-id-24" lang="en-US">
+      <span lang="EN-US" id="c1-id-25"><strong id="c1-id-26">(3)</strong> Nutella became so popular in Italy that Italian markets began to offer free 'smears' of Nutella to any kid who showed up with a piece of bread. The phenomenon was referred to as 'The Smearing' and while it could potentially double as the name of a horror film, it was a highly successful marketing strategy. No wonder we're all addicted.</span>
+    </p>
+    <p id="c1-id-27" lang="en-US">
+      <span lang="EN-US" id="c1-id-28"><strong id="c1-id-29">(4)</strong> A blogger in Italy decided to take her love of Nutella to the next level in 2007, and created a worldwide day of festivities dedicated to the addictive substance. Thus, every year February 5th is a day for eating Nutella, sharing Nutella recipes and memories, and looking at photos of baked goods made with Nutella. In 2013, Nutella manufacturer Ferrero tried to shut down Nutella Day before reconsidering. But as of 2015, at the request of Nutella Day founder Sara Rosso, Ferrero took over the holiday.</span>
+    </p>
+  </qti-stimulus-body>
+</qti-assessment-stimulus>

@@ -1,42 +1,18 @@
 import { afterEach, expect, test, vi } from 'vitest'
 import { pause } from './pause'
+import { closeFrame, openPage, until, type QtiTest } from './frame'
 
 /**
- * The adaptive demos, driven through the real controls: answer, Controleer, Volgende.
+ * The adaptive demos, driven through the real controls: answer, Nakijken, Volgende.
  *
- * The tester page is the player itself on its default route, so each test loads the player in an
- * iframe on the route it needs (same origin, so the test can reach into it).
+ * The tester page is the shell, so each test loads the example it needs in an iframe (same origin, so the test can
+ * reach into it).
  */
 
-let frame: HTMLIFrameElement | undefined
-
-afterEach(() => {
-  frame?.remove()
-  frame = undefined
-})
-
-const until = <T>(check: () => T | undefined | null | false, message: string, timeout = 15000): Promise<T> =>
-  vi.waitFor(
-    () => {
-      const value = check()
-      if (!value) throw new Error(message)
-      return value
-    },
-    { timeout, interval: 50 }
-  )
-
-interface QtiTest extends HTMLElement {
-  state: { session: { navItemRefId?: string } }
-}
+afterEach(closeFrame)
 
 async function openPlayer(route: string) {
-  sessionStorage.clear() // same origin and tab: the iframe shares it, so every test starts fresh
-  frame = document.createElement('iframe')
-  frame.style.cssText = 'width: 1200px; height: 900px'
-  frame.src = new URL(`index.html#/${route}`, document.baseURI).href
-  document.body.append(frame)
-
-  const doc = await until(() => frame!.contentWindow?.customElements.get('qti-test') && frame!.contentDocument, 'player did not load')
+  const { doc } = await openPage(`examples/${route}/index.html`)
   const qtiTest = doc.querySelector('qti-test') as QtiTest
   const current = () => qtiTest.state?.session?.navItemRefId
   const item = () => doc.querySelector('test-container')?.shadowRoot?.querySelector('qti-assessment-item')
@@ -50,9 +26,9 @@ async function openPlayer(route: string) {
     el.click()
   }
 
-  /** Controleer: end the attempt. */
+  /** Nakijken: end the attempt. */
   const check = async () => {
-    await until(() => enabled('test-end-attempt'), `Controleer stays disabled on ${current()}`)
+    await until(() => enabled('test-end-attempt'), `Nakijken stays disabled on ${current()}`)
     await pause()
     button('test-end-attempt').click()
   }
@@ -63,7 +39,13 @@ async function openPlayer(route: string) {
     await until(() => enabled('test-next'), `Volgende stays disabled on ${from}`)
     await pause()
     button('test-next').click()
-    return until(() => (current() !== from || resultsOpen()) && current(), `stayed on ${from}`)
+    return until(() => current() !== from && current(), `stayed on ${from}`)
+  }
+
+  /** Volgende on the last item: the test ends, there is no next item to wait for. */
+  const finish = async () => {
+    await until(() => enabled('test-next'), 'Volgende stays disabled on the last item')
+    button('test-next').click()
   }
 
   /** Answer the item on screen, check it and go on. */
@@ -73,17 +55,17 @@ async function openPlayer(route: string) {
     return next()
   }
 
-  const resultsOpen = () => (doc.querySelector('#results') as HTMLDialogElement).open
+  /** Resultaat: open the dialog; the numbers come from the stamp (no code on the page), as "<points> / <max>". */
   const results = async () => {
-    await until(resultsOpen, 'the results did not open')
-    return {
-      score: doc.querySelector('#result-score')!.textContent,
-      feedback: doc.querySelector('#result-feedback')!.textContent!.trim(),
-    }
+    const dialog = doc.querySelector('#results') as HTMLDialogElement
+    ;(Array.from(doc.querySelectorAll('button')).find(b => b.textContent?.includes('Resultaat')) as HTMLElement).click()
+    await until(() => dialog.open, 'the results did not open')
+    const tiles = () => Array.from(dialog.querySelectorAll('test-stamp p.text-2xl'), p => p.textContent!.replace(/\s+/g, ' ').trim())
+    await until(() => tiles().length === 3, 'no statistics in the dialog')
+    return { answered: tiles()[0], correct: tiles()[1], score: tiles()[2] }
   }
-
   await until(item, 'no item on screen')
-  return { doc, current, click, check, next, answer, results, enabled, item }
+  return { doc, current, click, check, next, finish, answer, results, enabled, item }
 }
 
 const choice = (id: string) => `qti-simple-choice[identifier="${id}"]`
@@ -104,13 +86,10 @@ test('adaptief via de toets: every step right straight away skips all follow-up 
   expect(await player.answer(choice('B'))).toBe('S4_MAIN')
   await player.click(choice('A'))
   await player.check()
-  await player.next() // the branch rule ends the test (EXIT_TEST)
+  await player.finish() // the branch rule ends the test (EXIT_TEST)
 
   // MAXSCORE counts only the presented scored items (qti-number-presented)
-  expect(await player.results()).toEqual({
-    score: '6 / 6',
-    feedback: expect.stringContaining('elke stap was meteen goed'),
-  })
+  expect((await player.results()).score).toBe('6 / 6')
 })
 
 test('adaptief via de toets: working met begeleiding gives the tussenvragen, a wrong step goes deeper', async () => {
@@ -136,13 +115,10 @@ test('adaptief via de toets: working met begeleiding gives the tussenvragen, a w
   expect(await player.answer(choice('B'))).toBe('S4_MAIN')
   await player.click(choice('A'))
   await player.check()
-  await player.next()
+  await player.finish()
 
   // 13 scored items presented, the wrong main question of step 2 is the only miss
-  expect(await player.results()).toEqual({
-    score: '12 / 13',
-    feedback: expect.stringContaining('Een paar stappen waren meteen goed'),
-  })
+  expect((await player.results()).score).toBe('12 / 13')
 })
 
 test('adaptief binnen het item: a wrong answer keeps the item open until it completes itself', async () => {
@@ -161,7 +137,7 @@ test('adaptief binnen het item: a wrong answer keeps the item open until it comp
   await player.click(`qti-choice-interaction[response-identifier="R_V1"] ${choice('A')}`)
   await player.click(`qti-choice-interaction[response-identifier="R_V2"] ${choice('A')}`)
   await player.check()
-  // attempt 3: the retry decides; the item is completed, so Controleer locks and Volgende unlocks
+  // attempt 3: the retry decides; the item is completed, so Nakijken locks and Volgende unlocks
   await player.click(`qti-choice-interaction[response-identifier="R_RETRY"] ${choice('A')}`)
   await player.check()
   await vi.waitFor(() => expect(player.enabled('test-end-attempt')).toBe(false))
@@ -171,11 +147,7 @@ test('adaptief binnen het item: a wrong answer keeps the item open until it comp
   expect(await player.answer(mainChoice('B'))).toBe('S4_ADAPTIEF')
   await player.click(mainChoice('A'))
   await player.check()
-  ;(player.doc.defaultView as unknown as { showResults(): void }).showResults()
 
   // SCORE only counts steps right straight away: step 1 needed the retry
-  expect(await player.results()).toEqual({
-    score: '5 / 6',
-    feedback: expect.stringContaining('Een paar stappen waren meteen goed'),
-  })
+  expect((await player.results()).score).toBe('5 / 6')
 })

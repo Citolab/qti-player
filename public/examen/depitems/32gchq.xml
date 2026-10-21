@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" title="32gchq" identifier="ITM-32gchq" time-dependent="false" label="32gchq" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0">
+  <qti-response-declaration identifier="VIDEORESPONSE" cardinality="single" base-type="integer" />
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated.css" type="text/css" />
+  <qti-item-body class="defaultBody">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <p>Je gaat kijken naar een filmfragment over het redden van luiaards. <br />Bij de introductie is geen opgave.</p>
+          <p class="cito_genclass_KB-20-A2-010_1" />
+          <div id="Icbac831f-c7a7-461f-a506-047157b17d9f">
+            <div>missing video</div>
+          </div>
+          <p />
+        </div>
+        <div class="qti-layout-col6"></div>
+      </div>
+    </div>
+  </qti-item-body>
+</qti-assessment-item>

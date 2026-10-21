@@ -1,0 +1,38 @@
+{
+  "OPTELLEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "TAFELS": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "DELEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "PROCENTEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "TERUGKRIJGEN": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ],
+  "GROOTSTE": [
+    {
+      "identifier": "MAXSCORE",
+      "value": "1"
+    }
+  ]
+}

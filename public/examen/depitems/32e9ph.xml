@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32e9ph" identifier="ITM-32e9ph" time-dependent="false" label="32e9ph" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="A">
+      <qti-value>A</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>1</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-assessment-stimulus-ref identifier="RES-Brontekst_KB-19-B1-007_xml" href="../ref/Brontekst_KB-19-B1-007.xml" />
+  <qti-companion-materials-info>
+    <dep:dep-textMarker>
+      <dep:dep-description />
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated_KB-19-B2-002.css" type="text/css" />
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <div class="qti-shared-stimulus" data-stimulus-idref="RES-Brontekst_KB-19-B1-007_xml" data-dep-dialog-height="560" />
+        </div>
+        <div class="qti-layout-col6">
+          <div id="question">
+            <p xml:lang="en-US">
+              <strong>What is the MAIN purpose of paragraph 1?</strong>
+            </p>
+            <p xml:lang="en-US">to explain</p>
+          </div>
+          <div id="mc">
+            <qti-choice-interaction id="choiceInteraction1" class="qti-labels-none " max-choices="1" shuffle="false" response-identifier="RESPONSE">
+              <qti-simple-choice identifier="A">
+                <p xml:lang="en-US">how chocolate paste was developed</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="B">
+                <p xml:lang="en-US">how chocolate was traded globally</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="C">
+                <p xml:lang="en-US">why chocolate paste became popular</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="D">
+                <p xml:lang="en-US">why chocolate used to be very expensive</p>
+              </qti-simple-choice>
+            </qti-choice-interaction>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing template="https://purl.imsglobal.org/spec/qti/v3p0/rptemplates/match_correct.xml" />
+</qti-assessment-item>

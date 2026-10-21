@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32erfj" identifier="ITM-32erfj" time-dependent="false" label="32erfj" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="identifier">
+    <qti-correct-response interpretation="HT_A&amp;HT_B&amp;HT_G">
+      <qti-value>HT_A</qti-value>
+      <qti-value>HT_B</qti-value>
+      <qti-value>HT_G</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>1</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_A" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_B" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_C" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_D" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_E" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_F" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_G" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_H" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <dep:dep-textMarker>
+      <dep:dep-description />
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated_KB-19-B2-009.css" type="text/css" />
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <div id="questionwithinlinecontrol">
+            <qti-hottext-interaction response-identifier="RESPONSE" max-choices="3" class="qti-input-control-hidden dep-highlight">
+              <p xml:lang="en-US">
+                <strong>
+                  <span>A look under the cap</span>
+                </strong>
+              </p>
+              <p xml:lang="en-US">
+                <span>
+                  <strong>(1)</strong>
+                  The runner's high is an almost-transcendent state. Your muscles burn, your blood pumps, your arms and legs move in perfect sync. Sweat trickles down your face, but you hardly notice. You realize you're thirsty, and you barely break stride as you grab your reusable water flask and take a swig of – germs. That's right.  Thousands of moisture-loving bacteria may be crawling on your favorite refillable drinking container. And the act of quenching your thirst while you exercise could potentially make you sick.
+                </span>
+              </p>
+              <p xml:lang="en-US">
+                <span>
+                  <strong>(2)</strong>
+                  Since most people can't finish a workout without their reusable water bottles, we decided to investigate the allure of these captivating
+                  <span>
+                    <qti-hottext identifier="HT_A">canteens</qti-hottext>
+                  </span>
+                  . Based on the 12 water bottles we tested, we found that reusable drinking
+                  <span>
+                    <qti-hottext identifier="HT_B">containers</qti-hottext>
+                  </span>
+                  may be crawling with an alarming number of viable bacteria
+                  <span>
+                    <qti-hottext identifier="HT_C">cells</qti-hottext>
+                  </span>
+                  : more than 300,000 colony-forming
+                  <span>
+                    <qti-hottext identifier="HT_D">units</qti-hottext>
+                  </span>
+                  per square centimeter (CFU/sq cm). What exactly does that mean? To put it bluntly, drinking from the average
+                  <span>
+                    <qti-hottext identifier="HT_E">refillable</qti-hottext>
+                  </span>
+                  bottle can be many times worse than licking your dog's toy. Perhaps you've seen viral
+                  <span>
+                    <qti-hottext identifier="HT_F">posts</qti-hottext>
+                  </span>
+                  on social media showcasing horrifying photos of reusable drinking
+                  <span>
+                    <qti-hottext identifier="HT_G">flasks</qti-hottext>
+                  </span>
+                  covered in
+                  <span>
+                    <qti-hottext identifier="HT_H">mold</qti-hottext>
+                  </span>
+                  . However, the bacteria we tested for aren't visible to the human eye – so you don't even know when you're consuming them.
+                </span>
+              </p>
+              <p xml:lang="en-US">
+                <span>
+                  <strong>(3)</strong>
+                  We lab-tested four types of containers to see how each measures up in the creepy-crawly department. Some people favor slide-top bottles for the ease factor – just slide the lid shut and don't worry about spills. However, when it comes to germ content, these containers make the biggest splash. The squeeze-top bottles and screw-top containers are also crawling with bacteria. Drinking from these bottles can still be worse than eating a meal from your pet's dish or lapping up water from your kitchen sink. The straw-top bottles we tested contain a mere fraction of the bacteria of other bottles. This may be because water drips to the bottom of the straw rather than sticking around to attract moisture-loving germs. However, it’s still only slightly less than the average home toilet seat.
+                </span>
+              </p>
+              <p xml:lang="en-US">
+                <span>
+                  <strong>(4)</strong>
+                  The results of our reusable water bottle germ tests are fairly alarming. We know that when it comes to water bottles and bacteria, stainless steel is a better choice than plastic. Additionally, water bottles without crevices and tough-to-clean spots are less likely to host germs. Are you unwilling to give up your favorite container? Don't let your half full bottle sit in your gym bag. Instead, be sure to run it through the dishwasher or hand wash it thoroughly after every use. You can even use a weak bleach solution (one tablespoon of bleach per quart of water) to sanitize your water bottle.
+                </span>
+              </p>
+            </qti-hottext-interaction>
+          </div>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="question">
+            <p>
+              <strong>Welke DRIE woorden in <span class="UserSRGroep">alinea 2</span> betekenen hetzelfde als '<span xml:lang="en-US">bottles</span>'? <br /></strong>
+              <strong>Klik ze aan.</strong>
+            </p>
+            <p>
+              <img id="Id-IMG_9a093cd8-2b82-41fb-bbff-22d5977f0c82" src="../img/enkb19_water-bottle.jpg" width="285" height="288" alt="" />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-and>
+          <qti-member>
+            <qti-base-value base-type="identifier">HT_A</qti-base-value>
+            <qti-variable identifier="RESPONSE" />
+          </qti-member>
+          <qti-member>
+            <qti-base-value base-type="identifier">HT_B</qti-base-value>
+            <qti-variable identifier="RESPONSE" />
+          </qti-member>
+          <qti-not>
+            <qti-member>
+              <qti-base-value base-type="identifier">HT_C</qti-base-value>
+              <qti-variable identifier="RESPONSE" />
+            </qti-member>
+          </qti-not>
+          <qti-not>
+            <qti-member>
+              <qti-base-value base-type="identifier">HT_D</qti-base-value>
+              <qti-variable identifier="RESPONSE" />
+            </qti-member>
+          </qti-not>
+          <qti-not>
+            <qti-member>
+              <qti-base-value base-type="identifier">HT_E</qti-base-value>
+              <qti-variable identifier="RESPONSE" />
+            </qti-member>
+          </qti-not>
+          <qti-not>
+            <qti-member>
+              <qti-base-value base-type="identifier">HT_F</qti-base-value>
+              <qti-variable identifier="RESPONSE" />
+            </qti-member>
+          </qti-not>
+          <qti-member>
+            <qti-base-value base-type="identifier">HT_G</qti-base-value>
+            <qti-variable identifier="RESPONSE" />
+          </qti-member>
+          <qti-not>
+            <qti-member>
+              <qti-base-value base-type="identifier">HT_H</qti-base-value>
+              <qti-variable identifier="RESPONSE" />
+            </qti-member>
+          </qti-not>
+        </qti-and>
+        <qti-set-outcome-value identifier="SCORE">
+          <qti-sum>
+            <qti-base-value base-type="float">1</qti-base-value>
+            <qti-variable identifier="SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte>
+          <qti-variable identifier="SCORE" />
+          <qti-base-value base-type="float">1</qti-base-value>
+        </qti-gte>
+        <qti-set-outcome-value identifier="SCORE">
+          <qti-base-value base-type="float">1</qti-base-value>
+        </qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE">
+          <qti-base-value base-type="float">0</qti-base-value>
+        </qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

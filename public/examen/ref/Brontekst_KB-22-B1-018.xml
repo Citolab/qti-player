@@ -1,0 +1,19 @@
+<qti-assessment-stimulus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_stimulusv3p0_v1p0.xsd" identifier="RES-Brontekst_KB-22-B1-018_xml" title="Brontekst_KB-22-B1-018" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0">
+  <qti-stylesheet href="../css/cito_Edituserstyle_source.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_itemstyle_source.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle_source.css" type="text/css" />
+  <qti-stimulus-body>
+    <p id="c1-id-12" lang="en-US">
+      <strong id="c1-id-13">California ghost town sells for $1.4 million</strong>
+    </p>
+    <p id="c1-id-14">
+      <img src="../img/enkb22_Ghost-town-1.jpg" id="I594d9649-d677-4cfc-bb33-fd99fd54c302" alt="" width="200" height="112" />
+      <img src="../img/enkb22_Ghost-town-2.jpg" id="I9b6e902b-1ffe-4dd4-a041-213cc724d934" alt="" width="200" height="112" />
+    </p>
+    <p id="c1-id-15" lang="en-US"><strong id="c1-id-16">(1)</strong>  A little over a month ago a 19th century ghost town in California called Cerro Gordo went on sale. The asking price for Cerro Gordo was $925,000 and it was bought by Brent Underwood for $1.4 million, real estate agent Jake Rasmuson said. The sale closed on Friday the 13th – "in true ghost town fashion," Rasmuson joked.</p>
+    <p id="c1-id-17" lang="en-US"><strong id="c1-id-18">(2)</strong>  Cerro Gordo, which means 'fat hill', has 22 structures remaining, including an abandoned hotel, church and bunkhouse. The abandoned mining town, which occupies over 300 acres of land, had been in family hands for decades, but they felt it was the right time to sell it. Cerro Gordo came into existence as a small mining town after the discovery of silver in 1865. At one point, it became the largest producer of silver and lead in California.</p>
+    <p id="c1-id-19" lang="en-US"><strong id="c1-id-20">(3)</strong>  "In its heyday, it averaged a murder a week," Rasmuson said. "It's really part of the Wild West." After the fall of lead and silver prices, and other setbacks, including a fire, Cerro Gordo's silver operations slowed and eventually the town became deserted. So what will become of this ghost town? Ideas ranged from turning Cerro Gordo into a theme park to a recreational place.</p>
+    <p id="c1-id-21" lang="en-US"><strong id="c1-id-22">(4)</strong>  But buyer Brent Underwood, who owns a backpacker hostel in Austin, Texas, says history is the reason he was interested in the town. "We're looking to create a new destination. It isn't often you're able to have such a canvas to work with. We have over 300 acres and dozens of buildings," Underwood said. "We want to maintain the historic nature of the property while introducing activities that will allow more people to enjoy the location."</p>
+    <p id="c1-id-23" lang="en-US"><strong id="c1-id-24">(5)</strong>  The long-term goals for Cerro Gordo are to bring 'high level programming in forms of writing retreats, music events, dining experiences, photo shoots, theatre, special events, and more.' Underwood said he wants to create an experience that's available nowhere else. "Cerro Gordo is a true piece of American history that is impossible to replicate," he said.</p>
+  </qti-stimulus-body>
+</qti-assessment-stimulus>

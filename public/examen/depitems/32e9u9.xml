@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.w3.org/2001/10/synthesis https://purl.imsglobal.org/spec/ssml/v1p1/schema/xsd/ssmlv1p1-core.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32e9u9" identifier="ITM-32e9u9" time-dependent="false" label="32e9u9" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension" xmlns:ssml="http://www.w3.org/2001/10/synthesis">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="directedPair">
+    <qti-correct-response interpretation="E G1&amp;D G2&amp;C G3&amp;F G4&amp;B G5">
+      <qti-value>E G1</qti-value>
+      <qti-value>D G2</qti-value>
+      <qti-value>C G3</qti-value>
+      <qti-value>F G4</qti-value>
+      <qti-value>B G5</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="RAW_SCORE" cardinality="single" base-type="integer">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-interpolation-table>
+      <qti-interpolation-table-entry source-value="5" target-value="2" />
+      <qti-interpolation-table-entry source-value="4" target-value="1" />
+      <qti-interpolation-table-entry source-value="3" target-value="0" />
+      <qti-interpolation-table-entry source-value="2" target-value="0" />
+      <qti-interpolation-table-entry source-value="1" target-value="0" />
+      <qti-interpolation-table-entry source-value="0" target-value="0" />
+    </qti-interpolation-table>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>2</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <dep:dep-textMarker>
+      <dep:dep-description />
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated_KB-19-B2-001.css" type="text/css" />
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <div id="body">
+            <p>
+              <img id="Id-IMG_badcdedf-8d21-40ab-bf94-51815e1a4d89" src="../img/enkb18-Google.jpg" width="240" height="88" alt="" />
+            </p>
+          </div>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="intro">
+            <p>Je ziet een aantal voordelen van het werken bij <span xml:lang="en-US">Google</span>. </p>
+          </div>
+          <div id="question">
+            <p>
+              <strong>Sleep het juiste tussenkopje naar elke alinea. Let op! Er blijven drie tussenkopjes over.</strong>
+            </p>
+          </div>
+          <div id="gapmatch">
+            <qti-gap-match-interaction id="gapMatchScoring" response-identifier="RESPONSE" max-associations="0" shuffle="false" class="show_interactions_left">
+              <qti-gap-text identifier="A" match-max="1">
+                <span xml:lang="en-US">Earning a good salary</span>
+              </qti-gap-text>
+              <qti-gap-text identifier="B" match-max="1">
+                <span xml:lang="en-US">Combat sports classes</span>
+              </qti-gap-text>
+              <qti-gap-text identifier="C" match-max="1">
+                <span xml:lang="en-US">Living in the future</span>
+              </qti-gap-text>
+              <qti-gap-text identifier="D" match-max="1">
+                <span xml:lang="en-US">Maternity/paternity leave</span>
+              </qti-gap-text>
+              <qti-gap-text identifier="E" match-max="1">
+                <span xml:lang="en-US">Plenty of food and drinks</span>
+              </qti-gap-text>
+              <qti-gap-text identifier="F" match-max="1">
+                <span xml:lang="en-US">Taking your dog to work</span>
+              </qti-gap-text>
+              <qti-gap-text identifier="G" match-max="1">
+                <span xml:lang="en-US">Job opportunities for relatives</span>
+              </qti-gap-text>
+              <qti-gap-text identifier="H" match-max="1">
+                <span xml:lang="en-US">Flexible work hours</span>
+              </qti-gap-text>
+              <div class="margin_left_override">
+                <div class="show_interactions_left">
+                  <p xml:lang="en-US">
+                    <strong>BENEFITS FOR GOOGLE EMPLOYEES</strong>
+                  </p>
+                  <p xml:lang="en-US"><strong><span><qti-gap identifier="G1" required="true" /></span> </strong><br />Employees have access to a coffee bar with a full-time barista that can make pretty much about any beverage you can think of. There are more than 25 cafes to choose from when it comes to lunch and breakfast. And there are micro kitchens spread out among the camps so employees can grab refreshments whenever they want.</p>
+                  <p xml:lang="en-US"><strong><span><qti-gap identifier="G2" required="true" /></span> </strong><br />The tech giant gives new dads six weeks off and moms can take up to 18 weeks off after their child is born - with pay. Google also awards new parents with 'baby bonding bucks', which helps with expenses such as <ssml:sub alias="[dai pers]">diapers</ssml:sub>, food and other necessities.</p>
+                  <p xml:lang="en-US"><strong><span><qti-gap identifier="G3" required="true" /></span> </strong><br />Employees can get their hands on cutting-edge products that are not yet released to the public. Some employees have used devices, such as phones, tablets and Chromebooks, before they were released on the market. This not only gives people a try at the devices, but lets them give feedback to make them better.</p>
+                  <p xml:lang="en-US"><strong><span><qti-gap identifier="G4" required="true" /></span> </strong><br />Google doesn’t mind if you bring your furry pooch to the Mountain View Headquarters so employees can expect to hear happy barks in the workplace.</p>
+                  <p>
+                    <span xml:lang="en-US">
+                      <strong>
+                        <span>
+                          <qti-gap identifier="G5" required="true" />
+                        </span>
+                      </strong>
+                    </span>
+                    <br />
+                    <span xml:lang="en-US">The tech company provides a fourth degree black belt instructor and a Muay Thai instructor to teach employees martial arts at the office. </span>
+                  </p>
+                </div>
+              </div>
+            </qti-gap-match-interaction>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">E G1</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">D G2</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">C G3</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">F G4</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">B G5</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-lookup-outcome-value identifier="SCORE">
+      <qti-variable identifier="RAW_SCORE" />
+    </qti-lookup-outcome-value>
+  </qti-response-processing>
+</qti-assessment-item>

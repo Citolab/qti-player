@@ -1,288 +1,62 @@
 <!DOCTYPE html>
-<html lang="nl" data-theme="cito">
+<html lang="nl">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QTI Player</title>
-  <base href="%VITE_BASE_HREF%" />
-
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" />
+  <title>QTI Player Cookbook</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link href="./src/themes.css" rel="stylesheet" />
-
-  <script type="module">
-    import "@citolab/qti-components"; // registers the components
-    import { getManifestInfo } from "@citolab/qti-components/qti-loader";
-
-    // Route: #/<package>/<item>. Every package is a plain QTI 3 content package in /public.
-    const packages = {
-      formatief: "formatief", summatief: "kennisnet-1", oefenen: "kennisnet-2",
-      "adaptief-toets": "adaptief-toets", "adaptief-item": "adaptief-item",
-    };
-    const [route, itemId] = location.hash.slice(2).split("/");
-    const pkg = packages[route] ? route : "formatief";
-    const folder = packages[pkg];
-
-    const qtiTest = document.querySelector("qti-test");
-    const testNavigation = document.querySelector("test-navigation");
-    const testContainer = document.querySelector("test-container");
-    let testElement;
-
-    document.querySelector(`[href="#/${pkg}"]`)?.classList.add("tab-active");
-    window.addEventListener("hashchange", () => location.hash.slice(2).split("/")[0] !== pkg && location.reload());
-
-    // 1. Session, per package: qtiTest.state holds the answers and the position; assigned before the test
-    //    loads, it is applied once it does.
-    const saved = sessionStorage.getItem(pkg);
-    if (saved) qtiTest.state = JSON.parse(saved);
-    qtiTest.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(pkg, JSON.stringify(e.detail)));
-    // A branch rule to EXIT_TEST, or no item left in a linear part, ends the test
-    qtiTest.addEventListener("cito-test-end-reached", () => showResults());
-
-    // 2. Load the test from the package manifest. items.json adds optional titles / metadata; declarations.json
-    //    (tools/item-declarations.mjs) holds each item's declared MAXSCORE, read once when the package was built.
-    const json = (file) => fetch(`${folder}/${file}`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-    const [{ testURL }, itemInfo, declarations] = await Promise.all([getManifestInfo(`${folder}/imsmanifest.xml`), json("items.json"), json("declarations.json")]);
-    testNavigation.configContext = { infoItemCategory: "info", inlineChoicePrompt: "Kies…" };
-    testNavigation.initContext = itemInfo ?? [];
-    testContainer.setAttribute("test-url", testURL);
-
-    // 3. When the test is ready: seed the declared MAXSCORE of items the candidate has not opened, so test outcome
-    //    processing totals the whole test (QTI: an item that is not presented keeps its declared defaults).
-    //    Then open the deep-linked item (without one, the restored position or the first item).
-    //    Simultaneous submission (summative) scores every change silently in the background;
-    //    individual submission (formative) scores only when the candidate clicks "Controleer".
-    qtiTest.addEventListener("cito-test-loaded", (e) => {
-      testElement = e.detail;
-      for (const item of qtiTest.testContext.items) {
-        const known = new Set(item.variables.map((v) => v.identifier));
-        const values = (declarations?.[item.identifier] ?? []).filter((v) => !known.has(v.identifier)).map((v) => ({ ...v, type: "outcome" }));
-        if (values.length) qtiTest.updateItemVariables(item.identifier, values);
-      }
-      testNavigation.autoScoreItems = testElement.querySelector("qti-test-part")?.submissionMode === "simultaneous";
-      if (itemId) qtiTest.navigateTo("item", itemId);
-    });
-    // Keep the deep link on the active item. The first navigation only opens what the URL already asks for, so leave
-    // the URL alone then: a host that checks the address it opened (the vitest browser runner) must find it unchanged.
-    let initialNavigation = true;
-    qtiTest.addEventListener("cito-test-navigated", (e) => {
-      if (initialNavigation) return void (initialNavigation = false);
-      history.replaceState(null, "", `${location.pathname}${location.search}#/${pkg}/${e.detail.id}`);
-    });
-
-    // 4. Instructions (qti-rubric-block class="qti-rubric-discretionary-placement") go above the item
-    qtiTest.addEventListener("cito-item-rubric-placement", (e) => document.querySelector("#rubric").append(e.detail.element));
-
-    // 5. Result reporting: run the test's outcome processing and show the qti-test-feedback that matches
-    window.showResults = () => {
-      qtiTest.outcomeProcessing();
-      const outcome = (id) => qtiTest.getOutcome(id)?.value;
-      const percentage = Math.round(outcome("PERCENTAGE") || 0);
-      document.querySelector("#result-score").textContent = `${outcome("SCORE") ?? 0} / ${outcome("MAXSCORE") ?? 0}`;
-      document.querySelector("#result-percentage").style.setProperty("--value", percentage);
-      document.querySelector("#result-percentage").textContent = `${percentage}%`;
-      document.querySelector("#result-feedback").innerHTML = qtiTest.getTestFeedback("atEnd").map((fb) => `<p>${fb.textContent.trim()}</p>`).join("");
-      document.querySelector("#results").showModal();
-    };
-    window.restart = () => {
-      sessionStorage.removeItem(pkg);
-      location.hash = `#/${pkg}`;
-      location.reload();
-    };
-  </script>
+  <style>
+    /* The shell is only a frame: a toolbar to pick an example and the example itself, which brings its own theme. */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body { display: flex; flex-direction: column; font: 14px/1.4 system-ui, sans-serif; background: #fff; color: #1f2937; }
+    header { display: flex; align-items: center; gap: 1rem; padding: 0 1rem; border-bottom: 1px solid #e5e7eb; background: #fafafa; }
+    header h1 { margin: 0; font-size: 1rem; white-space: nowrap; }
+    nav { display: flex; gap: 0.25rem; overflow-x: auto; }
+    nav a { display: flex; align-items: center; gap: 0.4rem; padding: 0.85rem 0.75rem; color: inherit; text-decoration: none; white-space: nowrap; border-bottom: 3px solid transparent; }
+    nav a:hover { background: #f1f5f9; }
+    nav a[aria-current="page"] { border-bottom-color: #111827; font-weight: 600; }
+    iframe { flex: 1; width: 100%; border: 0; }
+  </style>
 </head>
 
-<body class="bg-base-200 text-base-content min-h-screen">
-  <qti-test navigate="item">
-    <test-navigation class="drawer drawer-end">
-      <input id="debug" type="checkbox" class="drawer-toggle" />
+<body>
+  <header>
+    <h1>QTI Player Cookbook</h1>
+    <nav id="examples" aria-label="Voorbeelden"></nav>
+  </header>
+  <iframe id="example" title="Voorbeeld"></iframe>
 
-      <div class="drawer-content flex flex-col min-h-screen">
-        <!-- Top bar: choose a demo package -->
-        <header class="navbar bg-base-100 shadow-sm gap-2 px-4">
-          <div class="flex-1 font-bold">QTI Player</div>
-          <nav role="tablist" class="tabs tabs-box tabs-sm">
-            <a role="tab" class="tab" href="#/formatief"><i class="bi bi-lightbulb me-1"></i>Formatief</a>
-            <a role="tab" class="tab" href="#/summatief"><i class="bi bi-mortarboard me-1"></i>Summatief</a>
-            <a role="tab" class="tab" href="#/oefenen"><i class="bi bi-1-circle me-1"></i>Eén poging</a>
-            <a role="tab" class="tab" href="#/adaptief-toets"><i class="bi bi-chat-dots me-1"></i>Adaptief: toets</a>
-            <a role="tab" class="tab" href="#/adaptief-item"><i class="bi bi-diagram-3 me-1"></i>Adaptief: item</a>
-          </nav>
-          <label for="debug" class="btn btn-ghost btn-sm btn-square" title="Instellingen"><i class="bi bi-gear"></i></label>
-        </header>
+  <script type="module">
+    // Every example is its own page in examples/<id>/ (own <qti-test> template, own theme.css, own QTI package).
+    const examples = [
+      { id: "formatief", icon: "lightbulb", label: "Formatief" },
+      { id: "summatief", icon: "mortarboard", label: "Summatief" },
+      { id: "oefenen", icon: "1-circle", label: "Eén poging" },
+      { id: "adaptief-toets", icon: "chat-dots", label: "Adaptief: toets" },
+      { id: "adaptief-item", icon: "diagram-3", label: "Adaptief: item" },
+      { id: "rekenen", icon: "calculator", label: "Rekenen" },
+      { id: "examen", icon: "journal-text", label: "Examen" },
+    ];
+    const nav = document.querySelector("#examples");
+    const frame = document.querySelector("#example");
+    nav.innerHTML = examples.map(({ id, icon, label }) => `<a href="#/${id}" data-id="${id}"><i class="bi bi-${icon}"></i>${label}</a>`).join("");
 
-        <main class="flex-1 w-full max-w-4xl mx-auto p-4 flex flex-col gap-4">
-          <!-- qti-rubric-block instructions land here -->
-          <div id="rubric" role="alert" class="alert alert-info alert-soft items-start hidden has-[qti-rubric-block]:flex [&_math]:text-[1.15em] [&_math]:[math-style:normal]">
-            <i class="bi bi-info-circle text-xl"></i>
-          </div>
-
-          <!-- Read aloud: speaks the active item's text block by block, highlighting the current word.
-               The hosts carry the daisyUI .btn look; the shadow <button part="button"> is reset to fill them. -->
-          <test-item-to-speech language="nl-NL" class="self-end join bg-base-100 shadow-sm rounded-field
-            [&_*::part(button)]:size-full [&_*::part(button)]:px-3 [&_*::part(button)]:py-0 [&_*::part(button)]:border-0
-            [&_*::part(button)]:bg-transparent [&_*::part(button)]:text-inherit [&_*::part(button)]:[font:inherit]
-            [&_*::part(button)]:inline-flex [&_*::part(button)]:items-center [&_*::part(button)]:justify-center [&_.btn-square::part(button)]:px-0">
-            <test-tts-prev class="btn btn-ghost btn-sm btn-square join-item p-0" title="Vorige alinea"><i class="bi bi-skip-backward-fill"></i></test-tts-prev>
-            <test-tts-play class="btn btn-ghost btn-sm join-item p-0" title="Voorlezen">
-              <span slot="play"><i class="bi bi-volume-up-fill"></i> Voorlezen</span>
-              <span slot="pause"><i class="bi bi-pause-fill"></i> Pauze</span>
-            </test-tts-play>
-            <test-tts-stop class="btn btn-ghost btn-sm btn-square join-item p-0" title="Stop"><i class="bi bi-stop-fill"></i></test-tts-stop>
-            <test-tts-next class="btn btn-ghost btn-sm btn-square join-item p-0" title="Volgende alinea"><i class="bi bi-skip-forward-fill"></i></test-tts-next>
-          </test-item-to-speech>
-
-          <test-container class="card bg-base-100 shadow-sm block p-8">
-            <template>
-              <style>
-                /* Item feedback lives inside the test's shadow root, so it is styled here with the daisyUI theme colors */
-                qti-feedback-block { --fb: var(--color-info); }
-                qti-feedback-block.qti-feedback-correct { --fb: var(--color-success); }
-                qti-feedback-block.qti-feedback-hint { --fb: var(--color-warning); }
-                qti-feedback-block::part(feedback) {
-                  margin-top: 1rem; padding: 0.25rem 1rem;
-                  border-left: 4px solid var(--fb); border-radius: var(--radius-field);
-                  background: color-mix(in oklab, var(--fb) 12%, transparent);
-                }
-                /* MathML fractions (½) render at text size by default, which is too small to read */
-                math { font-size: 1.15em; math-style: normal; }
-                qti-feedback-inline::part(feedback) {
-                  margin-inline: 0.5rem; padding: 0 0.5rem; font-size: 0.875em;
-                  border-radius: var(--radius-field); background: var(--color-base-200);
-                }
-              </style>
-            </template>
-          </test-container>
-        </main>
-
-        <!-- Bottom bar: everything here is driven by the QTI test (navigation-, submission mode, session control) -->
-        <test-stamp class="block sticky bottom-0">
-          <template>
-            <footer class="bg-base-100 border-t border-base-300 p-4 flex flex-wrap items-center justify-between gap-4">
-
-              <!-- Nonlinear: jump to any item. Linear: show progress only -->
-              <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
-                <div class="flex flex-wrap gap-1">
-                  <template type="repeat" repeat="{{ activeTestpart.items }}">
-                    <test-item-link item-id="{{ item.identifier }}"
-                      class="btn btn-sm btn-square {{ item.active ? 'btn-primary' : item.completionStatus == 'completed' ? 'btn-soft btn-primary' : '' }}">
-                      {{ item.index ?? 'i' }}
-                    </test-item-link>
-                  </template>
-                </div>
-              </template>
-              <template type="if" if="{{ activeTestpart.navigationMode == 'linear' }}">
-                <ul class="steps max-w-full overflow-x-auto">
-                  <template type="repeat" repeat="{{ activeTestpart.items }}">
-                    <li class="step {{ item.done ? (item.maxScore == null ? 'step-neutral' : item.optimal ? 'step-success' : 'step-error') : item.active ? 'step-primary' : '' }}"
-                      data-content="{{ item.done ? (item.maxScore == null ? '•' : item.optimal ? '✓' : '✕') : item.index }}"
-                      title="{{ item.title }}"></li>
-                  </template>
-                </ul>
-              </template>
-
-              <!-- Individual submission: check the answer, attempts come from qti-item-session-control -->
-              <template type="if" if="{{ activeTestpart.submissionMode == 'individual' }}">
-                <div class="flex items-center gap-2">
-                  <span class="badge badge-ghost">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts > 0 ? activeItem.maxAttempts : '∞' }}</span>
-                  <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}">
-                    <span class="badge badge-success"><i class="bi bi-check-lg"></i>Goed</span>
-                  </template>
-                  <template type="if" if="{{ activeItem.numAttempts > 0 && !activeItem.optimal && !activeItem.done }}">
-                    <span class="badge badge-warning"><i class="bi bi-arrow-repeat"></i>Probeer opnieuw</span>
-                  </template>
-                  <template type="if" if="{{ activeItem.done && !activeItem.optimal && activeItem.hasCorrectResponse }}">
-                    <span class="badge badge-error"><i class="bi bi-x-lg"></i>Bekijk de uitleg</span>
-                  </template>
-                  <test-end-attempt class="btn btn-secondary"><i class="bi bi-check2-circle"></i>Controleer</test-end-attempt>
-                </div>
-              </template>
-
-              <div class="flex items-center gap-2">
-                <template type="if" if="{{ activeTestpart.navigationMode == 'nonlinear' }}">
-                  <test-prev class="btn"><i class="bi bi-arrow-left"></i></test-prev>
-                </template>
-                <test-next class="btn btn-primary">Volgende<i class="bi bi-arrow-right"></i></test-next>
-                <button class="btn btn-outline" onclick="showResults()">
-                  <i class="bi bi-flag"></i>{{ activeTestpart.submissionMode == 'simultaneous' ? 'Inleveren' : 'Resultaat' }}
-                </button>
-              </div>
-            </footer>
-          </template>
-        </test-stamp>
-      </div>
-
-      <!-- Result report: totals from outcome processing (JS), rows from the computed context (stamp) -->
-      <dialog id="results" class="modal">
-        <div class="modal-box max-w-2xl">
-          <h3 class="text-lg font-bold mb-4">Resultaat</h3>
-          <div class="flex items-center gap-6 mb-4">
-            <div id="result-percentage" class="radial-progress text-primary" style="--value:0; --size:5rem" role="progressbar"></div>
-            <div class="stat p-0">
-              <div class="stat-title">Score</div>
-              <div id="result-score" class="stat-value"></div>
-            </div>
-          </div>
-          <div id="result-feedback" class="alert alert-soft mb-4 empty:hidden"></div>
-
-          <test-stamp>
-            <template>
-              <table class="table table-sm">
-                <thead><tr><th>#</th><th>Vraag</th><th>Pogingen</th><th class="text-right">Score</th></tr></thead>
-                <tbody>
-                  <template type="repeat" repeat="{{ activeTestpart.items }}">
-                    <template type="if" if="{{ item.index }}">
-                      <tr>
-                        <td>{{ item.index }}</td>
-                        <td>{{ item.title }}</td>
-                        <td>{{ activeTestpart.submissionMode == 'individual' ? item.numAttempts : '–' }}</td>
-                        <td class="text-right">
-                          <span class="badge {{ item.maxScore == null ? 'badge-ghost' : item.score >= item.maxScore ? 'badge-success' : item.score > 0 ? 'badge-warning' : 'badge-error' }}">
-                            {{ item.maxScore == null ? 'niet gemaakt' : item.score + ' / ' + item.maxScore }}
-                          </span>
-                        </td>
-                      </tr>
-                    </template>
-                  </template>
-                </tbody>
-              </table>
-            </template>
-          </test-stamp>
-
-          <div class="modal-action">
-            <button class="btn btn-ghost" onclick="restart()"><i class="bi bi-arrow-counterclockwise"></i>Opnieuw</button>
-            <form method="dialog"><button class="btn btn-primary">Sluiten</button></form>
-          </div>
-        </div>
-        <form method="dialog" class="modal-backdrop"><button>sluiten</button></form>
-      </dialog>
-
-      <!-- Settings / debug drawer -->
-      <aside class="drawer-side z-10">
-        <label for="debug" class="drawer-overlay"></label>
-        <div class="bg-base-100 min-h-full w-96 p-4 flex flex-col gap-4">
-          <select class="select w-full" data-choose-theme>
-            <option value="cito">Cito</option>
-            <option value="wikiwijs">Wikiwijs</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="corporate">Corporate</option>
-            <option value="nord">Nord</option>
-            <option value="dracula">Dracula</option>
-          </select>
-          <button class="btn btn-error btn-outline" onclick="restart()"><i class="bi bi-trash"></i>Sessie wissen</button>
-          <h2 class="font-bold">Item variabelen</h2>
-          <test-print-item-variables class="text-xs"></test-print-item-variables>
-          <h2 class="font-bold">Stamp context</h2>
-          <test-stamp debug class="text-xs overflow-auto"></test-stamp>
-        </div>
-      </aside>
-    </test-navigation>
-  </qti-test>
+    // #/<example>/<item> opens examples/<example>/#/<item>
+    let shown;
+    const show = () => {
+      const [route, item] = location.hash.slice(2).split("/");
+      const id = examples.some((e) => e.id === route) ? route : examples[0].id;
+      nav.querySelectorAll("a").forEach((a) => (a.dataset.id === id ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")));
+      document.title = `${examples.find((e) => e.id === id).label} · QTI Player Cookbook`;
+      if (shown === id && !item) return;
+      shown = id;
+      frame.src = `examples/${id}/index.html${item ? `#/${item}` : ""}`;
+    };
+    window.addEventListener("hashchange", show);
+    show();
+  </script>
 </body>
 
 </html>

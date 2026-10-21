@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  REKENEN: rekenopdrachten met onbeperkt oefenen in eigen volgorde.
+  - nonlinear + individual: je springt vrij tussen de sommen en controleert ze één voor één.
+  - qti-item-session-control: tot 3 pogingen per som; de tip komt uit het item (poging 1 en 2), de uitleg na poging 3.
+  - Outcome processing telt de punten op.
+-->
+<qti-assessment-test xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0"
+  identifier="rekenen-basis" title="Rekenen: basisvaardigheden"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd">
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="PERCENTAGE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+
+  <qti-test-part identifier="REKENEN" navigation-mode="nonlinear" submission-mode="individual">
+    <qti-item-session-control max-attempts="3" show-feedback="true" />
+    <qti-assessment-section identifier="SOMMEN" title="Sommen" visible="true">
+      <qti-assessment-item-ref identifier="OPTELLEN" href="ITEM001.xml" />
+      <qti-assessment-item-ref identifier="TAFELS" href="ITEM002.xml" />
+      <qti-assessment-item-ref identifier="DELEN" href="ITEM003.xml" />
+      <qti-assessment-item-ref identifier="PROCENTEN" href="ITEM004.xml" />
+      <qti-assessment-item-ref identifier="TERUGKRIJGEN" href="ITEM005.xml" />
+      <qti-assessment-item-ref identifier="GROOTSTE" href="ITEM006.xml" />
+    </qti-assessment-section>
+  </qti-test-part>
+
+  <qti-outcome-processing>
+    <qti-set-outcome-value identifier="SCORE">
+      <qti-sum><qti-test-variables variable-identifier="SCORE" /></qti-sum>
+    </qti-set-outcome-value>
+    <qti-set-outcome-value identifier="MAXSCORE">
+      <qti-sum><qti-test-variables variable-identifier="MAXSCORE" /></qti-sum>
+    </qti-set-outcome-value>
+    <qti-set-outcome-value identifier="PERCENTAGE">
+      <qti-product>
+        <qti-divide>
+          <qti-variable identifier="SCORE" />
+          <qti-variable identifier="MAXSCORE" />
+        </qti-divide>
+        <qti-base-value base-type="float">100</qti-base-value>
+      </qti-product>
+    </qti-set-outcome-value>
+    <qti-outcome-condition>
+      <qti-outcome-if>
+        <qti-gte><qti-variable identifier="PERCENTAGE" /><qti-base-value base-type="float">80</qti-base-value></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-if>
+      <qti-outcome-else-if>
+        <qti-gte><qti-variable identifier="PERCENTAGE" /><qti-base-value base-type="float">50</qti-base-value></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">VOLDOENDE</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-else-if>
+      <qti-outcome-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">OEFENEN</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-else>
+    </qti-outcome-condition>
+  </qti-outcome-processing>
+
+  <qti-test-feedback identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body>Sterk gerekend! Je beheerst deze basisvaardigheden.</qti-content-body>
+  </qti-test-feedback>
+  <qti-test-feedback identifier="VOLDOENDE" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body>Een goed begin. Bekijk de uitleg bij de sommen die fout gingen en probeer ze nog eens.</qti-content-body>
+  </qti-test-feedback>
+  <qti-test-feedback identifier="OEFENEN" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body>Blijf oefenen: lees de uitleg bij elke som en probeer het opnieuw.</qti-content-body>
+  </qti-test-feedback>
+</qti-assessment-test>

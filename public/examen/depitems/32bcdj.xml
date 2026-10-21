@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.w3.org/2001/10/synthesis https://purl.imsglobal.org/spec/ssml/v1p1/schema/xsd/ssmlv1p1-core.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32bcdj" identifier="ITM-32bcdj" time-dependent="false" label="32bcdj" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension" xmlns:ssml="http://www.w3.org/2001/10/synthesis">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="directedPair">
+    <qti-correct-response interpretation="A&amp;B&amp;A&amp;B">
+      <qti-value>y_A x_1</qti-value>
+      <qti-value>y_B x_2</qti-value>
+      <qti-value>y_C x_1</qti-value>
+      <qti-value>y_D x_2</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="VIDEORESPONSE" cardinality="single" base-type="integer" />
+  <qti-outcome-declaration identifier="RAW_SCORE" cardinality="single" base-type="integer">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-interpolation-table>
+      <qti-interpolation-table-entry source-value="4" target-value="2" />
+      <qti-interpolation-table-entry source-value="3" target-value="1" />
+      <qti-interpolation-table-entry source-value="2" target-value="0" />
+      <qti-interpolation-table-entry source-value="1" target-value="0" />
+      <qti-interpolation-table-entry source-value="0" target-value="0" />
+    </qti-interpolation-table>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>2</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <dep:dep-textMarker>
+      <dep:dep-description />
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated.css" type="text/css" />
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <div id="leftbody">
+            <p class="cito_genclass_KB-20-A2-035_1">» Lees eerst de opgave voordat je het filmfragment bekijkt.<br /><br /></p>
+            <div id="Ib0ccae13-bcba-4857-8c94-83a2ae652941">
+              <div>missing video</div>
+            </div>
+            <p />
+          </div>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="question">
+            <p>
+              <strong>Geef bij elke bewering over haviken aan of die wel of niet wordt genoemd in het fragment. </strong>
+            </p>
+          </div>
+          <div>
+            <qti-match-interaction id="matchInteraction1" class="qti-match-tabular " min-associations="4" max-associations="4" shuffle="false" response-identifier="RESPONSE">
+              <qti-simple-match-set>
+                <qti-simple-associable-choice identifier="y_A" match-max="1">
+                  <div>
+                    <p>Ze wachten tot hun prooi in de buurt is.</p>
+                  </div>
+                </qti-simple-associable-choice>
+                <qti-simple-associable-choice identifier="y_B" match-max="1">
+                  <div>
+                    <p>Ze jagen liever op <ssml:sub alias="[konijnen]">konijnen</ssml:sub> dan op fazanten.</p>
+                  </div>
+                </qti-simple-associable-choice>
+                <qti-simple-associable-choice identifier="y_C" match-max="1">
+                  <div>
+                    <p>Ze hebben erg goede ogen.</p>
+                  </div>
+                </qti-simple-associable-choice>
+                <qti-simple-associable-choice identifier="y_D" match-max="1">
+                  <div>
+                    <p>Ze jagen graag in het open veld.</p>
+                  </div>
+                </qti-simple-associable-choice>
+              </qti-simple-match-set>
+              <qti-simple-match-set>
+                <qti-simple-associable-choice identifier="x_1" match-max="4">
+                  <div class="cito_genclass_KB-20-A2-035_2">
+                    <p>wel</p>
+                  </div>
+                </qti-simple-associable-choice>
+                <qti-simple-associable-choice identifier="x_2" match-max="4">
+                  <div class="cito_genclass_KB-20-A2-035_3">
+                    <p>niet</p>
+                  </div>
+                </qti-simple-associable-choice>
+              </qti-simple-match-set>
+            </qti-match-interaction>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">y_A x_1</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">y_B x_2</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">y_C x_1</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="directedPair">y_D x_2</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-lookup-outcome-value identifier="SCORE">
+      <qti-variable identifier="RAW_SCORE" />
+    </qti-lookup-outcome-value>
+  </qti-response-processing>
+</qti-assessment-item>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32e9ub" identifier="ITM-32e9ub" time-dependent="false" label="32e9ub" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="A">
+      <qti-value>A</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>1</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <dep:dep-textMarker>
+      <dep:dep-description />
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated_KB-19-B2-006.css" type="text/css" />
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <p xml:lang="en-US">
+            <strong>Tetris </strong>
+          </p>
+          <p xml:lang="en-US">
+            <img id="Id-IMG_3eebdfea-d63b-4567-b298-83f36a76588a" src="../img/enkb19_Tetris.jpg" width="425" height="191" alt="" />
+          </p>
+          <p xml:lang="en-US">Tetris was released on Nintendo's Game Boy in 1989 and has sold more than 35 million copies. The block-stacking puzzle game was a massive hit in the 1990s, and it's more useful than you might think, says a new study. Researchers from Plymouth University and Queensland University of Technology say playing Tetris can ease the desire for drugs, food, coffee and even sleep.</p>
+          <p xml:lang="en-US">The game requires patience and quick-thinking as players stack hundreds of little coloured blocks on top of each other in a small screen. "We think the Tetris effect happens because craving involves imagining the experience of consuming a particular substance or indulging in a particular activity," says Dr. Jackie Andrade. Tetris occupies the mental processes that support imagery.</p>
+          <p xml:lang="en-US">The benefits of playing Tetris were maintained over the seven-day study period. The study participants aged 18 to 27 were asked to play Tetris and text the researchers to report on their cravings, which were reduced from 70 to 56 percent. </p>
+          <p />
+        </div>
+        <div class="qti-layout-col6">
+          <div id="question">
+            <p>
+              <strong>
+                <span>Wat wordt bedoeld met het '<span xml:lang="en-US">Tetris</span> effect'?</span>
+              </strong>
+            </p>
+            <p>
+              <span />
+            </p>
+          </div>
+          <div id="mc">
+            <qti-choice-interaction id="choiceInteraction1" class="qti-labels-none " max-choices="1" shuffle="false" response-identifier="RESPONSE">
+              <qti-simple-choice identifier="A">
+                <p>dat bepaalde verlangens worden afgezwakt bij spelers van dit spel </p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="B">
+                <p>dat het aantal onderzoeken naar computerspellen toeneemt</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="C">
+                <p>dat het veel energie kost om het spel lang achter elkaar te spelen</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="D">
+                <p>dat mensen slimmer worden door het veelvuldig spelen van dit spel</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="E">
+                <p>dat uitdagende computerspellen verslavend kunnen werken</p>
+              </qti-simple-choice>
+            </qti-choice-interaction>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing template="https://purl.imsglobal.org/spec/qti/v3p0/rptemplates/match_correct.xml" />
+</qti-assessment-item>

@@ -1,0 +1,2055 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:imsmd="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM https://purl.imsglobal.org/spec/md/v1p3/schema/xsd/imsmd_loose_v1p3p2.xsd http://www.imsglobal.org/xsd/qti/qtiv3p0/imscp_v1p1 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqtiv3p0_imscpv1p2_v1p0.xsd" identifier="MANIFEST-5e0e3f64-5f60-476a-82d5-e6cc75124648" xmlns="http://www.imsglobal.org/xsd/qti/qtiv3p0/imscp_v1p1">
+  <metadata>
+    <schema>QTI Package</schema>
+    <schemaversion>3.0.0</schemaversion>
+    <imsmd:lom>
+      <imsmd:general>
+        <imsmd:identifier>
+          <imsmd:entry>f6ce64d5-4273-461d-b1b7-5c3248f5f16d</imsmd:entry>
+        </imsmd:identifier>
+        <imsmd:title>
+          <imsmd:string></imsmd:string>
+        </imsmd:title>
+      </imsmd:general>
+      <imsmd:lifeCycle>
+        <imsmd:version>
+          <imsmd:string>1</imsmd:string>
+        </imsmd:version>
+      </imsmd:lifeCycle>
+    </imsmd:lom>
+  </metadata>
+  <organizations />
+  <resources>
+    <resource identifier="I_00001_CF" type="controlfile" href="dep_extension.xsd">
+      <file href="dep_extension.xsd" />
+    </resource>
+    <resource identifier="ITM-32bcde" type="imsqti_item_xmlv3p0" href="depitems/32bcde.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>1f572f27-0b15-484a-88a9-a2bdadf36037</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32bcde.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-033_css" />
+    </resource>
+    <resource identifier="ITM-32bcdg" type="imsqti_item_xmlv3p0" href="depitems/32bcdg.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>c2a90ffc-544d-4242-960d-8305c09f7368</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32bcdg.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+    </resource>
+    <resource identifier="ITM-32bcdj" type="imsqti_item_xmlv3p0" href="depitems/32bcdj.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>5ca3d4b5-ccb0-4fff-b90e-8429ebad1dbe</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32bcdj.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+    </resource>
+    <resource identifier="ITM-32bcdk" type="imsqti_item_xmlv3p0" href="depitems/32bcdk.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>c2766c5a-8fa1-49b8-b328-fbe615fb0e62</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32bcdk.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-036_css" />
+    </resource>
+    <resource identifier="ITM-32c2sb" type="imsqti_item_xmlv3p0" href="depitems/32c2sb.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>384a82e3-9a75-4fa1-8087-d51297a5e321</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>10002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32c2sb.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+    </resource>
+    <resource identifier="ITM-32e9ph" type="imsqti_item_xmlv3p0" href="depitems/32e9ph.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>c1e2cb8f-ca33-40c6-ba77-3274680cead8</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32e9ph.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-19-B1-007_xml" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-002_css" />
+    </resource>
+    <resource identifier="ITM-32e9pn" type="imsqti_item_xmlv3p0" href="depitems/32e9pn.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>8c9688c2-72d4-4b60-a0d4-bcc0359a9d1f</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32e9pn.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-19-B1-007_xml" />
+      <dependency identifierref="RES-enkb-19-Nutella-8-1_aangepast_jpg" />
+      <dependency identifierref="RES-enkb-19-Nutella-8-2_jpg" />
+      <dependency identifierref="RES-enkb19-Nutella-8-6_jpg" />
+      <dependency identifierref="RES-enkb-19-Nutella-8-4_jpg" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-003_css" />
+    </resource>
+    <resource identifier="ITM-32e9pp" type="imsqti_item_xmlv3p0" href="depitems/32e9pp.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>9429e001-a6b5-4a16-89d6-7f47ed5e5076</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32e9pp.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-19-B1-007_xml" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-004_css" />
+    </resource>
+    <resource identifier="ITM-32e9ps" type="imsqti_item_xmlv3p0" href="depitems/32e9ps.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>c082fa7d-e177-4fd9-b775-5e32ae49c477</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32e9ps.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-19-B1-007_xml" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-005_css" />
+    </resource>
+    <resource identifier="ITM-32e9u9" type="imsqti_item_xmlv3p0" href="depitems/32e9u9.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>943d5132-1365-43ab-ad25-2e709ccae281</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32e9u9.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-enkb18-Google_jpg" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-001_css" />
+    </resource>
+    <resource identifier="ITM-32e9ub" type="imsqti_item_xmlv3p0" href="depitems/32e9ub.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>df426abe-d2f7-4d33-b819-c65a9256358e</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32e9ub.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-enkb19_Tetris_jpg" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-006_css" />
+    </resource>
+    <resource identifier="ITM-32erf8" type="imsqti_item_xmlv3p0" href="depitems/32erf8.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>e72fbb6d-cd32-4fb5-a7f1-c2244b464f8a</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32erf8.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-19-C1-007_xml" />
+      <dependency identifierref="RES-enkb19_water-bottle_jpg" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-007_css" />
+    </resource>
+    <resource identifier="ITM-32erfj" type="imsqti_item_xmlv3p0" href="depitems/32erfj.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>7285e96a-cc43-4dd4-a7b6-627a9c2a58e7</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32erfj.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-enkb19_water-bottle_jpg" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-009_css" />
+    </resource>
+    <resource identifier="ITM-32erfu" type="imsqti_item_xmlv3p0" href="depitems/32erfu.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>a81cbd22-2145-4b93-8f33-cc3224d11d9d</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32erfu.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-19-C1-007_xml" />
+      <dependency identifierref="RES-enkb19_water-bottle_jpg" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-010_css" />
+    </resource>
+    <resource identifier="ITM-32erfz" type="imsqti_item_xmlv3p0" href="depitems/32erfz.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>e42d9346-1d9c-4f92-8fd0-c2d23db91816</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32erfz.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-19-C1-007_xml" />
+      <dependency identifierref="RES-enkb19_water-bottle_jpg" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-011_css" />
+    </resource>
+    <resource identifier="ITM-32erzb" type="imsqti_item_xmlv3p0" href="depitems/32erzb.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>244a759b-d981-43a9-bdfb-4eb4a542d18c</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Audiofragment</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Audiofragment</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32erzb.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-9_Japan_opus" />
+      <dependency identifierref="RES-enkb19-Japan_jpg" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-012_css" />
+    </resource>
+    <resource identifier="ITM-32erzh" type="imsqti_item_xmlv3p0" href="depitems/32erzh.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f35d46d5-2b50-4046-a69a-cab16d4968ed</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Audiofragment</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Audiofragment</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32erzh.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-13_California_opus" />
+      <dependency identifierref="RES-enkb19-California_jpg" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-19-B2-013_css" />
+    </resource>
+    <resource identifier="ITM-32fwtu" type="imsqti_item_xmlv3p0" href="depitems/32fwtu.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f2f4ef03-5765-4c5d-8b6d-e3cff6f122c1</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32fwtu.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-001_css" />
+    </resource>
+    <resource identifier="ITM-32fwtv" type="imsqti_item_xmlv3p0" href="depitems/32fwtv.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>1e170211-2557-4c04-8ebf-187561f5b7d1</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32fwtv.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-002_css" />
+    </resource>
+    <resource identifier="ITM-32fwtx" type="imsqti_item_xmlv3p0" href="depitems/32fwtx.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>6348b373-d0a5-4d21-b037-05b434e68ad6</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32fwtx.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-004_css" />
+    </resource>
+    <resource identifier="ITM-32fwty" type="imsqti_item_xmlv3p0" href="depitems/32fwty.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>ed420fd0-451b-46a9-a096-6010b77250d9</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32fwty.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-005_css" />
+    </resource>
+    <resource identifier="ITM-32fwtz" type="imsqti_item_xmlv3p0" href="depitems/32fwtz.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>7e5afb3a-57c6-459a-8379-644011715907</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32fwtz.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-006_css" />
+    </resource>
+    <resource identifier="ITM-32fwu2" type="imsqti_item_xmlv3p0" href="depitems/32fwu2.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>c2748e46-7cf2-44d7-b1a0-d693753ca921</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32fwu2.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-007_css" />
+    </resource>
+    <resource identifier="ITM-32fwu4" type="imsqti_item_xmlv3p0" href="depitems/32fwu4.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>ae204045-e1ef-4a20-bc97-005d61f8fc59</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32fwu4.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-009_css" />
+    </resource>
+    <resource identifier="ITM-32gchq" type="imsqti_item_xmlv3p0" href="depitems/32gchq.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>a3808776-2b25-4654-a362-6251f10adbb8</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gchq.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+    </resource>
+    <resource identifier="ITM-32gchr" type="imsqti_item_xmlv3p0" href="depitems/32gchr.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>024eb3db-8340-41d1-ad42-e0ac6c84cc52</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40004</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gchr.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-011_css" />
+    </resource>
+    <resource identifier="ITM-32gchs" type="imsqti_item_xmlv3p0" href="depitems/32gchs.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>1c23f111-69fe-41a5-97c8-59849f2f951d</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40003</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gchs.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-012_css" />
+    </resource>
+    <resource identifier="ITM-32gcht" type="imsqti_item_xmlv3p0" href="depitems/32gcht.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>4cd38b8d-09a8-419f-a367-83d606521229</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40003</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gcht.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-013_css" />
+    </resource>
+    <resource identifier="ITM-32khqg" type="imsqti_item_xmlv3p0" href="depitems/32khqg.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>5cf2da61-1d4b-4af6-9e17-d6c48b5ac8bc</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Audiofragment</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Audiofragment</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khqg.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-St_Louis_opus" />
+      <dependency identifierref="RES-enkb22_-St_png" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-012_css" />
+    </resource>
+    <resource identifier="ITM-32khqj" type="imsqti_item_xmlv3p0" href="depitems/32khqj.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>53d504d0-9912-4a02-ab98-90b13d10623a</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Audiofragment</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Audiofragment</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khqj.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Arnhem_opus" />
+      <dependency identifierref="RES-enbb22_Arnhem_jpg" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-011_css" />
+    </resource>
+    <resource identifier="ITM-32khtg" type="imsqti_item_xmlv3p0" href="depitems/32khtg.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d4e16af2-42c5-4382-a87c-739dbff6bb88</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30003</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khtg.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-22-B1-015_xml" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-002_css" />
+    </resource>
+    <resource identifier="ITM-32khth" type="imsqti_item_xmlv3p0" href="depitems/32khth.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>ee386435-1aee-4a05-aed6-f1bda6d405d4</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khth.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-22-B1-015_xml" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-003_css" />
+    </resource>
+    <resource identifier="ITM-32khtj" type="imsqti_item_xmlv3p0" href="depitems/32khtj.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>7989f34b-2c55-4a4b-9708-185b5d5458d8</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khtj.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+    </resource>
+    <resource identifier="ITM-32khtk" type="imsqti_item_xmlv3p0" href="depitems/32khtk.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>3840aad2-af14-43aa-915e-cce2bb14b2fa</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khtk.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-22-B1-018_xml" />
+      <dependency identifierref="RES-cito_generated_css" />
+    </resource>
+    <resource identifier="ITM-32khu6" type="imsqti_item_xmlv3p0" href="depitems/32khu6.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>b208e373-76b9-4b14-8d85-4b0ef9d17dfb</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khu6.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-22-B1-018_xml" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-006_css" />
+    </resource>
+    <resource identifier="ITM-32khu7" type="imsqti_item_xmlv3p0" href="depitems/32khu7.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>3b49f131-40d6-4cb3-bcb1-e40606190b9e</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khu7.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-22-B1-018_xml" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-007_css" />
+    </resource>
+    <resource identifier="ITM-32khu8" type="imsqti_item_xmlv3p0" href="depitems/32khu8.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>98a88686-5398-41a7-ad3e-96ab2021fb6f</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khu8.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-enkb22_-Biodegradable-Cutlery_jpg" />
+      <dependency identifierref="RES-cito_generated_css" />
+    </resource>
+    <resource identifier="ITM-32khuc" type="imsqti_item_xmlv3p0" href="depitems/32khuc.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>824b8868-628d-4fea-9287-d87c14b012bf</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32khuc.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-enkb22_-Biodegradable-Cutlery_jpg" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-009_css" />
+    </resource>
+    <resource identifier="ITM-32kmhu" type="imsqti_item_xmlv3p0" href="depitems/32kmhu.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>46bb3b40-ab58-4692-84c5-350f8796f074</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32kmhu.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-010_css" />
+    </resource>
+    <resource identifier="ITM-32ksnj" type="imsqti_item_xmlv3p0" href="depitems/32ksnj.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f8932b6d-9208-42b9-8966-a1f464476314</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32ksnj.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_KB-22-B1-001_css" />
+    </resource>
+    <resource identifier="ITM-32muqs" type="imsqti_item_xmlv3p0" href="depitems/32muqs.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>72188aa7-0226-48ef-977f-8ff2518cac0e</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32muqs.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+      <dependency identifierref="RES-cito_generated_KB-20-A2-003omgebouwd_css" />
+    </resource>
+    <resource identifier="ITM-32muqt" type="imsqti_item_xmlv3p0" href="depitems/32muqt.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>76be8be3-8d72-400f-aadd-f0353e33ceff</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30002</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+              <imsmd:taxon>
+                <imsmd:id>Tekst</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Tekst</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32muqt.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-Brontekst_KB-19-C1-007_xml" />
+      <dependency identifierref="RES-enkb19_water-bottle_jpg" />
+      <dependency identifierref="RES-cito_generated_css" />
+    </resource>
+    <resource identifier="ITM-32na9q" type="imsqti_item_xmlv3p0" href="depitems/32na9q.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d389da10-28a0-4276-8160-adf328a8e825</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>19</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32na9q.xml" />
+      <dependency identifierref="RES-cito_itemstyle_css" />
+      <dependency identifierref="RES-cito_userstyle_css" />
+      <dependency identifierref="RES-cito_generated_css" />
+    </resource>
+    <resource identifier="RES-13_California_opus" type="associatedcontent/learning-application-resource" href="audio/13_California.opus">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>44dfe018-1b7b-4bc4-9ff8-9c8fe6348e3b</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="audio/13_California.opus" />
+    </resource>
+    <resource identifier="RES-9_Japan_opus" type="associatedcontent/learning-application-resource" href="audio/9_Japan.opus">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>224ac9bf-3dbe-4d7f-ba0a-f6a81dd2e967</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="audio/9_Japan.opus" />
+    </resource>
+    <resource identifier="RES-Arnhem_opus" type="associatedcontent/learning-application-resource" href="audio/Arnhem.opus">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>26deaa53-dcf2-4950-862d-bfb9bf324c8e</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="audio/Arnhem.opus" />
+    </resource>
+    <resource identifier="RES-Brontekst_KB-19-B1-007_xml" type="imsqti_stimulus_xmlv3p0" href="ref/Brontekst_KB-19-B1-007.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>4c5b830f-e170-4399-8aea-e40df6755292</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>109</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="ref/Brontekst_KB-19-B1-007.xml" />
+      <dependency identifierref="RES-cito_Edituserstyle_source_css" />
+      <dependency identifierref="RES-cito_itemstyle_source_css" />
+      <dependency identifierref="RES-cito_userstyle_source_css" />
+      <dependency identifierref="RES-enkb18-nutella_jpg" />
+    </resource>
+    <resource identifier="RES-Brontekst_KB-19-C1-007_xml" type="imsqti_stimulus_xmlv3p0" href="ref/Brontekst_KB-19-C1-007.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>9f21a68d-0808-4ff2-9c4c-fdb2c37297a6</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>122</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="ref/Brontekst_KB-19-C1-007.xml" />
+      <dependency identifierref="RES-cito_Edituserstyle_source_css" />
+      <dependency identifierref="RES-cito_itemstyle_source_css" />
+      <dependency identifierref="RES-cito_userstyle_source_css" />
+    </resource>
+    <resource identifier="RES-Brontekst_KB-22-B1-015_xml" type="imsqti_stimulus_xmlv3p0" href="ref/Brontekst_KB-22-B1-015.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>9eb21b72-ea36-4265-9d21-3d696f200dd1</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>8</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="ref/Brontekst_KB-22-B1-015.xml" />
+      <dependency identifierref="RES-cito_Edituserstyle_source_css" />
+      <dependency identifierref="RES-cito_itemstyle_source_css" />
+      <dependency identifierref="RES-cito_userstyle_source_css" />
+    </resource>
+    <resource identifier="RES-Brontekst_KB-22-B1-018_xml" type="imsqti_stimulus_xmlv3p0" href="ref/Brontekst_KB-22-B1-018.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>a6ec587b-bd7a-4bb3-a27f-b487d9684892</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>9</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="ref/Brontekst_KB-22-B1-018.xml" />
+      <dependency identifierref="RES-cito_Edituserstyle_source_css" />
+      <dependency identifierref="RES-cito_itemstyle_source_css" />
+      <dependency identifierref="RES-cito_userstyle_source_css" />
+      <dependency identifierref="RES-enkb22_Ghost-town-1_jpg" />
+      <dependency identifierref="RES-enkb22_Ghost-town-2_jpg" />
+    </resource>
+    <resource identifier="RES-cito_Edituserstyle_source_css" type="webcontent" href="css/cito_Edituserstyle_source.css">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d98556ed-9f65-4de6-8ed4-4d9e775d22fc</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="css/cito_Edituserstyle_source.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_css" type="webcontent">
+      <file href="css/cito_generated.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-001_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-001.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-002_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-002.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-003_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-003.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-004_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-004.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-005_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-005.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-006_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-006.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-007_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-007.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-009_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-009.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-010_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-010.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-011_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-011.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-012_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-012.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-19-B2-013_css" type="webcontent">
+      <file href="css/cito_generated_KB-19-B2-013.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-001_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-001.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-002_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-002.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-003omgebouwd_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-003omgebouwd.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-004_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-004.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-005_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-005.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-006_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-006.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-007_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-007.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-009_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-009.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-011_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-011.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-012_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-012.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-013_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-013.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-033_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-033.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-20-A2-036_css" type="webcontent">
+      <file href="css/cito_generated_KB-20-A2-036.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-001_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-001.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-002_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-002.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-003_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-003.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-006_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-006.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-007_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-007.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-009_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-009.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-010_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-010.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-011_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-011.css" />
+    </resource>
+    <resource identifier="RES-cito_generated_KB-22-B1-012_css" type="webcontent">
+      <file href="css/cito_generated_KB-22-B1-012.css" />
+    </resource>
+    <resource identifier="RES-cito_itemstyle_css" type="webcontent" href="css/cito_itemstyle.css">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>06cf3ece-3de1-4465-9a46-5bd03e508316</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>3</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="css/cito_itemstyle.css" />
+    </resource>
+    <resource identifier="RES-cito_itemstyle_source_css" type="webcontent" href="css/cito_itemstyle_source.css">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d703eb66-c015-4ce1-9229-05f5dee83ca5</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="css/cito_itemstyle_source.css" />
+    </resource>
+    <resource identifier="RES-cito_userstyle_css" type="webcontent" href="css/cito_userstyle.css">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>4bd183de-3e78-4ea9-b8d3-ff0007254066</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>3</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="css/cito_userstyle.css" />
+    </resource>
+    <resource identifier="RES-cito_userstyle_source_css" type="webcontent" href="css/cito_userstyle_source.css">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>40ba57d2-9e14-4a9f-b868-c1b6156c2f1b</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="css/cito_userstyle_source.css" />
+    </resource>
+    <resource identifier="RES-enbb22_Arnhem_jpg" type="associatedcontent/learning-application-resource" href="img/enbb22_Arnhem.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>9308fc45-7cb5-4628-8553-8713b472a19e</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enbb22_Arnhem.jpg" />
+    </resource>
+    <resource identifier="RES-enkb18-Google_jpg" type="associatedcontent/learning-application-resource" href="img/enkb18-Google.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>631d5a7b-13fd-43d9-b8e7-c71a2ea1e37f</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb18-Google.jpg" />
+    </resource>
+    <resource identifier="RES-enkb18-nutella_jpg" type="associatedcontent/learning-application-resource" href="img/enkb18-nutella.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f3af636b-af80-4308-9b92-d7929f4e6693</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb18-nutella.jpg" />
+    </resource>
+    <resource identifier="RES-enkb19_Tetris_jpg" type="associatedcontent/learning-application-resource" href="img/enkb19_Tetris.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>38d58d9a-3dc5-42af-a9ea-9040d53126aa</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb19_Tetris.jpg" />
+    </resource>
+    <resource identifier="RES-enkb19_water-bottle_jpg" type="associatedcontent/learning-application-resource" href="img/enkb19_water-bottle.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>c65edb4a-e50e-4e3c-ad50-ad86fc29cda2</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb19_water-bottle.jpg" />
+    </resource>
+    <resource identifier="RES-enkb19-California_jpg" type="associatedcontent/learning-application-resource" href="img/enkb19-California.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>c0bc9df5-0219-46fd-880f-772d0f535892</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb19-California.jpg" />
+    </resource>
+    <resource identifier="RES-enkb19-Japan_jpg" type="associatedcontent/learning-application-resource" href="img/enkb19-Japan.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>4b812b23-428b-45d0-92af-c6085c053452</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb19-Japan.jpg" />
+    </resource>
+    <resource identifier="RES-enkb-19-Nutella-8-1_aangepast_jpg" type="associatedcontent/learning-application-resource" href="img/enkb-19-Nutella-8-1_aangepast.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>71879b61-f708-46f6-a9fa-50d9fcc5c126</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb-19-Nutella-8-1_aangepast.jpg" />
+    </resource>
+    <resource identifier="RES-enkb-19-Nutella-8-2_jpg" type="associatedcontent/learning-application-resource" href="img/enkb-19-Nutella-8-2.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>9145a6f5-53b1-4a48-97fa-68b3deeb8b37</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb-19-Nutella-8-2.jpg" />
+    </resource>
+    <resource identifier="RES-enkb-19-Nutella-8-4_jpg" type="associatedcontent/learning-application-resource" href="img/enkb-19-Nutella-8-4.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>e07e2d56-13ad-42a2-ac63-bd15c86b30a9</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb-19-Nutella-8-4.jpg" />
+    </resource>
+    <resource identifier="RES-enkb19-Nutella-8-6_jpg" type="associatedcontent/learning-application-resource" href="img/enkb19-Nutella-8-6.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>61ff18df-f474-44fa-93c2-33da8a02658d</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb19-Nutella-8-6.jpg" />
+    </resource>
+    <resource identifier="RES-enkb22_-Biodegradable-Cutlery_jpg" type="associatedcontent/learning-application-resource" href="img/enkb22_-Biodegradable-Cutlery.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>ab3cc7b2-1213-4244-9cd9-53471a0dcb53</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb22_-Biodegradable-Cutlery.jpg" />
+    </resource>
+    <resource identifier="RES-enkb22_Ghost-town-1_jpg" type="associatedcontent/learning-application-resource" href="img/enkb22_Ghost-town-1.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>0f4ca2fe-8a51-4c5d-a3a3-794c8e1ca5aa</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb22_Ghost-town-1.jpg" />
+    </resource>
+    <resource identifier="RES-enkb22_Ghost-town-2_jpg" type="associatedcontent/learning-application-resource" href="img/enkb22_Ghost-town-2.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>89156c79-a186-4cac-90a5-cfac4bc76f90</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb22_Ghost-town-2.jpg" />
+    </resource>
+    <resource identifier="RES-enkb22_-St_png" type="associatedcontent/learning-application-resource" href="img/enkb22_-St.png">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>becae90c-0747-4915-bee1-512670fa7645</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/enkb22_-St.png" />
+    </resource>
+    <resource identifier="RES-St_Louis_opus" type="associatedcontent/learning-application-resource" href="audio/St.Louis.opus">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>32c14e2e-1ac6-42c8-a8de-74bc8f84c558</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="audio/St.Louis.opus" />
+    </resource>
+    <resource identifier="TST-kb-en-25-examenvariant" type="imsqti_test_xmlv3p0" href="depitems/kb-en-25-examenvariant.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>29ef0103-599d-42a8-9582-c093d2c13382</imsmd:entry>
+            </imsmd:identifier>
+            <imsmd:title>
+              <imsmd:string>VMBO KB Engels 2025 - examenvariant</imsmd:string>
+            </imsmd:title>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20000</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:technical>
+            <imsmd:requirement>
+              <imsmd:orComposite>
+                <imsmd:type>
+                  <imsmd:value>minColorDepth</imsmd:value>
+                </imsmd:type>
+                <imsmd:name>
+                  <imsmd:value>16</imsmd:value>
+                </imsmd:name>
+              </imsmd:orComposite>
+            </imsmd:requirement>
+            <imsmd:requirement>
+              <imsmd:orComposite>
+                <imsmd:type>
+                  <imsmd:value>minResolutionWidth</imsmd:value>
+                </imsmd:type>
+                <imsmd:name>
+                  <imsmd:value>1024</imsmd:value>
+                </imsmd:name>
+              </imsmd:orComposite>
+            </imsmd:requirement>
+            <imsmd:requirement>
+              <imsmd:orComposite>
+                <imsmd:type>
+                  <imsmd:value>minResolutionHeight</imsmd:value>
+                </imsmd:type>
+                <imsmd:name>
+                  <imsmd:value>768</imsmd:value>
+                </imsmd:name>
+              </imsmd:orComposite>
+            </imsmd:requirement>
+            <imsmd:otherPlatformRequirements>
+              <imsmd:string>soundCheck</imsmd:string>
+              <imsmd:string>showMaxScore</imsmd:string>
+              <imsmd:string>consecutiveNumbering</imsmd:string>
+            </imsmd:otherPlatformRequirements>
+          </imsmd:technical>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/kb-en-25-examenvariant.xml" />
+      <dependency identifierref="ITM-32e9ph" />
+      <dependency identifierref="ITM-32e9ps" />
+      <dependency identifierref="ITM-32c2sb" />
+      <dependency identifierref="ITM-32na9q" />
+      <dependency identifierref="ITM-32fwtv" />
+      <dependency identifierref="ITM-32ksnj" />
+      <dependency identifierref="ITM-32fwtu" />
+      <dependency identifierref="ITM-32khu6" />
+      <dependency identifierref="ITM-32khtk" />
+      <dependency identifierref="ITM-32bcdg" />
+      <dependency identifierref="ITM-32kmhu" />
+      <dependency identifierref="ITM-32khu7" />
+      <dependency identifierref="ITM-32muqt" />
+      <dependency identifierref="ITM-32khuc" />
+      <dependency identifierref="ITM-32erfz" />
+      <dependency identifierref="ITM-32khu8" />
+      <dependency identifierref="ITM-32fwu2" />
+      <dependency identifierref="ITM-32bcdk" />
+      <dependency identifierref="ITM-32erf8" />
+      <dependency identifierref="ITM-32gchs" />
+      <dependency identifierref="ITM-32khtg" />
+      <dependency identifierref="ITM-32gchq" />
+      <dependency identifierref="ITM-32khth" />
+      <dependency identifierref="ITM-32khqg" />
+      <dependency identifierref="ITM-32erfu" />
+      <dependency identifierref="ITM-32muqs" />
+      <dependency identifierref="ITM-32gchr" />
+      <dependency identifierref="ITM-32e9ub" />
+      <dependency identifierref="ITM-32khtj" />
+      <dependency identifierref="ITM-32bcdj" />
+      <dependency identifierref="ITM-32erfj" />
+      <dependency identifierref="ITM-32gcht" />
+      <dependency identifierref="ITM-32bcde" />
+      <dependency identifierref="ITM-32khqj" />
+      <dependency identifierref="ITM-32erzb" />
+      <dependency identifierref="ITM-32fwtz" />
+      <dependency identifierref="ITM-32fwtx" />
+      <dependency identifierref="ITM-32fwty" />
+      <dependency identifierref="ITM-32erzh" />
+      <dependency identifierref="ITM-32e9u9" />
+      <dependency identifierref="ITM-32e9pp" />
+      <dependency identifierref="ITM-32e9pn" />
+      <dependency identifierref="ITM-32fwu4" />
+    </resource>
+  </resources>
+</manifest>

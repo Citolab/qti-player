@@ -1,0 +1,24 @@
+<qti-assessment-stimulus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_stimulusv3p0_v1p0.xsd" identifier="RES-Brontekst_KB-19-C1-007_xml" title="Brontekst_KB-19-C1-007" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0">
+  <qti-stylesheet href="../css/cito_Edituserstyle_source.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_itemstyle_source.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle_source.css" type="text/css" />
+  <qti-stimulus-body>
+    <p id="c1-id-12" lang="en-US">
+      <strong id="c1-id-13">
+        <span lang="EN-US" id="c1-id-14">A look under the cap</span>
+      </strong>
+    </p>
+    <p id="c1-id-15" lang="en-US">
+      <span lang="EN-US" id="c1-id-16"><strong id="c1-id-17">(1)</strong> The runner's high is an almost-transcendent state. Your muscles burn, your blood pumps, your arms and legs move in perfect sync. Sweat trickles down your face, but you hardly notice. You realize you're thirsty, and you barely break stride as you grab your reusable water flask and take a swig of – germs. That's right. Thousands of moisture-loving bacteria may be crawling on your favorite refillable drinking container. And the act of quenching your thirst while you exercise could potentially make you sick. </span>
+    </p>
+    <p id="c1-id-18" lang="en-US">
+      <span lang="EN-US" id="c1-id-19"><strong id="c1-id-20">(2)</strong> Since most people can't finish a workout without their reusable water bottles, we decided to investigate the allure of these captivating canteens. Based on the 12 water bottles we tested, we found that reusable drinking containers may be crawling with an alarming number of viable bacteria cells: more than 300,000 colony-forming units per square centimeter (CFU/sq cm). What exactly does that mean? To put it bluntly, drinking from the average refillable bottle can be many times worse than licking your dog's toy. Perhaps you've seen viral posts on social media showcasing horrifying photos of reusable drinking flasks covered in mold. However, the bacteria we tested for aren't visible to the human eye – so you don't even know when you're consuming them. </span>
+    </p>
+    <p id="c1-id-21" lang="en-US">
+      <span lang="EN-US" id="c1-id-22"><strong id="c1-id-23">(3)</strong> We lab-tested four types of containers to see how each measures up in the creepy-crawly department. Some people favor slide-top bottles for the ease factor – just slide the lid shut and don't worry about spills. However, when it comes to germ content, these containers make the biggest splash. The squeeze-top bottles and screw-top containers are also crawling with bacteria. Drinking from these bottles can still be worse than eating a meal from your pet's dish or lapping up water from your kitchen sink. The straw-top bottles we tested contain a mere fraction of the bacteria of other bottles. This may be because water drips to the bottom of the straw rather than sticking around to attract moisture-loving germs. However, it’s still only slightly less than the average home toilet seat.  </span>
+    </p>
+    <p id="c1-id-24" lang="en-US">
+      <span lang="EN-US" id="c1-id-25"><strong id="c1-id-26">(4)</strong> The results of our reusable water bottle germ tests are fairly alarming. We know that when it comes to water bottles and bacteria, stainless steel is a better choice than plastic. Additionally, water bottles without crevices and tough-to-clean spots are less likely to host germs. Are you unwilling to give up your favorite container? Don't let your half full bottle sit in your gym bag. Instead, be sure to run it through the dishwasher or hand wash it thoroughly after every use. You can even use a weak bleach solution (one tablespoon of bleach per quart of water) to sanitize your water bottle.</span>
+    </p>
+  </qti-stimulus-body>
+</qti-assessment-stimulus>

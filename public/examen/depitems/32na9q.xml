@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" title="32na9q" identifier="ITM-32na9q" time-dependent="false" label="32na9q" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0">
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated.css" type="text/css" />
+  <qti-item-body class="defaultBody">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <table class="cito_genclass_bronvermelding_2025_examenvariant_1">
+            <colgroup>
+              <col class="cito_genclass_bronvermelding_2025_examenvariant_2" />
+              <col class="cito_genclass_bronvermelding_2025_examenvariant_3" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_4 cito_genclass_bronvermelding_2025_examenvariant_5">
+                  <p>
+                    <strong>vraagnummer</strong>
+                  </p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_4 cito_genclass_bronvermelding_2025_examenvariant_6">
+                  <p>
+                    <strong>bronvermelding</strong>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_7 cito_genclass_bronvermelding_2025_examenvariant_8">
+                  <p>1 t/m 8</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_7 cito_genclass_bronvermelding_2025_examenvariant_9">
+                  <p>
+                    <span>www.youtube.com/watch?v=uhLbFGYNDlI</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_10 cito_genclass_bronvermelding_2025_examenvariant_11">
+                  <p>intro + 9, 10, 11</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_10 cito_genclass_bronvermelding_2025_examenvariant_12">
+                  <p>
+                    <span>www.youtube.com/watch?v=ZJUfiEFh1w4, National Geographic</span>
+                    <span></span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_13 cito_genclass_bronvermelding_2025_examenvariant_14">
+                  <p>intro + 12, 13, 14</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_13 cito_genclass_bronvermelding_2025_examenvariant_15">
+                  <p>
+                    <span>BBC2, 2011</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_16 cito_genclass_bronvermelding_2025_examenvariant_17">
+                  <p>15</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_16 cito_genclass_bronvermelding_2025_examenvariant_18">
+                  <p>Dailymail.co.uk / Independent.co.uk</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_19 cito_genclass_bronvermelding_2025_examenvariant_20">
+                  <p>16 t/m 19</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_19 cito_genclass_bronvermelding_2025_examenvariant_21">
+                  <p>http://mentalfloss.com/article/50068/8-things-you-may-not-know-about-nutella</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_22 cito_genclass_bronvermelding_2025_examenvariant_23">
+                  <p>20</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_22 cito_genclass_bronvermelding_2025_examenvariant_24">
+                  <p>www.shortnews.com/start.cfm?id=100961; www.mirror.co.uk/news/weird-news/playing-tetris-can-help-stop-6267064 </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_25 cito_genclass_bronvermelding_2025_examenvariant_26">
+                  <p>21 t/m 25</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_25 cito_genclass_bronvermelding_2025_examenvariant_27">
+                  <p>www.treadmillreviews.net/water-bottle-germs-revealed</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_28 cito_genclass_bronvermelding_2025_examenvariant_29">
+                  <p>26</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_28 cito_genclass_bronvermelding_2025_examenvariant_30">
+                  <p>www.nytimes.com/2017/11/02/world/asia/japan-smokers-vacation.html</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_31 cito_genclass_bronvermelding_2025_examenvariant_32">
+                  <p>27</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_31 cito_genclass_bronvermelding_2025_examenvariant_33">
+                  <p>www.bbc.co.uk/newsround/22799648</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_34 cito_genclass_bronvermelding_2025_examenvariant_35">
+                  <p>28</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_34 cito_genclass_bronvermelding_2025_examenvariant_36">
+                  <p>independent.co.uk, 2019</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_37 cito_genclass_bronvermelding_2025_examenvariant_38">
+                  <p>29, 30 31</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_37 cito_genclass_bronvermelding_2025_examenvariant_39">
+                  <p>metro.co.uk, 2019</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_40 cito_genclass_bronvermelding_2025_examenvariant_41">
+                  <p>32, 33, 34</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_40 cito_genclass_bronvermelding_2025_examenvariant_42">
+                  <p>https://edition.cnn.com/travel/article/ghost-town-sold-cerro-gordo/index.html</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_43 cito_genclass_bronvermelding_2025_examenvariant_44">
+                  <p>35, 36</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_43 cito_genclass_bronvermelding_2025_examenvariant_45">
+                  <p>www.icelandair.com/blog/introducing-biodegradable-cutlery, 2019</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_46 cito_genclass_bronvermelding_2025_examenvariant_47">
+                  <p>37</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_46 cito_genclass_bronvermelding_2025_examenvariant_48">
+                  <p>nzherald.co.nz, 2019</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_49 cito_genclass_bronvermelding_2025_examenvariant_50">
+                  <p>38</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_49 cito_genclass_bronvermelding_2025_examenvariant_51">
+                  <p>money.cnn.com, 2015</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_52 cito_genclass_bronvermelding_2025_examenvariant_53">
+                  <p>39</p>
+                </td>
+                <td class="cito_genclass_bronvermelding_2025_examenvariant_52 cito_genclass_bronvermelding_2025_examenvariant_54">
+                  <p>qz.com, 2016</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p />
+        </div>
+        <div class="qti-layout-col6"></div>
+      </div>
+    </div>
+  </qti-item-body>
+</qti-assessment-item>

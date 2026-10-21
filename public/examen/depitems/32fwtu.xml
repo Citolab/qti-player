@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.w3.org/2001/10/synthesis https://purl.imsglobal.org/spec/ssml/v1p1/schema/xsd/ssmlv1p1-core.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32fwtu" identifier="ITM-32fwtu" time-dependent="false" label="32fwtu" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension" xmlns:ssml="http://www.w3.org/2001/10/synthesis">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="B">
+      <qti-value>B</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="VIDEORESPONSE" cardinality="single" base-type="integer" />
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>1</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <dep:dep-textMarker>
+      <dep:dep-description />
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated_KB-20-A2-001.css" type="text/css" />
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <p>
+            <span>» Lees eerst de opgave voordat je het filmfragment bekijkt.</span>
+          </p>
+          <p>
+            <span>Je gaat kijken naar een fragment over het </span>
+            <ssml:sub alias="[cruise schip]">cruiseschip</ssml:sub>
+            <span><span xml:lang="en-US">Oasis of the Seas</span>. </span>
+          </p>
+          <p class="cito_genclass_KB-20-A2-001_1">
+            <span />
+          </p>
+          <div id="If5f1e41b-e9ec-48f8-9300-41d9c3a28179">
+            <div>missing video</div>
+          </div>
+          <p>
+            <span></span>
+          </p>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="question">
+            <p>
+              <strong>Wat heeft het nieuwe <ssml:sub alias="[cruise schip]">cruiseschip</ssml:sub> <span xml:lang="en-US">Oasis of the Seas</span> als doel?</strong>
+            </p>
+          </div>
+          <div id="mc">
+            <qti-choice-interaction id="choiceInteraction1" class="qti-labels-none " max-choices="1" shuffle="false" response-identifier="RESPONSE">
+              <qti-simple-choice identifier="A">
+                <p>iedere gast individuele aandacht te geven <ssml:break time="500ms"></ssml:break></p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="B">
+                <p>iedereen verbazen met alles wat er te doen is <ssml:break time="500ms"></ssml:break></p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="C">
+                <p>zo veel mogelijk mensen aan boord vervoeren</p>
+              </qti-simple-choice>
+            </qti-choice-interaction>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing template="https://purl.imsglobal.org/spec/qti/v3p0/rptemplates/match_correct.xml" />
+</qti-assessment-item>

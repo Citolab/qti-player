@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="nl" data-qti-theme="examen">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examen</title>
+
+  <!-- Tailwind with its preflight, as everyone uses it -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- The page's tokens as Tailwind colors: bg-surface, text-ink, bg-brand, border-line, rounded-box, ... -->
+  <style type="text/tailwindcss">
+    @theme inline {
+      --color-surface: var(--cito-color-base-100);
+      --color-page: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 2.5%);
+      --color-line: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
+      --color-ink: var(--cito-color-base-content);
+      --color-brand: var(--cito-color-primary);
+      --color-on-brand: var(--cito-color-primary-content);
+      --color-good: var(--cito-color-success);
+      --color-warn: var(--cito-color-warning);
+      --color-bad: var(--cito-color-error);
+      --radius-box: var(--cito-radius-box, 0.5rem);
+      --radius-field: var(--cito-radius-field, 0.25rem);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
+       item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
+  <style>
+    /* Examen: no brand. Black ink on white paper, a serif for the questions, square corners. Only the state colours keep a hue. */
+    html[data-qti-theme="examen"] {
+      color-scheme: light;
+      --cito-color-primary: oklch(21% 0 none);
+      --cito-color-primary-content: oklch(100% 0 none);
+      --cito-color-success: oklch(53.64% 0.166 139.96);
+      --cito-color-warning: oklch(79.62% 0.1708 71.71);
+      --cito-color-error: oklch(56.75% 0.2329 29.23);
+      --cito-color-info: oklch(56.14% 0.1437 245.8);
+      --cito-color-base-100: oklch(100% 0 none);
+      --cito-color-base-content: oklch(22% 0 none);
+      --cito-radius-field: 0;
+      --cito-radius-selector: 0;
+      --cito-radius-box: 0;
+      --cito-font-family: "IBM Plex Serif", Georgia, serif;
+    }
+    body { margin: 0; background: oklch(100% 0 none); color: var(--cito-color-base-content); min-height: 100vh; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+  </style>
+
+  <script type="module">
+    import "@citolab/qti-components"; // registers the components
+    import "@citolab/qti-components/item.css"; // the item theme: reads the --cito-* tokens set above
+
+    // This page is the host. The components do the QTI; the host decides:
+    //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
+    //  - instructions: this test has none
+    //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
+    //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link (the examen navigates by section)
+    //  - scoring: auto-score-items on <test-navigation> scores every answer silently; Inleveren only shows an overview
+    //  - reading texts: the second script puts each qti-assessment-stimulus-ref text in the column next to the questions
+
+    // Restore and deep link: the state (answers and position) is kept in sessionStorage, #/<id> opens that section
+    const test = document.querySelector("qti-test"), KEY = "examen";
+    if (sessionStorage.getItem(KEY)) test.state = JSON.parse(sessionStorage.getItem(KEY));
+    test.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
+    // The first navigation opens the restored position; a link in the address bar wins over that
+    let first = true;
+    test.addEventListener("cito-test-navigated", (e) => {
+      const wanted = first && location.hash.slice(2);
+      first = false;
+      if (wanted && wanted !== e.detail.id) test.navigateTo("section", wanted);
+      else history.replaceState(null, "", `#/${e.detail.id}`);
+    });
+  </script>
+
+  <script type="module">
+    // Reading texts (qti-assessment-stimulus-ref): a question that refers to a text gets it in the column left of the questions, one box
+    // per text. The player fills the element with the matching data-stimulus-idref; it is created just before, on the event.
+    // The column shows the text of the question in view (the band near the top of the screen decides). A question without a text
+    // of its own (it has the text in the question itself) shows an empty column: never the text of another question.
+    const $ = (selector) => document.querySelector(selector);
+    const stimuli = $("#stimuli"), template = $("#stimulus-box"), testContainer = $("test-container");
+    const show = (id) => {
+      for (const box of stimuli.children) box.hidden = box.dataset.for !== id;
+      stimuli.classList.toggle("invisible", !id); // keeps its width, so the questions do not jump
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const inView = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (inView) show(inView.target.querySelector("qti-assessment-stimulus-ref")?.identifier ?? null); // the text this question refers to, if any
+    }, { rootMargin: "-25% 0px -65% 0px" });
+    testContainer.addEventListener("qti-assessment-item-connected", (e) => observer.observe(e.detail));
+    testContainer.addEventListener("qti-assessment-stimulus-ref-connected", ({ element }) => {
+      let box = stimuli.querySelector(`[data-stimulus-idref="${element.identifier}"]`)?.closest("section");
+      if (!box) {
+        box = template.content.firstElementChild.cloneNode(true);
+        box.dataset.for = element.identifier;
+        box.querySelector("[data-stimulus-idref]").dataset.stimulusIdref = element.identifier;
+        box.hidden = true;
+        stimuli.append(box);
+        stimuli.hidden = false; // this section has texts: the column is there
+      }
+      // The item has a slot of its own for the text, and the player fills that one first: take the slot away, so the text goes left
+      element.closest("qti-assessment-item")?.querySelector(`[data-stimulus-idref="${element.identifier}"]`)?.remove();
+    });
+    $("qti-test").addEventListener("cito-test-navigate", () => { stimuli.replaceChildren(); stimuli.hidden = true; observer.disconnect(); });
+  </script>
+</head>
+
+<!--
+  EXAMEN: een centraal examen op school (nonlinear + simultaneous, 3 opgaven).
+  Template: de tekst (qti-assessment-stimulus-ref) links en blijft staan, de vragen rechts. Links de opgaven met het aantal vragen en bladwijzers; elke vraag heeft een bladwijzer (test-bookmark) en een markering als hij gezet is.
+  navigate="section": een hele opgave tegelijk. Scoren gebeurt op de achtergrond; Inleveren toont de score.
+-->
+<body>
+  <qti-test navigate="section">
+    <!-- Rendered inside every item-ref, around the question: the bookmark and its mark -->
+    <template item-ref>
+      <style>
+        .item-tools { display: flex; justify-content: flex-end; margin-bottom: 0.25rem; font: 500 0.8125rem "IBM Plex Sans", system-ui, sans-serif; }
+        test-bookmark { display: inline-flex; align-items: center; gap: 0.375rem; cursor: pointer; padding: 0.25rem 0.625rem;
+          border: 1px solid color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%); background: var(--cito-color-base-100); color: color-mix(in oklab, var(--cito-color-base-content) 70%, transparent); }
+        test-bookmark:hover { border-color: var(--cito-color-base-content); }
+        test-bookmark[bookmarked] { border-color: oklch(70% 0.15 70); background: oklch(95% 0.06 85); color: oklch(35% 0.08 70); }
+        /* The mark: a bar along the whole question, so a bookmarked question is easy to find while scrolling */
+        .flag { display: none; }
+        test-bookmark[bookmarked] + .flag { display: block; position: absolute; inset-block: 0; left: 0; width: 4px; background: oklch(70% 0.15 70); }
+      </style>
+      <div class="item-tools"><test-bookmark>Bladwijzer</test-bookmark><div class="flag"></div></div>
+      {{ xmlDoc }}
+    </template>
+
+    <test-navigation auto-score-items class="flex min-h-screen flex-col">
+      <header class="sticky top-0 z-20 border-b border-ink bg-surface">
+        <div class="mx-auto flex max-w-[80rem] flex-wrap items-center gap-x-6 gap-y-2 px-4 py-2">
+          <h1 class="mr-auto text-base font-semibold">Engels <span class="font-normal text-ink/60">vmbo kb 2025, examenvariant</span></h1>
+
+          <!-- All bookmarks, to come back to -->
+          <test-stamp class="block">
+            <template>
+              <details class="relative">
+                <summary class="flex cursor-pointer list-none items-center gap-1.5 border border-line px-3 py-1.5 text-sm hover:border-ink">
+                  <span class="text-amber-600">★</span> Bladwijzers
+                  <span class="min-w-5 bg-ink px-1 text-center text-xs font-semibold text-surface">{{ (test.plugins.bookmarks || []).length }}</span>
+                </summary>
+                <div class="absolute right-0 z-30 mt-1 w-72 border border-ink bg-surface p-3 text-sm shadow-lg">
+                  <template type="if" if="{{ (test.plugins.bookmarks || []).length == 0 }}">
+                    <p class="text-ink/70">Nog geen bladwijzers. Zet er een bij een vraag om hem hier terug te vinden.</p>
+                  </template>
+                  <ul class="grid gap-1">
+                    <template type="repeat" repeat="{{ activeTestpart.items.filter((i) => (test.plugins.bookmarks || []).includes(i.identifier)) }}">
+                      <li><test-item-link item-id="{{ item.identifier }}" class="block text-left">Vraag {{ item.index }}</test-item-link></li>
+                    </template>
+                  </ul>
+                </div>
+              </details>
+            </template>
+          </test-stamp>
+
+          <button class="border border-ink bg-ink px-4 py-1.5 text-sm font-semibold text-surface hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink" onclick="document.querySelector('#results').showModal()">Inleveren</button>
+        </div>
+      </header>
+
+      <!-- Navigation on the left, the text next to it (it stays in view), the questions on the right -->
+      <div class="mx-auto flex w-full max-w-[80rem] flex-1 flex-col items-start gap-8 px-4 py-6 lg:flex-row">
+        <nav class="w-full lg:sticky lg:top-20 lg:w-52 lg:shrink-0" aria-label="Opgaven">
+          <test-stamp>
+            <template>
+              <p class="mb-2 border-b border-line pb-2 text-sm font-semibold">Opgaven</p>
+              <ol class="grid">
+                <template type="repeat" repeat="{{ activeTestpart.sections }}">
+                  <li>
+                    <test-section-link section-id="{{ item.identifier }}" class="block">
+                      <button type="button" aria-current="{{ item.active ? 'step' : 'false' }}"
+                        class="block w-full cursor-pointer border-l-2 border-transparent py-2 pl-3 pr-2 text-left leading-snug hover:bg-page aria-[current=step]:border-ink aria-[current=step]:bg-page aria-[current=step]:font-semibold">
+                        <span class="block">Opgave {{ item.title }}</span>
+                        <span class="flex items-center gap-2 text-xs font-normal text-ink/60">
+                          {{ item.items.filter((i) => i.category != 'dep-informational').length }} vragen
+                          <template type="if" if="{{ item.items.filter((i) => (test.plugins.bookmarks || []).includes(i.identifier)).length > 0 }}">
+                            <span class="text-amber-700">★ {{ item.items.filter((i) => (test.plugins.bookmarks || []).includes(i.identifier)).length }} met bladwijzer</span>
+                          </template>
+                        </span>
+                      </button>
+                    </test-section-link>
+                  </li>
+                </template>
+              </ol>
+            </template>
+          </test-stamp>
+        </nav>
+
+        <div class="flex min-w-0 flex-1 flex-col items-start gap-8 lg:flex-row">
+        <aside id="stimuli" hidden aria-label="Tekst bij de vragen"
+          class="w-full border border-line p-6 text-[1.0625rem] leading-8 [font-family:var(--cito-font-family)] [&_*]:[font-family:inherit] lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:w-[42%] lg:shrink-0 lg:overflow-y-auto [&_img]:h-auto [&_img]:w-full [&_p]:mb-3 [&_strong]:font-semibold [&_table]:w-full"></aside>
+
+        <test-container test-url="../../examen/depitems/kb-en-25-examenvariant.xml" class="block min-w-0 flex-1">
+          <template>
+            <style>
+              qti-item-body h2 { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 1rem; font-weight: 600; }
+              /* The item's own two columns (text | question) become one: the text is in the column on the left of the page */
+              .qti-layout-row { display: block; }
+              .qti-layout-row > [class*="qti-layout-col"] { width: auto; max-width: none; }
+              /* Images fill their column; the pictures of the answers keep the size the item gives them */
+              qti-item-body img:not(qti-simple-choice img, qti-simple-associable-choice img, qti-gap-img) { width: 100%; height: auto; }
+              qti-simple-choice img, qti-simple-associable-choice img { max-width: 100%; height: auto; }
+              /* Only render the items on screen. A section is ~14 items of text and images; without this the browser repaints all of
+                 it on every answer and every scroll step (measured: 50-1000 ms per frame, 1-20 ms with). */
+              qti-assessment-item-ref { display: block; position: relative; padding: 1rem 0 1rem 1rem; border-top: 1px solid color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
+                content-visibility: auto; contain-intrinsic-size: auto 700px; }
+            </style>
+          </template>
+        </test-container>
+        </div>
+      </div>
+
+      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
+      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
+      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
+      <dialog id="results" class="m-auto w-[min(40rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
+        <div class="flex max-h-[85vh] flex-col gap-5 overflow-y-auto p-6">
+          <h2 class="text-xl font-bold">Ingeleverd</h2>
+          <test-stamp>
+            <template>
+              <div class="grid grid-cols-3 gap-3 text-center">
+                <div class="rounded-field bg-page p-3">
+                  <p class="text-2xl font-bold tabular-nums">{{ activeTestpart.items.filter((i) => i.index && (i.numAttempts > 0 || i.completionStatus == 'completed')).length }} / {{ activeTestpart.items.filter((i) => i.index).length }}</p>
+                  <p class="text-sm text-ink/60">beantwoord</p>
+                </div>
+                <div class="rounded-field bg-page p-3">
+                  <p class="text-2xl font-bold tabular-nums">{{ activeTestpart.items.filter((i) => i.maxScore > 0 && i.score >= i.maxScore).length }}</p>
+                  <p class="text-sm text-ink/60">helemaal goed</p>
+                </div>
+                <div class="rounded-field bg-page p-3">
+                  <p class="text-2xl font-bold tabular-nums">{{ (test.plugins.bookmarks || []).length }}</p>
+                  <p class="text-sm text-ink/60">met bladwijzer</p>
+                </div>
+              </div>
+
+              <table class="w-full text-left text-sm">
+                <thead><tr class="border-b border-line text-ink/60"><th class="py-2 pr-3 font-medium">#</th><th class="py-2 pr-3 font-medium">Vraag</th><th class="py-2 pr-3 font-medium">Antwoord</th><th class="py-2 text-right font-medium">Bladwijzer</th></tr></thead>
+                <tbody>
+                  <template type="repeat" repeat="{{ activeTestpart.items.filter((i) => !(i.categories || []).some((c) => c == 'dep-informational' || c == 'unscored')) }}">
+                    <tr class="border-b border-line/60">
+                      <td class="py-2 pr-3 tabular-nums">{{ item.index }}</td>
+                      <td class="py-2 pr-3">{{ item.title || item.identifier }}</td>
+                      <td class="py-2 pr-3">
+                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ !(item.numAttempts > 0 || item.completionStatus == 'completed') ? 'bg-line text-ink/60' : item.maxScore > 0 && item.score >= item.maxScore ? 'bg-good/15 text-good' : item.score > 0 ? 'bg-warn/25 text-ink' : 'bg-bad/15 text-bad' }}">
+                          {{ !(item.numAttempts > 0 || item.completionStatus == 'completed') ? 'niet ingevuld' : item.maxScore > 0 && item.score >= item.maxScore ? 'goed' : item.score > 0 ? 'deels goed' : 'fout' }}
+                        </span>
+                      </td>
+                      <td class="py-2 text-right">{{ (test.plugins.bookmarks || []).includes(item.identifier) ? '★' : '–' }}</td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </template>
+          </test-stamp>
+          <div class="flex justify-end gap-2">
+            <button class="rounded-field px-4 py-2 font-medium hover:bg-page" onclick="location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
+            <form method="dialog"><button class="rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+          </div>
+        </div>
+      </dialog>
+    </test-navigation>
+  </qti-test>
+
+  <!-- One box per reading text (see the script above) -->
+  <template id="stimulus-box">
+    <section><div class="qti-shared-stimulus" data-stimulus-idref></div></section>
+  </template>
+</body>
+
+</html>

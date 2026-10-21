@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.w3.org/2001/10/synthesis https://purl.imsglobal.org/spec/ssml/v1p1/schema/xsd/ssmlv1p1-core.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32khtj" identifier="ITM-32khtj" time-dependent="false" label="32khtj" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension" xmlns:ssml="http://www.w3.org/2001/10/synthesis">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="identifier">
+    <qti-correct-response interpretation="HT_E&amp;HT_G">
+      <qti-value>HT_E</qti-value>
+      <qti-value>HT_G</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>2</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_A" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_B" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_C" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_D" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_E" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_F" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE_HT_G" cardinality="single" base-type="boolean">
+    <qti-default-value>
+      <qti-value>False</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <dep:dep-textMarker>
+      <dep:dep-description />
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <div id="questionwithinlinecontrol">
+            <qti-hottext-interaction response-identifier="RESPONSE" max-choices="2" class="qti-input-control-hidden dep-highlight">
+              <p xml:lang="en-US">
+                <strong>Supermarket egg</strong>
+              </p>
+              <p xml:lang="en-US"><strong>(1)</strong>  Have you ever wondered if you could hatch a supermarket egg into a chick? A smart teenager has actually managed to do it. William Atkins, 14, successfully reared a duckling after buying 12 free range duck eggs from Waitrose. But it wasn’t as simple as just taking them home and putting them under a lamp. The teenager placed the £2.30 eggs in an incubator he purchased from eBay for £40 and then waited three days until he finally detected a heartbeat. </p>
+              <p xml:lang="en-US"><strong>(2)</strong>  William, from Sutton Coldfield, West Midlands, told the Daily Mail: <ssml:break time="200ms"></ssml:break> "From then on the unborn duckling grew bigger inside the shell every day. Just over three weeks later the egg began rocking and a few days after that the tiny duckling pecked its way out." A chick, who was named Jeremy, would eventually peck its way out 28 days later, which left the schoolboy feeling 'over the moon'. He added his mum was also surprised but she didn’t think it was a good idea for him to have a pet duckling in his bedroom so they decided to give it to a local farm when it was a little older. </p>
+              <p xml:lang="en-US"><strong>(3)</strong>  <span><qti-hottext identifier="HT_A">It was third time lucky</qti-hottext></span> for William after <span><qti-hottext identifier="HT_B">he originally tried to hatch quail and hen eggs</qti-hottext></span>. The egg’s producer Clarence Court admitted <span><qti-hottext identifier="HT_C">it was possible to hatch an egg</qti-hottext></span> from one of its products but said it was very difficult. A spokesperson said: <ssml:break time="200ms"></ssml:break>"The separation of males from females relies wholly upon <span><qti-hottext identifier="HT_D">the skill of very few qualified people</qti-hottext></span>. Inevitably, <span><qti-hottext identifier="HT_E">sometimes an error in determining what sex a chick is, is made</qti-hottext></span>. <span><qti-hottext identifier="HT_F">Our ducks are kept in small flocks</qti-hottext></span> with access to the outdoors. In this open-air environment, while it is infrequent, our <span><qti-hottext identifier="HT_G">ducks may attract the attention of wild male ducks</qti-hottext></span>. So, while it is very unusual for males and females to come into contact with one another, it is not impossible." "Fertilised eggs are harmless to eat and are totally indistinguishable from unfertilised eggs."</p>
+            </qti-hottext-interaction>
+          </div>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="body">
+            <p xml:lang="en-US">"So, while it is very unusual for males and females to come into contact with one another, it is not impossible."</p>
+          </div>
+          <div id="question">
+            <p>
+              <strong>Welke TWEE redenen worden genoemd in alinea 3 waarom dit toch soms gebeurt? Klik de zinsdelen aan. </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="identifier">HT_E</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="SCORE">
+          <qti-sum>
+            <qti-base-value base-type="float">1</qti-base-value>
+            <qti-variable identifier="SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-member>
+          <qti-base-value base-type="identifier">HT_G</qti-base-value>
+          <qti-variable identifier="RESPONSE" />
+        </qti-member>
+        <qti-set-outcome-value identifier="SCORE">
+          <qti-sum>
+            <qti-base-value base-type="float">1</qti-base-value>
+            <qti-variable identifier="SCORE" />
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

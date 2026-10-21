@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.w3.org/2001/10/synthesis https://purl.imsglobal.org/spec/ssml/v1p1/schema/xsd/ssmlv1p1-core.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32ksnj" identifier="ITM-32ksnj" time-dependent="false" label="32ksnj" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension" xmlns:ssml="http://www.w3.org/2001/10/synthesis">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="D">
+      <qti-value>D</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>1</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <dep:dep-textMarker>
+      <dep:dep-description />
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-stylesheet href="../css/cito_itemstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_userstyle.css" type="text/css" />
+  <qti-stylesheet href="../css/cito_generated_KB-22-B1-001.css" type="text/css" />
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <p xml:lang="en-US">
+            <strong>Parrot Nigel</strong>
+          </p>
+          <p xml:lang="en-US">After he flew away from his home in Torrance, California, a grey parrot named Nigel was finally reunited with his owner Darren Chick<ssml:break time="200ms"></ssml:break> four years later. </p>
+          <p xml:lang="en-US">Nigel was found in a nearby village by Julissa Sperling, the owner of a dog-grooming business. The bird had been whistling and chattering outside her front door. She took him in as he matched a missing pet advertisement she’d seen a while ago. She explained he is the happiest bird she’s seen, singing and talking without control. Parrot Nigel was also barking along with the dogs.</p>
+          <p xml:lang="en-US">Julissa was determined to reunite Nigel with his owner. Nigel had a microchip embedded in his leg, but it turned out that no one had registered the microchip. However, she managed to trace the sale of Nigel to an Animal Lovers pet store in Torrance. Luckily, the shop had kept its old sales records and had made a note of the band number that was originally on the bird’s leg so the owner could finally be tracked down. Darren Chick said that seeing his long-lost pet for the first time in four years brought a tear to his eye.</p>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="question">
+            <p>
+              <strong>Wat heeft <span xml:lang="en-US">Julissa Sperling</span> gedaan om het baasje van papegaai <span xml:lang="en-US">Nigel</span> te vinden?</strong>
+            </p>
+          </div>
+          <div id="mc">
+            <qti-choice-interaction id="choiceInteraction1" class="qti-labels-none " max-choices="1" shuffle="false" response-identifier="RESPONSE">
+              <qti-simple-choice identifier="A">
+                <p>degene opgespoord die <span xml:lang="en-US">Nigels</span> chip had geregistreerd</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="B">
+                <p>gereageerd op het bericht dat <span xml:lang="en-US">Nigel</span> vermist was</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="C">
+                <p>navraag gedaan naar <span xml:lang="en-US">Nigel</span> bij een plaatselijke dierenopvang</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="D">
+                <p>uitgezocht welke dierenzaak <span xml:lang="en-US">Nigel</span> verkocht had</p>
+              </qti-simple-choice>
+            </qti-choice-interaction>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing template="https://purl.imsglobal.org/spec/qti/v3p0/rptemplates/match_correct.xml" />
+</qti-assessment-item>

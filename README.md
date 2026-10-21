@@ -1,22 +1,34 @@
-# QTI Player Example
+# QTI Player Cookbook
 
-A minimal, fully functional **QTI 3 player** built with [`@citolab/qti-components`](https://github.com/Citolab/qti-components), plain JavaScript, Tailwind and [daisyUI](https://daisyui.com/). Everything lives in a single `index.html`.
+Cookbook examples of a **QTI 3 player** built with [`@citolab/qti-components`](https://github.com/Citolab/qti-components) (the 10.0 `next` line), plain JavaScript, and Tailwind. A toolbar on top picks an example; each example is a page of its own with its own `<qti-test>` template, its own theme and its own QTI package.
 
 **[▶️ Live demo](https://citolab.github.io/qti-player/)** · **[⚡ Open in StackBlitz](https://stackblitz.com/~/github.com/Citolab/qti-player?file=index.html)**
 
-The demo shows how **one player** delivers both formative and summative tests. The player holds no opinion of its own: all behaviour comes from the QTI package.
+The player holds no opinion of its own: all behaviour comes from the QTI package.
 
-## 🗂️ Demo packages
+## 🍳 Examples
 
-| Route          | Package              | Mode                                                                 |
-| -------------- | -------------------- | -------------------------------------------------------------------- |
-| `#/formatief`  | `public/formatief`   | Formative: werkwoordspelling, 2 attempts, hint + explanation          |
-| `#/summatief`  | `public/kennisnet-1` | Summative: browse freely, no feedback, result after handing in        |
-| `#/oefenen`    | `public/kennisnet-2` | Practice: 1 attempt per question, feedback straight away              |
-| `#/adaptief-toets` | `public/adaptief-toets` | ⅔ + ⅙, adaptive **in the test**: one item per question, `qti-branch-rule` skips the hulpvragen when a step is right straight away |
-| `#/adaptief-item` | `public/adaptief-item` | The same four steps, adaptive **in the item**: one `adaptive="true"` item per step walks main question → hulpvragen → retry |
+| Example (`#/…`)  | Page                          | Package               | Theme (in the page) | Mode                                                                 |
+| ---------------- | ----------------------------- | --------------------- | ------------------- | -------------------------------------------------------------------- |
+| `formatief`      | `examples/formatief`          | `public/formatief`    | playful             | Formative: werkwoordspelling, 2 attempts, hint + explanation          |
+| `summatief`      | `examples/summatief`          | `public/summatief`    | kennisnet           | Summative: browse freely, no feedback, result after handing in        |
+| `oefenen`        | `examples/oefenen`            | `public/oefenen`      | soft                | Practice: 1 attempt per question, feedback straight away              |
+| `adaptief-toets` | `examples/adaptief-toets`     | `public/adaptief-toets` | cito              | ⅔ + ⅙, adaptive **in the test**: `qti-branch-rule` skips the hulpvragen when a step is right straight away |
+| `adaptief-item`  | `examples/adaptief-item`      | `public/adaptief-item`  | nacht (dark)      | The same four steps, adaptive **in the item**: one `adaptive="true"` item per step |
+| `rekenen`        | `examples/rekenen`            | `public/rekenen`      | rekenen             | Rekenopdrachten: free order, 3 attempts, tip then explanation         |
+| `examen`         | `examples/examen`             | `public/examen`       | examen              | Examen (Engels KB 2025 examenvariant): sections, simultaneous, hand in |
 
-Deep links to an item work too: `#/formatief/KOFSCHIP`.
+`index.html` is only the shell: the toolbar and an iframe. `#/<example>/<item>` deep-links to an item, e.g. `#/formatief/KOFSCHIP`.
+
+### One file per example
+
+Each `examples/<id>/index.html` is self-contained: the theme (a `<style>` with the `--cito-*` tokens), the `<qti-test>` template, and a two-line script. There is nothing shared to import, so an example can be copied out as it is; only the `PACKAGE` constant in its script points at the QTI package (`public/<id>/`).
+
+Adding an example: a QTI package in `public/<id>/` (then `pnpm packages`), a copy of the closest example page, and a line in the `examples` list of the shell (`index.html`).
+
+### Themes
+
+The theme is the tier-1 tokens of the 10.0 theme (`--cito-color-primary`, `--cito-radius-field`, … see qti-components `packages/qti-theme/CONTRACT.md` §8) on `<html data-qti-theme="…">`. `item.css` derives everything else. The page's own Tailwind classes read the same `--cito-*` tokens (`bg-surface`, `text-ink`, `bg-brand`, `rounded-box`, mapped in an `@theme inline` block; every colour the page uses is set explicitly in its theme), so the chrome follows the theme together with the items and the test controls. playful, soft, kennisnet and cito are presets of qti-components' Storybook; `nacht` is the same tokens under `color-scheme: dark`.
 
 ## 🧠 What the QTI decides
 
@@ -24,9 +36,9 @@ Deep links to an item work too: `#/formatief/KOFSCHIP`.
 | ------------------------------------------------------------ | ----------------------------------------------------------------------------- |
 | `navigation-mode="linear"`                                   | progress `steps`, no jumping back                                             |
 | `navigation-mode="nonlinear"`                                | item buttons + previous                                                       |
-| `submission-mode="individual"`                               | **Controleer** button (`<test-end-attempt>`) + attempt badge                  |
+| `submission-mode="individual"`                               | **Nakijken** button (`<test-end-attempt>`) + attempt badge                  |
 | `submission-mode="simultaneous"`                             | items are scored silently on every change (`autoScoreItems`), **Inleveren**   |
-| `<qti-item-session-control max-attempts="2">`                | Controleer locks after 2 attempts or a correct answer, then Volgende unlocks  |
+| `<qti-item-session-control max-attempts="2">`                | Nakijken locks after 2 attempts or a correct answer, then Volgende unlocks  |
 | `<qti-item-session-control show-feedback="true/false">`      | whether feedback stays visible after the last attempt                         |
 | `qti-feedback-inline` / `qti-feedback-block`                 | inline feedback per choice, plus a block with a hint (attempt 1) or explanation (attempt 2) |
 | `qti-rubric-block class="qti-rubric-discretionary-placement"`| instructions shown above the item                                             |
@@ -48,19 +60,18 @@ Choice feedback copies the response into an outcome (`KEUZE = RESPONSE`), so a `
 
 ## 🧩 Stamp context
 
-`<test-stamp>` renders its template with `activeItem`, `activeSection`, `activeTestpart`, `test` and `view`. Handy fields for session control are `numAttempts`, `maxAttempts`, `done`, `optimal`, `score` and `maxScore`. Open the gear icon to see the live context.
+`<test-stamp>` renders its template with `activeItem`, `activeSection`, `activeTestpart`, `test` and `view`. Handy fields for session control are `numAttempts`, `maxAttempts`, `done`, `optimal`, `score` and `maxScore`. The formatief example has a gear icon that shows the live context.
 
 ```html
 <template type="if" if="{{ activeTestpart.submissionMode == 'individual' }}">
-  <span class="badge">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts }}</span>
-  <test-end-attempt class="btn btn-secondary">Controleer</test-end-attempt>
+  <span>Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts }}</span>
+  <test-end-attempt>Nakijken</test-end-attempt>
 </template>
 ```
 
-## ⚠️ What the player still does itself (qti-components 9.5.0)
+## ⚠️ What an example does itself
 
-- Items are loaded lazily, so items that were never opened have no `MAXSCORE` in the test. `pnpm packages` (`tools/item-declarations.mjs`) reads every item's declared `MAXSCORE` once into `public/<package>/declarations.json`; the player seeds those values with `qtiTest.updateItemVariables` when the test loads, so totals cover the whole test without fetching items at results time.
-- `qti-test-feedback` renders nothing where it is declared; the result dialog shows the ones `qtiTest.getTestFeedback("atEnd")` returns.
+Almost nothing: it imports the components and `item.css`, puts the instructions in `#rubric`, and shows a result dialog from a `<test-stamp>` (answered, correct, points, and per question the status and bookmark). There is no session saving, no MAXSCORE seeding and no report page yet; those come later (`pnpm packages` still writes `declarations.json` for that).
 
 ## 🔧 Development
 
@@ -70,4 +81,4 @@ pnpm dev            # http://localhost:5173
 pnpm test:browser   # vitest + playwright
 ```
 
-Session state is kept per package in `sessionStorage`. Use **Opnieuw** or **Sessie wissen** to start over.
+**Opnieuw** in the result dialog reloads the example.
