@@ -55,6 +55,16 @@
     }
     /* The dialog is the box: the rubric block inside it draws no box of its own (an unlayered rule, so it wins over the theme's layers) */
     #rubric qti-rubric-block { margin: 0; padding: 0; border: 0; background: none; }
+    /* "Goed": pops in when the answer is right, stays a moment and fades away. It keeps its place, so nothing moves when it goes. */
+    @keyframes badge-flash {
+      0% { opacity: 0; transform: translateY(0.5rem) scale(0.7); }
+      12% { opacity: 1; transform: translateY(0) scale(1.1); }
+      20% { transform: scale(1); }
+      75% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-0.25rem) scale(0.95); }
+    }
+    .badge-flash { animation: badge-flash 3s ease-out both; }
+    @media (prefers-reduced-motion: reduce) { .badge-flash { animation: none; } }
     body { margin: 0; font-family: var(--cito-font-family); color: var(--cito-color-base-content);
       background: oklch(97.5% 0.02 235) radial-gradient(circle at 15% -10%, oklch(92% 0.06 235), transparent 45%); min-height: 100vh; }
   </style>
@@ -139,7 +149,7 @@
             <test-end-attempt class="[--test-button-background-color:var(--cito-color-primary)] [--test-button-color:var(--cito-color-primary-content)] [--test-button-border-color:var(--cito-color-primary)] [--test-button-hover-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_12%)] [--test-button-active-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_24%)]">Nakijken</test-end-attempt>
             <span class="text-sm font-bold text-ink/60">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts > 0 ? activeItem.maxAttempts : '∞' }}</span>
             <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}">
-              <span class="rounded-full bg-good/15 px-3 py-1 text-sm font-semibold text-good"><i class="bi bi-check-lg me-1"></i>Goed</span>
+              <span class="badge-flash rounded-full bg-good/15 px-3 py-1 text-sm font-semibold text-good"><i class="bi bi-check-lg me-1"></i>Goed</span>
             </template>
             <template type="if" if="{{ activeItem.numAttempts > 0 && !activeItem.optimal && !activeItem.done }}">
               <span class="rounded-full bg-warn/25 px-3 py-1 text-sm font-semibold"><i class="bi bi-arrow-repeat me-1"></i>Probeer opnieuw</span>
@@ -157,7 +167,16 @@
           <footer class="flex flex-wrap items-center justify-between gap-3 rounded-t-box bg-surface px-5 py-4 shadow-[0_-4px_20px_oklch(60%_0.05_250/0.18)]">
             <ol class="flex max-w-full items-center gap-1.5 overflow-x-auto py-1">
               <template type="repeat" repeat="{{ activeTestpart.items }}">
-                <li title="{{ item.title }}" class="grid size-9 shrink-0 place-items-center rounded-full text-sm font-black {{ item.done ? (item.maxScore == null ? 'bg-line text-ink/50' : item.optimal ? 'bg-good text-white' : 'bg-bad text-white') : item.active ? 'bg-brand text-on-brand ring-4 ring-brand/25' : 'bg-line text-ink/50' }}">{{ item.done ? (item.maxScore == null ? '•' : item.optimal ? '✓' : '✕') : item.index }}</li>
+                <!-- The question after this one, once Volgende is allowed: a dot you can press, as an outlined circle -->
+                <template type="if" if="{{ activeItem.done && item.index == activeItem.index + 1 }}">
+                  <li>
+                    <test-item-link item-id="{{ item.identifier }}" title="Volgende vraag"
+                      class="[--test-button-border-radius:9999px] [--test-button-border-color:var(--cito-color-base-content)] [&::part(button)]:w-9 [&::part(button)]:p-0 [&::part(button)]:text-sm [&::part(button)]:font-black">{{ item.index }}</test-item-link>
+                  </li>
+                </template>
+                <template type="if" if="{{ !(activeItem.done && item.index == activeItem.index + 1) }}">
+                  <li title="{{ item.title }}" class="grid size-9 shrink-0 place-items-center rounded-full text-sm font-black {{ item.done ? (item.maxScore == null ? 'bg-line text-ink/50' : item.optimal ? 'bg-good text-white' : 'bg-bad text-white') : item.active ? 'bg-brand text-on-brand ring-4 ring-brand/25' : 'bg-line text-ink/50' }}">{{ item.done ? (item.maxScore == null ? '•' : item.optimal ? '✓' : '✕') : item.index }}</li>
+                </template>
               </template>
             </ol>
             <div class="flex flex-wrap items-center gap-2">

@@ -16,12 +16,12 @@
   <qti-item-body>
     <p>Kies steeds de goede vorm.</p>
     <p>Jij
-      <qti-inline-choice-interaction response-identifier="RESPONSE1">
+      <qti-inline-choice-interaction data-prompt="" response-identifier="RESPONSE1">
         <qti-inline-choice identifier="VIND">vind</qti-inline-choice>
         <qti-inline-choice identifier="VINDT">vindt</qti-inline-choice>
       </qti-inline-choice-interaction>
       rekenen leuk, maar
-      <qti-inline-choice-interaction response-identifier="RESPONSE2">
+      <qti-inline-choice-interaction data-prompt="" response-identifier="RESPONSE2">
         <qti-inline-choice identifier="VIND">vind</qti-inline-choice>
         <qti-inline-choice identifier="VINDT">vindt</qti-inline-choice>
       </qti-inline-choice-interaction>
