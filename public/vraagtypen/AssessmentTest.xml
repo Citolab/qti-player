@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  OEFENEN MET ÉÉN POGING: lineair, elke vraag direct nakijken.
-  - linear + individual: na Nakijken pas door naar de volgende vraag.
-  - qti-item-session-control: 1 poging, feedback wél tonen (show-feedback="true").
+  FOTOSYNTHESE IN 13 VRAAGVORMEN: dezelfde kennis, elke interactiesoort één keer.
+  - nonlinear + individual: de vragen staan onder elkaar (navigate="section") en je maakt ze in eigen volgorde.
+  - qti-item-session-control: 1 poging, feedback tonen (show-feedback="true"), en allow-skipping="false": Nakijken kan pas
+    nadat er een antwoord is gekozen.
 -->
-<qti-assessment-test xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="kennisnet-2" title="Oefentoets (1 poging)">
+<qti-assessment-test xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="vraagtypen" title="Fotosynthese in 13 vraagvormen" xml:lang="nl-NL">
   <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
     <qti-default-value><qti-value>0</qti-value></qti-default-value>
   </qti-outcome-declaration>
@@ -16,12 +17,12 @@
   </qti-outcome-declaration>
   <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
 
-  <qti-test-part identifier="TEST-PART" navigation-mode="linear" submission-mode="individual">
-    <qti-item-session-control max-attempts="1" show-feedback="true" />
-    <qti-assessment-section identifier="SECTION" title="Oefentoets" visible="true">
+  <qti-test-part identifier="TEST-PART" navigation-mode="nonlinear" submission-mode="individual">
+    <qti-item-session-control max-attempts="1" show-feedback="true" allow-skipping="false" />
+    <qti-assessment-section identifier="SECTION" title="Fotosynthese" visible="true">
       <qti-rubric-block use="instructions" view="candidate" class="qti-rubric-discretionary-placement">
         <qti-content-body>
-          <p>Je hebt per vraag <strong>één poging</strong>. Na <em>Nakijken</em> zie je meteen of je antwoord goed is.</p>
+          <p>Dezelfde kennis, dertien verschillende vragen: elke vraag gaat over <strong>fotosynthese</strong>, maar steeds in een andere vraagvorm. Je hebt per vraag <strong>één poging</strong>. Na <em>Nakijken</em> zie je meteen of je antwoord goed is, met een korte uitleg.</p>
         </qti-content-body>
       </qti-rubric-block>
       <qti-assessment-item-ref identifier="ITEM001-TEST" href="ITEM001.xml" />
@@ -54,18 +55,25 @@
     </qti-set-outcome-value>
     <qti-outcome-condition>
       <qti-outcome-if>
-        <qti-gte><qti-variable identifier="PERCENTAGE" /><qti-base-value base-type="float">55</qti-base-value></qti-gte>
-        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GESLAAGD</qti-base-value></qti-set-outcome-value>
+        <qti-gte><qti-variable identifier="PERCENTAGE" /><qti-base-value base-type="float">80</qti-base-value></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITSTEKEND</qti-base-value></qti-set-outcome-value>
       </qti-outcome-if>
+      <qti-outcome-else-if>
+        <qti-gte><qti-variable identifier="PERCENTAGE" /><qti-base-value base-type="float">55</qti-base-value></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">VOLDOENDE</qti-base-value></qti-set-outcome-value>
+      </qti-outcome-else-if>
       <qti-outcome-else>
-        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">NIET_GESLAAGD</qti-base-value></qti-set-outcome-value>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">ONVOLDOENDE</qti-base-value></qti-set-outcome-value>
       </qti-outcome-else>
     </qti-outcome-condition>
   </qti-outcome-processing>
-  <qti-test-feedback identifier="GESLAAGD" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
-    <qti-content-body>Gefeliciteerd, je hebt de toets gehaald (55% of meer).</qti-content-body>
+  <qti-test-feedback identifier="UITSTEKEND" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body><p>Uitstekend! Je hebt 80% of meer goed. Je kent de fotosynthese in elke vraagvorm.</p></qti-content-body>
   </qti-test-feedback>
-  <qti-test-feedback identifier="NIET_GESLAAGD" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
-    <qti-content-body>Je hebt de toets helaas niet gehaald. Je hebt minder dan 55% van de punten.</qti-content-body>
+  <qti-test-feedback identifier="VOLDOENDE" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body><p>Voldoende: je hebt 55% of meer goed. Lees de uitleg bij de vragen die fout gingen nog eens na.</p></qti-content-body>
+  </qti-test-feedback>
+  <qti-test-feedback identifier="ONVOLDOENDE" outcome-identifier="FEEDBACK" show-hide="show" access="atEnd">
+    <qti-content-body><p>Je hebt minder dan 55% goed. Herhaal de stof: planten maken met licht, koolstofdioxide en water glucose en zuurstof.</p></qti-content-body>
   </qti-test-feedback>
 </qti-assessment-test>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="ITEM006" title="Opgenomen of gemaakt?" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="directedPair">
+    <qti-correct-response><qti-value>CO2 OPGENOMEN</qti-value><qti-value>H2O OPGENOMEN</qti-value><qti-value>GLUCOSE GEMAAKT</qti-value><qti-value>O2 GEMAAKT</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <qti-match-interaction response-identifier="RESPONSE" max-associations="4">
+      <qti-prompt><p>Wordt de stof bij fotosynthese opgenomen of gemaakt?</p><p><em>Sleep elke stof naar <strong>wordt opgenomen</strong> of <strong>wordt gemaakt</strong>.</em></p></qti-prompt>
+      <qti-simple-match-set>
+        <qti-simple-associable-choice identifier="GLUCOSE" match-max="1">glucose</qti-simple-associable-choice>
+        <qti-simple-associable-choice identifier="CO2" match-max="1">koolstofdioxide</qti-simple-associable-choice>
+        <qti-simple-associable-choice identifier="O2" match-max="1">zuurstof</qti-simple-associable-choice>
+        <qti-simple-associable-choice identifier="H2O" match-max="1">water</qti-simple-associable-choice>
+      </qti-simple-match-set>
+      <qti-simple-match-set>
+        <qti-simple-associable-choice identifier="OPGENOMEN" match-max="2">wordt opgenomen</qti-simple-associable-choice>
+        <qti-simple-associable-choice identifier="GEMAAKT" match-max="2">wordt gemaakt</qti-simple-associable-choice>
+      </qti-simple-match-set>
+    </qti-match-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Koolstofdioxide en water worden opgenomen; glucose en zuurstof worden gemaakt.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> Koolstofdioxide (uit de lucht) en water (uit de bodem) <em>worden opgenomen</em>. Glucose en zuurstof <em>worden gemaakt</em>.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE" /><qti-correct identifier="RESPONSE" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

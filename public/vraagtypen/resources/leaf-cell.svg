@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect x="0" y="0" width="800" height="600" fill="#f4f8ec"/>
+  <rect x="100" y="80" width="600" height="440" rx="40" fill="#e3f1c4" stroke="#6b8e23" stroke-width="14"/>
+  <rect x="114" y="94" width="572" height="412" rx="30" fill="none" stroke="#a8c66c" stroke-width="3"/>
+  <ellipse cx="420" cy="300" rx="170" ry="115" fill="#cfe6f5" stroke="#8bb8d6" stroke-width="3"/>
+  <circle cx="620" cy="170" r="48" fill="#b48ac9" stroke="#8a5fa3" stroke-width="3"/>
+  <circle cx="632" cy="160" r="14" fill="#7d4f99"/>
+  <g><ellipse cx="180" cy="140" rx="34" ry="18" fill="#3e9b2f"/><line x1="160" y1="135" x2="200" y2="135" stroke="#256b1b" stroke-width="3"/><line x1="158" y1="145" x2="202" y2="145" stroke="#256b1b" stroke-width="3"/></g>
+  <g><ellipse cx="300" cy="118" rx="34" ry="18" fill="#3e9b2f"/><line x1="280" y1="113" x2="320" y2="113" stroke="#256b1b" stroke-width="3"/><line x1="278" y1="123" x2="322" y2="123" stroke="#256b1b" stroke-width="3"/></g>
+  <g><ellipse cx="450" cy="125" rx="34" ry="18" fill="#3e9b2f"/><line x1="430" y1="120" x2="470" y2="120" stroke="#256b1b" stroke-width="3"/><line x1="428" y1="130" x2="472" y2="130" stroke="#256b1b" stroke-width="3"/></g>
+  <g><ellipse cx="165" cy="300" rx="34" ry="18" fill="#3e9b2f"/><line x1="145" y1="295" x2="185" y2="295" stroke="#256b1b" stroke-width="3"/><line x1="143" y1="305" x2="187" y2="305" stroke="#256b1b" stroke-width="3"/></g>
+  <g><ellipse cx="185" cy="455" rx="34" ry="18" fill="#3e9b2f"/><line x1="165" y1="450" x2="205" y2="450" stroke="#256b1b" stroke-width="3"/><line x1="163" y1="460" x2="207" y2="460" stroke="#256b1b" stroke-width="3"/></g>
+  <g><ellipse cx="330" cy="485" rx="34" ry="18" fill="#3e9b2f"/><line x1="310" y1="480" x2="350" y2="480" stroke="#256b1b" stroke-width="3"/><line x1="308" y1="490" x2="352" y2="490" stroke="#256b1b" stroke-width="3"/></g>
+  <g><ellipse cx="490" cy="485" rx="34" ry="18" fill="#3e9b2f"/><line x1="470" y1="480" x2="510" y2="480" stroke="#256b1b" stroke-width="3"/><line x1="468" y1="490" x2="512" y2="490" stroke="#256b1b" stroke-width="3"/></g>
+  <g><ellipse cx="640" cy="440" rx="34" ry="18" fill="#3e9b2f"/><line x1="620" y1="435" x2="660" y2="435" stroke="#256b1b" stroke-width="3"/><line x1="618" y1="445" x2="662" y2="445" stroke="#256b1b" stroke-width="3"/></g>
+  <g><ellipse cx="650" cy="320" rx="34" ry="18" fill="#3e9b2f"/><line x1="630" y1="315" x2="670" y2="315" stroke="#256b1b" stroke-width="3"/><line x1="628" y1="325" x2="672" y2="325" stroke="#256b1b" stroke-width="3"/></g>
+</svg>

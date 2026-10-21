@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="ITEM005" title="Stappen in volgorde" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="ordered" base-type="identifier">
+    <qti-correct-response><qti-value>A</qti-value><qti-value>B</qti-value><qti-value>C</qti-value><qti-value>D</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <qti-order-interaction response-identifier="RESPONSE" orientation="vertical">
+      <qti-prompt><p>Zet de stappen in de juiste volgorde: van water opnemen tot glucose opslaan.</p><p><em>Sleep de stappen zo dat de eerste stap bovenaan staat.</em></p></qti-prompt>
+      <qti-simple-choice identifier="C">In de bladgroenkorrels maakt de plant met lichtenergie glucose.</qti-simple-choice>
+      <qti-simple-choice identifier="A">De wortels nemen water op uit de bodem.</qti-simple-choice>
+      <qti-simple-choice identifier="D">Glucose die de plant niet meteen gebruikt, slaat ze op als zetmeel.</qti-simple-choice>
+      <qti-simple-choice identifier="B">Het water gaat door de stengel omhoog naar het blad.</qti-simple-choice>
+    </qti-order-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Eerst water opnemen, dan naar het blad, dan glucose maken en ten slotte opslaan als zetmeel.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> De goede volgorde is: de wortels nemen water op, het water gaat door de stengel naar het blad, in de bladgroenkorrels wordt met licht glucose gemaakt, en wat over is wordt opgeslagen als zetmeel.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE" /><qti-correct identifier="RESPONSE" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

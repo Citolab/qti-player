@@ -8,7 +8,7 @@ import { closeFrame, openPage, until } from './frame'
 
 afterEach(closeFrame)
 
-const examples = ['formatief', 'facet', 'oefenen', 'adaptief-toets', 'adaptief-item', 'rekenen', 'examen']
+const examples = ['formatief', 'facet', 'vraagtypen', 'adaptief-toets', 'adaptief-item', 'rekenen', 'examen']
 
 test('the shell shows an example per tab', async () => {
   const { doc } = await openPage('index.html#/rekenen', '#examples a')

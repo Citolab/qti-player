@@ -62,10 +62,12 @@
     <resource identifier="ITEM010" type="imsqti_item_xmlv3p0" href="ITEM010.xml">
       <metadata/>
       <file href="ITEM010.xml"/>
+      <dependency identifierref="RES-PLANT"/>
     </resource>
     <resource identifier="ITEM011" type="imsqti_item_xmlv3p0" href="ITEM011.xml">
       <metadata/>
       <file href="ITEM011.xml"/>
+      <dependency identifierref="RES-LEAFCELL"/>
     </resource>
     <resource identifier="ITEM012" type="imsqti_item_xmlv3p0" href="ITEM012.xml">
       <metadata/>
@@ -74,18 +76,15 @@
     <resource identifier="ITEM013" type="imsqti_item_xmlv3p0" href="ITEM013.xml">
       <metadata/>
       <file href="ITEM013.xml"/>
+      <dependency identifierref="RES-PLANT"/>
     </resource>
-    <resource identifier="RESOURCE001" type="webcontent" href="resources/6252e5ce8e58323a85f41570136c191d.png">
+    <resource identifier="RES-PLANT" type="webcontent" href="resources/plant.svg">
       <metadata/>
-      <file href="resources/6252e5ce8e58323a85f41570136c191d.png"/>
+      <file href="resources/plant.svg"/>
     </resource>
-    <resource identifier="RESOURCE002" type="webcontent" href="resources/203508eb206cc636da22758c573a1a1b.png">
+    <resource identifier="RES-LEAFCELL" type="webcontent" href="resources/leaf-cell.svg">
       <metadata/>
-      <file href="resources/203508eb206cc636da22758c573a1a1b.png"/>
-    </resource>
-    <resource identifier="RESOURCE003" type="webcontent" href="resources/2e78458788b0d83e696fd51068b0d641.mp3">
-      <metadata/>
-      <file href="resources/2e78458788b0d83e696fd51068b0d641.mp3"/>
+      <file href="resources/leaf-cell.svg"/>
     </resource>
   </resources>
 </manifest>

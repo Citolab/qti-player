@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="ITEM012" title="Oorzaak en gevolg" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="pair">
+    <qti-correct-response><qti-value>DONKER GEENLICHT</qti-value><qti-value>OPEN CO2</qti-value><qti-value>OVER ZETMEEL</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <qti-associate-interaction response-identifier="RESPONSE" max-associations="3">
+      <qti-prompt><p>Elke oorzaak heeft één gevolg.</p><p><em>Maak drie paren: verbind elke oorzaak met het gevolg dat erbij hoort.</em></p></qti-prompt>
+      <qti-simple-associable-choice identifier="DONKER" match-max="1">Het wordt nacht.</qti-simple-associable-choice>
+      <qti-simple-associable-choice identifier="CO2" match-max="1">Er komt koolstofdioxide het blad in.</qti-simple-associable-choice>
+      <qti-simple-associable-choice identifier="OVER" match-max="1">De plant maakt meer glucose dan ze gebruikt.</qti-simple-associable-choice>
+      <qti-simple-associable-choice identifier="GEENLICHT" match-max="1">De fotosynthese stopt.</qti-simple-associable-choice>
+      <qti-simple-associable-choice identifier="OPEN" match-max="1">De huidmondjes gaan open.</qti-simple-associable-choice>
+      <qti-simple-associable-choice identifier="ZETMEEL" match-max="1">De plant slaat zetmeel op.</qti-simple-associable-choice>
+    </qti-associate-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Je hebt alle oorzaken aan het juiste gevolg gekoppeld.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> De paren zijn: <em>het wordt nacht</em> → de fotosynthese stopt (geen licht); <em>de huidmondjes gaan open</em> → er komt koolstofdioxide het blad in; <em>meer glucose dan nodig</em> → de plant slaat zetmeel op.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE" /><qti-correct identifier="RESPONSE" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

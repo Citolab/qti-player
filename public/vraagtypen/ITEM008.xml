@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="ITEM008" title="Klik op de grondstoffen" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="identifier">
+    <qti-correct-response><qti-value>H1</qti-value><qti-value>H2</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <qti-hottext-interaction response-identifier="RESPONSE" max-choices="2">
+      <qti-prompt><p>Welke twee stoffen neemt de plant op als grondstof voor de fotosynthese?</p><p><em>Klik in de tekst op die twee stoffen.</em></p></qti-prompt>
+      <p>Door de huidmondjes komt <qti-hottext identifier="H1">koolstofdioxide</qti-hottext> het blad binnen. De wortels nemen <qti-hottext identifier="H2">water</qti-hottext> op uit de bodem. In de bladgroenkorrels maakt de plant daarvan <qti-hottext identifier="H3">glucose</qti-hottext>. Daarbij ontstaat <qti-hottext identifier="H4">zuurstof</qti-hottext>, dat naar buiten gaat. Glucose die over is, bewaart de plant als <qti-hottext identifier="H5">zetmeel</qti-hottext>.</p>
+    </qti-hottext-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Koolstofdioxide en water zijn de grondstoffen.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> De grondstoffen zijn <em>koolstofdioxide</em> en <em>water</em>. Glucose en zuurstof zijn de producten, en zetmeel is opgeslagen glucose.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE" /><qti-correct identifier="RESPONSE" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

@@ -146,6 +146,36 @@
         </template>
       </test-stamp>
 
+      <!-- Wat laat dit voorbeeld zien? A checklist of what the QTI decides and what this page does itself. -->
+      <button class="fixed right-3 top-3 z-30 grid size-9 cursor-pointer place-items-center rounded-full bg-surface text-ink shadow-md hover:bg-page" aria-label="Wat laat dit voorbeeld zien?" title="Wat laat dit voorbeeld zien?" onclick="document.querySelector('#about').showModal()"><i class="bi bi-question-lg"></i></button>
+      <dialog id="about" class="m-auto w-[min(36rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
+        <div class="flex max-h-[85vh] flex-col gap-4 overflow-y-auto p-6">
+          <div>
+            <h2 class="text-xl font-bold">Wat laat dit voorbeeld zien?</h2>
+            <p class="text-sm text-ink/60">Adaptief in het item: één adaptief item per stap, het item beslist de volgende vraag.</p>
+          </div>
+          <ul class="divide-y divide-line text-sm">
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Navigatie<span class="block text-xs text-ink/50">navigation-mode op de testpart</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">linear</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Inleveren<span class="block text-xs text-ink/50">submission-mode op de testpart</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">individual</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Pogingen per vraag<span class="block text-xs text-ink/50">qti-item-session-control max-attempts</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">1 of onbeperkt</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Feedback na het nakijken<span class="block text-xs text-ink/50">qti-item-session-control show-feedback</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">aan</span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Stil scoren op de achtergrond<span class="block text-xs text-ink/50">auto-score-items op test-navigation</span></span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Meerdere secties met sectienavigatie<span class="block text-xs text-ink/50">navigate="section" en test-section-link</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">1 sectie</span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Route bepaald door de toets<span class="block text-xs text-ink/50">qti-branch-rule en qti-pre-condition</span></span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Route bepaald door het item<span class="block text-xs text-ink/50">adaptive="true" met een FASE-uitkomst</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">5 adaptieve items</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Eindscore en eindbericht<span class="block text-xs text-ink/50">qti-outcome-processing en qti-test-feedback</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">met qti-number-presented</span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Gewicht per vraag<span class="block text-xs text-ink/50">qti-weight op de item-refs</span></span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Instructies (rubric block)<span class="block text-xs text-ink/50">qti-rubric-block in de QTI</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">in de sectie</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Eigen JavaScript voor de instructies<span class="block text-xs text-ink/50">cito-item-rubric-placement, één regel</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">zet ze boven de kaart</span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Leesteksten naast de vragen<span class="block text-xs text-ink/50">qti-assessment-stimulus-ref en een eigen script</span></span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Bladwijzers<span class="block text-xs text-ink/50">test-bookmark in een item-ref-template</span></span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Knop per vraag in het item<span class="block text-xs text-ink/50">test-bookmark of test-end-attempt in een &lt;template item-ref&gt;</span></span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en cito-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
+          </ul>
+          <form method="dialog" class="flex justify-end"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+        </div>
+      </dialog>
+
       <!-- Overzicht: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
       <dialog id="results" class="m-auto w-[min(40rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
         <div class="flex max-h-[85vh] flex-col gap-5 overflow-y-auto p-6">

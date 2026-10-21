@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="ITEM011" title="Wijs een bladgroenkorrel aan" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="point">
+    <qti-correct-response><qti-value>180 140</qti-value></qti-correct-response>
+    <qti-area-mapping default-value="0" upper-bound="1">
+      <qti-area-map-entry shape="circle" coords="180,140,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="300,118,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="450,125,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="165,300,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="185,455,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="330,485,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="490,485,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="640,440,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="650,320,38" mapped-value="1" />
+    </qti-area-mapping>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <qti-select-point-interaction response-identifier="RESPONSE" max-choices="1">
+      <qti-prompt><p>Hier zie je een cel uit een blad, sterk vergroot.</p><p><em>Klik op een bladgroenkorrel (chloroplast).</em></p></qti-prompt>
+      <img src="resources/leaf-cell.svg" width="800" height="600" alt="Een bladcel met een celwand, een grote vacuole in het midden, een celkern rechtsboven en groene ovale korrels langs de rand." />
+    </qti-select-point-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> De groene ovale korrels zijn de bladgroenkorrels.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> De bladgroenkorrels (chloroplasten) zijn de <em>groene ovale korrels</em> langs de rand van de cel. Ze zijn groen door het bladgroen. De paarse bol is de celkern en de grote lichtblauwe ruimte is de vacuole.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-is-null><qti-variable identifier="RESPONSE" /></qti-is-null>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE"><qti-map-response-point identifier="RESPONSE" /></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

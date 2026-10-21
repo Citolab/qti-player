@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="ITEM004" title="Waar en waarmee?" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE1" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>BLADGROENKORRELS</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="RESPONSE2" cardinality="single" base-type="identifier">
+    <qti-correct-response><qti-value>LICHT</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <p><em>Kies in elke keuzelijst het woord dat in de zin past.</em></p>
+    <p>Een plant maakt glucose in de
+      <qti-inline-choice-interaction data-prompt="" response-identifier="RESPONSE1">
+        <qti-inline-choice identifier="WORTELS">wortels</qti-inline-choice>
+        <qti-inline-choice identifier="BLADGROENKORRELS">bladgroenkorrels</qti-inline-choice>
+        <qti-inline-choice identifier="HUIDMONDJES">huidmondjes</qti-inline-choice>
+      </qti-inline-choice-interaction>.
+      De energie daarvoor haalt de plant uit
+      <qti-inline-choice-interaction data-prompt="" response-identifier="RESPONSE2">
+        <qti-inline-choice identifier="ZUURSTOF">zuurstof</qti-inline-choice>
+        <qti-inline-choice identifier="LICHT">licht</qti-inline-choice>
+        <qti-inline-choice identifier="WATER">water</qti-inline-choice>
+      </qti-inline-choice-interaction>.
+    </p>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Glucose wordt gemaakt in de bladgroenkorrels, met de energie van licht.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> Een plant maakt glucose in de <em>bladgroenkorrels</em>. Het bladgroen daarin vangt <em>licht</em> op; dat levert de energie.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-and><qti-match><qti-variable identifier="RESPONSE1" /><qti-correct identifier="RESPONSE1" /></qti-match><qti-match><qti-variable identifier="RESPONSE2" /><qti-correct identifier="RESPONSE2" /></qti-match></qti-and>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>

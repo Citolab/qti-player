@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qti-assessment-item xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="ITEM007" title="De woordvergelijking" adaptive="false" time-dependent="false" xml:lang="nl-NL">
+  <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="directedPair">
+    <qti-correct-response><qti-value>KOOLSTOFDIOXIDE GAP1</qti-value><qti-value>ZUURSTOF GAP2</qti-value></qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>0</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" base-type="float" cardinality="single">
+    <qti-default-value><qti-value>1</qti-value></qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="FEEDBACK" base-type="identifier" cardinality="single" />
+  <qti-item-body>
+    <qti-gap-match-interaction response-identifier="RESPONSE" max-associations="2">
+      <qti-prompt><p>Maak de woordvergelijking van de fotosynthese af.</p><p><em>Sleep in elk vak het goede woord. Niet alle woorden worden gebruikt.</em></p></qti-prompt>
+      <qti-gap-text identifier="ZUURSTOF" match-max="1">zuurstof</qti-gap-text>
+      <qti-gap-text identifier="STIKSTOF" match-max="1">stikstof</qti-gap-text>
+      <qti-gap-text identifier="KOOLSTOFDIOXIDE" match-max="1">koolstofdioxide</qti-gap-text>
+      <qti-gap-text identifier="ZETMEEL" match-max="1">zetmeel</qti-gap-text>
+      <p><qti-gap identifier="GAP1" /> + water → glucose + <qti-gap identifier="GAP2" /></p>
+      <p>(met licht en bladgroen)</p>
+    </qti-gap-match-interaction>
+    <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
+      <qti-content-body><p><strong>Goed zo!</strong> Koolstofdioxide + water → glucose + zuurstof.</p></qti-content-body>
+    </qti-feedback-block>
+    <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
+      <qti-content-body><p><strong>Uitleg:</strong> De goede vergelijking is: <em>koolstofdioxide</em> + water → glucose + <em>zuurstof</em>. Koolstofdioxide gaat erin, zuurstof komt eruit.</p></qti-content-body>
+    </qti-feedback-block>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match><qti-variable identifier="RESPONSE" /><qti-correct identifier="RESPONSE" /></qti-match>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">1</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="SCORE"><qti-base-value base-type="float">0</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-gte><qti-variable identifier="SCORE" /><qti-variable identifier="MAXSCORE" /></qti-gte>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">GOED</qti-base-value></qti-set-outcome-value>
+      </qti-response-if>
+      <qti-response-else>
+        <qti-set-outcome-value identifier="FEEDBACK"><qti-base-value base-type="identifier">UITLEG</qti-base-value></qti-set-outcome-value>
+      </qti-response-else>
+    </qti-response-condition>
+  </qti-response-processing>
+</qti-assessment-item>
