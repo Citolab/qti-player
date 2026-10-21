@@ -17,12 +17,12 @@
   <qti-item-body>
     <qti-hotspot-interaction response-identifier="RESPONSE" max-choices="1">
       <qti-prompt><p>In welk deel van de plant vindt de meeste fotosynthese plaats?</p><p><em>Klik op dat deel van de plant.</em></p></qti-prompt>
-      <img src="resources/plant.svg" width="800" height="600" alt="Een plant in de zon met een bloem, een stengel, twee bladeren en wortels in de grond." />
-      <qti-hotspot-choice identifier="BLOEM" shape="circle" coords="400,150,55" />
-      <qti-hotspot-choice identifier="BLAD1" shape="rect" coords="445,212,645,298" />
-      <qti-hotspot-choice identifier="BLAD2" shape="rect" coords="205,295,365,365" />
-      <qti-hotspot-choice identifier="STENGEL" shape="rect" coords="380,372,420,428" />
-      <qti-hotspot-choice identifier="WORTEL" shape="rect" coords="330,440,470,580" />
+      <img src="resources/plant.jpg" width="800" height="600" alt="Een plant in de zon met een bloem, een stengel, twee bladeren en wortels in de grond." />
+      <qti-hotspot-choice identifier="BLOEM" shape="circle" coords="400,135,80" />
+      <qti-hotspot-choice identifier="BLAD1" shape="rect" coords="415,204,514,301" />
+      <qti-hotspot-choice identifier="BLAD2" shape="rect" coords="313,307,395,367" />
+      <qti-hotspot-choice identifier="STENGEL" shape="rect" coords="385,372,415,438" />
+      <qti-hotspot-choice identifier="WORTEL" shape="rect" coords="290,450,520,580" />
     </qti-hotspot-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
       <qti-content-body><p><strong>Goed zo!</strong> De meeste fotosynthese gebeurt in de bladeren.</p></qti-content-body>

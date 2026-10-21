@@ -12,7 +12,7 @@ The player holds no opinion of its own: all behaviour comes from the QTI package
 | ---------------- | ----------------------------- | --------------------- | ------------------- | -------------------------------------------------------------------- |
 | `formatief`      | `examples/formatief`          | `public/formatief`    | playful             | Formative: werkwoordspelling, 2 attempts, hint + explanation          |
 | `facet`          | `examples/facet`              | `public/facet`        | kennisnet           | Summative, in the layout of Facet: question numbers at the bottom, overview        |
-| `vraagtypen`     | `examples/vraagtypen`         | `public/vraagtypen`   | soft                | Every question type once, one attempt per question, feedback straight away |
+| `vraagtypen`     | `examples/vraagtypen`         | `public/vraagtypen`   | biologie            | One topic (fotosynthese) in 13 question types, all under each other (`navigate="section"`), one attempt per question, Nakijken per question |
 | `adaptief-toets` | `examples/adaptief-toets`     | `public/adaptief-toets` | cito              | ⅔ + ⅙, adaptive **in the test**: `qti-branch-rule` skips the hulpvragen when a step is right straight away |
 | `adaptief-item`  | `examples/adaptief-item`      | `public/adaptief-item`  | nacht (dark)      | The same four steps, adaptive **in the item**: one `adaptive="true"` item per step |
 | `rekenen`        | `examples/rekenen`            | `public/rekenen`      | rekenen             | Rekenopdrachten: free order, 3 attempts, tip then explanation         |

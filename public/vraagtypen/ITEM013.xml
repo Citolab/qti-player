@@ -13,16 +13,16 @@
   <qti-item-body>
     <qti-graphic-gap-match-interaction response-identifier="RESPONSE" max-associations="4">
       <qti-prompt><p>Benoem de delen van de plant.</p><p><em>Sleep elk woord naar het juiste deel van de plant. Eén woord blijft over.</em></p></qti-prompt>
-      <img src="resources/plant.svg" width="800" height="600" alt="Een plant in de zon met een bloem, een stengel, twee bladeren en wortels in de grond." />
+      <img src="resources/plant.jpg" width="800" height="600" alt="Een plant in de zon met een bloem, een stengel, twee bladeren en wortels in de grond." />
       <qti-gap-text identifier="WORTEL" match-max="1">wortel</qti-gap-text>
       <qti-gap-text identifier="BLOEM" match-max="1">bloem</qti-gap-text>
       <qti-gap-text identifier="ZAAD" match-max="1">zaad</qti-gap-text>
       <qti-gap-text identifier="BLAD" match-max="1">blad</qti-gap-text>
       <qti-gap-text identifier="STENGEL" match-max="1">stengel</qti-gap-text>
-      <qti-associable-hotspot identifier="HBLOEM" shape="rect" coords="340,128,460,172" match-max="1" />
-      <qti-associable-hotspot identifier="HBLAD" shape="rect" coords="485,233,605,277" match-max="1" />
-      <qti-associable-hotspot identifier="HSTENGEL" shape="rect" coords="340,378,460,422" match-max="1" />
-      <qti-associable-hotspot identifier="HWORTEL" shape="rect" coords="340,490,460,534" match-max="1" />
+      <qti-associable-hotspot identifier="HBLOEM" shape="rect" coords="500,113,620,157" match-max="1" />
+      <qti-associable-hotspot identifier="HBLAD" shape="rect" coords="535,230,655,274" match-max="1" />
+      <qti-associable-hotspot identifier="HSTENGEL" shape="rect" coords="250,380,370,424" match-max="1" />
+      <qti-associable-hotspot identifier="HWORTEL" shape="rect" coords="570,500,690,544" match-max="1" />
     </qti-graphic-gap-match-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
       <qti-content-body><p><strong>Goed zo!</strong> Bloem bovenaan, blad opzij, stengel in het midden en wortels in de grond.</p></qti-content-body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" data-qti-theme="soft">
+<html lang="nl" data-qti-theme="biologie">
 
 <head>
   <meta charset="UTF-8" />
@@ -25,35 +25,40 @@
       --radius-field: var(--cito-radius-field, 0.25rem);
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
        item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
   <style>
-    /* Soft: a friendly practice look on a warm beige page, with edges you can see on the white card. */
-    html[data-qti-theme="soft"] {
+    /* Biologie: serious and calm, a textbook in green. Forest green on cream paper, a serif for the headings, flat (no depth),
+       and a tiled ivy background behind the white question cards. Tier-1 tokens only (qti-theme CONTRACT.md §8). */
+    html[data-qti-theme="biologie"] {
       color-scheme: light;
-      --cito-color-base-100: oklch(100% 0 none);
-      --cito-color-base-content: oklch(34% 0.04 255);
-      --cito-color-primary: oklch(57% 0.17 245);
-      --cito-color-primary-content: oklch(100% 0 none);
-      --cito-color-neutral: oklch(62% 0.19 140);
-      --cito-color-neutral-content: oklch(100% 0 none);
-      --cito-color-chip: oklch(100% 0 none);
-      --cito-color-chip-border: oklch(86% 0.02 250);
-      --cito-color-border: oklch(72% 0.03 250);
-      --cito-color-info: oklch(52% 0.16 265);
-      --cito-color-success: oklch(55% 0.16 145);
-      --cito-color-warning: oklch(72% 0.15 70);
-      --cito-color-error: oklch(56% 0.2 25);
-      --cito-radius-field: 0.75rem;
-      --cito-radius-selector: 0.75rem;
-      --cito-radius-box: 1.75rem;
+      --cito-color-base-100: oklch(99.5% 0.006 100);
+      --cito-color-base-content: oklch(26% 0.04 150);
+      --cito-color-primary: oklch(40% 0.09 150);
+      --cito-color-primary-content: oklch(98% 0.01 100);
+      --cito-color-neutral: oklch(40% 0.09 150);
+      --cito-color-neutral-content: oklch(98% 0.01 100);
+      --cito-color-chip: oklch(99.5% 0.006 100);
+      --cito-color-chip-content: oklch(26% 0.04 150);
+      --cito-color-chip-border: oklch(70% 0.05 150);
+      --cito-color-border: oklch(66% 0.05 150);
+      --cito-color-info: oklch(46% 0.08 225);
+      --cito-color-success: oklch(46% 0.12 150);
+      --cito-color-warning: oklch(68% 0.13 85);
+      --cito-color-error: oklch(50% 0.16 28);
+      --cito-radius-field: 0.5rem;
+      --cito-radius-selector: 0.5rem;
+      --cito-radius-box: 0.75rem;
       --cito-border-width: 2px;
-      --cito-depth: 1;
-      --cito-font-family: Nunito, "Avenir Next", system-ui, sans-serif;
+      --cito-depth: 0;
+      --cito-font-family: "Source Sans 3", system-ui, sans-serif;
     }
-    body { margin: 0; font-family: var(--cito-font-family); color: var(--cito-color-base-content); background: oklch(93% 0.025 80); min-height: 100vh; }
+    h1, h2 { margin: 0; font-family: Newsreader, Georgia, serif; }
+    /* The ivy tile is the page; it is a pattern, so it is shown small and repeats */
+    body { margin: 0; font-family: var(--cito-font-family); color: var(--cito-color-base-content); min-height: 100vh;
+      background: oklch(96% 0.03 100) url("../../vraagtypen/resources/ivy-tile.jpg") repeat top left / 520px; }
   </style>
 
   <script type="module">
@@ -94,30 +99,40 @@
     <!-- Rendered inside every item-ref: the question, and its own Nakijken button -->
     <template item-ref>
       {{ xmlDoc }}
-      <div class="item-actions"><test-end-attempt>Nakijken</test-end-attempt></div>
+      <template type="if" if="{{ !item || item.numAttempts == 0 }}">
+        <div class="item-actions"><test-end-attempt require-answer>Nakijken</test-end-attempt></div>
+      </template>
     </template>
 
     <test-navigation class="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 px-4 py-8">
       <test-stamp class="block">
         <template>
-          <header class="flex flex-col gap-3">
+          <header class="flex flex-col gap-3 rounded-xl bg-surface/90 p-5 shadow-[0_1px_2px_rgb(20_50_20/0.08),0_12px_28px_-14px_rgb(20_50_20/0.35)] ring-1 ring-brand/15 backdrop-blur">
             <div class="flex items-center justify-between gap-3 pr-12">
-              <h1 class="text-2xl font-black">Alle vraagtypen</h1>
-              <button class="flex h-10 cursor-pointer items-center gap-2 rounded-lg bg-surface px-4 text-sm font-bold text-ink shadow-sm hover:bg-page" onclick="document.querySelector('#results').showModal()"><i class="bi bi-list-ul"></i>Overzicht</button>
+              <h1 class="flex items-center gap-3 text-3xl font-semibold leading-tight"><i class="bi bi-flower1 text-brand"></i>Fotosynthese <span class="font-normal text-ink/60">in 13 vraagvormen</span></h1>
+              <button class="flex h-10 shrink-0 cursor-pointer items-center gap-2 rounded-lg border border-solid border-brand/30 bg-transparent px-4 text-sm font-semibold text-brand hover:bg-brand/10" onclick="document.querySelector('#results').showModal()"><i class="bi bi-list-ul"></i>Overzicht</button>
             </div>
-            <p class="text-sm font-semibold text-ink/60">{{ activeTestpart.items.filter((i) => i.numAttempts > 0).length }} van {{ activeTestpart.items.length }} beantwoord</p>
+          </header>
+        </template>
+      </test-stamp>
+
+      <!-- Sticky: how far you are, while you scroll through the questions -->
+      <test-stamp class="sticky top-3 z-20 block">
+        <template>
+          <div class="flex flex-col gap-2 rounded-xl bg-surface/95 px-5 py-3 shadow-[0_1px_2px_rgb(20_50_20/0.08),0_12px_28px_-14px_rgb(20_50_20/0.35)] ring-1 ring-brand/15 backdrop-blur">
+            <p class="text-sm font-semibold text-ink/70">{{ activeTestpart.items.filter((i) => i.numAttempts > 0).length }} van {{ activeTestpart.items.length }} beantwoord</p>
             <ol class="flex gap-1.5" aria-hidden="true">
               <template type="repeat" repeat="{{ activeTestpart.items }}">
                 <li class="h-2.5 flex-1 rounded-full {{ item.numAttempts > 0 ? (item.optimal ? 'bg-good' : 'bg-bad') : 'bg-ink/15' }}"></li>
               </template>
             </ol>
-          </header>
+          </div>
         </template>
       </test-stamp>
 
-      <div id="rubric" role="note" class="hidden has-[qti-rubric-block]:block [&_math]:text-[1.15em]"></div>
+      <div id="rubric" role="note" class="hidden rounded-xl bg-surface/90 p-5 shadow-[0_1px_2px_rgb(20_50_20/0.08),0_12px_28px_-14px_rgb(20_50_20/0.35)] ring-1 ring-brand/15 has-[qti-rubric-block]:block [&_img]:mt-2 [&_img]:h-auto [&_img]:w-full [&_img]:rounded-lg [&_math]:text-[1.15em]"></div>
 
-      <test-container test-url="../../vraagtypen/AssessmentTest.xml" class="block rounded-box bg-surface p-8 shadow-[0_8px_0_oklch(86%_0.03_78)]">
+      <test-container test-url="../../vraagtypen/AssessmentTest.xml" class="block">
         <template>
           <style>
             /* Item feedback lives in the test's shadow root, so it is styled here with the page's tokens */
@@ -130,9 +145,11 @@
               background: color-mix(in oklab, var(--fb) 12%, transparent);
             }
             math { font-size: 1.15em; math-style: normal; }
-            /* The questions under each other, with a line between them */
-            qti-assessment-item-ref { display: block; padding-block: 2rem; border-top: 1px solid color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 10%); }
-            qti-assessment-item-ref:first-of-type { padding-top: 0; border-top: 0; }
+            /* Every question is a card of its own on the ivy page */
+            qti-assessment-item-ref { display: block; margin-bottom: 1.25rem; padding: 1.75rem; background: var(--cito-color-base-100);
+              border-radius: var(--cito-radius-box); border: 1px solid color-mix(in oklab, var(--cito-color-border) 45%, transparent);
+              box-shadow: 0 1px 2px rgb(20 50 20 / 0.08), 0 12px 28px -14px rgb(20 50 20 / 0.35); }
+            qti-item-body { font-size: 1.0625rem; line-height: 1.6; }
             /* Nakijken, below its question, in the primary colour; one attempt, so after that it is gone */
             .item-actions { display: flex; justify-content: flex-end; margin-top: 1rem; }
             test-end-attempt {
@@ -142,7 +159,13 @@
               --test-button-hover-background-color: color-mix(in oklab, var(--cito-color-primary), var(--cito-color-primary-content) 12%);
               --test-button-active-background-color: color-mix(in oklab, var(--cito-color-primary), var(--cito-color-primary-content) 24%);
             }
-            test-end-attempt[disabled] { display: none; }
+            /* Until an answer is chosen it is plainly off: flat grey outline, no hand */
+            test-end-attempt[disabled] {
+              --test-button-background-color: transparent;
+              --test-button-color: color-mix(in oklab, var(--cito-color-base-content) 55%, transparent);
+              --test-button-border-color: color-mix(in oklab, var(--cito-color-base-content) 25%, transparent);
+              cursor: not-allowed;
+            }
           </style>
         </template>
       </test-container>

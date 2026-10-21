@@ -3,15 +3,15 @@
   <qti-response-declaration identifier="RESPONSE" cardinality="multiple" base-type="point">
     <qti-correct-response><qti-value>180 140</qti-value></qti-correct-response>
     <qti-area-mapping default-value="0" upper-bound="1">
-      <qti-area-map-entry shape="circle" coords="180,140,38" mapped-value="1" />
-      <qti-area-map-entry shape="circle" coords="300,118,38" mapped-value="1" />
-      <qti-area-map-entry shape="circle" coords="450,125,38" mapped-value="1" />
-      <qti-area-map-entry shape="circle" coords="165,300,38" mapped-value="1" />
-      <qti-area-map-entry shape="circle" coords="185,455,38" mapped-value="1" />
-      <qti-area-map-entry shape="circle" coords="330,485,38" mapped-value="1" />
-      <qti-area-map-entry shape="circle" coords="490,485,38" mapped-value="1" />
-      <qti-area-map-entry shape="circle" coords="640,440,38" mapped-value="1" />
-      <qti-area-map-entry shape="circle" coords="650,320,38" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="139,60,40" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="385,55,40" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="583,60,40" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="60,187,40" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="60,395,40" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="746,235,40" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="746,393,40" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="268,537,40" mapped-value="1" />
+      <qti-area-map-entry shape="circle" coords="535,537,40" mapped-value="1" />
     </qti-area-mapping>
   </qti-response-declaration>
   <qti-outcome-declaration identifier="SCORE" base-type="float" cardinality="single">
@@ -24,13 +24,13 @@
   <qti-item-body>
     <qti-select-point-interaction response-identifier="RESPONSE" max-choices="1">
       <qti-prompt><p>Hier zie je een cel uit een blad, sterk vergroot.</p><p><em>Klik op een bladgroenkorrel (chloroplast).</em></p></qti-prompt>
-      <img src="resources/leaf-cell.svg" width="800" height="600" alt="Een bladcel met een celwand, een grote vacuole in het midden, een celkern rechtsboven en groene ovale korrels langs de rand." />
+      <img src="resources/leaf-cell.jpg" width="800" height="600" alt="Een lijntekening van een bladcel met een celwand, een grote vacuole in het midden, een celkern rechtsboven en negen groene ovale korrels langs de rand." />
     </qti-select-point-interaction>
     <qti-feedback-block identifier="GOED" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-correct">
       <qti-content-body><p><strong>Goed zo!</strong> De groene ovale korrels zijn de bladgroenkorrels.</p></qti-content-body>
     </qti-feedback-block>
     <qti-feedback-block identifier="UITLEG" outcome-identifier="FEEDBACK" show-hide="show" class="qti-feedback-incorrect">
-      <qti-content-body><p><strong>Uitleg:</strong> De bladgroenkorrels (chloroplasten) zijn de <em>groene ovale korrels</em> langs de rand van de cel. Ze zijn groen door het bladgroen. De paarse bol is de celkern en de grote lichtblauwe ruimte is de vacuole.</p></qti-content-body>
+      <qti-content-body><p><strong>Uitleg:</strong> De bladgroenkorrels (chloroplasten) zijn de <em>groene ovale korrels</em> langs de rand van de cel. Ze zijn groen door het bladgroen. De ronde cirkel rechtsboven is de celkern en de grote lege ruimte in het midden is de vacuole.</p></qti-content-body>
     </qti-feedback-block>
   </qti-item-body>
   <qti-response-processing>

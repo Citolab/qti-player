@@ -9,6 +9,7 @@
     <resource identifier="test" type="imsqti_test_xmlv3p0" href="AssessmentTest.xml">
       <metadata/>
       <file href="AssessmentTest.xml"/>
+      <dependency identifierref="RES-PLATE-OVERVIEW"/>
       <dependency identifierref="ITEM001"/>
       <dependency identifierref="ITEM002"/>
       <dependency identifierref="ITEM003"/>
@@ -78,13 +79,17 @@
       <file href="ITEM013.xml"/>
       <dependency identifierref="RES-PLANT"/>
     </resource>
-    <resource identifier="RES-PLANT" type="webcontent" href="resources/plant.svg">
+    <resource identifier="RES-PLANT" type="webcontent" href="resources/plant.jpg">
       <metadata/>
-      <file href="resources/plant.svg"/>
+      <file href="resources/plant.jpg"/>
     </resource>
-    <resource identifier="RES-LEAFCELL" type="webcontent" href="resources/leaf-cell.svg">
+    <resource identifier="RES-LEAFCELL" type="webcontent" href="resources/leaf-cell.jpg">
       <metadata/>
-      <file href="resources/leaf-cell.svg"/>
+      <file href="resources/leaf-cell.jpg"/>
+    </resource>
+    <resource identifier="RES-PLATE-OVERVIEW" type="webcontent" href="resources/plate-overview.jpg">
+      <metadata/>
+      <file href="resources/plate-overview.jpg"/>
     </resource>
   </resources>
 </manifest>
