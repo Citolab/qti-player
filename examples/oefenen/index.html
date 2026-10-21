@@ -140,9 +140,9 @@
       <test-stamp class="block">
         <template>
           <div class="flex flex-wrap items-center gap-3 px-1">
-            <test-end-attempt>Nakijken</test-end-attempt>
-            <test-next>Volgende</test-next>
+            <test-end-attempt class="[--test-button-background-color:var(--cito-color-primary)] [--test-button-color:var(--cito-color-primary-content)] [--test-button-border-color:var(--cito-color-primary)] [--test-button-hover-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_12%)] [--test-button-active-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_24%)]">Nakijken</test-end-attempt>
           <span class="text-sm font-bold text-ink/60">{{ activeItem.numAttempts == 0 ? 'Je hebt 1 poging' : activeItem.optimal ? 'Goed gedaan!' : 'Helaas, dat was niet goed' }}</span>
+            <test-next class="ml-auto">Volgende</test-next>
           </div>
         </template>
       </test-stamp>

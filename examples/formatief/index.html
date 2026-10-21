@@ -53,7 +53,7 @@
       --cito-depth: 1;
       --cito-font-family: Nunito, "Avenir Next", system-ui, sans-serif;
     }
-    /* The popover is the box: the rubric block inside it draws no box of its own (an unlayered rule, so it wins over the theme's layers) */
+    /* The dialog is the box: the rubric block inside it draws no box of its own (an unlayered rule, so it wins over the theme's layers) */
     #rubric qti-rubric-block { margin: 0; padding: 0; border: 0; background: none; }
     body { margin: 0; font-family: var(--cito-font-family); color: var(--cito-color-base-content);
       background: oklch(97.5% 0.02 235) radial-gradient(circle at 15% -10%, oklch(92% 0.06 235), transparent 45%); min-height: 100vh; }
@@ -65,7 +65,7 @@
 
     // This page is the host. The components do the QTI; the host decides:
     //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
-    //  - where instructions go: cito-item-rubric-placement (optional; here a popover over the page that the candidate closes; without it they show above the item, inside the card)
+    //  - where instructions go: cito-item-rubric-placement (optional; here a modal dialog over the page that the candidate closes; without it they show above the item, inside the card)
     //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
     //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
     //  - scoring: Nakijken (test-end-attempt) scores an item; the dialog shows an overview
@@ -83,7 +83,7 @@
       else history.replaceState(null, "", `#/${e.detail.id}`);
     });
     // Instructions (qti-rubric-block class="qti-rubric-discretionary-placement") go above the item
-    test.addEventListener("cito-item-rubric-placement", (e) => { const rubric = document.querySelector("#rubric"); rubric.append(e.detail.element); rubric.showPopover(); });
+    test.addEventListener("cito-item-rubric-placement", (e) => { const rubric = document.querySelector("#rubric"); rubric.prepend(e.detail.element); rubric.showModal(); });
   </script>
 </head>
 
@@ -102,12 +102,14 @@
         </div>
       </header>
 
-      <!-- The instructions: a popover (no code to close it), over the page, with a shadow under it -->
-      <div id="rubric" popover="manual" role="note"
-        class="fixed inset-auto left-1/2 top-4 m-0 w-[min(40rem,calc(100vw-2rem))] -translate-x-1/2 rounded-box border-0 bg-surface p-5 pr-12 text-ink shadow-[0_24px_60px_-12px_rgb(0_0_0/0.45)] [&_math]:text-[1.15em]">
-        <button popovertarget="rubric" popovertargetaction="hide" aria-label="Sluiten"
-          class="absolute right-3 top-3 grid size-8 cursor-pointer place-items-center rounded-full bg-page text-ink hover:bg-line"><i class="bi bi-x-lg"></i></button>
-      </div>
+      <!-- The instructions: a modal dialog over the page. It closes with a form method="dialog": no code. -->
+      <dialog id="rubric" role="note"
+        class="m-auto w-[min(40rem,calc(100vw-2rem))] rounded-box border-0 bg-surface p-5 text-ink shadow-[0_24px_60px_-12px_rgb(0_0_0/0.45)] backdrop:bg-black/40 [&_math]:text-[1.15em]">
+        <!-- The instructions come in above this button -->
+        <form method="dialog" class="mt-4">
+          <button class="cursor-pointer rounded-field bg-brand px-5 py-2 font-semibold text-on-brand hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">Ik snap het</button>
+        </form>
+      </dialog>
 
       <test-container test-url="../../formatief/AssessmentTest.xml" class="block rounded-box bg-surface p-7 shadow-[0_6px_0_oklch(88%_0.03_250)]">
         <template>
@@ -134,8 +136,7 @@
       <test-stamp class="block">
         <template>
           <div class="flex flex-wrap items-center gap-3 px-1">
-            <test-end-attempt>Nakijken</test-end-attempt>
-            <test-next>Volgende</test-next>
+            <test-end-attempt class="[--test-button-background-color:var(--cito-color-primary)] [--test-button-color:var(--cito-color-primary-content)] [--test-button-border-color:var(--cito-color-primary)] [--test-button-hover-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_12%)] [--test-button-active-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_24%)]">Nakijken</test-end-attempt>
             <span class="text-sm font-bold text-ink/60">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts > 0 ? activeItem.maxAttempts : '∞' }}</span>
             <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}">
               <span class="rounded-full bg-good/15 px-3 py-1 text-sm font-semibold text-good"><i class="bi bi-check-lg me-1"></i>Goed</span>
@@ -146,6 +147,7 @@
             <template type="if" if="{{ activeItem.done && !activeItem.optimal && activeItem.hasCorrectResponse }}">
               <span class="rounded-full bg-bad/15 px-3 py-1 text-sm font-semibold text-bad"><i class="bi bi-x-lg me-1"></i>Bekijk de uitleg</span>
             </template>
+            <test-next class="ml-auto">Volgende</test-next>
           </div>
         </template>
       </test-stamp>

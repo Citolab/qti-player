@@ -130,11 +130,11 @@
       <test-stamp class="block">
         <template>
           <div class="flex flex-wrap items-center gap-3 px-1">
-            <test-end-attempt>Nakijken</test-end-attempt>
-            <test-next>Volgende</test-next>
+            <test-end-attempt class="[--test-button-background-color:var(--cito-color-primary)] [--test-button-color:var(--cito-color-primary-content)] [--test-button-border-color:var(--cito-color-primary)] [--test-button-hover-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_12%)] [--test-button-active-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_24%)]">Nakijken</test-end-attempt>
             <span class="text-sm text-ink/60">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts }}</span>
             <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}"><span class="rounded-full bg-good/15 px-3 py-1 text-sm font-semibold text-good">Goed gerekend</span></template>
             <template type="if" if="{{ activeItem.numAttempts > 0 && !activeItem.optimal && !activeItem.done }}"><span class="rounded-full bg-warn/25 px-3 py-1 text-sm font-semibold">Reken nog eens na</span></template>
+            <test-next class="ml-auto">Volgende</test-next>
           </div>
         </template>
       </test-stamp>
