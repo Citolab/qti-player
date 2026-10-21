@@ -158,7 +158,7 @@
             </template>
           </test-stamp>
 
-          <button class="border border-ink bg-ink px-4 py-1.5 text-sm font-semibold text-surface hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink" onclick="document.querySelector('#results').showModal()">Inleveren</button>
+          <button class="cursor-pointer border border-ink bg-ink px-4 py-1.5 text-sm font-semibold text-surface hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink" onclick="document.querySelector('#results').showModal()">Inleveren</button>
         </div>
       </header>
 
@@ -214,9 +214,7 @@
         </div>
       </div>
 
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
+      <!-- Overzicht: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
       <dialog id="results" class="m-auto w-[min(40rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
         <div class="flex max-h-[85vh] flex-col gap-5 overflow-y-auto p-6">
           <h2 class="text-xl font-bold">Ingeleverd</h2>
@@ -257,8 +255,8 @@
             </template>
           </test-stamp>
           <div class="flex justify-end gap-2">
-            <button class="rounded-field px-4 py-2 font-medium hover:bg-page" onclick="location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
-            <form method="dialog"><button class="rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+            <button class="cursor-pointer rounded-field px-4 py-2 font-medium hover:bg-page" onclick="sessionStorage.removeItem('examen'); history.replaceState(null, '', location.pathname); location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
+            <form method="dialog"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
           </div>
         </div>
       </dialog>

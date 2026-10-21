@@ -53,6 +53,8 @@
       --cito-depth: 1;
       --cito-font-family: Nunito, "Avenir Next", system-ui, sans-serif;
     }
+    /* The popover is the box: the rubric block inside it draws no box of its own (an unlayered rule, so it wins over the theme's layers) */
+    #rubric qti-rubric-block { margin: 0; padding: 0; border: 0; background: none; }
     body { margin: 0; font-family: var(--cito-font-family); color: var(--cito-color-base-content);
       background: oklch(97.5% 0.02 235) radial-gradient(circle at 15% -10%, oklch(92% 0.06 235), transparent 45%); min-height: 100vh; }
   </style>
@@ -63,7 +65,7 @@
 
     // This page is the host. The components do the QTI; the host decides:
     //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
-    //  - where instructions go: cito-item-rubric-placement (optional; without it they show above the item, inside the card)
+    //  - where instructions go: cito-item-rubric-placement (optional; here a popover over the page that the candidate closes; without it they show above the item, inside the card)
     //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
     //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
     //  - scoring: Nakijken (test-end-attempt) scores an item; the dialog shows an overview
@@ -81,7 +83,7 @@
       else history.replaceState(null, "", `#/${e.detail.id}`);
     });
     // Instructions (qti-rubric-block class="qti-rubric-discretionary-placement") go above the item
-    test.addEventListener("cito-item-rubric-placement", (e) => document.querySelector("#rubric").append(e.detail.element));
+    test.addEventListener("cito-item-rubric-placement", (e) => { const rubric = document.querySelector("#rubric"); rubric.append(e.detail.element); rubric.showPopover(); });
   </script>
 </head>
 
@@ -100,8 +102,12 @@
         </div>
       </header>
 
-      <div id="rubric" role="note" class="hidden has-[qti-rubric-block]:block [&_math]:text-[1.15em]">
-          </div>
+      <!-- The instructions: a popover (no code to close it), over the page, with a shadow under it -->
+      <div id="rubric" popover="manual" role="note"
+        class="fixed inset-auto left-1/2 top-4 m-0 w-[min(40rem,calc(100vw-2rem))] -translate-x-1/2 rounded-box border-0 bg-surface p-5 pr-12 text-ink shadow-[0_24px_60px_-12px_rgb(0_0_0/0.45)] [&_math]:text-[1.15em]">
+        <button popovertarget="rubric" popovertargetaction="hide" aria-label="Sluiten"
+          class="absolute right-3 top-3 grid size-8 cursor-pointer place-items-center rounded-full bg-page text-ink hover:bg-line"><i class="bi bi-x-lg"></i></button>
+      </div>
 
       <test-container test-url="../../formatief/AssessmentTest.xml" class="block rounded-box bg-surface p-7 shadow-[0_6px_0_oklch(88%_0.03_250)]">
         <template>
@@ -129,6 +135,7 @@
         <template>
           <div class="flex flex-wrap items-center gap-3 px-1">
             <test-end-attempt>Nakijken</test-end-attempt>
+            <test-next>Volgende</test-next>
             <span class="text-sm font-bold text-ink/60">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts > 0 ? activeItem.maxAttempts : '∞' }}</span>
             <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}">
               <span class="rounded-full bg-good/15 px-3 py-1 text-sm font-semibold text-good"><i class="bi bi-check-lg me-1"></i>Goed</span>
@@ -152,19 +159,16 @@
               </template>
             </ol>
             <div class="flex flex-wrap items-center gap-2">
-              <test-next>Volgende</test-next>
-              <button class="rounded-field px-3 py-2 text-sm font-semibold hover:bg-page" onclick="document.querySelector('#results').showModal()"><i class="bi bi-flag me-1"></i>Resultaat</button>
+              <button class="cursor-pointer rounded-field px-3 py-2 text-sm font-semibold hover:bg-page" onclick="document.querySelector('#results').showModal()"><i class="bi bi-flag me-1"></i>Overzicht</button>
             </div>
           </footer>
         </template>
       </test-stamp>
 
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
+      <!-- Overzicht: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
       <dialog id="results" class="m-auto w-[min(40rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
         <div class="flex max-h-[85vh] flex-col gap-5 overflow-y-auto p-6">
-          <h2 class="text-xl font-bold">Resultaat</h2>
+          <h2 class="text-xl font-bold">Overzicht</h2>
           <test-stamp>
             <template>
               <div class="grid grid-cols-3 gap-3 text-center">
@@ -201,8 +205,8 @@
             </template>
           </test-stamp>
           <div class="flex justify-end gap-2">
-            <button class="rounded-field px-4 py-2 font-medium hover:bg-page" onclick="location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
-            <form method="dialog"><button class="rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+            <button class="cursor-pointer rounded-field px-4 py-2 font-medium hover:bg-page" onclick="sessionStorage.removeItem('formatief'); history.replaceState(null, '', location.pathname); location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
+            <form method="dialog"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
           </div>
         </div>
       </dialog>

@@ -81,4 +81,4 @@ pnpm dev            # http://localhost:5173
 pnpm test:browser   # vitest + playwright
 ```
 
-**Opnieuw** in the result dialog reloads the example.
+**Opnieuw** in the dialog clears the example's saved state (sessionStorage) and its address, and reloads.

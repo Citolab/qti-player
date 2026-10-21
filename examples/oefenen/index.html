@@ -141,6 +141,7 @@
         <template>
           <div class="flex flex-wrap items-center gap-3 px-1">
             <test-end-attempt>Nakijken</test-end-attempt>
+            <test-next>Volgende</test-next>
           <span class="text-sm font-bold text-ink/60">{{ activeItem.numAttempts == 0 ? 'Je hebt 1 poging' : activeItem.optimal ? 'Goed gedaan!' : 'Helaas, dat was niet goed' }}</span>
           </div>
         </template>
@@ -151,19 +152,16 @@
           <footer class="flex items-center justify-between gap-3 rounded-box bg-surface px-5 py-3 shadow-lg">
             <span></span>
             <div class="flex items-center gap-2">
-              <test-next>Volgende</test-next>
-              <button class="rounded-field px-3 py-2 text-sm font-bold text-ink/70 hover:bg-page" onclick="document.querySelector('#results').showModal()"><i class="bi bi-flag me-1"></i>Resultaat</button>
+              <button class="cursor-pointer rounded-field px-3 py-2 text-sm font-bold text-ink/70 hover:bg-page" onclick="document.querySelector('#results').showModal()"><i class="bi bi-flag me-1"></i>Overzicht</button>
             </div>
           </footer>
         </template>
       </test-stamp>
 
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
-      <!-- Resultaat: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
+      <!-- Overzicht: statistics from the state of the test (the stamp context), no code. A full report comes later. -->
       <dialog id="results" class="m-auto w-[min(40rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
         <div class="flex max-h-[85vh] flex-col gap-5 overflow-y-auto p-6">
-          <h2 class="text-xl font-bold">Resultaat</h2>
+          <h2 class="text-xl font-bold">Overzicht</h2>
           <test-stamp>
             <template>
               <div class="grid grid-cols-3 gap-3 text-center">
@@ -200,8 +198,8 @@
             </template>
           </test-stamp>
           <div class="flex justify-end gap-2">
-            <button class="rounded-field px-4 py-2 font-medium hover:bg-page" onclick="location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
-            <form method="dialog"><button class="rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+            <button class="cursor-pointer rounded-field px-4 py-2 font-medium hover:bg-page" onclick="sessionStorage.removeItem('oefenen'); history.replaceState(null, '', location.pathname); location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
+            <form method="dialog"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
           </div>
         </div>
       </dialog>

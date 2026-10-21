@@ -58,7 +58,7 @@ async function openPlayer(route: string) {
   /** Resultaat: open the dialog; the numbers come from the stamp (no code on the page), as "<points> / <max>". */
   const results = async () => {
     const dialog = doc.querySelector('#results') as HTMLDialogElement
-    ;(Array.from(doc.querySelectorAll('button')).find(b => b.textContent?.includes('Resultaat')) as HTMLElement).click()
+    ;(Array.from(doc.querySelectorAll('button')).find(b => b.textContent?.includes('Overzicht')) as HTMLElement).click()
     await until(() => dialog.open, 'the results did not open')
     const tiles = () => Array.from(dialog.querySelectorAll('test-stamp p.text-2xl'), p => p.textContent!.replace(/\s+/g, ' ').trim())
     await until(() => tiles().length === 3, 'no statistics in the dialog')
