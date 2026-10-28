@@ -19,18 +19,19 @@ The player holds no opinion of its own: all behaviour comes from the QTI package
 | `examen`         | `examples/examen`             | `public/examen`       | examen              | Examen (Engels KB 2025 examenvariant): sections, simultaneous, hand in |
 | `examenkompas`   | `examples/examenkompas`       | `public/examenkompas` | examenkompas        | Examenkompas (aardrijkskunde BB 2023, half the questions): one question at a time, Nakijken (scorer view + Punten for the open questions), a toolbar of plugins (bookmark, zoom, character sheet), host data per question (`initContext`: name, domain, points) |
 | `wikiwijs`       | `examples/wikiwijs`           | `public/wikiwijs`     | wikiwijs            | The Wikiwijs Toetsen oefentoets (Kennisnet Demonstratietoets, CC BY-SA 4.0, 17 question types): Start, one question per card with Nakijken and an alert (goed / nog niet helemaal / niet goed), unlimited attempts, Volgende only after a check, the question list with ○ ✕ ✓ beside it or as a dropdown, Resultaat |
+| `minimal`        | `examples/minimal`            | any of the above      | none (no item.css)  | The smallest player: `qti-test` with `test-prev`, `test-end-attempt`, `test-next`, `test-submit`, without any theme CSS (not even `item.css`), Tailwind for the layout only and no script of its own; a `<select>` switches between every package here, and `test-color-scheme.js` next to the page is a one-file plugin of our own (a light/dark switch) |
 
 `index.html` is only the shell: the toolbar and an iframe. `#/<example>/<item>` deep-links to an item, e.g. `#/formatief/KOFSCHIP`.
 
 ### One file per example
 
-Each `examples/<id>/index.html` is self-contained: the theme (a `<style>` with the `--cito-*` tokens), the `<qti-test>` template, and a two-line script. There is nothing shared to import, so an example can be copied out as it is; only the `PACKAGE` constant in its script points at the QTI package (`public/<id>/`).
+Each `examples/<id>/index.html` is self-contained: the theme (a `<style>` with the `--qc-*` tokens), the `<qti-test>` template, and a two-line script. There is nothing shared to import, so an example can be copied out as it is; only the `PACKAGE` constant in its script points at the QTI package (`public/<id>/`).
 
 Adding an example: a QTI package in `public/<id>/` (then `pnpm packages`), a copy of the closest example page, and a line in the `examples` list of the shell (`index.html`).
 
 ### Themes
 
-The theme is the tier-1 tokens of the 10.0 theme (`--cito-color-primary`, `--cito-radius-field`, … see qti-components `packages/qti-theme/CONTRACT.md` §8) on `<html data-qti-theme="…">`. `item.css` derives everything else. The page's own Tailwind classes read the same `--cito-*` tokens (`bg-surface`, `text-ink`, `bg-brand`, `rounded-box`, mapped in an `@theme inline` block; every colour the page uses is set explicitly in its theme), so the chrome follows the theme together with the items and the test controls. playful, soft, kennisnet and cito are presets of qti-components' Storybook; `nacht` is the same tokens under `color-scheme: dark`.
+The theme is the tier-1 tokens of the 10.0 theme (`--qc-color-primary`, `--qc-radius-field`, … see qti-components `packages/qti-theme/CONTRACT.md` §8) on `<html data-qti-theme="…">`. `item.css` derives everything else. The page's own Tailwind classes read the same `--qc-*` tokens (`bg-surface`, `text-ink`, `bg-brand`, `rounded-box`, mapped in an `@theme inline` block; every colour the page uses is set explicitly in its theme), so the chrome follows the theme together with the items and the test controls. playful, soft, kennisnet and cito are presets of qti-components' Storybook; `nacht` is the same tokens under `color-scheme: dark`.
 
 ## 🧠 What the QTI decides
 

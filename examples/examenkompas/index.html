@@ -12,43 +12,43 @@
   <!-- The page's tokens as Tailwind colors: bg-surface, text-ink, bg-brand, border-line, rounded-box, ... -->
   <style type="text/tailwindcss">
     @theme inline {
-      --color-surface: var(--cito-color-base-100);
-      --color-page: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 2.5%);
-      --color-line: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
-      --color-ink: var(--cito-color-base-content);
-      --color-brand: var(--cito-color-primary);
-      --color-on-brand: var(--cito-color-primary-content);
+      --color-surface: var(--qc-color-base-100);
+      --color-page: color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 2.5%);
+      --color-line: color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 6%);
+      --color-ink: var(--qc-color-base-content);
+      --color-brand: var(--qc-color-primary);
+      --color-on-brand: var(--qc-color-primary-content);
       --color-brand-light: #ffbebe;
       --color-brand-dark: #a1616a;
-      --color-good: var(--cito-color-success);
-      --color-warn: var(--cito-color-warning);
-      --color-bad: var(--cito-color-error);
-      --radius-box: var(--cito-radius-box, 0.5rem);
-      --radius-field: var(--cito-radius-field, 0.25rem);
+      --color-good: var(--qc-color-success);
+      --color-warn: var(--qc-color-warning);
+      --color-bad: var(--qc-color-error);
+      --radius-box: var(--qc-radius-box, 0.5rem);
+      --radius-field: var(--qc-radius-field, 0.25rem);
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
-       item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
+       item.css derives the rest for the items; the Tailwind classes read these same --qc-* tokens, never the --qti-* ones. -->
   <style>
     /* Examenkompas: coral as the one brand colour, slate text on white, soft corners. */
     html[data-qti-theme="examenkompas"] {
       color-scheme: light;
-      --cito-color-primary: #f86d70;
-      --cito-color-primary-content: #ffffff;
-      --cito-color-success: oklch(60% 0.17 150);
-      --cito-color-warning: oklch(82% 0.17 85);
-      --cito-color-error: oklch(58% 0.22 27);
-      --cito-color-info: oklch(58% 0.14 250);
-      --cito-color-base-100: #ffffff;
-      --cito-color-base-content: #1e293b;
-      --cito-radius-field: 0.375rem;
-      --cito-radius-selector: 0.375rem;
-      --cito-radius-box: 0.75rem;
-      --cito-font-family: "Inter", system-ui, sans-serif;
+      --qc-color-primary: #f86d70;
+      --qc-color-primary-content: #ffffff;
+      --qc-color-success: oklch(60% 0.17 150);
+      --qc-color-warning: oklch(82% 0.17 85);
+      --qc-color-error: oklch(58% 0.22 27);
+      --qc-color-info: oklch(58% 0.14 250);
+      --qc-color-base-100: #ffffff;
+      --qc-color-base-content: #1e293b;
+      --qc-radius-field: 0.375rem;
+      --qc-radius-selector: 0.375rem;
+      --qc-radius-box: 0.75rem;
+      --qc-font-family: "Inter", system-ui, sans-serif;
     }
-    body { margin: 0; background: #f1f5f9; color: var(--cito-color-base-content); font-family: "Inter", system-ui, sans-serif; }
+    body { margin: 0; background: #f1f5f9; color: var(--qc-color-base-content); font-family: "Inter", system-ui, sans-serif; }
 
     /* The toolbar controls: white, a slate border, 2.5rem square. The theme paints them; the slots repaint them. */
     .tool, .tool-group {
@@ -91,12 +91,13 @@
 
   <script type="module">
     import "@citolab/qti-components/corrections"; // the components with the correction variants: the interactions can show the correct answer (test-show-correct-response)
-    import "@citolab/qti-components/item.css"; // the item theme: reads the --cito-* tokens set above
+    import "@qti-components/extended"; // the test plugins: test-stamp, item links, bookmark, scoring, zoom, ...
+    import "@citolab/qti-components/item.css"; // the item theme: reads the --qc-* tokens set above
 
     // This page is the host. The components do the QTI; the host decides:
-    //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
-    //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
-    //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
+    //  - the look: the --qc-* tokens in the <style> above, and the markup around <test-container>
+    //  - the state: test.state is restored and qc-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
+    //  - the navigation: qc-test-navigated keeps the address bar in step, navigateTo opens a link
     //  - scoring: auto-score-items scores every answer silently; the open questions (external-scored="human") get their points from the
     //    Punten buttons (test-scoring-buttons) in the Nakijken view (test-view-toggle)
     //  - the correct answer: the corrections build of the components; "Goede antwoord" (test-show-correct-response) marks it in the question
@@ -124,18 +125,18 @@
 
     // Restore and deep link: the state (answers, position, bookmarks, zoom) is kept in sessionStorage, #/<id> opens that question
     if (sessionStorage.getItem(KEY)) test.state = JSON.parse(sessionStorage.getItem(KEY));
-    test.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
+    test.addEventListener("qc-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
     let first = true;
-    test.addEventListener("cito-test-navigated", (e) => {
+    test.addEventListener("qc-test-navigated", (e) => {
       const wanted = first && location.hash.slice(2);
       first = false;
       if (wanted && wanted !== e.detail.id) test.navigateTo("item", wanted);
       else history.replaceState(null, "", `#/${e.detail.id}`);
     });
     // Nakijken: the view decides what the toolbar shows (html[data-view="scorer"] in the markup below)
-    test.addEventListener("cito-test-switch-view", (e) => (document.documentElement.dataset.view = e.detail));
+    test.addEventListener("qc-test-switch-view", (e) => (document.documentElement.dataset.view = e.detail));
     // The question list closes once a question is chosen from it
-    test.addEventListener("cito-test-navigate", () => document.querySelector("#vragen").setAttribute("hidden", ""));
+    test.addEventListener("qc-test-navigate", () => document.querySelector("#vragen").setAttribute("hidden", ""));
   </script>
 </head>
 
@@ -270,7 +271,7 @@
           <button class="grid size-10 cursor-pointer place-items-center rounded-lg text-slate-500 ring-2 ring-inset ring-slate-300 hover:bg-slate-50" title="Vragenlijst" onclick="const v = document.querySelector('#vragen'); v.hidden = !v.hidden || v.dataset.layout != 'list'; v.dataset.layout = 'list'"><i class="bi bi-list text-xl"></i></button>
         </div>
 
-        <div class="flex items-center gap-2 [--test-button-border-radius:0.5rem] [--test-button-size:2.5rem] [--test-button-primary-background-color:var(--cito-color-primary)] [--test-button-primary-color:#fff] [--test-button-background-color:var(--cito-color-primary)] [--test-button-border-color:var(--cito-color-primary)] [--test-button-color:#fff] [--test-button-hover-background-color:#f45a5e] [--test-button-primary-hover-background-color:#f45a5e]">
+        <div class="flex items-center gap-2 [--test-button-border-radius:0.5rem] [--test-button-size:2.5rem] [--test-button-primary-background-color:var(--qc-color-primary)] [--test-button-primary-color:#fff] [--test-button-background-color:var(--qc-color-primary)] [--test-button-border-color:var(--qc-color-primary)] [--test-button-color:#fff] [--test-button-hover-background-color:#f45a5e] [--test-button-primary-hover-background-color:#f45a5e]">
           <test-prev title="Vorige"><i class="bi bi-chevron-left text-lg"></i></test-prev>
           <test-next class="font-semibold">Volgende <i class="bi bi-chevron-right text-lg"></i></test-next>
         </div>
@@ -384,7 +385,7 @@
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Speciale tekens<span class="block text-xs text-ink/50">test-character-sheet: een plugin die typt in het laatst gebruikte antwoordveld</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">Ω</span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Eigen gegevens per vraag<span class="block text-xs text-ink/50">initContext op test-navigation: naam en domein uit de database van de host</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">We / Wa / Be</span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Rondjes, vragenlijst en rapportage<span class="block text-xs text-ink/50">test-stamp met test-item-link, zonder code</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">3 stamps</span></li>
-        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en cito-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en qc-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
         <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Thumbnails van de vragen<span class="block text-xs text-ink/50">Examenkompas rendert ze vooraf; hier de lijst</span></span></li>
         <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Markeren (pen) en AI-nakijken<span class="block text-xs text-ink/50">eigen functies van Examenkompas</span></span></li>
           </ul>

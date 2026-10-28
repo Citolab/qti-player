@@ -8,7 +8,7 @@ import { closeFrame, openPage, until } from './frame'
 
 afterEach(closeFrame)
 
-const examples = ['formatief', 'facet', 'vraagtypen', 'adaptief-toets', 'adaptief-item', 'rekenen', 'examen', 'examenkompas', 'wikiwijs']
+const examples = ['formatief', 'facet', 'vraagtypen', 'adaptief-toets', 'adaptief-item', 'rekenen', 'examen', 'examenkompas', 'wikiwijs', 'minimal']
 
 test('the shell shows an example per tab', async () => {
   const { doc } = await openPage('index.html#/rekenen', '#examples a')
@@ -33,7 +33,8 @@ test.each(examples)('%s: opens with the first item or section on screen, in its 
   // every example brings its own theme: the tokens its theme.css sets on <html data-qti-theme>
   const html = doc.documentElement
   expect(html.dataset.qtiTheme).toBeTruthy()
-  expect(getComputedStyle(html).getPropertyValue('--qti-color-primary')).not.toBe('')
+  // minimal loads no theme at all (no item.css); the others bring item.css, which arrives with the module imports and may land after the first item
+  if (id !== 'minimal') await until(() => getComputedStyle(html).getPropertyValue('--qti-color-primary') !== '', `${id} has no theme`)
 })
 
 test('rekenen: a wrong sum gets a tip, the right one is scored', async () => {

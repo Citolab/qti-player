@@ -12,62 +12,63 @@
   <!-- The page's tokens as Tailwind colors: bg-surface, text-ink, bg-brand, border-line, rounded-box, ... -->
   <style type="text/tailwindcss">
     @theme inline {
-      --color-surface: var(--cito-color-base-100);
-      --color-page: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 2.5%);
-      --color-line: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
-      --color-ink: var(--cito-color-base-content);
-      --color-brand: var(--cito-color-primary);
-      --color-on-brand: var(--cito-color-primary-content);
-      --color-good: var(--cito-color-success);
-      --color-warn: var(--cito-color-warning);
-      --color-bad: var(--cito-color-error);
-      --radius-box: var(--cito-radius-box, 0.5rem);
-      --radius-field: var(--cito-radius-field, 0.25rem);
+      --color-surface: var(--qc-color-base-100);
+      --color-page: color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 2.5%);
+      --color-line: color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 6%);
+      --color-ink: var(--qc-color-base-content);
+      --color-brand: var(--qc-color-primary);
+      --color-on-brand: var(--qc-color-primary-content);
+      --color-good: var(--qc-color-success);
+      --color-warn: var(--qc-color-warning);
+      --color-bad: var(--qc-color-error);
+      --radius-box: var(--qc-radius-box, 0.5rem);
+      --radius-field: var(--qc-radius-field, 0.25rem);
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
 
   <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
-       item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
+       item.css derives the rest for the items; the Tailwind classes read these same --qc-* tokens, never the --qti-* ones. -->
   <style>
     /* Examen: no brand. Black ink on white paper, a serif for the questions, square corners. Only the state colours keep a hue. */
     html[data-qti-theme="examen"] {
       color-scheme: light;
-      --cito-color-primary: oklch(21% 0 none);
-      --cito-color-primary-content: oklch(100% 0 none);
-      --cito-color-success: oklch(53.64% 0.166 139.96);
-      --cito-color-warning: oklch(79.62% 0.1708 71.71);
-      --cito-color-error: oklch(56.75% 0.2329 29.23);
-      --cito-color-info: oklch(56.14% 0.1437 245.8);
-      --cito-color-base-100: oklch(100% 0 none);
-      --cito-color-base-content: oklch(22% 0 none);
-      --cito-radius-field: 0;
-      --cito-radius-selector: 0;
-      --cito-radius-box: 0;
-      --cito-font-family: "IBM Plex Serif", Georgia, serif;
+      --qc-color-primary: oklch(21% 0 none);
+      --qc-color-primary-content: oklch(100% 0 none);
+      --qc-color-success: oklch(53.64% 0.166 139.96);
+      --qc-color-warning: oklch(79.62% 0.1708 71.71);
+      --qc-color-error: oklch(56.75% 0.2329 29.23);
+      --qc-color-info: oklch(56.14% 0.1437 245.8);
+      --qc-color-base-100: oklch(100% 0 none);
+      --qc-color-base-content: oklch(22% 0 none);
+      --qc-radius-field: 0;
+      --qc-radius-selector: 0;
+      --qc-radius-box: 0;
+      --qc-font-family: "IBM Plex Serif", Georgia, serif;
     }
-    body { margin: 0; background: oklch(100% 0 none); color: var(--cito-color-base-content); min-height: 100vh; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+    body { margin: 0; background: oklch(100% 0 none); color: var(--qc-color-base-content); min-height: 100vh; font-family: "IBM Plex Sans", system-ui, sans-serif; }
   </style>
 
   <script type="module">
     import "@citolab/qti-components"; // registers the components
-    import "@citolab/qti-components/item.css"; // the item theme: reads the --cito-* tokens set above
+    import "@qti-components/extended"; // the test plugins: test-stamp, item links, bookmark, scoring, zoom, ...
+    import "@citolab/qti-components/item.css"; // the item theme: reads the --qc-* tokens set above
 
     // This page is the host. The components do the QTI; the host decides:
-    //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
+    //  - the look: the --qc-* tokens in the <style> above, and the markup around <test-container>
     //  - instructions: this test has none
-    //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
-    //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link (the examen navigates by section)
+    //  - the state: test.state is restored and qc-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
+    //  - the navigation: qc-test-navigated keeps the address bar in step, navigateTo opens a link (the examen navigates by section)
     //  - scoring: auto-score-items on <test-navigation> scores every answer silently; Inleveren only shows an overview
     //  - reading texts: the second script puts each qti-assessment-stimulus-ref text in the column next to the questions
 
     // Restore and deep link: the state (answers and position) is kept in sessionStorage, #/<id> opens that section
     const test = document.querySelector("qti-test"), KEY = "examen";
     if (sessionStorage.getItem(KEY)) test.state = JSON.parse(sessionStorage.getItem(KEY));
-    test.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
+    test.addEventListener("qc-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
     // The first navigation opens the restored position; a link in the address bar wins over that
     let first = true;
-    test.addEventListener("cito-test-navigated", (e) => {
+    test.addEventListener("qc-test-navigated", (e) => {
       const wanted = first && location.hash.slice(2);
       first = false;
       if (wanted && wanted !== e.detail.id) test.navigateTo("section", wanted);
@@ -104,7 +105,7 @@
       // The item has a slot of its own for the text, and the player fills that one first: take the slot away, so the text goes left
       element.closest("qti-assessment-item")?.querySelector(`[data-stimulus-idref="${element.identifier}"]`)?.remove();
     });
-    $("qti-test").addEventListener("cito-test-navigate", () => { stimuli.replaceChildren(); stimuli.hidden = true; observer.disconnect(); });
+    $("qti-test").addEventListener("qc-test-navigate", () => { stimuli.replaceChildren(); stimuli.hidden = true; observer.disconnect(); });
   </script>
 </head>
 
@@ -120,8 +121,8 @@
       <style>
         .item-tools { display: flex; justify-content: flex-end; margin-bottom: 0.25rem; font: 500 0.8125rem "IBM Plex Sans", system-ui, sans-serif; }
         test-bookmark { display: inline-flex; align-items: center; gap: 0.375rem; cursor: pointer; padding: 0.25rem 0.625rem;
-          border: 1px solid color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%); background: var(--cito-color-base-100); color: color-mix(in oklab, var(--cito-color-base-content) 70%, transparent); }
-        test-bookmark:hover { border-color: var(--cito-color-base-content); }
+          border: 1px solid color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 6%); background: var(--qc-color-base-100); color: color-mix(in oklab, var(--qc-color-base-content) 70%, transparent); }
+        test-bookmark:hover { border-color: var(--qc-color-base-content); }
         test-bookmark[bookmarked] { border-color: oklch(70% 0.15 70); background: oklch(95% 0.06 85); color: oklch(35% 0.08 70); }
         /* The mark: a bar along the whole question, so a bookmarked question is easy to find while scrolling */
         .flag { display: none; }
@@ -192,7 +193,7 @@
 
         <div class="flex min-w-0 flex-1 flex-col items-start gap-8 lg:flex-row">
         <aside id="stimuli" hidden aria-label="Tekst bij de vragen"
-          class="invisible w-full max-lg:[&.invisible]:hidden border border-line p-6 text-[1.0625rem] leading-8 [font-family:var(--cito-font-family)] [&_*]:[font-family:inherit] lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:w-[42%] lg:shrink-0 lg:overflow-y-auto [&_img]:h-auto [&_img]:w-full [&_p]:mb-3 [&_strong]:font-semibold [&_table]:w-full"></aside>
+          class="invisible w-full max-lg:[&.invisible]:hidden border border-line p-6 text-[1.0625rem] leading-8 [font-family:var(--qc-font-family)] [&_*]:[font-family:inherit] lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:w-[42%] lg:shrink-0 lg:overflow-y-auto [&_img]:h-auto [&_img]:w-full [&_p]:mb-3 [&_strong]:font-semibold [&_table]:w-full"></aside>
 
         <test-container test-url="../../examen/depitems/kb-en-25-examenvariant.xml" class="block min-w-0 flex-1">
           <template>
@@ -206,7 +207,7 @@
               qti-simple-choice img, qti-simple-associable-choice img { max-width: 100%; height: auto; }
               /* Only render the items on screen. A section is ~14 items of text and images; without this the browser repaints all of
                  it on every answer and every scroll step (measured: 50-1000 ms per frame, 1-20 ms with). */
-              qti-assessment-item-ref { display: block; position: relative; padding: 1rem 0 1rem 1rem; border-top: 1px solid color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
+              qti-assessment-item-ref { display: block; position: relative; padding: 1rem 0 1rem 1rem; border-top: 1px solid color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 6%);
                 content-visibility: auto; contain-intrinsic-size: auto 700px; }
             </style>
           </template>
@@ -234,11 +235,11 @@
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Eindscore en eindbericht<span class="block text-xs text-ink/50">qti-outcome-processing en qti-test-feedback</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">SCORE, MAXSCORE, PERCENTAGE</span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Gewicht per vraag<span class="block text-xs text-ink/50">qti-weight op de item-refs</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">43 gewichten</span></li>
         <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Instructies (rubric block)<span class="block text-xs text-ink/50">qti-rubric-block in de QTI</span></span></li>
-        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Eigen JavaScript voor de instructies<span class="block text-xs text-ink/50">cito-item-rubric-placement, één regel</span></span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Eigen JavaScript voor de instructies<span class="block text-xs text-ink/50">qc-item-rubric-placement, één regel</span></span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Leesteksten naast de vragen<span class="block text-xs text-ink/50">qti-assessment-stimulus-ref en een eigen script</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">tweede script voor de teksten</span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Bladwijzers<span class="block text-xs text-ink/50">test-bookmark in een item-ref-template</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">per vraag en in de lijst</span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Knop per vraag in het item<span class="block text-xs text-ink/50">test-bookmark of test-end-attempt in een &lt;template item-ref&gt;</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">Bladwijzer per vraag</span></li>
-        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en cito-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en qc-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
           </ul>
           <form method="dialog" class="flex justify-end"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
         </div>

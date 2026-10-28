@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="nl" data-qti-theme="default">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic</title>
+
+  <!-- Tailwind, as every page here, for the layout only: no colours, the default theme paints -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <script type="module">
+    import "@citolab/qti-components"; // the test engine and the interactions
+    import "./test-color-scheme.js"; // a plugin of our own: the light/dark switch (see the file)
+  </script>
+</head>
+
+<!--
+  MINIMAAL: de kleinste speler. Alleen qti-test, test-navigation, test-container en de knoppen test-prev, test-end-attempt,
+  test-next en test-submit, in het standaardthema. Geen script in de pagina; de keuzelijst zet alleen test-url op de container.
+  Tailwind doet de indeling, niets meer. De schakelaar licht/donker is test-color-scheme, een plugin van één bestand.
+-->
+<body>
+  <qti-test navigate="item">
+    <!-- A top bar, a scrolling middle, a bottom bar: the bars stay in view, the item scrolls -->
+    <test-navigation class="flex h-screen flex-col">
+      <header class="flex flex-wrap items-center justify-between gap-4 px-4 py-3">
+        <label class="flex items-center gap-2">Toets
+          <select onchange="document.querySelector('test-container').setAttribute('test-url', this.value)">
+            <option value="../../formatief/AssessmentTest.xml">Formatief (werkwoordspelling)</option>
+            <option value="../../facet/AssessmentTest.xml">Facet</option>
+            <option value="../../vraagtypen/AssessmentTest.xml">Vraagtypen (fotosynthese)</option>
+            <option value="../../adaptief-toets/AssessmentTest.xml">Adaptief: toets</option>
+            <option value="../../adaptief-item/AssessmentTest.xml">Adaptief: item</option>
+            <option value="../../rekenen/AssessmentTest.xml">Rekenen</option>
+            <option value="../../examen/depitems/kb-en-25-examenvariant.xml">Examen (Engels kb 2025)</option>
+            <option value="../../examenkompas/depitems/bb-ak-23-examenvariant.xml">Examenkompas (aardrijkskunde bb 2023)</option>
+            <option value="../../wikiwijs/AssessmentTest.xml">Wikiwijs (Kennisnet Demonstratietoets)</option>
+          </select>
+        </label>
+        <div class="flex items-center gap-2">
+          <test-color-scheme>Donker</test-color-scheme>
+          <test-submit>Inleveren</test-submit>
+        </div>
+      </header>
+
+      <main class="min-h-0 flex-1 overflow-y-auto">
+        <test-container test-url="../../formatief/AssessmentTest.xml" class="mx-auto block max-w-3xl px-4 py-6"></test-container>
+      </main>
+
+      <footer class="flex items-center justify-between gap-2 px-4 py-3">
+        <test-end-attempt>Nakijken</test-end-attempt>
+        <div class="flex gap-2">
+          <test-prev>Vorige</test-prev>
+          <test-next>Volgende</test-next>
+        </div>
+      </footer>
+    </test-navigation>
+  </qti-test>
+</body>
+
+</html>

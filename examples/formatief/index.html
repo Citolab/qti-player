@@ -12,46 +12,46 @@
   <!-- The page's tokens as Tailwind colors: bg-surface, text-ink, bg-brand, border-line, rounded-box, ... -->
   <style type="text/tailwindcss">
     @theme inline {
-      --color-surface: var(--cito-color-base-100);
-      --color-page: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 2.5%);
-      --color-line: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
-      --color-ink: var(--cito-color-base-content);
-      --color-brand: var(--cito-color-primary);
-      --color-on-brand: var(--cito-color-primary-content);
-      --color-good: var(--cito-color-success);
-      --color-warn: var(--cito-color-warning);
-      --color-bad: var(--cito-color-error);
-      --radius-box: var(--cito-radius-box, 0.5rem);
-      --radius-field: var(--cito-radius-field, 0.25rem);
+      --color-surface: var(--qc-color-base-100);
+      --color-page: color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 2.5%);
+      --color-line: color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 6%);
+      --color-ink: var(--qc-color-base-content);
+      --color-brand: var(--qc-color-primary);
+      --color-on-brand: var(--qc-color-primary-content);
+      --color-good: var(--qc-color-success);
+      --color-warn: var(--qc-color-warning);
+      --color-bad: var(--qc-color-error);
+      --radius-box: var(--qc-radius-box, 0.5rem);
+      --radius-field: var(--qc-radius-field, 0.25rem);
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;900&display=swap" rel="stylesheet" />
 
   <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
-       item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
+       item.css derives the rest for the items; the Tailwind classes read these same --qc-* tokens, never the --qti-* ones. -->
   <style>
     /* Playful: white cards on a pale sky page, one clear blue for what is chosen, a green go-on button, generous rounding. */
     html[data-qti-theme="playful"] {
       color-scheme: light;
-      --cito-color-base-100: oklch(100% 0 none);
-      --cito-color-base-content: oklch(34% 0.04 255);
-      --cito-color-primary: oklch(57% 0.17 245);
-      --cito-color-primary-content: oklch(100% 0 none);
-      --cito-color-neutral: oklch(62% 0.19 140);
-      --cito-color-neutral-content: oklch(100% 0 none);
-      --cito-color-chip: oklch(100% 0 none);
-      --cito-color-chip-border: oklch(88% 0.02 250);
-      --cito-color-border: oklch(78% 0.03 250);
-      --cito-color-info: oklch(52% 0.16 265);
-      --cito-color-success: oklch(55% 0.16 145);
-      --cito-color-warning: oklch(72% 0.15 70);
-      --cito-color-error: oklch(56% 0.2 25);
-      --cito-radius-field: 0.75rem;
-      --cito-radius-selector: 0.75rem;
-      --cito-radius-box: 1.5rem;
-      --cito-border-width: 2px;
-      --cito-depth: 1;
-      --cito-font-family: Nunito, "Avenir Next", system-ui, sans-serif;
+      --qc-color-base-100: oklch(100% 0 none);
+      --qc-color-base-content: oklch(34% 0.04 255);
+      --qc-color-primary: oklch(57% 0.17 245);
+      --qc-color-primary-content: oklch(100% 0 none);
+      --qc-color-neutral: oklch(62% 0.19 140);
+      --qc-color-neutral-content: oklch(100% 0 none);
+      --qc-color-chip: oklch(100% 0 none);
+      --qc-color-chip-border: oklch(88% 0.02 250);
+      --qc-color-border: oklch(78% 0.03 250);
+      --qc-color-info: oklch(52% 0.16 265);
+      --qc-color-success: oklch(55% 0.16 145);
+      --qc-color-warning: oklch(72% 0.15 70);
+      --qc-color-error: oklch(56% 0.2 25);
+      --qc-radius-field: 0.75rem;
+      --qc-radius-selector: 0.75rem;
+      --qc-radius-box: 1.5rem;
+      --qc-border-width: 2px;
+      --qc-depth: 1;
+      --qc-font-family: Nunito, "Avenir Next", system-ui, sans-serif;
     }
     /* The dialog is the box: the rubric block inside it draws no box of its own (an unlayered rule, so it wins over the theme's layers) */
     #rubric qti-rubric-block { margin: 0; padding: 0; border: 0; background: none; }
@@ -65,29 +65,30 @@
     }
     .badge-flash { animation: badge-flash 3s ease-out both; }
     @media (prefers-reduced-motion: reduce) { .badge-flash { animation: none; } }
-    body { margin: 0; font-family: var(--cito-font-family); color: var(--cito-color-base-content);
+    body { margin: 0; font-family: var(--qc-font-family); color: var(--qc-color-base-content);
       background: oklch(97.5% 0.02 235) radial-gradient(circle at 15% -10%, oklch(92% 0.06 235), transparent 45%); min-height: 100vh; }
   </style>
 
   <script type="module">
     import "@citolab/qti-components"; // registers the components
-    import "@citolab/qti-components/item.css"; // the item theme: reads the --cito-* tokens set above
+    import "@qti-components/extended"; // the test plugins: test-stamp, item links, bookmark, scoring, zoom, ...
+    import "@citolab/qti-components/item.css"; // the item theme: reads the --qc-* tokens set above
 
     // This page is the host. The components do the QTI; the host decides:
-    //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
-    //  - where instructions go: cito-item-rubric-placement (optional; here a modal dialog over the page that the candidate closes; without it they show above the item, inside the card)
-    //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
-    //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
+    //  - the look: the --qc-* tokens in the <style> above, and the markup around <test-container>
+    //  - where instructions go: qc-item-rubric-placement (optional; here a modal dialog over the page that the candidate closes; without it they show above the item, inside the card)
+    //  - the state: test.state is restored and qc-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
+    //  - the navigation: qc-test-navigated keeps the address bar in step, navigateTo opens a link
     //  - scoring: Nakijken (test-end-attempt) scores an item; the dialog shows an overview
-    //  - feedback: cito-feedback-show (cancelable) lets the host show the inline feedback itself
+    //  - feedback: qc-feedback-show (cancelable) lets the host show the inline feedback itself
 
     // Restore and deep link: the state (answers and position) is kept in sessionStorage, #/<id> opens that item
     const test = document.querySelector("qti-test"), KEY = "formatief";
     if (sessionStorage.getItem(KEY)) test.state = JSON.parse(sessionStorage.getItem(KEY));
-    test.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
+    test.addEventListener("qc-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
     // The first navigation opens the restored position; a link in the address bar wins over that
     let first = true;
-    test.addEventListener("cito-test-navigated", (e) => {
+    test.addEventListener("qc-test-navigated", (e) => {
       const wanted = first && location.hash.slice(2);
       first = false;
       if (wanted && wanted !== e.detail.id) test.navigateTo("item", wanted);
@@ -96,8 +97,8 @@
     // Feedback per choice (qti-feedback-inline): the host takes it over (preventDefault keeps the default hidden)
     // and shows a copy of its content at the same place, animated. The copies go at the next Nakijken.
     const pops = new Set();
-    test.addEventListener("cito-test-end-attempt", () => { pops.forEach((p) => p.remove()); pops.clear(); }, true);
-    test.addEventListener("cito-feedback-show", (e) => {
+    test.addEventListener("qc-test-end-attempt", () => { pops.forEach((p) => p.remove()); pops.clear(); }, true);
+    test.addEventListener("qc-feedback-show", (e) => {
       if (e.detail.kind !== "inline") return;
       e.preventDefault();
       const el = e.detail.element;
@@ -106,7 +107,7 @@
       el.after(pop);
     });
     // Instructions (qti-rubric-block class="qti-rubric-discretionary-placement") go above the item
-    test.addEventListener("cito-item-rubric-placement", (e) => { const rubric = document.querySelector("#rubric"); rubric.prepend(e.detail.element); rubric.showModal(); });
+    test.addEventListener("qc-item-rubric-placement", (e) => { const rubric = document.querySelector("#rubric"); rubric.prepend(e.detail.element); rubric.showModal(); });
   </script>
 </head>
 
@@ -138,23 +139,23 @@
         <template>
           <style>
             /* Item feedback lives in the test's shadow root, so it is styled here with the page's tokens */
-        qti-feedback-block { --fb: var(--cito-color-info); }
-        qti-feedback-block.qti-feedback-correct { --fb: var(--cito-color-success); }
-        qti-feedback-block.qti-feedback-hint { --fb: var(--cito-color-warning); }
+        qti-feedback-block { --fb: var(--qc-color-info); }
+        qti-feedback-block.qti-feedback-correct { --fb: var(--qc-color-success); }
+        qti-feedback-block.qti-feedback-hint { --fb: var(--qc-color-warning); }
         qti-feedback-block::part(feedback) {
           box-shadow: none; margin-top: 1rem; padding: 0.25rem 1rem;
-          border-left: 4px solid var(--fb); border-radius: var(--cito-radius-field, 0.25rem);
+          border-left: 4px solid var(--fb); border-radius: var(--qc-radius-field, 0.25rem);
           background: color-mix(in oklab, var(--fb) 12%, transparent);
         }
         qti-feedback-inline::part(feedback) {
           box-shadow: none; margin-inline: 0.5rem; padding: 0 0.5rem; font-size: 0.875em;
-          border-radius: var(--cito-radius-field, 0.25rem); background: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 2.5%);
+          border-radius: var(--qc-radius-field, 0.25rem); background: color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 2.5%);
         }
         math { font-size: 1.15em; math-style: normal; }
         /* The host's own inline feedback (a copy of the qti-feedback-inline, same place): it pops in next to the choice */
         .fb-pop {
           margin-inline: 0.5rem; padding: 0 0.5rem; font-size: 0.875em; display: inline-block;
-          border-radius: var(--cito-radius-field, 0.25rem); background: color-mix(in oklab, var(--cito-color-info) 14%, transparent);
+          border-radius: var(--qc-radius-field, 0.25rem); background: color-mix(in oklab, var(--qc-color-info) 14%, transparent);
           animation: fb-pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
         }
         @keyframes fb-pop { from { opacity: 0; transform: translateX(-0.75rem) scale(0.9); } }
@@ -167,7 +168,7 @@
       <test-stamp class="block">
         <template>
           <div class="flex flex-wrap items-center gap-3 px-1">
-            <test-end-attempt class="[--test-button-background-color:var(--cito-color-primary)] [--test-button-color:var(--cito-color-primary-content)] [--test-button-border-color:var(--cito-color-primary)] [--test-button-hover-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_12%)] [--test-button-active-background-color:color-mix(in_oklab,var(--cito-color-primary),var(--cito-color-primary-content)_24%)]">Nakijken</test-end-attempt>
+            <test-end-attempt class="[--test-button-background-color:var(--qc-color-primary)] [--test-button-color:var(--qc-color-primary-content)] [--test-button-border-color:var(--qc-color-primary)] [--test-button-hover-background-color:color-mix(in_oklab,var(--qc-color-primary),var(--qc-color-primary-content)_12%)] [--test-button-active-background-color:color-mix(in_oklab,var(--qc-color-primary),var(--qc-color-primary-content)_24%)]">Nakijken</test-end-attempt>
             <span class="text-sm font-bold text-ink/60">Poging {{ activeItem.numAttempts }} van {{ activeItem.maxAttempts > 0 ? activeItem.maxAttempts : '∞' }}</span>
             <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}">
               <span class="badge-flash rounded-full bg-good/15 px-3 py-1 text-sm font-semibold text-good"><i class="bi bi-check-lg me-1"></i>Goed</span>
@@ -192,7 +193,7 @@
                 <template type="if" if="{{ activeItem.done && item.index == activeItem.index + 1 }}">
                   <li>
                     <test-item-link item-id="{{ item.identifier }}" title="Volgende vraag"
-                      class="[--test-button-border-radius:9999px] [--test-button-border-color:var(--cito-color-base-content)] [&::part(button)]:w-9 [&::part(button)]:p-0 [&::part(button)]:text-sm [&::part(button)]:font-black">{{ item.index }}</test-item-link>
+                      class="[--test-button-border-radius:9999px] [--test-button-border-color:var(--qc-color-base-content)] [&::part(button)]:w-9 [&::part(button)]:p-0 [&::part(button)]:text-sm [&::part(button)]:font-black">{{ item.index }}</test-item-link>
                   </li>
                 </template>
                 <template type="if" if="{{ !(activeItem.done && item.index == activeItem.index + 1) }}">
@@ -227,11 +228,11 @@
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Eindscore en eindbericht<span class="block text-xs text-ink/50">qti-outcome-processing en qti-test-feedback</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">3 eindberichten</span></li>
         <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Gewicht per vraag<span class="block text-xs text-ink/50">qti-weight op de item-refs</span></span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Instructies (rubric block)<span class="block text-xs text-ink/50">qti-rubric-block in de QTI</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">in de sectie</span></li>
-        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Eigen JavaScript voor de instructies<span class="block text-xs text-ink/50">cito-item-rubric-placement, één regel</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">toont ze in een venster</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Eigen JavaScript voor de instructies<span class="block text-xs text-ink/50">qc-item-rubric-placement, één regel</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">toont ze in een venster</span></li>
         <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Leesteksten naast de vragen<span class="block text-xs text-ink/50">qti-assessment-stimulus-ref en een eigen script</span></span></li>
         <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Bladwijzers<span class="block text-xs text-ink/50">test-bookmark in een item-ref-template</span></span></li>
         <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Knop per vraag in het item<span class="block text-xs text-ink/50">test-bookmark of test-end-attempt in een &lt;template item-ref&gt;</span></span></li>
-        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en cito-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en qc-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
           </ul>
           <form method="dialog" class="flex justify-end"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
         </div>

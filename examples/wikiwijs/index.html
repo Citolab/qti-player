@@ -12,18 +12,18 @@
   <!-- The page's tokens as Tailwind colors: bg-surface, text-ink, bg-brand, border-line, rounded-box, ... -->
   <style type="text/tailwindcss">
     @theme inline {
-      --color-surface: var(--cito-color-base-100);
+      --color-surface: var(--qc-color-base-100);
       --color-page: #edecf6;
-      --color-line: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
-      --color-ink: var(--cito-color-base-content);
-      --color-brand: var(--cito-color-primary);
-      --color-on-brand: var(--cito-color-primary-content);
+      --color-line: color-mix(in oklab, var(--qc-color-base-100), var(--qc-color-base-content) 6%);
+      --color-ink: var(--qc-color-base-content);
+      --color-brand: var(--qc-color-primary);
+      --color-on-brand: var(--qc-color-primary-content);
       --color-link: #127394;
-      --color-good: var(--cito-color-success);
-      --color-warn: var(--cito-color-warning);
-      --color-bad: var(--cito-color-error);
-      --radius-box: var(--cito-radius-box, 0.5rem);
-      --radius-field: var(--cito-radius-field, 0.25rem);
+      --color-good: var(--qc-color-success);
+      --color-warn: var(--qc-color-warning);
+      --color-bad: var(--qc-color-error);
+      --radius-box: var(--qc-radius-box, 0.5rem);
+      --radius-field: var(--qc-radius-field, 0.25rem);
       --font-sans: "Nunito", system-ui, sans-serif;
       --font-slab: "Roboto Slab", Georgia, serif;
     }
@@ -31,26 +31,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
-       item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
+       item.css derives the rest for the items; the Tailwind classes read these same --qc-* tokens, never the --qti-* ones. -->
   <style>
     /* Wikiwijs Toetsen: aubergine on lilac, Nunito for the text and Roboto Slab for the headings, soft corners. */
     html[data-qti-theme="wikiwijs"] {
       color-scheme: light;
-      --cito-color-primary: #581d70;
-      --cito-color-primary-content: #ffffff;
-      --cito-color-success: #2f8f46;
-      --cito-color-warning: #e3a008;
-      --cito-color-error: #e60000;
-      --cito-color-info: #007ac3;
-      --cito-color-base-100: #ffffff;
-      --cito-color-base-content: #3e144e;
-      --cito-color-border: #9b77a9;
-      --cito-radius-field: 0.3rem;
-      --cito-radius-selector: 0.3rem;
-      --cito-radius-box: 0.5rem;
-      --cito-font-family: "Nunito", system-ui, sans-serif;
+      --qc-color-primary: #581d70;
+      --qc-color-primary-content: #ffffff;
+      --qc-color-success: #2f8f46;
+      --qc-color-warning: #e3a008;
+      --qc-color-error: #e60000;
+      --qc-color-info: #007ac3;
+      --qc-color-base-100: #ffffff;
+      --qc-color-base-content: #3e144e;
+      --qc-color-border: #9b77a9;
+      --qc-radius-field: 0.3rem;
+      --qc-radius-selector: 0.3rem;
+      --qc-radius-box: 0.5rem;
+      --qc-font-family: "Nunito", system-ui, sans-serif;
     }
-    body { margin: 0; background: #edecf6; color: var(--cito-color-base-content); font-family: "Nunito", system-ui, sans-serif; }
+    body { margin: 0; background: #edecf6; color: var(--qc-color-base-content); font-family: "Nunito", system-ui, sans-serif; }
 
     /* The floating buttons (Vorige, Volgende): white, a hard shadow below. The test controls get the same through their slots. */
     .floating, test-prev, test-next {
@@ -62,7 +62,7 @@
     test-prev::part(button), test-next::part(button) { padding-inline: 0.75rem; }
     /* Nakijken and Starten: the aubergine button */
     .primary, test-end-attempt {
-      --test-button-size: 2.5rem; --test-button-border-radius: 0.25rem; --test-button-border-color: var(--cito-color-primary); --test-button-background-color: var(--cito-color-primary);
+      --test-button-size: 2.5rem; --test-button-border-radius: 0.25rem; --test-button-border-color: var(--qc-color-primary); --test-button-background-color: var(--qc-color-primary);
       --test-button-color: #fff; --test-button-hover-background-color: #4a1860; --test-button-active-background-color: #3e144e;
       font-weight: 600; box-shadow: 0 3px 0 rgb(0 0 0 / 0.25); border-radius: 0.25rem;
     }
@@ -97,13 +97,14 @@
 
   <script type="module">
     import "@citolab/qti-components"; // registers the components
-    import "@citolab/qti-components/item.css"; // the item theme: reads the --cito-* tokens set above
+    import "@qti-components/extended"; // the test plugins: test-stamp, item links, bookmark, scoring, zoom, ...
+    import "@citolab/qti-components/item.css"; // the item theme: reads the --qc-* tokens set above
 
     // This page is the host. The components do the QTI; the host decides:
-    //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
+    //  - the look: the --qc-* tokens in the <style> above, and the markup around <test-container>
     //  - Start and Resultaat: pages of their own before and after the questions (data-view on <html>); the instruction is the test's own rubric block
-    //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
-    //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
+    //  - the state: test.state is restored and qc-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
+    //  - the navigation: qc-test-navigated keeps the address bar in step, navigateTo opens a link
     //  - Nakijken: test-end-attempt scores the question (max-attempts="0" in the package: as often as the candidate likes); what follows (the alert,
     //    Nakijken gone once the answer is right, Volgende only after a check) is read from the stamp context (numAttempts, optimal, score)
     //  - a changed answer: data-dirty on <html> hides the alert and holds Volgende until the next Nakijken (Wikiwijs does the same)
@@ -113,9 +114,9 @@
 
     // Restore and deep link: the state (answers and position) is kept in sessionStorage, #/<id> opens that question
     if (sessionStorage.getItem(KEY)) test.state = JSON.parse(sessionStorage.getItem(KEY));
-    test.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
+    test.addEventListener("qc-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
     let first = true;
-    test.addEventListener("cito-test-navigated", (e) => {
+    test.addEventListener("qc-test-navigated", (e) => {
       const wanted = first && location.hash.slice(2);
       first = false;
       if (wanted && wanted !== e.detail.id) test.navigateTo("item", wanted);
@@ -123,13 +124,13 @@
       if (wanted) html.dataset.view = "item"; // a link to a question opens that question, not Start
     });
     // The instruction (the test's qti-rubric-block, class qti-rubric-discretionary-placement) goes on the Start page
-    test.addEventListener("cito-item-rubric-placement", (e) => $("#instructie").replaceChildren(e.detail.element));
+    test.addEventListener("qc-item-rubric-placement", (e) => $("#instructie").replaceChildren(e.detail.element));
     // A navigation (list, Starten, Vorige, Volgende) shows the question and closes the dropdown; the test's own first navigation is not one
-    test.addEventListener("cito-test-navigate", () => { if (!first) html.dataset.view = "item"; delete html.dataset.dirty; $("#dropdown").open = false; });
+    test.addEventListener("qc-test-navigate", () => { if (!first) html.dataset.view = "item"; delete html.dataset.dirty; $("#dropdown").open = false; });
     for (const button of document.querySelectorAll("[data-show]")) button.addEventListener("click", () => { html.dataset.view = button.dataset.show; $("#dropdown").open = false; });
     // A changed answer must be checked again before the candidate may go on
-    test.addEventListener("cito-item-response-changed", () => (html.dataset.dirty = ""));
-    test.addEventListener("cito-test-end-attempt", () => delete html.dataset.dirty);
+    test.addEventListener("qc-item-response-changed", () => (html.dataset.dirty = ""));
+    test.addEventListener("qc-test-end-attempt", () => delete html.dataset.dirty);
   </script>
 </head>
 
@@ -277,9 +278,9 @@
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Nakijken<span class="block text-xs text-ink/50">test-end-attempt require-answer; weg zodra het antwoord goed is (activeItem.optimal)</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">per vraag</span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Goed, deels goed, fout<span class="block text-xs text-ink/50">een test-stamp op numAttempts, optimal en score; geen feedback in de items</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">3 alerts</span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Volgende pas na het nakijken<span class="block text-xs text-ink/50">een marker uit de stamp (needs-check) en data-dirty bij een gewijzigd antwoord; CSS doet de rest</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">:has()</span></li>
-        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Instructie voor leerling<span class="block text-xs text-ink/50">de qti-rubric-block van de toets, via cito-item-rubric-placement</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">op Start</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Instructie voor leerling<span class="block text-xs text-ink/50">de qti-rubric-block van de toets, via qc-item-rubric-placement</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">op Start</span></li>
         <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Vragenlijst met de stand<span class="block text-xs text-ink/50">test-stamp met test-item-link; een &lt;details&gt; onder 1536px</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">○ ✕ ✓</span></li>
-        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en cito-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en qc-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
         <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Het goede antwoord tonen<span class="block text-xs text-ink/50">niet in de oefentoets; de voorvertoning van Wikiwijs heeft het wel</span></span></li>
           </ul>
           <form method="dialog" class="flex justify-end"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
