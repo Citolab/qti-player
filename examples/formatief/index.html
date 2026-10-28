@@ -79,6 +79,7 @@
     //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
     //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
     //  - scoring: Nakijken (test-end-attempt) scores an item; the dialog shows an overview
+    //  - feedback: cito-feedback-show (cancelable) lets the host show the inline feedback itself
 
     // Restore and deep link: the state (answers and position) is kept in sessionStorage, #/<id> opens that item
     const test = document.querySelector("qti-test"), KEY = "formatief";
@@ -91,6 +92,18 @@
       first = false;
       if (wanted && wanted !== e.detail.id) test.navigateTo("item", wanted);
       else history.replaceState(null, "", `#/${e.detail.id}`);
+    });
+    // Feedback per choice (qti-feedback-inline): the host takes it over (preventDefault keeps the default hidden)
+    // and shows a copy of its content at the same place, animated. The copies go at the next Nakijken.
+    const pops = new Set();
+    test.addEventListener("cito-test-end-attempt", () => { pops.forEach((p) => p.remove()); pops.clear(); }, true);
+    test.addEventListener("cito-feedback-show", (e) => {
+      if (e.detail.kind !== "inline") return;
+      e.preventDefault();
+      const el = e.detail.element;
+      const pop = Object.assign(document.createElement("span"), { className: "fb-pop", innerHTML: el.innerHTML });
+      pops.add(pop);
+      el.after(pop);
     });
     // Instructions (qti-rubric-block class="qti-rubric-discretionary-placement") go above the item
     test.addEventListener("cito-item-rubric-placement", (e) => { const rubric = document.querySelector("#rubric"); rubric.prepend(e.detail.element); rubric.showModal(); });
@@ -129,15 +142,23 @@
         qti-feedback-block.qti-feedback-correct { --fb: var(--cito-color-success); }
         qti-feedback-block.qti-feedback-hint { --fb: var(--cito-color-warning); }
         qti-feedback-block::part(feedback) {
-          margin-top: 1rem; padding: 0.25rem 1rem;
+          box-shadow: none; margin-top: 1rem; padding: 0.25rem 1rem;
           border-left: 4px solid var(--fb); border-radius: var(--cito-radius-field, 0.25rem);
           background: color-mix(in oklab, var(--fb) 12%, transparent);
         }
         qti-feedback-inline::part(feedback) {
-          margin-inline: 0.5rem; padding: 0 0.5rem; font-size: 0.875em;
+          box-shadow: none; margin-inline: 0.5rem; padding: 0 0.5rem; font-size: 0.875em;
           border-radius: var(--cito-radius-field, 0.25rem); background: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 2.5%);
         }
         math { font-size: 1.15em; math-style: normal; }
+        /* The host's own inline feedback (a copy of the qti-feedback-inline, same place): it pops in next to the choice */
+        .fb-pop {
+          margin-inline: 0.5rem; padding: 0 0.5rem; font-size: 0.875em; display: inline-block;
+          border-radius: var(--cito-radius-field, 0.25rem); background: color-mix(in oklab, var(--cito-color-info) 14%, transparent);
+          animation: fb-pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+        }
+        @keyframes fb-pop { from { opacity: 0; transform: translateX(-0.75rem) scale(0.9); } }
+        @media (prefers-reduced-motion: reduce) { .fb-pop { animation: none; } }
           </style>
         </template>
       </test-container>
@@ -224,7 +245,7 @@
             <template>
               <div class="grid grid-cols-3 gap-3 text-center">
                 <div class="rounded-field bg-page p-3">
-                  <p class="text-2xl font-bold tabular-nums">{{ activeTestpart.items.filter((i) => i.index && (i.numAttempts > 0 || i.completionStatus == 'completed')).length }} / {{ activeTestpart.items.filter((i) => i.index).length }}</p>
+                  <p class="text-2xl font-bold tabular-nums">{{ activeTestpart.items.filter((i) => i.index && (i.valid && !i.isDefaultResponse)).length }} / {{ activeTestpart.items.filter((i) => i.index).length }}</p>
                   <p class="text-sm text-ink/60">beantwoord</p>
                 </div>
                 <div class="rounded-field bg-page p-3">
@@ -245,8 +266,8 @@
                       <td class="py-2 pr-3 tabular-nums">{{ item.index }}</td>
                       <td class="py-2 pr-3">{{ item.title || item.identifier }}</td>
                       <td class="py-2 pr-3">
-                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ !(item.numAttempts > 0 || item.completionStatus == 'completed') ? 'bg-line text-ink/60' : item.maxScore > 0 && item.score >= item.maxScore ? 'bg-good/15 text-good' : item.score > 0 ? 'bg-warn/25 text-ink' : 'bg-bad/15 text-bad' }}">
-                          {{ !(item.numAttempts > 0 || item.completionStatus == 'completed') ? 'niet ingevuld' : item.maxScore > 0 && item.score >= item.maxScore ? 'goed' : item.score > 0 ? 'deels goed' : 'fout' }}
+                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ !(item.valid && !item.isDefaultResponse) ? 'bg-line text-ink/60' : item.maxScore > 0 && item.score >= item.maxScore ? 'bg-good/15 text-good' : item.score > 0 ? 'bg-warn/25 text-ink' : 'bg-bad/15 text-bad' }}">
+                          {{ !(item.valid && !item.isDefaultResponse) ? 'niet ingevuld' : item.maxScore > 0 && item.score >= item.maxScore ? 'goed' : item.score > 0 ? 'deels goed' : 'fout' }}
                         </span>
                       </td>
                     </tr>

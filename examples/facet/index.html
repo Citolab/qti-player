@@ -170,7 +170,7 @@
             <template>
               <div class="grid grid-cols-3 gap-3 text-center">
                 <div class="rounded-field bg-page p-3">
-                  <p class="text-2xl font-bold tabular-nums">{{ activeTestpart.items.filter((i) => i.index && (i.numAttempts > 0 || i.completionStatus == 'completed')).length }} / {{ activeTestpart.items.filter((i) => i.index).length }}</p>
+                  <p class="text-2xl font-bold tabular-nums">{{ activeTestpart.items.filter((i) => i.index && (i.valid && !i.isDefaultResponse)).length }} / {{ activeTestpart.items.filter((i) => i.index).length }}</p>
                   <p class="text-sm text-ink/60">beantwoord</p>
                 </div>
                 <div class="rounded-field bg-page p-3">
@@ -191,8 +191,8 @@
                       <td class="py-2 pr-3 tabular-nums">{{ item.index }}</td>
                       <td class="py-2 pr-3">{{ item.title || item.identifier }}</td>
                       <td class="py-2 pr-3">
-                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ !(item.numAttempts > 0 || item.completionStatus == 'completed') ? 'bg-line text-ink/60' : item.maxScore > 0 && item.score >= item.maxScore ? 'bg-good/15 text-good' : item.score > 0 ? 'bg-warn/25 text-ink' : 'bg-bad/15 text-bad' }}">
-                          {{ !(item.numAttempts > 0 || item.completionStatus == 'completed') ? 'niet ingevuld' : item.maxScore > 0 && item.score >= item.maxScore ? 'goed' : item.score > 0 ? 'deels goed' : 'fout' }}
+                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ !(item.valid && !item.isDefaultResponse) ? 'bg-line text-ink/60' : item.maxScore > 0 && item.score >= item.maxScore ? 'bg-good/15 text-good' : item.score > 0 ? 'bg-warn/25 text-ink' : 'bg-bad/15 text-bad' }}">
+                          {{ !(item.valid && !item.isDefaultResponse) ? 'niet ingevuld' : item.maxScore > 0 && item.score >= item.maxScore ? 'goed' : item.score > 0 ? 'deels goed' : 'fout' }}
                         </span>
                       </td>
                     </tr>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32ksp7" identifier="ITM-32ksp7" time-dependent="false" label="32ksp7" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="B">
+      <qti-value>B</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="RESPONSE2" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="A">
+      <qti-value>A</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="RESPONSE3" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="B">
+      <qti-value>B</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="RAW_SCORE" cardinality="single" base-type="integer">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-interpolation-table>
+      <qti-interpolation-table-entry source-value="3" target-value="2"/>
+      <qti-interpolation-table-entry source-value="2" target-value="1"/>
+      <qti-interpolation-table-entry source-value="1" target-value="0"/>
+      <qti-interpolation-table-entry source-value="0" target-value="0"/>
+    </qti-interpolation-table>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>2</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <qti-calculator>
+      <qti-calculator-type>basic</qti-calculator-type>
+      <qti-description/>
+    </qti-calculator>
+    <dep:dep-calculator>
+      <dep:dep-description/>
+      <dep:dep-calculator-type>basic</dep:dep-calculator-type>
+      <dep:dep-switch>true</dep:dep-switch>
+    </dep:dep-calculator>
+    <dep:dep-symbolPicker>
+      <dep:dep-description/>
+      <dep:dep-symbols>+&#x20ac;&#xe8;&#xe9;&#xeb;&#xea;&#xef;&#xf6;&#xe0;&#xe1;&#xa7;&#xb1;</dep:dep-symbols>
+    </dep:dep-symbolPicker>
+    <dep:dep-textMarker>
+      <dep:dep-description/>
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <div id="leftbody">
+            <p>&#xbb; Klik op een kaart voor een vergroting.</p>
+            <p>Het westen van de Verenigde Staten</p>
+            <p class="cito_genclass_BB_2023_A2-014_1"/>
+            <button popovertarget="WIN_67fb53b7-0b11-4a3e-b3ef-3c3d4a7fb69f">
+              <div class="dep-dialogTrigger" data-stimulus-idref="WIN_67fb53b7-0b11-4a3e-b3ef-3c3d4a7fb69f">
+                <img src="../img/akbb232cbt-14g-aangepast.gif" alt="" width="144" height="196" id="Id-IMG-d5217827-1fe7-4774-a78c-0a27e9dab6e8"/>
+              </div>
+            </button>
+            <p/>
+            <div id="WIN_67fb53b7-0b11-4a3e-b3ef-3c3d4a7fb69f" class="dep-dialog hide-dialog" data-dep-dialog-caption="Het westen van de Verenigde Staten" data-dep-dialog-width="354" data-dep-dialog-height="500" data-dep-dialog-resizemode="fixed" data-dep-dialog-modal="false" data-dep-dialog-open="true" popover="">
+              <img src="../img/akbb232cbt-14g-aangepast.gif" width="300" height="409" alt="" id="Id-IMG-f050405d-5542-4673-8b29-50d1dc16ebb9"/>
+            </div>
+            <p/>
+            <p><br/>Jaarlijkse neerslag in het westen van de Verenigde Staten</p>
+            <p class="cito_genclass_BB_2023_A2-014_2"/>
+            <button popovertarget="WIN_0c266066-0672-466f-ae05-00b41278496a">
+              <div class="dep-dialogTrigger" data-stimulus-idref="WIN_0c266066-0672-466f-ae05-00b41278496a">
+                <img src="../img/akbb232cbt-33g-aangepast.gif" alt="" width="144" height="205" id="Id-IMG-1e62a3cc-2a28-4cbc-8b75-be025e326d8a"/>
+              </div>
+            </button>
+            <p/>
+            <div id="WIN_0c266066-0672-466f-ae05-00b41278496a" class="dep-dialog hide-dialog" data-dep-dialog-caption="Jaarlijkse neerslag in het westen van de Verenigde Staten" data-dep-dialog-width="355" data-dep-dialog-height="520" data-dep-dialog-resizemode="fixed" data-dep-dialog-modal="false" data-dep-dialog-open="true" popover="">
+              <img src="../img/akbb232cbt-33g-aangepast.gif" width="300" height="427" alt="" id="Id-IMG-ee03c256-07f0-4502-a4a8-413db6952ef9"/>
+            </div>
+            &#xa0;
+            <p/>
+          </div>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="itemquestion">
+            <p>
+              <strong>
+                <span>
+                  <strong>Maak de tekst kloppend door telkens het juiste woord te kiezen.</strong>
+                </span>
+              </strong>
+            </p>
+            <p>In Reno valt gemiddeld <qti-inline-choice-interaction id="I5ef5bf31-ec52-4701-9236-e60f3701b01e" response-identifier="RESPONSE" shuffle="false" required="true"><qti-inline-choice identifier="A"><span>meer</span></qti-inline-choice><qti-inline-choice identifier="B"><span>minder</span></qti-inline-choice></qti-inline-choice-interaction>&#xa0;neerslag dan in Sacramento.</p>
+            <p>Dit komt doordat Reno aan de <qti-inline-choice-interaction id="Ia54de253-6386-4644-ad95-eaa0eff161c2" response-identifier="RESPONSE2" shuffle="false" required="true"><qti-inline-choice identifier="A"><span>lijzijde</span></qti-inline-choice><qti-inline-choice identifier="B"><span>loefzijde</span></qti-inline-choice></qti-inline-choice-interaction>&#xa0;van de Sierra Nevada ligt.</p>
+            <p>De neerslag die valt in Sacramento is <qti-inline-choice-interaction id="Iab3cf5cf-130a-4a5b-8c6f-6ae051850952" response-identifier="RESPONSE3" shuffle="false" required="true"><qti-inline-choice identifier="A"><span>stijgingsneerslag</span></qti-inline-choice><qti-inline-choice identifier="B"><span>stuwingsneerslag</span></qti-inline-choice></qti-inline-choice-interaction>.</p>
+          </div>
+          <div id="answer"/>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-set-outcome-value identifier="RAW_SCORE">
+      <qti-base-value base-type="integer">0</qti-base-value>
+    </qti-set-outcome-value>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match>
+          <qti-variable identifier="RESPONSE"/>
+          <qti-base-value base-type="identifier">B</qti-base-value>
+        </qti-match>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE"/>
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match>
+          <qti-variable identifier="RESPONSE2"/>
+          <qti-base-value base-type="identifier">A</qti-base-value>
+        </qti-match>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE"/>
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match>
+          <qti-variable identifier="RESPONSE3"/>
+          <qti-base-value base-type="identifier">B</qti-base-value>
+        </qti-match>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE"/>
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-lookup-outcome-value identifier="SCORE">
+      <qti-variable identifier="RAW_SCORE"/>
+    </qti-lookup-outcome-value>
+  </qti-response-processing>
+</qti-assessment-item>

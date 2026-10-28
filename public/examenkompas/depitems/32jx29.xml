@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32jx29" identifier="ITM-32jx29" time-dependent="false" label="32jx29" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="A">
+      <qti-value>A</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>1</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <qti-calculator>
+      <qti-calculator-type>basic</qti-calculator-type>
+      <qti-description/>
+    </qti-calculator>
+    <dep:dep-calculator>
+      <dep:dep-description/>
+      <dep:dep-calculator-type>basic</dep:dep-calculator-type>
+      <dep:dep-switch>true</dep:dep-switch>
+    </dep:dep-calculator>
+    <dep:dep-symbolPicker>
+      <dep:dep-description/>
+      <dep:dep-symbols>+&#x20ac;&#xe8;&#xe9;&#xeb;&#xea;&#xef;&#xf6;&#xe0;&#xe1;&#xa7;&#xb1;</dep:dep-symbols>
+    </dep:dep-symbolPicker>
+    <dep:dep-textMarker>
+      <dep:dep-description/>
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <p>China, bevolkingsdiagrammen van 2015 en 2040 (verwacht)</p>
+          <p><img id="Id-IMG_9884d14e-68c4-4a1f-b3a1-6606e96a5d0d" src="../img/akbb212cbt-06.jpg" width="386" height="295" alt=""/>&#xa0;</p>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="body">
+            <p>In de afbeelding zijn twee bevolkingsdiagrammen van China in 2015 en 2040 (verwacht) weergegeven. De bevolkingsopbouw zal veranderen tussen 2015 en 2040.</p>
+          </div>
+          <div id="question">
+            <p>
+              <strong>Welke uitspraak over de bevolkingsdiagram van China tussen 2015 en 2040 is juist?</strong>
+            </p>
+          </div>
+          <div id="mc">
+            <qti-choice-interaction id="choiceInteraction1" class="qti-labels-none " max-choices="1" shuffle="false" response-identifier="RESPONSE">
+              <qti-simple-choice identifier="A">
+                <p>Tussen 2015 en 2040 is sprake van vergrijzing van de Chinese bevolking.</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="B">
+                <p>Tussen 2015 en 2040 neemt het aantal ouderen in China af.</p>
+              </qti-simple-choice>
+              <qti-simple-choice identifier="C">
+                <p>Tussen 2015 en 2040&#xa0;wordt de groep 0-4-jarigen in China groter.</p>
+              </qti-simple-choice>
+            </qti-choice-interaction>
+          </div>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing template="https://purl.imsglobal.org/spec/qti/v3p0/rptemplates/match_correct.xml"/>
+</qti-assessment-item>

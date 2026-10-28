@@ -17,6 +17,8 @@ The player holds no opinion of its own: all behaviour comes from the QTI package
 | `adaptief-item`  | `examples/adaptief-item`      | `public/adaptief-item`  | nacht (dark)      | The same four steps, adaptive **in the item**: one `adaptive="true"` item per step |
 | `rekenen`        | `examples/rekenen`            | `public/rekenen`      | rekenen             | Rekenopdrachten: free order, 3 attempts, tip then explanation         |
 | `examen`         | `examples/examen`             | `public/examen`       | examen              | Examen (Engels KB 2025 examenvariant): sections, simultaneous, hand in |
+| `examenkompas`   | `examples/examenkompas`       | `public/examenkompas` | examenkompas        | Examenkompas (aardrijkskunde BB 2023, half the questions): one question at a time, Nakijken (scorer view + Punten for the open questions), a toolbar of plugins (bookmark, zoom, character sheet), host data per question (`initContext`: name, domain, points) |
+| `wikiwijs`       | `examples/wikiwijs`           | `public/wikiwijs`     | wikiwijs            | The Wikiwijs Toetsen oefentoets (Kennisnet Demonstratietoets, CC BY-SA 4.0, 17 question types): Start, one question per card with Nakijken and an alert (goed / nog niet helemaal / niet goed), unlimited attempts, Volgende only after a check, the question list with ○ ✕ ✓ beside it or as a dropdown, Resultaat |
 
 `index.html` is only the shell: the toolbar and an iframe. `#/<example>/<item>` deep-links to an item, e.g. `#/formatief/KOFSCHIP`.
 

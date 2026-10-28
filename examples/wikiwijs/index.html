@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="nl" data-qti-theme="wikiwijs" data-view="start">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wikiwijs Toetsen</title>
+
+  <!-- Tailwind with its preflight, as everyone uses it -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- The page's tokens as Tailwind colors: bg-surface, text-ink, bg-brand, border-line, rounded-box, ... -->
+  <style type="text/tailwindcss">
+    @theme inline {
+      --color-surface: var(--cito-color-base-100);
+      --color-page: #edecf6;
+      --color-line: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
+      --color-ink: var(--cito-color-base-content);
+      --color-brand: var(--cito-color-primary);
+      --color-on-brand: var(--cito-color-primary-content);
+      --color-link: #127394;
+      --color-good: var(--cito-color-success);
+      --color-warn: var(--cito-color-warning);
+      --color-bad: var(--cito-color-error);
+      --radius-box: var(--cito-radius-box, 0.5rem);
+      --radius-field: var(--cito-radius-field, 0.25rem);
+      --font-sans: "Nunito", system-ui, sans-serif;
+      --font-slab: "Roboto Slab", Georgia, serif;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
+       item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
+  <style>
+    /* Wikiwijs Toetsen: aubergine on lilac, Nunito for the text and Roboto Slab for the headings, soft corners. */
+    html[data-qti-theme="wikiwijs"] {
+      color-scheme: light;
+      --cito-color-primary: #581d70;
+      --cito-color-primary-content: #ffffff;
+      --cito-color-success: #2f8f46;
+      --cito-color-warning: #e3a008;
+      --cito-color-error: #e60000;
+      --cito-color-info: #007ac3;
+      --cito-color-base-100: #ffffff;
+      --cito-color-base-content: #3e144e;
+      --cito-color-border: #9b77a9;
+      --cito-radius-field: 0.3rem;
+      --cito-radius-selector: 0.3rem;
+      --cito-radius-box: 0.5rem;
+      --cito-font-family: "Nunito", system-ui, sans-serif;
+    }
+    body { margin: 0; background: #edecf6; color: var(--cito-color-base-content); font-family: "Nunito", system-ui, sans-serif; }
+
+    /* The floating buttons (Vorige, Volgende): white, a hard shadow below. The test controls get the same through their slots. */
+    .floating, test-prev, test-next {
+      --test-button-size: 2.5rem; --test-button-border-radius: 0.25rem; --test-button-border-color: #fff; --test-button-background-color: #fff;
+      --test-button-color: #3e144e; --test-button-hover-background-color: #f6f4fb; --test-button-active-background-color: #edecf6;
+      --test-button-primary-background-color: #fff; --test-button-primary-color: #3e144e; --test-button-primary-hover-background-color: #f6f4fb; --test-button-primary-active-background-color: #edecf6;
+      font-weight: 600; box-shadow: 0 3px 0 rgb(88 29 112 / 0.2); border-radius: 0.25rem;
+    }
+    test-prev::part(button), test-next::part(button) { padding-inline: 0.75rem; }
+    /* Nakijken and Starten: the aubergine button */
+    .primary, test-end-attempt {
+      --test-button-size: 2.5rem; --test-button-border-radius: 0.25rem; --test-button-border-color: var(--cito-color-primary); --test-button-background-color: var(--cito-color-primary);
+      --test-button-color: #fff; --test-button-hover-background-color: #4a1860; --test-button-active-background-color: #3e144e;
+      font-weight: 600; box-shadow: 0 3px 0 rgb(0 0 0 / 0.25); border-radius: 0.25rem;
+    }
+    .primary::part(button), test-end-attempt::part(button) { padding-inline: 0.75rem; }
+    test-end-attempt[disabled] { box-shadow: none; }
+
+    /* The instruction (the test's rubric block): Wikiwijs's blue box, instead of the theme's grey callout */
+    #instructie qti-rubric-block { border: 1px solid #007ac3; border-radius: 0.3rem; background: #f2f8fc; padding: 0.5rem 1rem; margin: 0; box-shadow: none; }
+    #instructie p { margin: 0.5rem 0; }
+    #instructie .qti-align-center { text-align: center; }
+
+    /* The question list (sidebar and dropdown): a row per question with its state, the open one lilac. Roboto Slab, as on Wikiwijs. */
+    .nav-row { --test-button-border-color: transparent; --test-button-background-color: transparent; --test-button-border-radius: 0; --test-button-size: 2.5rem; --test-button-hover-background-color: #f6f4fb; font-family: "Roboto Slab", Georgia, serif; }
+    .nav-row::part(button) { justify-content: flex-start; padding: 0.5rem 1rem; gap: 0; }
+    html[data-view="item"] .nav-row.is-active, html[data-view="start"] .nav-start, html[data-view="resultaat"] .nav-resultaat { --test-button-background-color: #edecf6; background: #edecf6; }
+
+    /* After Nakijken: the alert under the question. It hides while the answer is changed again (data-dirty), until the next Nakijken. */
+    .alert { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 0.25rem; }
+    .alert-success { background: #f4f9f3; } .alert-success i { color: #2f8f46; }
+    .alert-warning { background: #fdf6e3; } .alert-warning i { color: #b7791f; }
+    .alert-danger { background: #fdf2f2; } .alert-danger i { color: #e60000; }
+    .alert-info { background: #f2f8fc; } .alert-info i { color: #007ac3; }
+    html[data-dirty] .alert { display: none; }
+    /* Nakijken is gone once the answer is right; Volgende waits until the question is checked (and checked again after a change) */
+    body:has(.is-optimal) test-end-attempt { display: none; }
+    body:has(.needs-check) test-next, html[data-dirty] body:not(:has(.is-optimal)) test-next { pointer-events: none; opacity: 0.45; box-shadow: none; }
+    body:has(.is-last) test-next { display: none; }
+
+    /* Start, a question, or the result: the page starts on Start */
+    html:not([data-view="start"]) .only-start, html:not([data-view="item"]) .only-item, html:not([data-view="resultaat"]) .only-resultaat { display: none !important; }
+  </style>
+
+  <script type="module">
+    import "@citolab/qti-components"; // registers the components
+    import "@citolab/qti-components/item.css"; // the item theme: reads the --cito-* tokens set above
+
+    // This page is the host. The components do the QTI; the host decides:
+    //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
+    //  - Start and Resultaat: pages of their own before and after the questions (data-view on <html>); the instruction is the test's own rubric block
+    //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
+    //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
+    //  - Nakijken: test-end-attempt scores the question (max-attempts="0" in the package: as often as the candidate likes); what follows (the alert,
+    //    Nakijken gone once the answer is right, Volgende only after a check) is read from the stamp context (numAttempts, optimal, score)
+    //  - a changed answer: data-dirty on <html> hides the alert and holds Volgende until the next Nakijken (Wikiwijs does the same)
+
+    const test = document.querySelector("qti-test"), KEY = "wikiwijs";
+    const $ = (selector) => document.querySelector(selector), html = document.documentElement;
+
+    // Restore and deep link: the state (answers and position) is kept in sessionStorage, #/<id> opens that question
+    if (sessionStorage.getItem(KEY)) test.state = JSON.parse(sessionStorage.getItem(KEY));
+    test.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
+    let first = true;
+    test.addEventListener("cito-test-navigated", (e) => {
+      const wanted = first && location.hash.slice(2);
+      first = false;
+      if (wanted && wanted !== e.detail.id) test.navigateTo("item", wanted);
+      else history.replaceState(null, "", `#/${e.detail.id}`);
+      if (wanted) html.dataset.view = "item"; // a link to a question opens that question, not Start
+    });
+    // The instruction (the test's qti-rubric-block, class qti-rubric-discretionary-placement) goes on the Start page
+    test.addEventListener("cito-item-rubric-placement", (e) => $("#instructie").replaceChildren(e.detail.element));
+    // A navigation (list, Starten, Vorige, Volgende) shows the question and closes the dropdown; the test's own first navigation is not one
+    test.addEventListener("cito-test-navigate", () => { if (!first) html.dataset.view = "item"; delete html.dataset.dirty; $("#dropdown").open = false; });
+    for (const button of document.querySelectorAll("[data-show]")) button.addEventListener("click", () => { html.dataset.view = button.dataset.show; $("#dropdown").open = false; });
+    // A changed answer must be checked again before the candidate may go on
+    test.addEventListener("cito-item-response-changed", () => (html.dataset.dirty = ""));
+    test.addEventListener("cito-test-end-attempt", () => delete html.dataset.dirty);
+  </script>
+</head>
+
+<!--
+  WIKIWIJS TOETSEN: de oefentoets van Wikiwijs Toetsen (toetsen.wikiwijs.nl/player/…/formative), op de Kennisnet Demonstratietoets (CC BY-SA 4.0, 17 vraagtypen).
+  Start vooraf, dan één vraag tegelijk in een witte kaart met Nakijken; rechts (of in een dropdown) de lijst met vragen en hun stand; Vorige en Volgende als zwevende knoppen,
+  Volgende pas na het nakijken; aan het eind het Resultaat. Het pakket is linear zonder item-session-control; de kopie zegt nonlinear en max-attempts="0", zoals Wikiwijs speelt.
+-->
+<body>
+  <qti-test navigate="item">
+    <test-navigation class="mx-auto flex min-h-screen w-full max-w-[1550px] flex-col px-3 py-6 lg:px-12">
+      <h1 class="mb-6 font-slab text-[22px] font-light">Kennisnet Demonstratietoets</h1>
+
+      <div class="flex flex-1 items-start gap-6">
+        <div class="flex min-w-0 flex-1 flex-col">
+          <!-- Below the widest screens: the question list as a dropdown -->
+          <details id="dropdown" class="relative mb-2 2xl:hidden">
+            <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg border border-page bg-surface px-3 py-1.5 font-semibold shadow-[0_3px_0_#c7b8d4] [&::-webkit-details-marker]:hidden">
+              <span class="only-start">Start</span>
+              <span class="only-resultaat">Resultaat</span>
+              <test-stamp class="only-item"><template><span class="flex items-center font-slab font-normal"><span class="inline-block w-7">{{ activeItem.index }}</span><i class="mr-3 bi {{ activeItem.numAttempts > 0 ? (activeItem.optimal ? 'bi-check-circle-fill text-[#2f8f46]' : 'bi-x-circle-fill text-[#e60000]') : 'bi-circle text-[#9b77a9]' }}"></i>Vraag</span></template></test-stamp>
+              <i class="bi bi-chevron-down text-lg"></i>
+            </summary>
+            <div class="absolute inset-x-0 top-full z-20 mt-2 max-h-80 overflow-y-auto bg-surface py-2 shadow-[0_8px_24px_rgb(62_20_78/0.25)]">
+              <button data-show="start" class="nav-start block w-full cursor-pointer px-4 py-2 text-left font-slab hover:bg-[#f6f4fb]">Start</button>
+              <test-stamp>
+                <template>
+                  <template type="repeat" repeat="{{ activeTestpart.items }}">
+                    <test-item-link item-id="{{ item.identifier }}" class="nav-row block w-full {{ item.active ? 'is-active' : '' }}"><span class="inline-block w-7">{{ item.index }}</span><i class="mr-3 bi {{ item.numAttempts > 0 ? (item.optimal ? 'bi-check-circle-fill text-[#2f8f46]' : 'bi-x-circle-fill text-[#e60000]') : 'bi-circle text-[#9b77a9]' }}"></i>Vraag</test-item-link>
+                  </template>
+                </template>
+              </test-stamp>
+              <button data-show="resultaat" class="nav-resultaat block w-full cursor-pointer px-4 py-2 text-left font-slab hover:bg-[#f6f4fb]">Resultaat</button>
+            </div>
+          </details>
+
+          <!-- The card: Start, the question, or the result -->
+          <div class="rounded-bl-3xl rounded-tr-3xl bg-surface p-6 shadow-[0_3px_0_rgb(88_29_112/0.2)] sm:p-12">
+            <section class="only-start flex flex-col items-start">
+              <h3 class="mb-6 font-slab text-lg font-semibold">Start</h3>
+              <h4 class="mb-2 font-slab font-semibold">Aantal vragen</h4>
+              <test-stamp class="mb-4 block"><template><p>{{ activeTestpart.items.length }}</p></template></test-stamp>
+              <h4 class="mb-2 font-slab font-semibold">Instructie</h4>
+              <p class="mb-4">Dit is een oefentoets. Na elk gegeven antwoord kan je direct je antwoord nakijken. Is jouw antwoord niet (helemaal) goed? Dan mag je het nog een keer proberen en je antwoord aanpassen.</p>
+              <h4 class="mb-2 font-slab font-semibold">Instructie voor leerling</h4>
+              <div id="instructie" class="mb-6 w-full"></div>
+              <test-stamp><template><test-item-link class="primary" item-id="{{ activeTestpart.items[0].identifier }}">Starten</test-item-link></template></test-stamp>
+            </section>
+
+            <section class="only-item flex flex-col">
+              <test-container test-url="../../wikiwijs/AssessmentTest.xml" class="block w-full">
+                <template>
+                  <style>
+                    qti-item-body { font-size: 1rem; line-height: 1.5; }
+                    /* The item's picture keeps to its column */
+                    qti-item-body img { max-width: 100%; height: auto; }
+                  </style>
+                </template>
+              </test-container>
+              <!-- The state of the question, from the stamp context: the alert after Nakijken, and markers the CSS above reads
+                   (needs-check: not checked yet; is-optimal: the answer is right; is-last: the last question) -->
+              <test-stamp>
+                <template>
+                  <template type="if" if="{{ activeItem.numAttempts == 0 }}"><span class="needs-check hidden"></span></template>
+                  <template type="if" if="{{ activeItem.index == activeTestpart.items.length }}"><span class="is-last hidden"></span></template>
+                  <template type="if" if="{{ activeItem.numAttempts > 0 && activeItem.optimal }}">
+                    <span class="is-optimal hidden"></span>
+                    <div class="alert alert-success" role="alert"><i class="bi bi-check-lg"></i>Goed gedaan! Je antwoord klopt helemaal.</div>
+                  </template>
+                  <template type="if" if="{{ activeItem.numAttempts > 0 && !activeItem.optimal && activeItem.score == null }}">
+                    <div class="alert alert-info" role="alert"><i class="bi bi-info-circle"></i>Je antwoord is opgeslagen. Deze vraag wordt niet automatisch nagekeken.</div>
+                  </template>
+                  <template type="if" if="{{ activeItem.numAttempts > 0 && !activeItem.optimal && activeItem.score > 0 }}">
+                    <div class="alert alert-warning" role="alert"><i class="bi bi-exclamation-lg"></i>Je antwoord klopt nog niet helemaal. Pas je antwoord aan en probeer het juiste antwoord te ontdekken.</div>
+                  </template>
+                  <template type="if" if="{{ activeItem.numAttempts > 0 && !activeItem.optimal && activeItem.score != null && !(activeItem.score > 0) }}">
+                    <div class="alert alert-danger" role="alert"><i class="bi bi-x-lg"></i>Je antwoord is niet goed. Pas je antwoord aan en probeer nog eens.</div>
+                  </template>
+                </template>
+              </test-stamp>
+              <div class="mt-4 flex"><test-end-attempt require-answer>Nakijken</test-end-attempt></div>
+            </section>
+
+            <section class="only-resultaat flex flex-col items-start">
+              <h3 class="mb-6 font-slab text-lg font-semibold">Resultaat</h3>
+              <test-stamp class="w-full">
+                <template>
+                  <p class="mb-6 text-lg">Je hebt <strong>{{ activeTestpart.items.filter((i) => i.optimal).length }}</strong> van de {{ activeTestpart.items.length }} vragen goed, en {{ activeTestpart.items.filter((i) => !(i.numAttempts > 0)).length }} niet nagekeken.</p>
+                  <ol class="grid gap-1 sm:grid-cols-2">
+                    <template type="repeat" repeat="{{ activeTestpart.items }}">
+                      <li><test-item-link item-id="{{ item.identifier }}" class="nav-row w-full"><span class="inline-block w-7">{{ item.index }}</span><i class="mr-3 bi {{ item.numAttempts > 0 ? (item.optimal ? 'bi-check-circle-fill text-[#2f8f46]' : 'bi-x-circle-fill text-[#e60000]') : 'bi-circle text-[#9b77a9]' }}"></i>Vraag<span class="ml-auto text-sm text-ink/60">{{ item.numAttempts > 0 ? item.numAttempts + 'x nagekeken' : '' }}</span></test-item-link></li>
+                    </template>
+                  </ol>
+                </template>
+              </test-stamp>
+              <button class="primary mt-6 h-10 cursor-pointer bg-brand px-4 text-on-brand" onclick="sessionStorage.removeItem('wikiwijs'); history.replaceState(null, '', location.pathname); location.reload()"><i class="bi bi-arrow-counterclockwise me-2"></i>Opnieuw</button>
+            </section>
+          </div>
+
+          <!-- Vorige and Volgende, floating below the card; on the last question Volgende opens the result -->
+          <nav class="only-item mt-3 flex items-center justify-between gap-1">
+            <test-prev>Vorige</test-prev>
+            <div class="flex">
+              <test-next>Volgende</test-next>
+              <test-stamp><template><template type="if" if="{{ activeItem.index == activeTestpart.items.length }}"><button data-show="resultaat" class="floating h-10 cursor-pointer bg-surface px-3 text-ink hover:bg-[#f6f4fb] {{ activeItem.numAttempts > 0 ? '' : 'pointer-events-none opacity-45 shadow-none' }}">Volgende</button></template></template></test-stamp>
+            </div>
+          </nav>
+          <nav class="only-resultaat mt-3 flex items-center justify-between gap-1">
+            <test-stamp><template><test-item-link class="floating" item-id="{{ activeTestpart.items[activeTestpart.items.length - 1].identifier }}">Vorige</test-item-link></template></test-stamp>
+          </nav>
+        </div>
+
+        <!-- The widest screens: the question list as a sidebar -->
+        <aside class="hidden w-[300px] shrink-0 2xl:block">
+          <nav class="flex flex-col rounded-bl-3xl rounded-tr-3xl bg-surface px-3 py-6 shadow-[0_3px_0_rgb(88_29_112/0.2)]" aria-label="Vragen">
+            <button data-show="start" class="nav-start block w-full cursor-pointer px-4 py-2 text-left font-slab hover:bg-[#f6f4fb]">Start</button>
+            <test-stamp>
+              <template>
+                <template type="repeat" repeat="{{ activeTestpart.items }}">
+                  <test-item-link item-id="{{ item.identifier }}" class="nav-row block w-full {{ item.active ? 'is-active' : '' }}"><span class="inline-block w-7">{{ item.index }}</span><i class="mr-3 bi {{ item.numAttempts > 0 ? (item.optimal ? 'bi-check-circle-fill text-[#2f8f46]' : 'bi-x-circle-fill text-[#e60000]') : 'bi-circle text-[#9b77a9]' }}"></i>Vraag</test-item-link>
+                </template>
+              </template>
+            </test-stamp>
+            <button data-show="resultaat" class="nav-resultaat block w-full cursor-pointer px-4 py-2 text-left font-slab hover:bg-[#f6f4fb]">Resultaat</button>
+          </nav>
+        </aside>
+      </div>
+
+      <footer class="mt-12 text-sm">
+        <p class="mb-2">Deze toets is gemaakt door Kennisnet onder de licentie <i class="bi bi-cc-circle"></i> (<a class="font-semibold text-link underline" href="https://creativecommons.org/licenses/by-sa/4.0/deed.nl">CC BY-SA 4.0</a>)</p>
+        <p>Een voorbeeld in de stijl van <a class="text-link underline" href="https://toetsen.wikiwijs.nl/player/4f19076e-9bb1-5886-b549-50e7da41163d/formative">Wikiwijs Toetsen</a> | <a class="text-link underline" href="../../">QTI Player Cookbook</a></p>
+      </footer>
+
+      <!-- Wat laat dit voorbeeld zien? A checklist of what the QTI decides and what this page does itself. -->
+      <button class="fixed bottom-4 right-4 z-30 grid size-9 cursor-pointer place-items-center rounded-full bg-surface text-ink shadow-md hover:bg-[#f6f4fb]" aria-label="Wat laat dit voorbeeld zien?" title="Wat laat dit voorbeeld zien?" onclick="document.querySelector('#about').showModal()"><i class="bi bi-question-lg"></i></button>
+      <dialog id="about" class="m-auto w-[min(36rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
+        <div class="flex max-h-[85vh] flex-col gap-4 overflow-y-auto p-6">
+          <div>
+            <h2 class="font-slab text-xl font-semibold">Wat laat dit voorbeeld zien?</h2>
+            <p class="text-sm text-ink/60">De oefentoets van Wikiwijs Toetsen: Start, één vraag per kaart met Nakijken, de vragenlijst met de stand ernaast, Resultaat.</p>
+          </div>
+          <ul class="divide-y divide-line text-sm">
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Navigatie<span class="block text-xs text-ink/50">navigation-mode op de testpart; het pakket is linear, de kopie nonlinear</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">nonlinear</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Pogingen per vraag<span class="block text-xs text-ink/50">qti-item-session-control max-attempts="0" in de kopie: zo vaak als je wilt, tot het goed is</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">onbeperkt</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Nakijken<span class="block text-xs text-ink/50">test-end-attempt require-answer; weg zodra het antwoord goed is (activeItem.optimal)</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">per vraag</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Goed, deels goed, fout<span class="block text-xs text-ink/50">een test-stamp op numAttempts, optimal en score; geen feedback in de items</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">3 alerts</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Volgende pas na het nakijken<span class="block text-xs text-ink/50">een marker uit de stamp (needs-check) en data-dirty bij een gewijzigd antwoord; CSS doet de rest</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">:has()</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Instructie voor leerling<span class="block text-xs text-ink/50">de qti-rubric-block van de toets, via cito-item-rubric-placement</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">op Start</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Vragenlijst met de stand<span class="block text-xs text-ink/50">test-stamp met test-item-link; een &lt;details&gt; onder 1536px</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">○ ✕ ✓</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en cito-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Het goede antwoord tonen<span class="block text-xs text-ink/50">niet in de oefentoets; de voorvertoning van Wikiwijs heeft het wel</span></span></li>
+          </ul>
+          <form method="dialog" class="flex justify-end"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+        </div>
+      </dialog>
+    </test-navigation>
+  </qti-test>
+</body>
+
+</html>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" title="32m7pj" identifier="ITM-32m7pj" time-dependent="false" label="32m7pj" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0">
+  <qti-item-body class="defaultBody">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col12">
+          <table class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_1">
+            <colgroup>
+              <col class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_2"/>
+              <col class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_3"/>
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_4">
+                  <p>
+                    <strong>vraagnummer</strong>
+                  </p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_5">
+                  <p>
+                    <strong>bronvermelding</strong>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_6">
+                  <p>1</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_7">
+                  <p>naar: buienradar.nl, 28 oktober 2020</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_8">
+                  <p>2</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_9">
+                  <p>naar: weeronline.nl, 14 september 2020</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_10">
+                  <p>3</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_11">
+                  <p>naar: weeronline.nl, 23, 24 en 25 oktober 2020</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_12">
+                  <p>4</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_13">
+                  <p>naar: knmi.nl</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_14">
+                  <p>5</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_15">
+                  <p>naar: knmi.nl, 18 januari 2021</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_16">
+                  <p>6</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_17">
+                  <p>naar: klimadiagramme.de</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_18">
+                  <p>7</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_19">
+                  <p>naar: shutterstock.com, foto-ID 2025591275 door oliverdelahaye</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_20">
+                  <p>8</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_21">
+                  <p>naar: youtu.be/ApDigygmA3Q, door Flying Pixels Photography</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_22">
+                  <p>9</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_23">
+                  <p>naar: nl.weather-forecast.com, 2 december 2020</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_24">
+                  <p>10</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_25">
+                  <p>kaart: eigen archief Cito/CvTE; foto: nrc.nl, 18 december 2020</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_26">
+                  <p>11</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_27">
+                  <p>naar: wettergefahren-fruehwarnung.de</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_28">
+                  <p>12</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_29">
+                  <p>naar: eigen archief Cito/CvTE</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_30">
+                  <p>13</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_31">
+                  <p>kaart: eigen archief Cito/CvTE; klimaatgrafieken; klimadiagramme.de</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_32">
+                  <p>14</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_33">
+                  <p>naar: klimadiagramme.de; De Grote Bosatlas 55e ed. kaart 199A</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_34">
+                  <p>15</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_35">
+                  <p>foto: shutterstock.com, foto-ID 1473233852 door David7; kaart: eigen archief Cito/CvTE</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_36">
+                  <p>16</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_37">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_38">
+                  <p>17</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_39">
+                  <p>naar: pleinm.files.wordpress.com</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_40">
+                  <p>18</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_41">
+                  <p>naar: pleinm.files.wordpress.com</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_42">
+                  <p>19</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_43">
+                  <p>naar: De Kleine Bosatlas, 61e ed. kaart 24</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_44">
+                  <p>20</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_45">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_46">
+                  <p>21</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_47">
+                  <p>naar: clo.nl, Wageningen Economic Research, CBS/okt16</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_48">
+                  <p>22</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_49">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_50">
+                  <p>23</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_51">
+                  <p>naar: johnsonssavings.info</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_52">
+                  <p>24</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_53">
+                  <p>naar: eigen archief Cito/CvTE</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_54">
+                  <p>25</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_55">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_56">
+                  <p>26</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_57">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_58">
+                  <p>27</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_59">
+                  <p>naar: upload.wikimedia.org</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_60">
+                  <p>28</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_61">
+                  <p>naar: eigen archief Cito/CvTE</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_62">
+                  <p>29</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_63">
+                  <p>naar: shutterstock.com, foto-ID 116692111 door Sun Shock</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_64">
+                  <p>30</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_65">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_66">
+                  <p>31</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_67">
+                  <p>naar: cbs.nl</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_68">
+                  <p>32</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_69">
+                  <p>naar: cbs.nl</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_70">
+                  <p>33</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_71">
+                  <p>naar: shutterstock.com; foto 1: foto-ID 625827089 door www.hollandfoto.net; foto 2: foto-ID 1176866620 door AlesiaKan; foto 3: foto-ID 15011578 door KK Art and Photography</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_72">
+                  <p>34</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_73">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_74">
+                  <p>35</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_75">
+                  <p>naar: cbs.nl</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_76">
+                  <p>36</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_77">
+                  <p>naar: schooltv.nl</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_78">
+                  <p>37</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_79">
+                  <p>naar: cbs.nl</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_80">
+                  <p>38</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_81">
+                  <p>naar: De Kleine Bosatla, 61e ed. kaart 48B</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_82">
+                  <p>39</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_83">
+                  <p>naar: populationpyramid.net</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_84">
+                  <p>40</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_85">
+                  <p>naar: chinaland.info.weebly.com</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_86">
+                  <p>41</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_87">
+                  <p>naar: De Grote Bosatlas 55e ed. kaart 169B</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_88">
+                  <p>42</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_89">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_90">
+                  <p>43</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_91">
+                  <p>naar: shutterstock.com, foto-ID 779125927 door Daniel Andis</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_92">
+                  <p>44</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_93">
+                  <p>naar: De Grote Bosatlas 55e ed. kaart 167C</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_94">
+                  <p>45</p>
+                </td>
+                <td class="cito_genclass_infoscherm_bronvermelding_2023_examenvariant_95">
+                  <p>n.v.t.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          &#xa0;
+          <p/>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+</qti-assessment-item>

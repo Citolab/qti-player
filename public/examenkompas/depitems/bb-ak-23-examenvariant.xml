@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-test xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd" identifier="TST-bb-ak-23-examenvariant" title="VMBO BB aardrijkskunde 2023 - examenvariant" tool-name="Questify Builder" tool-version="3.10" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0">
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-test-part identifier="RES-b901b8e7-b516-47cc-8adc-165d065f13c7" title="Nieuw toetsdeel" navigation-mode="nonlinear" submission-mode="simultaneous">
+    <qti-assessment-section identifier="RES-a08ad891-d463-4afc-a64a-40b10068a5da" title="23-A2" visible="true" keep-together="false">
+      <qti-assessment-item-ref identifier="ITM-32kydn" href="32kydn.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32l47g" href="32l47g.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32ksmk" href="32ksmk.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32ksna" href="32ksna.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32ksnb" href="32ksnb.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32l47e" href="32l47e.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32ksp7" href="32ksp7.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32kspd" href="32kspd.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+    </qti-assessment-section>
+    <qti-assessment-section identifier="RES-17d4dac1-362c-4a14-a96c-d2e079a6b9ce" title="21-B1" visible="true" keep-together="false">
+      <qti-assessment-item-ref identifier="ITM-32gbg5" href="32gbg5.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32gbg6" href="32gbg6.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32gbg8" href="32gbg8.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32gbg9" href="32gbg9.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32gbgb" href="32gbgb.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32gbgd" href="32gbgd.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32gbgt" href="32gbgt.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32gbgy" href="32gbgy.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+    </qti-assessment-section>
+    <qti-assessment-section identifier="RES-47ec5da2-b795-4d4f-88d8-11ec3b20f9f7" title="22-C2" visible="true" keep-together="false">
+      <qti-assessment-item-ref identifier="ITM-32jwzs" href="32jwzs.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32jwzt" href="32jwzt.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32jwzu" href="32jwzu.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32jwzv" href="32jwzv.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32jx27" href="32jx27.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32jx29" href="32jx29.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32jx2b" href="32jx2b.xml">
+        <qti-weight identifier="WEIGHT" value="1"/>
+      </qti-assessment-item-ref>
+      <qti-assessment-item-ref identifier="ITM-32m7pj" href="32m7pj.xml" category="dep-informational">
+        <qti-weight identifier="WEIGHT" value="0"/>
+      </qti-assessment-item-ref>
+    </qti-assessment-section>
+  </qti-test-part>
+  <qti-outcome-processing>
+    <qti-set-outcome-value identifier="SCORE">
+      <qti-sum>
+        <qti-test-variables exclude-category="dep-informational" variable-identifier="SCORE" weight-identifier="WEIGHT"/>
+      </qti-sum>
+    </qti-set-outcome-value>
+  </qti-outcome-processing>
+</qti-assessment-test>

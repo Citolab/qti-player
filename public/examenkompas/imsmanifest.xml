@@ -1,0 +1,1212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:imsmd="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM https://purl.imsglobal.org/spec/md/v1p3/schema/xsd/imsmd_loose_v1p3p2.xsd http://www.imsglobal.org/xsd/qti/qtiv3p0/imscp_v1p1 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqtiv3p0_imscpv1p2_v1p0.xsd" identifier="MANIFEST-74371d3d-8dce-4acd-8924-fa8aa2b824ba" xmlns="http://www.imsglobal.org/xsd/qti/qtiv3p0/imscp_v1p1">
+  <metadata>
+    <schema>QTI Package</schema>
+    <schemaversion>3.0.0</schemaversion>
+    <imsmd:lom>
+      <imsmd:general>
+        <imsmd:identifier>
+          <imsmd:entry>fb2d0a8b-2211-4c64-a809-6aca1a6bdd7b</imsmd:entry>
+        </imsmd:identifier>
+        <imsmd:title>
+          <imsmd:string/>
+        </imsmd:title>
+      </imsmd:general>
+      <imsmd:lifeCycle>
+        <imsmd:version>
+          <imsmd:string>1</imsmd:string>
+        </imsmd:version>
+      </imsmd:lifeCycle>
+    </imsmd:lom>
+  </metadata>
+  <organizations/>
+  <resources>
+    <resource identifier="I_00001_CF" type="controlfile" href="dep_extension.xsd">
+      <file href="dep_extension.xsd"/>
+    </resource>
+    <resource identifier="ITM-32gbg5" type="imsqti_item_xmlv3p0" href="depitems/32gbg5.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>799d4e60-9ae9-4455-aa97-b320ec1371cc</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Geen bron</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Geen bron</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gbg5.xml"/>
+    </resource>
+    <resource identifier="ITM-32gbg6" type="imsqti_item_xmlv3p0" href="depitems/32gbg6.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>8f7e4b55-bf8e-4aea-a137-38ce0427fcdf</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gbg6.xml"/>
+      <dependency identifierref="RES-AKbb201cbt-12ak_gif"/>
+      <dependency identifierref="RES-AKbb201cbt-12ag_gif"/>
+    </resource>
+    <resource identifier="ITM-32gbg8" type="imsqti_item_xmlv3p0" href="depitems/32gbg8.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f28d20db-2afa-41bc-a7ff-4d1dae315408</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gbg8.xml"/>
+      <dependency identifierref="RES-AKbb201cbt-13_gif"/>
+    </resource>
+    <resource identifier="ITM-32gbg9" type="imsqti_item_xmlv3p0" href="depitems/32gbg9.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f3fcbfa3-40d4-48b7-ad81-3f457175e201</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Geen bron</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Geen bron</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gbg9.xml"/>
+    </resource>
+    <resource identifier="ITM-32gbgb" type="imsqti_item_xmlv3p0" href="depitems/32gbgb.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>fb868bb2-4cff-48d3-ae17-6dbe19cea37f</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>50001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Geen bron</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Geen bron</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gbgb.xml"/>
+    </resource>
+    <resource identifier="ITM-32gbgd" type="imsqti_item_xmlv3p0" href="depitems/32gbgd.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>21ae3417-91a0-47a7-b5f8-3457d45e5b1a</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gbgd.xml"/>
+      <dependency identifierref="RES-AKbb201cbt-15_gif"/>
+    </resource>
+    <resource identifier="ITM-32gbgt" type="imsqti_item_xmlv3p0" href="depitems/32gbgt.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>1d1e07a9-8c91-482e-8044-8855b0234c4c</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>40001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gbgt.xml"/>
+      <dependency identifierref="RES-AKbb201cbt-17_gif"/>
+    </resource>
+    <resource identifier="ITM-32gbgy" type="imsqti_item_xmlv3p0" href="depitems/32gbgy.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>00269b96-35e5-453e-9f2c-6800802a271a</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Geen bron</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Geen bron</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32gbgy.xml"/>
+    </resource>
+    <resource identifier="ITM-32jwzs" type="imsqti_item_xmlv3p0" href="depitems/32jwzs.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d5645413-71c7-4d08-9a8a-229671ca4785</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32jwzs.xml"/>
+      <dependency identifierref="RES-akbb212cbt-01_gif"/>
+    </resource>
+    <resource identifier="ITM-32jwzt" type="imsqti_item_xmlv3p0" href="depitems/32jwzt.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>5c599098-c6a9-4718-85e0-f105249272f7</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32jwzt.xml"/>
+      <dependency identifierref="RES-akbb212cbt-02_gif"/>
+    </resource>
+    <resource identifier="ITM-32jwzu" type="imsqti_item_xmlv3p0" href="depitems/32jwzu.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>87219467-ee54-42f4-b29d-48ded25a80a5</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32jwzu.xml"/>
+      <dependency identifierref="RES-akbb212cbt-03a_jpg"/>
+      <dependency identifierref="RES-akbb212cbt-03b_jpg"/>
+      <dependency identifierref="RES-akbb212cbt-03c_jpg"/>
+    </resource>
+    <resource identifier="ITM-32jwzv" type="imsqti_item_xmlv3p0" href="depitems/32jwzv.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>b15f8e71-4952-433c-b17c-c4029a8c7ec8</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Geen bron</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Geen bron</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32jwzv.xml"/>
+    </resource>
+    <resource identifier="ITM-32jx27" type="imsqti_item_xmlv3p0" href="depitems/32jx27.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>38cac706-0e33-48ea-a7ff-4879f5beda57</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32jx27.xml"/>
+      <dependency identifierref="RES-akbb212cbt-04_gif"/>
+    </resource>
+    <resource identifier="ITM-32jx29" type="imsqti_item_xmlv3p0" href="depitems/32jx29.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>a91a8817-2eb9-44e2-a30a-4f8c578e11cc</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32jx29.xml"/>
+      <dependency identifierref="RES-akbb212cbt-06_jpg"/>
+    </resource>
+    <resource identifier="ITM-32jx2b" type="imsqti_item_xmlv3p0" href="depitems/32jx2b.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>3bac694b-f8c0-4062-9860-f9aa552bb5f5</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Geen bron</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Geen bron</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32jx2b.xml"/>
+    </resource>
+    <resource identifier="ITM-32ksmk" type="imsqti_item_xmlv3p0" href="depitems/32ksmk.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>b19c47d9-4fbb-45fe-96a0-fdbb837cf53d</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32ksmk.xml"/>
+      <dependency identifierref="RES-akbb232cbt-01_jpg"/>
+    </resource>
+    <resource identifier="ITM-32ksna" type="imsqti_item_xmlv3p0" href="depitems/32ksna.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>86327285-62a7-4752-b3f2-2f2808b4df9b</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32ksna.xml"/>
+      <dependency identifierref="RES-akbb232cbt-05_gif"/>
+    </resource>
+    <resource identifier="ITM-32ksnb" type="imsqti_item_xmlv3p0" href="depitems/32ksnb.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d4d78449-7665-4580-97ad-38d78556faf1</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>30001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32ksnb.xml"/>
+      <dependency identifierref="RES-akbb232cbt-31_Orenburg_jpg"/>
+    </resource>
+    <resource identifier="ITM-32ksp7" type="imsqti_item_xmlv3p0" href="depitems/32ksp7.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d9c587b4-c5a7-40ca-9425-6c88d3e15d61</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32ksp7.xml"/>
+      <dependency identifierref="RES-akbb232cbt-14g-aangepast_gif"/>
+      <dependency identifierref="RES-akbb232cbt-33g-aangepast_gif"/>
+    </resource>
+    <resource identifier="ITM-32kspd" type="imsqti_item_xmlv3p0" href="depitems/32kspd.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>fd7fa310-b473-4a8a-ae41-c376e03670bd</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32kspd.xml"/>
+      <dependency identifierref="RES-akbb232cbt-15_jpg"/>
+      <dependency identifierref="RES-akbb232cbt-16_gif"/>
+    </resource>
+    <resource identifier="ITM-32kydn" type="imsqti_item_xmlv3p0" href="depitems/32kydn.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>42329cf1-8c8c-4867-95a0-c140a4ec461d</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32kydn.xml"/>
+      <dependency identifierref="RES-akbb232cbt-30_gif"/>
+    </resource>
+    <resource identifier="ITM-32l47e" type="imsqti_item_xmlv3p0" href="depitems/32l47e.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>11c2d6ee-5f22-45f8-a444-46f4edd125e6</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32l47e.xml"/>
+      <dependency identifierref="RES-akbb232cbt-32_jpg"/>
+    </resource>
+    <resource identifier="ITM-32l47g" type="imsqti_item_xmlv3p0" href="depitems/32l47g.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>7c08736b-7751-4df5-9c07-d95afb6af8c2</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>20001</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:classification>
+            <imsmd:taxonPath>
+              <imsmd:source>
+                <imsmd:string>bron</imsmd:string>
+              </imsmd:source>
+              <imsmd:taxon>
+                <imsmd:id>Afbeelding</imsmd:id>
+                <imsmd:entry>
+                  <imsmd:string>Afbeelding</imsmd:string>
+                </imsmd:entry>
+              </imsmd:taxon>
+            </imsmd:taxonPath>
+          </imsmd:classification>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32l47g.xml"/>
+      <dependency identifierref="RES-akbb232cbt-02_gif"/>
+    </resource>
+    <resource identifier="ITM-32m7pj" type="imsqti_item_xmlv3p0" href="depitems/32m7pj.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>402ec776-1d70-4dd2-9fad-f7e7e7e1e426</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>10010</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/32m7pj.xml"/>
+    </resource>
+    <resource identifier="RES-AKbb201cbt-12ag_gif" type="associatedcontent/learning-application-resource" href="img/AKbb201cbt-12ag.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>528d3b3f-ceb6-47ec-beed-97546a093d3d</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/AKbb201cbt-12ag.gif"/>
+    </resource>
+    <resource identifier="RES-AKbb201cbt-12ak_gif" type="associatedcontent/learning-application-resource" href="img/AKbb201cbt-12ak.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f8a40bfb-f7d1-44c0-897d-afbfedb3d937</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/AKbb201cbt-12ak.gif"/>
+    </resource>
+    <resource identifier="RES-AKbb201cbt-13_gif" type="associatedcontent/learning-application-resource" href="img/AKbb201cbt-13.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>cc504b1d-0b02-4aae-9c07-b823cf88417f</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/AKbb201cbt-13.gif"/>
+    </resource>
+    <resource identifier="RES-AKbb201cbt-15_gif" type="associatedcontent/learning-application-resource" href="img/AKbb201cbt-15.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>2459a415-2e61-42a8-a4d3-b5dc3be0a425</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>3</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/AKbb201cbt-15.gif"/>
+    </resource>
+    <resource identifier="RES-AKbb201cbt-17_gif" type="associatedcontent/learning-application-resource" href="img/AKbb201cbt-17.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>859b872b-241d-447a-be9f-7cfe17f1bb4a</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>4</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/AKbb201cbt-17.gif"/>
+    </resource>
+    <resource identifier="RES-akbb212cbt-01_gif" type="associatedcontent/learning-application-resource" href="img/akbb212cbt-01.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>191013a2-b216-4125-98b6-04dbe6eecb0a</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>4</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb212cbt-01.gif"/>
+    </resource>
+    <resource identifier="RES-akbb212cbt-02_gif" type="associatedcontent/learning-application-resource" href="img/akbb212cbt-02.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f5b067cd-2f8c-4328-aa3b-fbda0a9ae3c9</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>3</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb212cbt-02.gif"/>
+    </resource>
+    <resource identifier="RES-akbb212cbt-03a_jpg" type="associatedcontent/learning-application-resource" href="img/akbb212cbt-03a.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f5a93d9e-c8c9-46f9-b844-ad2e25c61712</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb212cbt-03a.jpg"/>
+    </resource>
+    <resource identifier="RES-akbb212cbt-03b_jpg" type="associatedcontent/learning-application-resource" href="img/akbb212cbt-03b.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>e1be24c0-e97e-41d4-9eac-27377b6113a9</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb212cbt-03b.jpg"/>
+    </resource>
+    <resource identifier="RES-akbb212cbt-03c_jpg" type="associatedcontent/learning-application-resource" href="img/akbb212cbt-03c.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>2031270f-fe41-43af-b832-758c0ba25efe</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb212cbt-03c.jpg"/>
+    </resource>
+    <resource identifier="RES-akbb212cbt-04_gif" type="associatedcontent/learning-application-resource" href="img/akbb212cbt-04.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>3958dbd5-31d8-425b-bdd9-56675804d777</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>4</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb212cbt-04.gif"/>
+    </resource>
+    <resource identifier="RES-akbb212cbt-06_jpg" type="associatedcontent/learning-application-resource" href="img/akbb212cbt-06.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>ff974686-eec6-4325-8940-58666768452e</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>2</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb212cbt-06.jpg"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-01_jpg" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-01.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>c74a8fc0-d339-4cb1-a883-b5761c11c8ec</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-01.jpg"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-02_gif" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-02.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>b021858f-4523-47b1-818a-ad037f8c1c6b</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>3</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-02.gif"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-05_gif" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-05.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>ad499015-6880-4126-85e6-d50202959c66</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>2</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-05.gif"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-14g-aangepast_gif" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-14g-aangepast.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d2e7d86d-6673-487f-9efd-55fe466c64ed</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-14g-aangepast.gif"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-15_jpg" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-15.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>d3d1d819-bdc1-4907-b3d5-2719adc6289d</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-15.jpg"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-16_gif" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-16.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>29573a9e-2d8d-40c1-85ae-3ecac9551a51</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-16.gif"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-30_gif" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-30.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>5e398b69-6731-44e2-ad40-ae31479fd4c5</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-30.gif"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-31_Orenburg_jpg" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-31_Orenburg.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>f69f05fc-6c9b-432e-852b-3e9fe2e5efc8</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-31_Orenburg.jpg"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-32_jpg" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-32.jpg">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>81bf336b-321f-4e48-bf09-aacc5a2b2ca5</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-32.jpg"/>
+    </resource>
+    <resource identifier="RES-akbb232cbt-33g-aangepast_gif" type="associatedcontent/learning-application-resource" href="img/akbb232cbt-33g-aangepast.gif">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>b74140a3-f0d7-4f9c-8889-5f3ffb8e2ff2</imsmd:entry>
+            </imsmd:identifier>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>1</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+        </imsmd:lom>
+      </metadata>
+      <file href="img/akbb232cbt-33g-aangepast.gif"/>
+    </resource>
+    <resource identifier="TST-bb-ak-23-examenvariant" type="imsqti_test_xmlv3p0" href="depitems/bb-ak-23-examenvariant.xml">
+      <metadata>
+        <imsmd:lom>
+          <imsmd:general>
+            <imsmd:identifier>
+              <imsmd:entry>ce43f3ba-5701-4703-9f5b-c67759509a57</imsmd:entry>
+            </imsmd:identifier>
+            <imsmd:title>
+              <imsmd:string>VMBO BB aardrijkskunde 2023 - examenvariant</imsmd:string>
+            </imsmd:title>
+          </imsmd:general>
+          <imsmd:lifeCycle>
+            <imsmd:version>
+              <imsmd:string>10004</imsmd:string>
+            </imsmd:version>
+          </imsmd:lifeCycle>
+          <imsmd:technical>
+            <imsmd:requirement>
+              <imsmd:orComposite>
+                <imsmd:type>
+                  <imsmd:value>minColorDepth</imsmd:value>
+                </imsmd:type>
+                <imsmd:name>
+                  <imsmd:value>16</imsmd:value>
+                </imsmd:name>
+              </imsmd:orComposite>
+            </imsmd:requirement>
+            <imsmd:requirement>
+              <imsmd:orComposite>
+                <imsmd:type>
+                  <imsmd:value>minResolutionWidth</imsmd:value>
+                </imsmd:type>
+                <imsmd:name>
+                  <imsmd:value>1024</imsmd:value>
+                </imsmd:name>
+              </imsmd:orComposite>
+            </imsmd:requirement>
+            <imsmd:requirement>
+              <imsmd:orComposite>
+                <imsmd:type>
+                  <imsmd:value>minResolutionHeight</imsmd:value>
+                </imsmd:type>
+                <imsmd:name>
+                  <imsmd:value>768</imsmd:value>
+                </imsmd:name>
+              </imsmd:orComposite>
+            </imsmd:requirement>
+            <imsmd:otherPlatformRequirements>
+              <imsmd:string>soundCheck</imsmd:string>
+              <imsmd:string>showMaxScore</imsmd:string>
+              <imsmd:string>consecutiveNumbering</imsmd:string>
+            </imsmd:otherPlatformRequirements>
+          </imsmd:technical>
+        </imsmd:lom>
+      </metadata>
+      <file href="depitems/bb-ak-23-examenvariant.xml"/>
+      <dependency identifierref="ITM-32m7pj"/>
+      <dependency identifierref="ITM-32jx2b"/>
+      <dependency identifierref="ITM-32kydn"/>
+      <dependency identifierref="ITM-32gbgd"/>
+      <dependency identifierref="ITM-32jwzv"/>
+      <dependency identifierref="ITM-32gbg9"/>
+      <dependency identifierref="ITM-32kspd"/>
+      <dependency identifierref="ITM-32ksnb"/>
+      <dependency identifierref="ITM-32gbg8"/>
+      <dependency identifierref="ITM-32gbgy"/>
+      <dependency identifierref="ITM-32l47e"/>
+      <dependency identifierref="ITM-32ksna"/>
+      <dependency identifierref="ITM-32l47g"/>
+      <dependency identifierref="ITM-32jwzt"/>
+      <dependency identifierref="ITM-32gbgt"/>
+      <dependency identifierref="ITM-32jx29"/>
+      <dependency identifierref="ITM-32ksp7"/>
+      <dependency identifierref="ITM-32ksmk"/>
+      <dependency identifierref="ITM-32gbgb"/>
+      <dependency identifierref="ITM-32gbg5"/>
+      <dependency identifierref="ITM-32jx27"/>
+      <dependency identifierref="ITM-32gbg6"/>
+      <dependency identifierref="ITM-32jwzs"/>
+      <dependency identifierref="ITM-32jwzu"/>
+    </resource>
+  </resources>
+</manifest>

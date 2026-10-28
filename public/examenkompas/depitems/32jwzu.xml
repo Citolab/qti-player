@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32jwzu" identifier="ITM-32jwzu" time-dependent="false" label="32jwzu" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="A">
+      <qti-value>A</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-response-declaration identifier="RESPONSE2" cardinality="single" base-type="identifier">
+    <qti-correct-response interpretation="A">
+      <qti-value>A</qti-value>
+    </qti-correct-response>
+  </qti-response-declaration>
+  <qti-outcome-declaration identifier="RAW_SCORE" cardinality="single" base-type="integer">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float">
+    <qti-interpolation-table>
+      <qti-interpolation-table-entry source-value="2" target-value="1"/>
+      <qti-interpolation-table-entry source-value="1" target-value="0"/>
+      <qti-interpolation-table-entry source-value="0" target-value="0"/>
+    </qti-interpolation-table>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>1</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <qti-calculator>
+      <qti-calculator-type>basic</qti-calculator-type>
+      <qti-description/>
+    </qti-calculator>
+    <dep:dep-calculator>
+      <dep:dep-description/>
+      <dep:dep-calculator-type>basic</dep:dep-calculator-type>
+      <dep:dep-switch>true</dep:dep-switch>
+    </dep:dep-calculator>
+    <dep:dep-symbolPicker>
+      <dep:dep-description/>
+      <dep:dep-symbols>+&#x20ac;&#xe8;&#xe9;&#xeb;&#xea;&#xef;&#xf6;&#xe0;&#xe1;&#xa7;&#xb1;</dep:dep-symbols>
+    </dep:dep-symbolPicker>
+    <dep:dep-textMarker>
+      <dep:dep-description/>
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <div id="leftbody">
+            <p>Nederland, onderwijsvoorzieningen</p>
+            <table class="cito_genclass_BB_2022_C2-033_1">
+              <colgroup>
+                <col class="cito_genclass_BB_2022_C2-033_2"/>
+                <col class="cito_genclass_BB_2022_C2-033_3"/>
+                <col class="cito_genclass_BB_2022_C2-033_4"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td class="cito_genclass_BB_2022_C2-033_5 cito_genclass_BB_2022_C2-033_6">
+                    <p>universiteit</p>
+                    <p>
+                      <img id="Id-IMG_8be634e2-c618-403b-9a61-f6e3d1ea79bc" src="../img/akbb212cbt-03a.jpg" width="210" height="140" alt=""/>
+                    </p>
+                  </td>
+                  <td class="cito_genclass_BB_2022_C2-033_5 cito_genclass_BB_2022_C2-033_7">
+                    <p>&#xa0;</p>
+                  </td>
+                  <td class="cito_genclass_BB_2022_C2-033_5 cito_genclass_BB_2022_C2-033_8">
+                    <p>school voor voortgezet onderwijs</p>
+                    <p>
+                      <img id="Id-IMG_e7dd41ea-d71d-4f5d-942a-493c83931bb2" src="../img/akbb212cbt-03b.jpg" width="210" height="140" alt=""/>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="cito_genclass_BB_2022_C2-033_9 cito_genclass_BB_2022_C2-033_10">
+                    <p><br/>basisschool</p>
+                    <p>
+                      <img id="Id-IMG_40f9810e-b78e-456a-b129-63d04002077e" src="../img/akbb212cbt-03c.jpg" width="210" height="140" alt=""/>
+                    </p>
+                  </td>
+                  <td class="cito_genclass_BB_2022_C2-033_9 cito_genclass_BB_2022_C2-033_11">
+                    <p>&#xa0;</p>
+                  </td>
+                  <td class="cito_genclass_BB_2022_C2-033_9 cito_genclass_BB_2022_C2-033_12">
+                    <p>&#xa0;</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            &#xa0;
+            <p/>
+          </div>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="itemBody">
+            <p>Op de foto&apos;s zijn verschillende voorzieningen te zien op het gebied van onderwijs.</p>
+          </div>
+          <div id="itemquestion">
+            <p>
+              <strong>
+                <span>
+                  <strong>Maak de tekst kloppend door telkens het juiste woord te kiezen.</strong>
+                </span>
+              </strong>
+            </p>
+            <p>
+              <span>Het verzorgingsgebied van de&#xa0;universiteit is&#xa0;<qti-inline-choice-interaction id="I9b24df66-bb28-4f05-8a9c-7542d8465bd1" response-identifier="RESPONSE" shuffle="false" required="true"><qti-inline-choice identifier="A"><span>groter</span></qti-inline-choice><qti-inline-choice identifier="B"><span>kleiner</span></qti-inline-choice></qti-inline-choice-interaction>&#xa0;dan het verzorgingsgebied van de school voor voortgezet onderwijs.</span>
+            </p>
+            <p>
+              <span>De&#xa0;gemiddelde reisafstand voor leerlingen naar een basisschool zal&#xa0;in een krimpregio <qti-inline-choice-interaction id="I650e1439-284f-4431-9ba9-8eda1b57b81e" response-identifier="RESPONSE2" shuffle="false" required="true"><qti-inline-choice identifier="A"><span>groter</span></qti-inline-choice><qti-inline-choice identifier="B"><span>kleiner</span></qti-inline-choice></qti-inline-choice-interaction>&#xa0;zijn dan in een groeiregio.</span>
+            </p>
+          </div>
+          <div id="answer"/>
+        </div>
+      </div>
+    </div>
+  </qti-item-body>
+  <qti-response-processing>
+    <qti-set-outcome-value identifier="RAW_SCORE">
+      <qti-base-value base-type="integer">0</qti-base-value>
+    </qti-set-outcome-value>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match>
+          <qti-variable identifier="RESPONSE"/>
+          <qti-base-value base-type="identifier">A</qti-base-value>
+        </qti-match>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE"/>
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-response-condition>
+      <qti-response-if>
+        <qti-match>
+          <qti-variable identifier="RESPONSE2"/>
+          <qti-base-value base-type="identifier">A</qti-base-value>
+        </qti-match>
+        <qti-set-outcome-value identifier="RAW_SCORE">
+          <qti-sum>
+            <qti-base-value base-type="integer">1</qti-base-value>
+            <qti-variable identifier="RAW_SCORE"/>
+          </qti-sum>
+        </qti-set-outcome-value>
+      </qti-response-if>
+    </qti-response-condition>
+    <qti-lookup-outcome-value identifier="SCORE">
+      <qti-variable identifier="RAW_SCORE"/>
+    </qti-lookup-outcome-value>
+  </qti-response-processing>
+</qti-assessment-item>

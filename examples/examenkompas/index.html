@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="nl" data-qti-theme="examenkompas">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examenkompas</title>
+
+  <!-- Tailwind with its preflight, as everyone uses it -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- The page's tokens as Tailwind colors: bg-surface, text-ink, bg-brand, border-line, rounded-box, ... -->
+  <style type="text/tailwindcss">
+    @theme inline {
+      --color-surface: var(--cito-color-base-100);
+      --color-page: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 2.5%);
+      --color-line: color-mix(in oklab, var(--cito-color-base-100), var(--cito-color-base-content) 6%);
+      --color-ink: var(--cito-color-base-content);
+      --color-brand: var(--cito-color-primary);
+      --color-on-brand: var(--cito-color-primary-content);
+      --color-brand-light: #ffbebe;
+      --color-brand-dark: #a1616a;
+      --color-good: var(--cito-color-success);
+      --color-warn: var(--cito-color-warning);
+      --color-bad: var(--cito-color-error);
+      --radius-box: var(--cito-radius-box, 0.5rem);
+      --radius-field: var(--cito-radius-field, 0.25rem);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Theme of this example: only the tier-1 tokens of the qti-components theme (qti-theme CONTRACT.md §8), all colours the page uses set explicitly.
+       item.css derives the rest for the items; the Tailwind classes read these same --cito-* tokens, never the --qti-* ones. -->
+  <style>
+    /* Examenkompas: coral as the one brand colour, slate text on white, soft corners. */
+    html[data-qti-theme="examenkompas"] {
+      color-scheme: light;
+      --cito-color-primary: #f86d70;
+      --cito-color-primary-content: #ffffff;
+      --cito-color-success: oklch(60% 0.17 150);
+      --cito-color-warning: oklch(82% 0.17 85);
+      --cito-color-error: oklch(58% 0.22 27);
+      --cito-color-info: oklch(58% 0.14 250);
+      --cito-color-base-100: #ffffff;
+      --cito-color-base-content: #1e293b;
+      --cito-radius-field: 0.375rem;
+      --cito-radius-selector: 0.375rem;
+      --cito-radius-box: 0.75rem;
+      --cito-font-family: "Inter", system-ui, sans-serif;
+    }
+    body { margin: 0; background: #f1f5f9; color: var(--cito-color-base-content); font-family: "Inter", system-ui, sans-serif; }
+
+    /* The toolbar controls: white, a slate border, 2.5rem square. The theme paints them; the slots repaint them. */
+    .tool, .tool-group {
+      --test-button-size: 2.5rem; --test-button-border-radius: 0.5rem; --test-button-border-color: #cbd5e1;
+      --test-button-color: #64748b; --test-button-hover-background-color: #f8fafc;
+    }
+    .tool::part(button), .tool-group ::part(button) { border-width: 2px; padding-inline: 0.5rem; min-inline-size: 2.5rem; font-weight: 600; }
+    test-show-correct-response { font-weight: 600; }
+    test-show-correct-response[shown] { --test-button-background-color: #1e293b; --test-button-border-color: #1e293b; --test-button-color: #fff; }
+    .tool-group { display: flex; align-items: center; border: 2px solid #cbd5e1; border-radius: 0.5rem; background: #fff; padding: 0 0.125rem; }
+    .tool-group ::part(button) { border-color: transparent; min-block-size: 2.25rem; }
+    test-zoom-reset::part(button) { font-size: 0.8125rem; padding-inline: 0.25rem; min-inline-size: 3rem; }
+    test-bookmark { --qti-bookmark-color: #b45309; }
+    test-bookmark[bookmarked] { --test-button-background-color: #fef3c7; --test-button-border-color: #fde68a; }
+    test-character-sheet::part(button) { font-size: 1.25rem; }
+    test-character-sheet::part(sheet) { --test-character-sheet-width: 22rem; }
+
+    /* Punten: round buttons 0 … MAXSCORE; the chosen one is filled. A question the engine scores itself shows its score, greyed. */
+    .score-btn { display: inline-grid; place-items: center; min-width: 2.25rem; height: 2.25rem; padding: 0 0.5rem; border-radius: 9999px; border: 2px solid #cbd5e1; background: #fff; font-weight: 600; cursor: pointer; }
+    .score-btn:hover { background: #f8fafc; }
+    .score-btn:has(input:checked) { background: #1e293b; border-color: #1e293b; color: #fff; }
+    .score-btn:has(input:disabled) { cursor: default; opacity: 0.55; }
+    .score-btn:has(input:focus-visible) { outline: 2px solid #60a5fa; outline-offset: 2px; }
+
+    /* The question circles in the footer: a test-item-link per question, its state as a colour */
+    .circle { --test-button-border-radius: 9999px; --test-button-size: 1rem; --test-button-border-color: #e2e8f0; --test-button-background-color: transparent; }
+    .circle::part(button) { padding: 0; min-inline-size: 1rem; border-width: 2px; }
+    .circle.is-info { --test-button-border-radius: 0.125rem; }
+    .circle.is-answered { --test-button-background-color: #cbd5e1; }
+    .circle.is-good { --test-button-background-color: #dcfce7; --test-button-border-color: #4ade80; }
+    .circle.is-wrong { --test-button-background-color: #fee2e2; --test-button-border-color: #f87171; }
+    .circle.is-active { --test-button-border-color: #0284c7; }
+
+    /* The question list (the grid button): a row per question, the open one filled */
+    .row { --test-button-border-color: transparent; --test-button-background-color: transparent; --test-button-size: 2.125rem; }
+    .row::part(button) { justify-content: flex-start; padding: 0 0.5rem; gap: 0.5rem; }
+    .row.is-active { --test-button-background-color: #0284c7; --test-button-color: #fff; }
+    .row.is-active .muted { color: inherit; opacity: 0.8; }
+  </style>
+
+  <script type="module">
+    import "@citolab/qti-components/corrections"; // the components with the correction variants: the interactions can show the correct answer (test-show-correct-response)
+    import "@citolab/qti-components/item.css"; // the item theme: reads the --cito-* tokens set above
+
+    // This page is the host. The components do the QTI; the host decides:
+    //  - the look: the --cito-* tokens in the <style> above, and the markup around <test-container>
+    //  - the state: test.state is restored and cito-test-state-changed is saved (here sessionStorage; a real host sends it to its backend)
+    //  - the navigation: cito-test-navigated keeps the address bar in step, navigateTo opens a link
+    //  - scoring: auto-score-items scores every answer silently; the open questions (external-scored="human") get their points from the
+    //    Punten buttons (test-scoring-buttons) in the Nakijken view (test-view-toggle)
+    //  - the correct answer: the corrections build of the components; "Goede antwoord" (test-show-correct-response) marks it in the question
+    //  - the toolbar: bookmark, zoom and the character sheet are test plugins; they keep their state in test.state
+    //  - what the host knows about a question (its name and domain, from its own database): initContext on <test-navigation>,
+    //    merged into every item of the stamp context, so a template reads item.name, item.domain, ...
+
+    const test = document.querySelector("qti-test"), nav = document.querySelector("test-navigation"), KEY = "examenkompas";
+
+    // The host's own data per question: name, domain and points (Examenkompas keeps this in its database next to the package;
+    // the points are in the item too (MAXSCORE), but the host knows them before the item is loaded, so the lists show them from the start)
+    const domains = { K4: ["We", "Weer en klimaat", "#fde68a"], K6: ["Wa", "Water", "#bfdbfe"], K8: ["Be", "Bevolking en ruimte", "#a7f3d0"] };
+    const items = {
+      "32kydn": ["NL dagje uit", "K4", 1], "32l47g": ["NL weerbericht", "K4", 2], "32ksmk": ["NL Amsterdam weer", "K4", 1],
+      "32ksna": ["NL weerkaart 18 januari 2021", "K4", 1], "32ksnb": ["NL klimaatgrafiek Orenburg (Rusland)", "K4", 1],
+      "32l47e": ["NL vegetatiezone", "K4", 1], "32ksp7": ["VS soorten neerslag invultekst", "K4", 2], "32kspd": ["VS naaldbossen", "K4", 1],
+      "32gbg5": ["NL stroomsnelheid rivier", "K6", 1], "32gbg6": ["NL stroomgebied en waterscheiding", "K6", 1], "32gbg8": ["NL grondwater", "K6", 1],
+      "32gbg9": ["NL waterstand", "K6", 1], "32gbgb": ["NL maatregelen vd rivier", "K6", 1], "32gbgd": ["MO Eufraat en Tigris", "K6", 1],
+      "32gbgt": ["MO waterprojecten", "K6", 1], "32gbgy": ["NL grijs water", "K6", 1], "32jwzs": ["NL bevolkingsontwikkeling 2018", "K8", 1],
+      "32jwzt": ["NL geboorten en sterfgevallen", "K8", 2], "32jwzu": ["NL verzorgingsgebieden onderwijs", "K8", 1],
+      "32jwzv": ["NL levensverwachting", "K8", 1], "32jx27": ["NL bereikbaarheid A'dam", "K8", 1],
+      "32jx29": ["CH twee bevolkingsdiagrammen 15-40", "K8", 1], "32jx2b": ["CH eenkindpolitiek", "K8", 1],
+    };
+    nav.initContext = Object.entries(items).map(([id, [name, code, maxScore]]) => ({ identifier: `ITM-${id}`, name, points: maxScore, domain: domains[code][0], domainTitle: domains[code][1], domainColor: domains[code][2] }));
+
+    // Restore and deep link: the state (answers, position, bookmarks, zoom) is kept in sessionStorage, #/<id> opens that question
+    if (sessionStorage.getItem(KEY)) test.state = JSON.parse(sessionStorage.getItem(KEY));
+    test.addEventListener("cito-test-state-changed", (e) => sessionStorage.setItem(KEY, JSON.stringify(e.detail)));
+    let first = true;
+    test.addEventListener("cito-test-navigated", (e) => {
+      const wanted = first && location.hash.slice(2);
+      first = false;
+      if (wanted && wanted !== e.detail.id) test.navigateTo("item", wanted);
+      else history.replaceState(null, "", `#/${e.detail.id}`);
+    });
+    // Nakijken: the view decides what the toolbar shows (html[data-view="scorer"] in the markup below)
+    test.addEventListener("cito-test-switch-view", (e) => (document.documentElement.dataset.view = e.detail));
+    // The question list closes once a question is chosen from it
+    test.addEventListener("cito-test-navigate", () => document.querySelector("#vragen").setAttribute("hidden", ""));
+  </script>
+</head>
+
+<!--
+  EXAMENKOMPAS: oefenen met een oud centraal examen (vmbo bb aardrijkskunde 2023, de helft van de vragen), één vraag tegelijk, nonlinear.
+  Boven: Nakijken (de scorer-view: het correctievoorschrift en de Punten-knoppen voor de open vragen), bladwijzer, zoom, speciale tekens, info.
+  Onder: Rapportage, een rondje per vraag, de vragenlijst, Vorige en Volgende. De domeinen (We/Wa/Be) komen uit de host (initContext).
+-->
+<body>
+  <qti-test navigate="item">
+    <test-navigation auto-score-items class="flex h-screen flex-col overflow-hidden">
+
+      <!-- Toolbar -->
+      <header class="z-20 flex flex-wrap items-center gap-2 border-b border-slate-200 bg-slate-100 p-2">
+        <!-- Nakijken: a switch between the candidate and the scorer view -->
+        <test-view-toggle class="flex cursor-pointer select-none items-center gap-2 px-2 font-semibold">
+          <template>
+            <span>Nakijken</span>
+            <span role="switch" aria-checked="{{ view == 'scorer' }}" aria-label="Nakijken" class="relative inline-block h-7 w-11 rounded-full border-2 border-slate-300 transition-colors {{ view == 'scorer' ? 'bg-brand' : 'bg-white' }}">
+              <span class="absolute top-0.5 size-5 rounded-full shadow-sm transition-all {{ view == 'scorer' ? 'left-[18px] bg-white' : 'left-0.5 bg-brand' }}"></span>
+            </span>
+          </template>
+        </test-view-toggle>
+
+        <!-- Scorer view only: Punten 0 … MAXSCORE. The engine scores closed questions itself (greyed); open questions (external-scored="human") the candidate scores with the correctievoorschrift -->
+        <div class="hidden items-center gap-3 [html[data-view=scorer]_&]:flex">
+          <span class="text-lg font-semibold">Punten</span>
+          <test-scoring-buttons class="flex items-center gap-2">
+            <template>
+              <template type="repeat" repeat="{{ scores }}">
+                <label class="score-btn"><input type="radio" name="score" class="sr-only" value="{{ item }}" ?checked="{{ item == score }}" ?disabled="{{ disabled }}" /><span>{{ item }}</span></label>
+              </template>
+            </template>
+          </test-scoring-buttons>
+          <test-stamp>
+            <template>
+              <template type="if" if="{{ activeItem.valid && !activeItem.isDefaultResponse && activeItem.maxScore > 0 && activeItem.score != null }}">
+                <span class="rounded-lg bg-white px-3 py-1 text-sm font-semibold text-slate-600">{{ activeItem.score >= activeItem.maxScore ? 'Je antwoord is goed' : activeItem.score > 0 ? 'Je antwoord is gedeeltelijk goed' : 'Je antwoord is fout' }}</span>
+              </template>
+            </template>
+          </test-stamp>
+          <!-- The correct answer, marked in the question (the corrections build); disabled for a question without an answer key (the open questions) -->
+          <test-show-correct-response class="tool text-sm" showcorrecttext="Goede antwoord" hidecorrecttext="Verberg goede antwoord" nocorrectresponsetext="Geen antwoordmodel"></test-show-correct-response>
+        </div>
+        <!-- Candidate view: one line about the answer -->
+        <test-scoring-feedback class="text-sm font-semibold text-slate-600 [html[data-view=scorer]_&]:hidden"
+          data-text-no-response="Je hebt nog geen antwoord gegeven" data-text-correct="Je antwoord is goed" data-text-partially-correct="Je antwoord is gedeeltelijk goed"
+          data-text-incorrect="Je antwoord is fout" data-informational="Hiervoor zijn geen punten te verdienen" data-score-unknown="Schat zelf in hoeveel punten je krijgt" data-in-progress="Berekenen..."></test-scoring-feedback>
+
+        <div class="flex-1"></div>
+
+        <!-- The tools: every one a test plugin, keeping its own state in test.state -->
+        <test-bookmark class="tool" title="Bladwijzer"></test-bookmark>
+        <div class="tool-group">
+          <test-zoom-out title="Zoom uit"><i class="bi bi-zoom-out"></i></test-zoom-out>
+          <test-zoom-reset title="Terug naar 100%"></test-zoom-reset>
+          <test-zoom-in title="Zoom in"><i class="bi bi-zoom-in"></i></test-zoom-in>
+        </div>
+        <test-character-sheet class="tool" title="Speciale tekens" characters="é è ë ê ï ö ü à á ç ñ € £ § ± ° ² ³ × ÷ ≤ ≥ ≠ → ←">Ω</test-character-sheet>
+        <button class="grid size-10 place-items-center rounded-lg border-2 border-slate-300 bg-white text-slate-400" disabled title="Markeren (niet in dit voorbeeld)"><i class="bi bi-pencil"></i></button>
+        <button class="flex h-10 cursor-pointer items-center gap-2 rounded-lg border-2 border-slate-300 bg-white px-3 text-sm font-semibold text-slate-500 hover:bg-slate-50" onclick="document.querySelector('#feedback').showModal()"><i class="bi bi-chat-left-text"></i>Feedback</button>
+        <button class="grid size-10 cursor-pointer place-items-center rounded-lg border-2 border-slate-300 bg-white text-slate-500 hover:bg-slate-50" title="Hulpmiddelen" onclick="document.querySelector('#hulpmiddelen').showModal()"><i class="bi bi-info-circle"></i></button>
+      </header>
+
+      <!-- The question -->
+      <div class="relative flex min-h-0 flex-1 flex-col">
+        <test-container test-url="../../examenkompas/depitems/bb-ak-23-examenvariant.xml" class="block flex-1 overflow-auto p-4">
+          <template>
+            <style>
+              qti-assessment-item { display: block; max-width: 64rem; margin: 0 auto; }
+              qti-item-body img { max-width: 100%; height: auto; }
+              /* The correctievoorschrift (rubric blocks for the scorer) reads as its own block */
+              qti-rubric-block[view="scorer"] { margin-top: 1.5rem; }
+              qti-rubric-block:has(> qti-content-body:empty) { display: none; }
+              /* An outcome declaration with view="scorer" is data, not content: never show it (qti-components shows [view] elements of the view) */
+              qti-outcome-declaration { display: none !important; }
+            </style>
+          </template>
+        </test-container>
+
+        <!-- The domain of the question (host data via initContext), bottom right -->
+        <test-stamp class="pointer-events-none absolute bottom-4 right-6">
+          <template>
+            <template type="if" if="{{ activeItem.domain }}">
+              <span class="rounded-full px-3 py-1 text-sm font-semibold leading-none shadow-sm" style="background: {{ activeItem.domainColor }}" title="{{ activeItem.domainTitle }}">{{ activeItem.domain }}</span>
+            </template>
+          </template>
+        </test-stamp>
+
+        <!-- The question list (the grid and list buttons): number, name, points and domain per question; the open one is filled -->
+        <div id="vragen" hidden data-layout="grid" class="absolute inset-0 z-10 overflow-auto bg-white p-4 data-[layout=grid]:[&_.rows]:lg:grid-cols-3">
+          <test-stamp>
+            <template>
+              <ol class="rows mx-auto grid max-w-6xl gap-x-6 gap-y-0.5">
+                <template type="repeat" repeat="{{ activeTestpart.items }}">
+                  <li>
+                    <test-item-link item-id="{{ item.identifier }}" class="row block w-full text-sm {{ item.active ? 'is-active' : '' }}">
+                      <span class="muted w-5 text-right text-slate-400">{{ item.name ? item.index : '' }}</span>
+                      <span class="circle-dot inline-block size-3.5 shrink-0 rounded-full border-2 {{ item.name ? '' : 'rounded-sm' }} {{ item.active ? 'border-white bg-white' : item.valid && !item.isDefaultResponse ? 'border-slate-300 bg-slate-300' : 'border-slate-200' }}"></span>
+                      <span class="flex-1 truncate font-medium {{ item.name ? '' : 'italic text-slate-400' }}">{{ item.name || 'info' }}</span>
+                      <template type="if" if="{{ item.name }}">
+                        <span class="muted text-xs text-slate-400">{{ item.points }}pt</span>
+                        <span class="rounded-full px-1.5 py-0.5 text-[0.6875rem] font-bold leading-none text-slate-800" style="background: {{ item.domainColor }}">{{ item.domain }}</span>
+                      </template>
+                    </test-item-link>
+                  </li>
+                </template>
+              </ol>
+            </template>
+          </test-stamp>
+        </div>
+      </div>
+
+      <!-- Footer: Rapportage, the question circles, the list buttons, Vorige and Volgende -->
+      <footer class="z-20 flex items-center justify-between gap-2 border-t border-slate-200 bg-white p-2">
+        <button class="h-10 cursor-pointer rounded-lg bg-brand-light px-4 font-semibold text-brand-dark hover:opacity-90" onclick="document.querySelector('#rapportage').showModal()">Rapportage</button>
+
+        <div class="flex flex-1 items-center justify-center gap-3">
+          <test-stamp class="hidden lg:block">
+            <template>
+              <div class="flex max-w-xl flex-wrap justify-center gap-0.5">
+                <template type="repeat" repeat="{{ activeTestpart.items }}">
+                  <test-item-link item-id="{{ item.identifier }}" title="{{ item.name ? 'Vraag ' + item.index + ': ' + item.name : 'Informatie' }}"
+                    class="circle {{ item.active ? 'is-active' : '' }} {{ (item.categories || []).includes('dep-informational') ? 'is-info' : '' }} {{ item.valid && !item.isDefaultResponse ? 'is-answered' : '' }} {{ view == 'scorer' && item.valid && !item.isDefaultResponse && item.score != null && item.maxScore > 0 ? (item.score >= item.maxScore ? 'is-good' : 'is-wrong') : '' }}">
+                    <template type="if" if="{{ (test.plugins.bookmarks || []).includes(item.identifier) }}"><span class="text-[8px] leading-none text-amber-500">★</span></template>
+                  </test-item-link>
+                </template>
+              </div>
+            </template>
+          </test-stamp>
+          <button class="grid size-10 cursor-pointer place-items-center rounded-lg text-slate-500 ring-2 ring-inset ring-slate-300 hover:bg-slate-50" title="Vragen" onclick="const v = document.querySelector('#vragen'); v.hidden = !v.hidden || v.dataset.layout != 'grid'; v.dataset.layout = 'grid'"><i class="bi bi-grid text-lg"></i></button>
+          <button class="grid size-10 cursor-pointer place-items-center rounded-lg text-slate-500 ring-2 ring-inset ring-slate-300 hover:bg-slate-50" title="Vragenlijst" onclick="const v = document.querySelector('#vragen'); v.hidden = !v.hidden || v.dataset.layout != 'list'; v.dataset.layout = 'list'"><i class="bi bi-list text-xl"></i></button>
+        </div>
+
+        <div class="flex items-center gap-2 [--test-button-border-radius:0.5rem] [--test-button-size:2.5rem] [--test-button-primary-background-color:var(--cito-color-primary)] [--test-button-primary-color:#fff] [--test-button-background-color:var(--cito-color-primary)] [--test-button-border-color:var(--cito-color-primary)] [--test-button-color:#fff] [--test-button-hover-background-color:#f45a5e] [--test-button-primary-hover-background-color:#f45a5e]">
+          <test-prev title="Vorige"><i class="bi bi-chevron-left text-lg"></i></test-prev>
+          <test-next class="font-semibold">Volgende <i class="bi bi-chevron-right text-lg"></i></test-next>
+        </div>
+      </footer>
+
+      <!-- Rapportage: points per domain and per question, from the state of the test (the stamp context), no code -->
+      <dialog id="rapportage" class="m-auto w-[min(44rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
+        <div class="flex max-h-[85vh] flex-col gap-5 overflow-y-auto p-6">
+          <div>
+            <h2 class="text-xl font-bold">Rapportage</h2>
+            <p class="text-sm text-slate-500">Aardrijkskunde vmbo bb 2023, eerste tijdvak</p>
+          </div>
+          <test-stamp>
+            <template>
+              <div class="grid grid-cols-3 gap-3 text-center">
+                <div class="rounded-field bg-page p-3">
+                  <p class="text-2xl font-bold tabular-nums">{{ activeTestpart.items.filter((i) => i.name && i.valid && !i.isDefaultResponse).length }} / {{ activeTestpart.items.filter((i) => i.name).length }}</p>
+                  <p class="text-sm text-slate-500">beantwoord</p>
+                </div>
+                <div class="rounded-field bg-page p-3">
+                  <p class="text-2xl font-bold tabular-nums">{{ activeTestpart.items.filter((i) => i.name).reduce((s, i) => s + (i.score || 0), 0) }} / {{ activeTestpart.items.filter((i) => i.name).reduce((s, i) => s + (i.points || i.maxScore || 0), 0) }}</p>
+                  <p class="text-sm text-slate-500">punten</p>
+                </div>
+                <div class="rounded-field bg-page p-3">
+                  <p class="text-2xl font-bold tabular-nums">{{ (test.plugins.bookmarks || []).length }}</p>
+                  <p class="text-sm text-slate-500">met bladwijzer</p>
+                </div>
+              </div>
+
+              <!-- Per domain: the host's data (initContext) groups the questions -->
+              <div class="grid gap-2">
+                <template type="repeat" repeat="{{ activeTestpart.items.map((i) => i.domainTitle).filter((d, n, a) => d && a.indexOf(d) == n) }}">
+                  <div class="flex items-center gap-3 text-sm">
+                    <span class="w-10 rounded-full px-1.5 py-0.5 text-center text-xs font-bold" style="background: {{ activeTestpart.items.find((i) => i.domainTitle == item).domainColor }}">{{ activeTestpart.items.find((i) => i.domainTitle == item).domain }}</span>
+                    <span class="w-44 font-medium">{{ item }}</span>
+                    <span class="h-2.5 flex-1 overflow-hidden rounded-full bg-slate-200"><span class="block h-full rounded-full bg-good" style="width: {{ 100 * activeTestpart.items.filter((i) => i.domainTitle == item).reduce((s, i) => s + (i.score || 0), 0) / (activeTestpart.items.filter((i) => i.domainTitle == item).reduce((s, i) => s + (i.points || i.maxScore || 0), 0) || 1) }}%"></span></span>
+                    <span class="w-14 text-right tabular-nums">{{ activeTestpart.items.filter((i) => i.domainTitle == item).reduce((s, i) => s + (i.score || 0), 0) }} / {{ activeTestpart.items.filter((i) => i.domainTitle == item).reduce((s, i) => s + (i.points || i.maxScore || 0), 0) }}</span>
+                  </div>
+                </template>
+              </div>
+
+              <table class="w-full text-left text-sm">
+                <thead><tr class="border-b border-line text-slate-500"><th class="py-2 pr-3 font-medium">#</th><th class="py-2 pr-3 font-medium">Vraag</th><th class="py-2 pr-3 font-medium">Domein</th><th class="py-2 pr-3 font-medium">Punten</th><th class="py-2 text-right font-medium">Bladwijzer</th></tr></thead>
+                <tbody>
+                  <template type="repeat" repeat="{{ activeTestpart.items.filter((i) => i.name) }}">
+                    <tr class="border-b border-line/60">
+                      <td class="py-2 pr-3 tabular-nums">{{ item.index }}</td>
+                      <td class="py-2 pr-3"><test-item-link item-id="{{ item.identifier }}" class="row -ml-2 text-left" onclick="this.closest('dialog').close()">{{ item.name }}</test-item-link></td>
+                      <td class="py-2 pr-3"><span class="rounded-full px-1.5 py-0.5 text-[0.6875rem] font-bold leading-none" style="background: {{ item.domainColor }}">{{ item.domain }}</span></td>
+                      <td class="py-2 pr-3">
+                        <span class="rounded-full px-2 py-0.5 text-xs font-semibold {{ !(item.valid && !item.isDefaultResponse) ? 'bg-line text-slate-500' : item.maxScore > 0 && item.score >= item.maxScore ? 'bg-good/15 text-good' : item.score > 0 ? 'bg-warn/25 text-ink' : 'bg-bad/15 text-bad' }}">
+                          {{ !(item.valid && !item.isDefaultResponse) ? 'niet ingevuld' : (item.score || 0) + ' / ' + (item.points || item.maxScore) }}
+                        </span>
+                      </td>
+                      <td class="py-2 text-right">{{ (test.plugins.bookmarks || []).includes(item.identifier) ? '★' : '–' }}</td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </template>
+          </test-stamp>
+          <div class="flex justify-end gap-2">
+            <button class="cursor-pointer rounded-field px-4 py-2 font-medium hover:bg-page" onclick="sessionStorage.removeItem('examenkompas'); history.replaceState(null, '', location.pathname); location.reload()"><i class="bi bi-arrow-counterclockwise me-1"></i>Opnieuw</button>
+            <form method="dialog"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+          </div>
+        </div>
+      </dialog>
+
+      <!-- Hulpmiddelen (the info button): what the tools do -->
+      <dialog id="hulpmiddelen" class="m-auto w-[min(32rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
+        <div class="flex flex-col gap-4 p-6">
+          <h2 class="text-xl font-bold">Hulpmiddelen</h2>
+          <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-sm">
+            <dt class="font-semibold">Nakijken</dt><dd>Zet de schakelaar om: je ziet het correctievoorschrift en geeft jezelf punten voor de open vragen. Gesloten vragen worden vanzelf nagekeken.</dd>
+            <dt class="font-semibold"><i class="bi bi-bookmark"></i> Bladwijzer</dt><dd>Markeer een vraag om er later op terug te komen; in de rondjes onderaan staat een ster.</dd>
+            <dt class="font-semibold"><i class="bi bi-zoom-in"></i> Zoom</dt><dd>Maak de vraag groter of kleiner. De stand blijft bewaard.</dd>
+            <dt class="font-semibold">Ω Speciale tekens</dt><dd>Klik eerst in een antwoordveld, open dan het blad en kies een teken (é, €, ², …).</dd>
+            <dt class="font-semibold"><i class="bi bi-grid"></i> Vragen</dt><dd>Alle vragen met hun naam, punten en domein; klik om er een te openen.</dd>
+            <dt class="font-semibold">Rapportage</dt><dd>Je punten per domein en per vraag.</dd>
+          </dl>
+          <form method="dialog" class="flex justify-end"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+        </div>
+      </dialog>
+
+      <!-- Feedback (to the makers of the site; here it goes nowhere) -->
+      <dialog id="feedback" class="m-auto w-[min(28rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
+        <form method="dialog" class="flex flex-col gap-4 p-6">
+          <h2 class="text-xl font-bold">Feedback</h2>
+          <p class="text-sm text-slate-500">Klopt er iets niet aan deze vraag, of mis je iets? In Examenkompas gaat dit naar de makers; in dit voorbeeld nergens heen.</p>
+          <textarea class="min-h-28 rounded-field border border-slate-300 p-3 text-sm" placeholder="Je opmerking"></textarea>
+          <div class="flex justify-end gap-2"><button class="cursor-pointer rounded-field px-4 py-2 font-medium hover:bg-page" value="cancel">Annuleren</button><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Versturen</button></div>
+        </form>
+      </dialog>
+
+      <!-- Wat laat dit voorbeeld zien? A checklist of what the QTI decides and what this page does itself. -->
+      <button class="fixed bottom-16 left-3 z-30 grid size-9 cursor-pointer place-items-center rounded-full bg-surface text-ink shadow-md hover:bg-page" aria-label="Wat laat dit voorbeeld zien?" title="Wat laat dit voorbeeld zien?" onclick="document.querySelector('#about').showModal()"><i class="bi bi-question-lg"></i></button>
+      <dialog id="about" class="m-auto w-[min(36rem,calc(100vw-2rem))] rounded-box bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/50">
+        <div class="flex max-h-[85vh] flex-col gap-4 overflow-y-auto p-6">
+          <div>
+            <h2 class="text-xl font-bold">Wat laat dit voorbeeld zien?</h2>
+            <p class="text-sm text-ink/60">Examenkompas: oefenen met een oud examen, zelf nakijken, en een toolbar van plugins.</p>
+          </div>
+          <ul class="divide-y divide-line text-sm">
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Navigatie<span class="block text-xs text-ink/50">navigation-mode op de testpart</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">nonlinear</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Stil scoren op de achtergrond<span class="block text-xs text-ink/50">auto-score-items op test-navigation</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">aan</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Nakijken: de scorer-view<span class="block text-xs text-ink/50">test-view-toggle; rubric blocks met view="scorer" in de items</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">correctievoorschrift</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Zelf punten geven aan open vragen<span class="block text-xs text-ink/50">test-scoring-buttons; external-scored="human" op SCORE in het item</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">8 open vragen</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Het goede antwoord tonen<span class="block text-xs text-ink/50">de corrections-build van de componenten; test-show-correct-response in de scorer-view</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">qti-correct-response in het item</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Bladwijzers<span class="block text-xs text-ink/50">test-bookmark, een plugin met eigen state</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">in test.state</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Zoom<span class="block text-xs text-ink/50">test-zoom-in, test-zoom-out, test-zoom-reset: een plugin, zoom op de items</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">in test.state</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Speciale tekens<span class="block text-xs text-ink/50">test-character-sheet: een plugin die typt in het laatst gebruikte antwoordveld</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">Ω</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Eigen gegevens per vraag<span class="block text-xs text-ink/50">initContext op test-navigation: naam en domein uit de database van de host</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">We / Wa / Be</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Rondjes, vragenlijst en rapportage<span class="block text-xs text-ink/50">test-stamp met test-item-link, zonder code</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">3 stamps</span></li>
+        <li class="flex items-start gap-3 py-2"><i class="bi bi-check-circle-fill mt-0.5 text-good"></i><span class="flex-1">Toestand bewaren en deeplink<span class="block text-xs text-ink/50">state en cito-test-navigated, ±10 regels</span></span><span class="shrink-0 rounded bg-page px-2 py-0.5 text-xs">sessionStorage</span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Thumbnails van de vragen<span class="block text-xs text-ink/50">Examenkompas rendert ze vooraf; hier de lijst</span></span></li>
+        <li class="flex items-start gap-3 py-2 text-ink/50"><i class="bi bi-dash-circle mt-0.5 text-ink/30"></i><span class="flex-1">Markeren (pen) en AI-nakijken<span class="block text-xs text-ink/50">eigen functies van Examenkompas</span></span></li>
+          </ul>
+          <form method="dialog" class="flex justify-end"><button class="cursor-pointer rounded-field bg-brand px-4 py-2 font-semibold text-on-brand hover:opacity-90">Sluiten</button></form>
+        </div>
+      </dialog>
+    </test-navigation>
+  </qti-test>
+</body>
+
+</html>

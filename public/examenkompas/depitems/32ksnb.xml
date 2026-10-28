@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qti-assessment-item xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqtiasi_v3p0 https://purl.imsglobal.org/spec/qti/v3p0/schema/xsd/imsqti_asiv3p0_v1p0.xsd http://www.duo.nl/schema/dep_extension ../dep_extension.xsd" title="32ksnb" identifier="ITM-32ksnb" time-dependent="false" label="32ksnb" xmlns="http://www.imsglobal.org/xsd/imsqtiasi_v3p0" xmlns:dep="http://www.duo.nl/schema/dep_extension">
+  <qti-response-declaration identifier="RESPONSE" cardinality="single" base-type="string"/>
+  <qti-response-declaration identifier="RESPONSE2" cardinality="single" base-type="string"/>
+  <qti-outcome-declaration identifier="SCORE" cardinality="single" base-type="float" external-scored="human">
+    <qti-default-value>
+      <qti-value>0</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-outcome-declaration identifier="qtiAspectInhoudOutcomeDeclaration" cardinality="single" base-type="integer" view="scorer" normal-maximum="1" normal-minimum="0"/>
+  <qti-outcome-declaration identifier="MAXSCORE" cardinality="single" base-type="float">
+    <qti-default-value>
+      <qti-value>1</qti-value>
+    </qti-default-value>
+  </qti-outcome-declaration>
+  <qti-companion-materials-info>
+    <qti-calculator>
+      <qti-calculator-type>basic</qti-calculator-type>
+      <qti-description/>
+    </qti-calculator>
+    <dep:dep-calculator>
+      <dep:dep-description/>
+      <dep:dep-calculator-type>basic</dep:dep-calculator-type>
+      <dep:dep-switch>true</dep:dep-switch>
+    </dep:dep-calculator>
+    <dep:dep-symbolPicker>
+      <dep:dep-description/>
+      <dep:dep-symbols>+&#x20ac;&#xe8;&#xe9;&#xeb;&#xea;&#xef;&#xf6;&#xe0;&#xe1;&#xa7;&#xb1;</dep:dep-symbols>
+    </dep:dep-symbolPicker>
+    <dep:dep-textMarker>
+      <dep:dep-description/>
+    </dep:dep-textMarker>
+  </qti-companion-materials-info>
+  <qti-item-body class="defaultBody" xml:lang="nl-NL">
+    <div class="content">
+      <div class="qti-layout-row">
+        <div class="qti-layout-col6">
+          <div id="leftbody">
+            <p>Klimaatgrafiek</p>
+            <p>
+              <img id="Id-IMG_53a6d0aa-b1f7-4ab5-a1aa-0f9ce9c06dd4" src="../img/akbb232cbt-31_Orenburg.jpg" width="206" height="241" alt=""/>
+            </p>
+          </div>
+        </div>
+        <div class="qti-layout-col6">
+          <div id="itemBody">
+            <p>Bekijk de klimaatgrafiek.</p>
+          </div>
+          <div id="itemquestion">
+            <p>
+              <strong>Geef eerst aan of de klimaatgrafiek WEL of&#xa0;NIET bij het gematigd zeeklimaat van Nederland hoort. <br/>Geef vervolgens een argument voor je keuze.</strong>
+            </p>
+            <p>De klimaatgrafiek hoort <qti-inline-choice-interaction id="I669749e1-a64c-43b9-8dce-9796704a8e17" response-identifier="RESPONSE" shuffle="false" required="true"><qti-inline-choice identifier="A"><span>wel</span></qti-inline-choice><qti-inline-choice identifier="B"><span>niet</span></qti-inline-choice></qti-inline-choice-interaction>&#xa0;bij het gematigd zeeklimaat van Nederland.</p>
+            <p class="cito_genclass_BB_2023_A2-006_1">argument voor je keuze<br/><br/></p>
+            <qti-extended-text-interaction response-identifier="RESPONSE2" id="II306ec71d-64ec-4330-9fc8-6f13ca31ebe9" class="qti-height-lines-4" expected-lines="4" expected-length="240"/>
+            <p/>
+          </div>
+          <div id="answer"/>
+        </div>
+      </div>
+    </div>
+    <qti-rubric-block id="qtiScoringRubricBlock" use="instructions" view="scorer">
+      <qti-content-body/>
+    </qti-rubric-block>
+    <qti-rubric-block id="qtiAspectInhoudRubricBlock" use="scoring" view="scorer" data-dep-caption="Inhoud" data-outcome-idref="qtiAspectInhoudOutcomeDeclaration">
+      <qti-content-body>
+        <table class="cito_genclass_BB_2023_A2-006_2">
+          <colgroup>
+            <col class="cito_genclass_BB_2023_A2-006_3"/>
+          </colgroup>
+          <tbody>
+            <tr>
+              <td class="cito_genclass_BB_2023_A2-006_4 cito_genclass_BB_2023_A2-006_5">
+                <div>De klimaatgrafiek hoort&#xa0;<strong>niet </strong>bij het gematigd zeeklimaat van Nederland.</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cito_genclass_BB_2023_A2-006_6 cito_genclass_BB_2023_A2-006_7">
+                <div><br/>Voorbeelden van een juist argument zijn:<br/>- Het temperatuurverschil tussen de wintermaanden en de zomermaanden is erg groot.<br/>-&#xa0;Er zijn&#xa0;geen zachte winters en geen koele zomers.<br/>- Er valt te weinig neerslag voor een gematigd zeeklimaat.</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cito_genclass_BB_2023_A2-006_8 cito_genclass_BB_2023_A2-006_9">
+                <div><br/>Opmerking<br/>Het scorepunt alleen toekennen bij de juiste keuze en een juist argument.</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </qti-content-body>
+    </qti-rubric-block>
+  </qti-item-body>
+</qti-assessment-item>
